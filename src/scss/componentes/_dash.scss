@@ -1,0 +1,27 @@
+.contenido-dashboard {
+  background-color: #fff;
+  margin-top: 0.5rem;
+  .tit-dash {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    background-color: #35547f;
+    div {
+      margin: 0 3rem 0 3rem;
+    }
+  }
+  .contenido-dash {
+    width: 100%;
+    margin-top: 2rem;
+    display: grid;
+    gap: 0.5rem;
+    grid-template-columns: repeat(3, 1fr);
+
+    .dash {
+      width: 40rem;
+      height: 30rem;
+      margin: 0 auto;
+    }
+  }
+}
