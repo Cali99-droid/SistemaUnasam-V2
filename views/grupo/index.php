@@ -22,15 +22,13 @@
             <?php foreach ($grupos as $grup) : ?>
 
                 <div class="grupo">
-                    <a href="grupo.php?id=<?php echo $grup->id ?>">
+                    <a href="/grupo?id=<?php echo $grup->id ?>">
                         <img src="/imagenes/<?php echo  $grup->imagen; ?>" alt="Imagen Grupo" class="grupo-imagen">
                         <div class="container">
                             <h4 class="no-margin"><?php echo $grup->nombre; ?></h4>
                             <p><?php echo $grup->getTipoGrupo(); ?></p>
                             <p>Nº Integrantes: <?php echo $grup->getCantidadIntegrantes();
                                                 ?></p>
-
-
                         </div>
 
                     </a>

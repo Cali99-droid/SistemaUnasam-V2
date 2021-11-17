@@ -1,0 +1,155 @@
+<div class="contenedor-grupos">
+    <!-- <div class="alerta error">
+        <?php //echo isset($_GET['mensaje']) ? $_GET['mensaje'] : ''; 
+        ?> 
+    </div> -->
+    <div class="titulo-grup">
+        <h2 class="no-margin"><?php echo $grupo->nombre;  ?></h2>
+        <p><?php echo  $grupo->getTipoGrupo() . ' - ' . $grupo->fecha_creacion ?> </p>
+
+    </div>
+
+    <div class="acciones-grupo">
+        <div class="buscar">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Buscar" class="busqueda" id="buscarIntegrante">
+        </div>
+
+        <div class=" nuevo-grupo botones-grupo">
+
+
+            <button type="submit" id="boton-agregar-evento" onclick="modal('modal-evento', 'boton-agregar-evento', 'close-evento')">
+                <i class="far fa-calendar-plus"></i> Asignar Evento
+            </button>
+
+            <button type="submit" class="boton-grupo" id="boton-agregar-integrante" onclick="modal('modal-integrante', 'boton-agregar-integrante', 'close-integrante')">
+                <i class="fas fa-user-plus"></i> Nuevo Integrante
+            </button>
+
+            <button type="submit" id=" boton-agregar-grupo" onclick="modal('modal-grupo', 'boton-agregar-grupo', 'close-grupo')"">
+            <i class=" fas fa-pencil-alt"></i> Editar Grupo
+            </button>
+
+        </div>
+    </div>
+
+    <div class="contenedor-tabla">
+
+        <table id="mytable">
+            <thead>
+                <tr>
+                    <th>DNI</th>
+                    <th>Nombres</th>
+                    <th>Codigo</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($integrantes as $integrante) :  ?>
+                    <tr>
+                        <td><?php echo $integrante->dni; ?></td>
+                        <td><?php echo $integrante->nombre . " " . $integrante->apellido; ?></td>
+                        <td><?php echo $integrante->codigo; ?></td>
+                        <td><span class="<?php echo $integrante->estado == 'Activo' ? 'label-ok' : 'label' ?>"><?php echo $integrante->estado; ?></span></td>
+                        <td>
+                            <form method="POST" class="w-100">
+
+
+                                <button type="button" class="boton-acciones" onclick="actualizarIntegrante(<?php echo $integrante->dni; ?>,'modal-integrante', 'btn', 'close-integrante')">
+                                    <i class=" fas fa-pencil-alt"></i> </button>
+
+                                <button type="button" class="boton-acciones borrar">
+                                    <i class="fas fa-trash"></i> </button>
+
+
+                                <a class="enlace" href="/integrante?dni=<?php echo $integrante->dni; ?> &idtipo=<?php echo $grupo->getTipoGrupo(); ?>">Ver Mas</a>
+
+                            </form>
+
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+</div>
+</div>
+
+
+<!--ventana modal-->
+<div class="modal-agregar " id="modal-grupo">
+    <div class="contenido-modal-grupo ">
+        <div class="encabezado-modal">
+            <h2>Editar Grupo</h2>
+            <span class="close close-grupo">&times;</span>
+
+        </div>
+        <form class="formulario-grupo" method="POST" enctype="multipart/form-data">
+
+
+            <?php include 'includes/templates/modales/formGrupo.php';  ?>
+
+            <input type="hidden" name="cod" value="3">
+
+            <button type="submit">Aceptar</button>
+
+
+        </form>
+
+    </div>
+</div>
+
+
+<div class="modal-agregar" id="modal-integrante">
+
+    <div class="contenido-modal-grupo modal-usuarios">
+        <div class="encabezado-modal">
+            <h2 id="titulo_integrante">Nuevo Integrante</h2>
+            <span class=" close close-integrante">&times;</span>
+
+        </div>
+        <form method="POST" class="formulario-grupo">
+
+            <?php include 'includes/templates/modales/modIntegrante.php';  ?>
+
+
+
+        </form>
+    </div>
+
+</div>
+
+<div class="modal-agregar" id="modal-evento">
+
+    <div class="contenido-modal-grupo  contenv fedor-grupos modal-eventos">
+        <div class="encabezado-modal">
+            <h2 id="titulo_integrante">Asignar Evento</h2>
+            <span class=" close close-evento">&times;</span>
+
+        </div>
+        <form method="POST" class="formulario-evento">
+
+            <?php include 'includes/templates/modales/buscarEvento.php'; ?>
+        </form>
+    </div>
+
+    <div>
+        <form action="">
+
+        </form>
+    </div>
+
+</div>
+
+<script>
+    $(document).ready(function() {
+        $('#option').select2();
+
+    });
+</script>

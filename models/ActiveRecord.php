@@ -199,4 +199,21 @@ class ActiveRecord
 
         return array_shift($resultado);
     }
+
+    // Busca un registro por su id
+    public static function where_all($columna, $valor)
+    {
+        $query = " SELECT * FROM " . static::$tabla  . " WHERE ${columna} = '${valor}'";
+
+        $resultado = self::consultarSQL($query);
+
+        return $resultado;
+    }
+
+    // trae datos de varias tablas
+    public static function SQL($query)
+    {
+        $resultado = self::consultarSQL($query);
+        return $resultado;
+    }
 }

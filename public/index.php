@@ -24,6 +24,8 @@ $router->get('/inicio', [InicioController::class, 'index']);
 
 //Grupos
 $router->get('/grupos', [GrupoController::class, 'index']);
+$router->get('/grupo', [GrupoController::class, 'grupo']);
+$router->get('/integrante', [GrupoController::class, 'integrante']);
 $router->post('/grupos', [GrupoController::class, 'index']);
 
 //beneficios

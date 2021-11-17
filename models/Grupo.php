@@ -60,4 +60,13 @@ class Grupo extends ActiveRecord
         $tipo = TipoGrupo::find($this->tipo_grupo_id);
         return $tipo->nombre;
     }
+
+
+    public function getIntegrantes()
+    {
+
+        $integrantes = Integrante::where_all('idgrupo_universitario', $this->id);
+
+        return $integrantes;
+    }
 }

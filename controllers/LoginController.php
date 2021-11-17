@@ -20,7 +20,7 @@ class LoginController
                         session_start();
                         $_SESSION['username'] = $usuario->usuario;
                         $_SESSION['login'] = true;
-                        header('Location: /admin');
+                        header('Location: /inicio');
                     } else {
                     }
                 } else {
