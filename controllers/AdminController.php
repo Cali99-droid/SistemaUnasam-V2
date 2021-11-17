@@ -2,34 +2,30 @@
 
 namespace Controllers;
 
-use Model\Dash;
-use Model\Grupo;
+use Model\Semestre;
+use Model\TipoGrupo;
+use Model\Usuario;
 use MVC\Router;
-
 
 class AdminController
 {
 
-    public static function index(Router $router)
+    public static function tipos(Router $router)
     {
+        $tipos = TipoGrupo::all();
+        $router->render('admin/tipos/index', ['tipos' => $tipos]);
+    }
 
-        $participantes = Dash::getCantidadParticipantes();
-        $invitaciones = Dash::getCantidadInvitaciones();
-        $top = Dash::getTop();
-        $particionesFecha = Dash::getParticipacionesPorFecha();
-        $estadoBeneficios = Dash::getEstadoBeneficios();
-        $beneficiosPendientes = Dash::getBeneficiosPendientes();
-        $router->render(
-            'admin/index',
-            [
-                'participantes' => $participantes,
-                'invitaciones' => $invitaciones,
-                'top' => $top,
-                'particionesFecha' => $particionesFecha,
-                'estadoBeneficios' => $estadoBeneficios,
-                'beneficiosPendientes' => $beneficiosPendientes
 
-            ]
-        );
+    public static function users(Router $router)
+    {
+        $users = Usuario::all();
+        $router->render('admin/users/index', ['users' => $users]);
+    }
+
+    public static function semestres(Router $router)
+    {
+        $semestres = Semestre::all();
+        $router->render('admin/semestres/index', ['semestres' => $semestres]);
     }
 }

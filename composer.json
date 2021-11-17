@@ -2,6 +2,10 @@
     "name": "carlosorellano/app_unasam",
     "description": "proyecto php 8 mvc gulp sass unasam",
     "type": "project",
+    
+    "require": {
+        "intervention/image": "^2.6"
+    },
     "autoload": {
         "psr-4": {
             "MVC\\": "./",
@@ -14,6 +18,5 @@
             "name": "Carlos Orellano",
             "email": "orellano428@gmail.com"
         }
-    ],
-    "require": {}
+    ]
 }

@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema</title>
-    <link rel="stylesheet" href="build/css/app.css">
+    <link rel="stylesheet" href="../build/css/app.css">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -30,17 +30,17 @@
                 </div>
                 <div class="items">
 
-                    <a href="/admin" title="Tnicio"><i class='bx bxs-home' style='color:#e1e1e1'></i>Inicio</a>
-                    <a href="grupos.php" title="Grupos"><i class='bx bx-group'></i>Grupos</a>
-                    <a href="beneficios.php" title="Beneficios"><i class='bx bx-medal'></i>Beneficios</a>
-                    <a href="eventos.php" title="Eventos"><i class='bx bxs-calendar'></i>Eventos</a>
-                    <a href="reportes.php" title="Eventos"><i class="bx bxs-file"></i>Reportes</a>
+                    <a href="/inicio" title="Tnicio"><i class='bx bxs-home' style='color:#e1e1e1'></i>Inicio</a>
+                    <a href="/grupos" title="Grupos"><i class='bx bx-group'></i>Grupos</a>
+                    <a href="/beneficios" title="Beneficios"><i class='bx bx-medal'></i>Beneficios</a>
+                    <a href="/eventos" title="Eventos"><i class='bx bxs-calendar'></i>Eventos</a>
+                    <a href="/reporte" title="Reportes"><i class="bx bxs-file"></i>Reportes</a>
                     <div class="item">
                         <a href="javascript:void(0)" class="administrador" onclick="mostrarAdmin()"><i class="fas fa-user-tie" title="Administrador"></i>Administrador</a>
                         <div class="sub-item " id="sub-item">
-                            <a href="tipos.php">Tipos de Grupos</a>
-                            <a href="usuarios.php">Usuarios</a>
-                            <a href="semestre.php">Semestres</a>
+                            <a href="/tipos">Tipos de Grupos</a>
+                            <a href="/usuarios">Usuarios</a>
+                            <a href="/semestres">Semestres</a>
                         </div>
                     </div>
 
@@ -79,7 +79,7 @@
 
         </div>
     </div>
-    <script src="./build/js/app.js"></script>
+    <script src="../build/js/app.js"></script>
 
 </body>
 

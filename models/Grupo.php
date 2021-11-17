@@ -6,34 +6,58 @@ class Grupo extends ActiveRecord
 {
     //base datos
     protected static $tabla = 'GRUPO_UNIVERSITARIO';
-    protected static $columnasDB = ['id', 'nombre', 'fecha_creacion', 'resolución_creacion', 'imagen', 'tipo_grupo_id'];
+    protected static $columnasDB = ['id', 'nombre', 'fecha_creacion', 'resolucion_creacion', 'imagen', 'tipo_grupo_id'];
 
     public $id;
     public $nombre;
     public $fecha_creacion;
-    public $resolución_creacion;
+    public $resolucion_creacion;
     public $imagen;
     public $tipo_grupo_id;
-
 
     public function __construct($args = [])
     {
         $this->id = $args['id'] ?? null;
         $this->nombre = $args['nombre'] ?? '';
-        $this->fecha_inicio = $args['fecha_creacion'] ?? '';
-        $this->fecha_fin = $args['resolución_creacion'] ?? '';
-        $this->organizador_id = $args['imagen'] ?? '';
-        $this->organizador_id = $args['tipo_grupo_id'] ?? '';
+        $this->fecha_creacion = $args['fecha_creacion'] ?? '';
+        $this->resolucion_creacion = $args['resolucion_creacion'] ?? '';
+        $this->imagen = $args['imagen'] ?? '';
+        $this->tipo_grupo_id = $args['tipo_grupo_id'] ?? '';
     }
-    //revisa si un nombre en un grupo ya existe
-    public function existeEvento()
-    {
-        $query = " SELECT * FROM " . self::$tabla . " nombre = '" . $this->nombre . "' LIMIT 1";
-        $resultado = self::$db->query($query);
-        if ($resultado->num_rows) {
-            self::$alertas['error'][] = 'El Grupo ya esta registrado';
-        }
 
-        return $resultado;
+    public function setImagen($imagen)
+    {
+
+        if (!is_null($this->id)) {
+            //comprobar si existe el archivo
+            $this->borrarImagen();
+        }
+        //asignar al atributo de imagen el nombre de la imagen
+        if ($imagen) {
+            $this->imagen = $imagen;
+        }
+    }
+
+    //eliminar imagen
+    public function borrarImagen()
+    {
+        $existeArchivo = file_exists(CARPETA_IMAGENES . $this->imagen);
+        if ($existeArchivo) {
+            unlink(CARPETA_IMAGENES . $this->imagen);
+        }
+    }
+
+
+    public function getCantidadIntegrantes()
+    {
+        $query = "SELECT count(*) cantidad FROM alumno_x_grupo where grupo_universitario_id = " . $this->id;
+        $resultado = self::$db->query($query)->fetch_object();
+        return $resultado->cantidad;
+    }
+
+    public function getTipoGrupo()
+    {
+        $tipo = TipoGrupo::find($this->tipo_grupo_id);
+        return $tipo->nombre;
     }
 }

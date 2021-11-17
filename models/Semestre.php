@@ -2,7 +2,7 @@
 
 namespace Model;
 
-class Usuario extends ActiveRecord
+class Semestre extends ActiveRecord
 {
     //base datos
     protected static $tabla = 'semestre';
@@ -40,6 +40,4 @@ class Usuario extends ActiveRecord
 
         return $resultado;
     }
-   
- 
 }
