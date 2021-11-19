@@ -34,7 +34,7 @@ class Integrante extends ActiveRecord
     {
 
         $this->idAlumno = $args['idAlumno'] ?? '';
-        $this->codigo_alumno = $args['codigo'] ?? '';
+        $this->codigo = $args['codigo'] ?? '';
         $this->dni = $args['dni'] ?? '';
         $this->nombre = $args['nombre'] ?? '';
         $this->apellido = $args['apellido'] ?? '';

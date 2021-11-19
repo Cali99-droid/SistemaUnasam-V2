@@ -16,7 +16,7 @@ class TipoGrupo extends ActiveRecord
     public function __construct($args = [])
     {
         $this->id = $args['id'] ?? null;
-        $this->fecha_registro = $args['nombre'] ?? '';
+        $this->nombre = $args['nombre'] ?? '';
     }
 
 

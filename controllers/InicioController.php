@@ -3,7 +3,6 @@
 namespace Controllers;
 
 use Model\Dash;
-use Model\Grupo;
 use MVC\Router;
 
 
@@ -12,6 +11,7 @@ class InicioController
 
     public static function index(Router $router)
     {
+        isAuth();
 
         $participantes = Dash::getCantidadParticipantes();
         $invitaciones = Dash::getCantidadInvitaciones();

@@ -4,7 +4,7 @@
             <div class=" contenido-video">
                 <div class=" principal">
                     <div class="titulo--log">
-                        <h1>Bienvenido al Sistema de Gestion de Organizaciones Estudiantiles</h1>
+                        <h1>Bienvenido al Sistema de Gestión de Organizaciones Estudiantiles</h1>
 
                         <button onclick="document.getElementById('id01').style.display='block'" class="boton-acceder">Acceder</button>
                     </div>
@@ -22,7 +22,7 @@
             <form class="modal-content animate" action="/" method="POST">
                 <div class="imgcontainer">
                     <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Cerrar">&times;</span>
-                    <img src="build/img/profile.svg" alt="Avatar" class="avatar">
+                    <img src="build/img/profile.svg" alt="Avatar" class="avatar-log">
                 </div>
                 <?php include_once __DIR__ . "/../templates/alertas.php" ?>
                 <div class="container">
@@ -35,9 +35,7 @@
 
                     <button type="submit" class="boton-acceder">Acceder</button>
 
-                    <label>
-                        <input type="checkbox" checked="checked" name="remember"> Recuerdame
-                    </label>
+
                     <div class="container" style="background-color:#f1f1f1">
                         <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancelar</button>
                         <span class="psw">Olvidaste tu <a href="#">contraseña?</a></span>

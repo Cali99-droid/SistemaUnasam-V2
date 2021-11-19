@@ -37,7 +37,7 @@ class LoginController
     public static function logout(Router $router)
     {
         $alertas = [];
-        session_destroy();
-        $router->renderLog('auth/login', ['alertas' => $alertas]);
+        $_SESSION = [];
+        header('Location: /');
     }
 }

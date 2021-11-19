@@ -37,8 +37,9 @@ $router->post('/api/setTntegrante', [GrupoController::class, 'setIntegrante']);
 //beneficios
 $router->get('/beneficios', [BeneficioController::class, 'index']);
 $router->post('/beneficios', [BeneficioController::class, 'index']);
+$router->post('/beneficios/asignar', [BeneficioController::class, 'asignarBeneficio']);
 
-//beneficios
+//Eventos
 $router->get('/eventos', [EventoController::class, 'index']);
 $router->post('/eventos', [EventoController::class, 'index']);
 

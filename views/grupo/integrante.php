@@ -135,11 +135,13 @@
                             <?php foreach ($beneficios as $beneficio) :  ?>
 
                                 <tr>
-                                    <td><?php echo $beneficio->nombre; ?></td>
+                                    <td><?php echo $beneficio->getNombreBeneficio(); ?></td>
 
                                     <td><a class="<?php echo $beneficio->estado == 'ACTIVO' ? 'label-ok' : 'label' ?>"><?php echo $beneficio->estado; ?></a></td>
 
-                                    <td><button class="boton-asignar" onclick="asignarBeneficio(<?php echo $beneficio->getIdBeneXTipo($idTipo) ?>, <?php echo $id['idAlumnoGrupo'] ?>)"> <i class="fas fa-plus-circle"></i> Asignar</button></td>
+                                    <td><button class="boton-asignar" onclick="asignarBeneficio(<?php //echo $beneficio->getIdBeneXTipo($idTipo) 
+                                                                                                ?>, <?php //echo $id['idAlumnoGrupo'] 
+                                                                                                    ?>)"> <i class="fas fa-plus-circle"></i> Asignar</button></td>
                                 </tr>
                             <?php endforeach; ?>
 

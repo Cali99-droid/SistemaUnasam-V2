@@ -94,7 +94,7 @@
         </div>
         <form class="asignar-grupo">
 
-            <?php // include 'includes/templates/modales/asignarGrupo.php'; 
+            <?php include 'asignarGrupo.php';
             ?>
 
 

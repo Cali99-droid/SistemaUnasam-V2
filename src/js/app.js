@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     eventListeners();
     botonGrupo();
 
+
 });
 //cas
 
@@ -121,6 +122,28 @@ function modal(modal, boton, close) {
     }
 }
 
+function modalS(modal, boton, close) {
+
+    var modal = document.getElementById(modal);
+    var span = document.getElementsByClassName(close)[0];
+
+    modal.style.display = "block";
+
+
+    span.onclick = function () {
+        modal.style.display = "none";
+
+    }
+
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+
+
+        }
+    }
+}
+
 
 /**AJAX */
 
@@ -131,9 +154,9 @@ function BuscarIntegrante(dni) {
     $.ajax({
         type: "POST",
         data: param,
-        url: "obtenDatos.php",
+        url: "./obtenDatos.php",
         success: function (r) {
-
+            alert(r);
             datos = jQuery.parseJSON(r); // vas a castear el array json uno a uno
 
             $('#dni').val(datos['dni']);
@@ -460,40 +483,72 @@ function modalAsignar(idbeneficio, nombre, modal_asigBen, boton_agregar_usu, clo
     });
 
 }
-function asignarBeneficioGrupo() {
+async function asignarBeneficioGrupo() {
     var idbeneficio = document.getElementById('idbeneficio').value;
     var idTipoGrupo = document.getElementById('idTipoGrupo').value;
     var estado = document.getElementById('estadoGrupo').value;
-    var param = { "idbeneficio": idbeneficio, "idTipoGrupo": idTipoGrupo, "estado": estado, "cod": 3 }
+    // var param = { "idbeneficio": idbeneficio, "idTipoGrupo": idTipoGrupo, "estado": estado, "cod": 3 }
+    const datos = new FormData();
+    datos.append("beneficio_id", idbeneficio);
+    datos.append("tipo_grupo_id", idTipoGrupo);
+    datos.append("estado", estado);
+
+    try {
+        //Peticion hacia la api
+        const url = 'http://localhost:3000/beneficios/asignar';
+        const respuesta = await fetch(url, {
+            method: 'POST',
+            body: datos
+        })
+        const resultado = await respuesta.json();
 
 
-    $.ajax({
-        type: "POST",
-        data: param,
-        url: "setDatos.php",
-
-        success: function (r) {
-
-            if (r == 0) {
-
-                // Swal.fire('ERORR !!', 'EL BENEFICIO YA ESTA ASIGNADO ', 'error');
-                Swal.fire({
-                    title: 'AVISO',
-                    text: 'EL BENEFICIO YA EXISTE Y FUE ACTUALIZADO',
-                    icon: 'success',
-                })
-            } else {
-                Swal.fire({
-                    title: 'EXITO',
-                    text: 'BENEFICIO ASIGNADO CORRECTAMENTE!',
-                    icon: 'success',
-                })
-
-            }
+        if (resultado.resultado) {
+            Swal.fire({
+                icon: 'success',
+                title: 'MUY BIEN !',
+                text: 'Beneficio Asignado Correctamente',
+            }).then(() => {
 
 
+            })
         }
-    });
+    } catch (error) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error...',
+            text: 'Hubo un error al guardar la cita!',
+
+        })
+    }
+
+    // $.ajax({
+    //     type: "POST",
+    //     data: param,
+    //     url: "setDatos.php",
+
+    //     success: function (r) {
+
+    //         if (r == 0) {
+
+    //             // Swal.fire('ERORR !!', 'EL BENEFICIO YA ESTA ASIGNADO ', 'error');
+    //             Swal.fire({
+    //                 title: 'AVISO',
+    //                 text: 'EL BENEFICIO YA EXISTE Y FUE ACTUALIZADO',
+    //                 icon: 'success',
+    //             })
+    //         } else {
+    //             Swal.fire({
+    //                 title: 'EXITO',
+    //                 text: 'BENEFICIO ASIGNADO CORRECTAMENTE!',
+    //                 icon: 'success',
+    //             })
+
+    //         }
+
+
+    //     }
+    // });
 
 
 }
@@ -697,12 +752,175 @@ function openPage(pageName, elmnt, color) {
 }
 
 function botonGrupo() {
-    const crearGrupo = document.querySelector('#crearGrupo');
+    const crearTipo = document.querySelector('#crearTipo');
+    if (crearTipo) {
+        crearTipo.onclick = crearTipof;
+    }
 
-    crearGrupo.onclick = crearGrupo;
+
+
 }
 
-function crearGrupo() {
-    console.log('crear Grupo');
+async function crearTipof() {
+    const nombre_tipo = document.querySelector('#nombre_tipo');
+    const datos = new FormData();
+    datos.append('nombre', nombre_tipo.value);
+    try {
+        //Peticion hacia la api
+        const url = 'http://localhost:3000/api/tipos';
+        const respuesta = await fetch(url, {
+            method: 'POST',
+            body: datos
+        })
+        const resultado = await respuesta.json();
+
+        if (resultado.resultado) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Tipo Creado',
+                text: 'El tipo fue creado correctamente!',
+            }).then(() => {
+                nombre_tipo.value = '';
+                cargarTipos();
+
+
+
+            })
+        }
+    } catch (error) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error...',
+            text: 'Hubo un error al guardar la cita!',
+
+        })
+    }
+
 }
+
+
+async function cargarTipos() {
+    try {
+        const url = 'http://localhost:3000/api/tipos'
+        const resultado = await fetch(url);
+        const tipos = await resultado.json();
+        mostrarComboTipos(tipos);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+function mostrarComboTipos(tipos) {
+    const combo = document.querySelector('#tipo_grupo_id');
+    const ult = tipos[tipos.length - 1];
+    const { id, nombre } = ult;
+    const item = document.createElement('OPTION');
+    item.value = id;
+    item.textContent = nombre;
+    combo.appendChild(item);
+}
+
+// function botonIntegrante() {
+//     const boton = document.querySelector('#actualizarIntegrante');
+//     boton.onclick = getIntegrante;
+// }
+
+
+async function getIntegrante(id) {
+
+    const datos = new FormData();
+    datos.append('id', id);
+    try {
+        //Peticion hacia la api
+        const url = 'http://localhost:3000/api/getIntegrante';
+        const respuesta = await fetch(url, {
+            method: 'POST',
+            body: datos
+        })
+        const resultado = await respuesta.json();
+        modal('modal-integrante', 'btn', 'close-integrante');
+        //console.log(resultado['estado']);
+        $(document).ready(function () {
+
+            $('#dni').val(resultado['dni']);
+            $('#nombre').val(resultado['nombre']);
+            $('#apellido').val(resultado['apellido']);
+            $('#direccion').val(resultado['direccion']);
+            $('#email').val(resultado['email']);
+            $('#telefono').val(resultado['telefono']);
+            $('#codigo_alumno').val(resultado['codigo']);
+            $('#idEscuela').val(resultado['idEscuela']);
+            $('#nombre_procedencia').val(resultado['nombre_procedencia']);
+            $('#estado').val(resultado['estado']);
+            $('#idCondicionEconomica').val(resultado['idCondicionEconomica']);
+            $('#descripcion').val(resultado['descripcion']);
+            $('#idPersona').val(resultado['idPersona']);
+
+            var recepcionaDatos = resultado['genero'];
+            if (recepcionaDatos === 'Masculino') {
+                $("#genero option[value='Masculino'").attr("selected", true);
+            } else {
+                $("#genero option[value='Femenino'").attr("selected", true);
+            }
+
+            if (resultado['estado'] === 'activo') {
+                $("#estado option[value='activo'").attr("selected", true);
+            } else {
+                $("#estado option[value='inactivo'").attr("selected", true);
+            }
+
+
+        });
+
+
+    } catch (error) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error...',
+            text: 'Hubo un error !',
+
+        })
+    }
+}
+
+async function setIntegrante() {
+    const nombre_tipo = document.querySelector('#nombre_tipo').value;
+    const datos = new FormData();
+    datos.append('nombre', nombre_tipo);
+    try {
+        //Peticion hacia la api
+        const url = 'http://localhost:3000/api/tipos';
+        const respuesta = await fetch(url, {
+            method: 'POST',
+            body: datos
+        })
+        const resultado = await respuesta.json();
+
+        if (resultado.resultado) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Tipo Creado',
+                text: 'El tipo fue creado correctamente!',
+            }).then(() => {
+                cargarTipos();
+
+
+            })
+        }
+    } catch (error) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error...',
+            text: 'Hubo un error al guardar la cita!',
+
+        })
+    }
+}
+
+async function actualizarIntegrante() {
+
+}
+
+
+
  //document.getElementById("defaultOpen").click();

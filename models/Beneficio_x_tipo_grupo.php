@@ -38,4 +38,11 @@ class Beneficio_x_tipo_grupo extends ActiveRecord
 
         return $resultado;
     }
+
+    public function getNombreBeneficio()
+    {
+        $id = $this->beneficio_id;
+        $beneficio = Beneficio::find($id);
+        return $beneficio->nombre;
+    }
 }

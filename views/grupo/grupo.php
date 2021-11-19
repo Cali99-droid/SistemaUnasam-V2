@@ -3,6 +3,16 @@
         <?php //echo isset($_GET['mensaje']) ? $_GET['mensaje'] : ''; 
         ?> 
     </div> -->
+    <?php
+    $resultado = $_GET['resultado'] ?? '';
+    if ($resultado) {
+        $mensaje = mostrarNotificacion(intval($resultado));
+        if ($mensaje) { ?>
+            <p class="" id="men"> <?php //echo s($mensaje); 
+                                    ?></p>
+
+    <?php }
+    } ?>
     <div class="titulo-grup">
         <h2 class="no-margin"><?php echo $grupo->nombre;  ?></h2>
         <p><?php echo  $grupo->getTipoGrupo() . ' - ' . $grupo->fecha_creacion ?> </p>
@@ -52,19 +62,19 @@
                         <td><?php echo $integrante->dni; ?></td>
                         <td><?php echo $integrante->nombre . " " . $integrante->apellido; ?></td>
                         <td><?php echo $integrante->codigo; ?></td>
-                        <td><span class="<?php echo $integrante->estado == 'Activo' ? 'label-ok' : 'label' ?>"><?php echo $integrante->estado; ?></span></td>
+                        <td><span class="<?php echo $integrante->estado == 'activo' ? 'label-ok' : 'label' ?>"><?php echo $integrante->estado; ?></span></td>
                         <td>
                             <form method="POST" class="w-100">
 
 
-                                <button type="button" class="boton-acciones" onclick="actualizarIntegrante(<?php echo $integrante->dni; ?>,'modal-integrante', 'btn', 'close-integrante')">
+                                <button type="button" class="boton-acciones" onclick="getIntegrante(<?php echo $integrante->idPersona ?>)">
                                     <i class=" fas fa-pencil-alt"></i> </button>
 
                                 <button type="button" class="boton-acciones borrar">
                                     <i class="fas fa-trash"></i> </button>
 
 
-                                <a class="enlace" href="/integrante?dni=<?php echo $integrante->dni; ?> &idtipo=<?php echo $grupo->getTipoGrupo(); ?>">Ver Mas</a>
+                                <a class="enlace" href="/integrante?dni=<?php echo $integrante->dni; ?>">Ver Mas</a>
 
                             </form>
 
@@ -92,10 +102,9 @@
         </div>
         <form class="formulario-grupo" method="POST" enctype="multipart/form-data">
 
+            <?php include 'formulario.php'; ?>
 
-            <?php include 'includes/templates/modales/formGrupo.php';  ?>
-
-            <input type="hidden" name="cod" value="3">
+            <input type="hidden" id="idgrupo" name="grupo[id]" value="<?php echo $grupo->id ?>">
 
             <button type="submit">Aceptar</button>
 
@@ -116,7 +125,7 @@
         </div>
         <form method="POST" class="formulario-grupo">
 
-            <?php include 'includes/templates/modales/modIntegrante.php';  ?>
+            <?php include_once __DIR__ . "/../templates/modal/modIntegrante.php" ?>
 
 
 
@@ -146,10 +155,24 @@
     </div>
 
 </div>
-
+<?php include_once __DIR__ . "/../templates/modal/nuevoTipo.php" ?>
 <script>
     $(document).ready(function() {
         $('#option').select2();
 
     });
+
+    const men = document.querySelector('#men');
+    const id = document.querySelector('#idgrupo').value;
+    //  console.log(men)
+    if (men) {
+        Swal.fire({
+            title: 'Actualizado Correctamente',
+            text: 'Los Datos del Grupo Fueron Actualizados',
+            icon: 'success',
+        }).then(() => {
+            var newURL = location.href.split("?")[0] + '?id=' + id;
+            window.history.pushState('object', document.title, newURL);
+        })
+    }
 </script>

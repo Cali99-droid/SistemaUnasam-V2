@@ -200,7 +200,7 @@ class ActiveRecord
         return array_shift($resultado);
     }
 
-    // Busca un registro por su id
+    // devuelve varios registros por condicion
     public static function where_all($columna, $valor)
     {
         $query = " SELECT * FROM " . static::$tabla  . " WHERE ${columna} = '${valor}'";
@@ -214,6 +214,12 @@ class ActiveRecord
     public static function SQL($query)
     {
         $resultado = self::consultarSQL($query);
+        return $resultado;
+    }
+
+    public static function consulta($query)
+    {
+        $resultado = self::$db->query($query);
         return $resultado;
     }
 }

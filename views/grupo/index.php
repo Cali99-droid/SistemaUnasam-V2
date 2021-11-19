@@ -1,4 +1,5 @@
 <div class="contenedor-grupos">
+
     <div class="titulo-grupos">
         <h2 class="no-margin">Gestión de Grupos</h2>
     </div>
@@ -61,3 +62,12 @@
 
     </div>
 </div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        setTimeout(function() {
+            $(".alerta").fadeOut(1500);
+        }, 3000);
+    });
+</script>
+
+<?php include_once __DIR__ . "/../templates/modal/nuevoTipo.php" ?>

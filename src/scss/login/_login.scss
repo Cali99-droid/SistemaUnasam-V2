@@ -101,6 +101,9 @@
   cursor: pointer;
   width: 20%;
 }
+.titulo--log h1 {
+  color: white;
+}
 
 .boton-acceder {
   background-color: #ff8800;
@@ -122,6 +125,9 @@
   width: auto;
   padding: 10px 18px;
   background-color: #f44336;
+  border: none;
+  color: #fff;
+  cursor: pointer;
 }
 
 /* Center the image and position the close button */
@@ -129,11 +135,13 @@
   text-align: center;
   margin: 24px 0 12px 0;
   position: relative;
+  padding-top: 1rem;
 }
 
-img.avatar {
-  width: 10%;
+.avatar-log {
+  width: 25%;
   border-radius: 50%;
+  margin: 0 auto;
 }
 
 .container {
@@ -209,7 +217,7 @@ span.psw {
     transform: scale(1);
   }
 }
- 
+
 /*FOTERR*/
 .footer {
   color: #fff;
@@ -228,6 +236,8 @@ span.psw {
   }
   .cancelbtn {
     width: 100%;
+    border: none;
+    color: #fff;
   }
 
   .video {
