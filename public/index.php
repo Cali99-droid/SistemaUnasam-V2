@@ -3,6 +3,7 @@
 require_once __DIR__ . '/../includes/app.php';
 
 use Controllers\AdminController;
+use Controllers\APIController;
 use MVC\Router;
 use Controllers\LoginController;
 use Controllers\GrupoController;
@@ -24,9 +25,14 @@ $router->get('/inicio', [InicioController::class, 'index']);
 
 //Grupos
 $router->get('/grupos', [GrupoController::class, 'index']);
-$router->get('/grupo', [GrupoController::class, 'grupo']);
-$router->get('/integrante', [GrupoController::class, 'integrante']);
 $router->post('/grupos', [GrupoController::class, 'index']);
+$router->get('/grupo', [GrupoController::class, 'grupo']);
+$router->post('/grupo', [GrupoController::class, 'grupo']);
+$router->get('/integrante', [GrupoController::class, 'integrante']);
+//TODO
+$router->post('/api/getIntegrante', [GrupoController::class, 'getIntegrante']);
+$router->post('/api/setTntegrante', [GrupoController::class, 'setIntegrante']);
+
 
 //beneficios
 $router->get('/beneficios', [BeneficioController::class, 'index']);
@@ -46,5 +52,10 @@ $router->get('/tipos', [AdminController::class, 'tipos']);
 $router->get('/usuarios', [AdminController::class, 'users']);
 $router->get('/semestres', [AdminController::class, 'semestres']);
 $router->post('admin/usuarios', [AdminController::class, 'index']);
+
+
+//API
+$router->post('/api/tipos', [APIController::class, 'guardarTipo']);
+$router->get('/api/tipos', [APIController::class, 'getTipos']);
 // Comprueba y valida las rutas, que existan y les asigna las funciones del Controlador
 $router->comprobarRutas();
