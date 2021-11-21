@@ -229,49 +229,55 @@ function actualizarTipo(id, modal_tipo, boton_agregar_tipo, close_tipo) {
 
 }
 
-function actualizarBeneficio(id, modalben, boton_agregar_ben, close_ben) {
+async function actualizarBeneficio(id) {
 
-    modal(modalben, boton_agregar_ben, close_ben);
+    modal('modal-agregar-bene', 'boton-agregar-beneficio', 'close');
 
+    const datos = new FormData();
+    datos.append('id', id);
 
-    var param = { "id": id, "cod": 3 }
+    try {
 
-    $.ajax({
-        type: "POST",
-        data: param,
-        url: "obtenDatos.php",
-        success: function (r) {
-
-            datos = jQuery.parseJSON(r); // vas a castear el array json uno a uno
-
-            $('#numero').val(datos['numero']);
-            $("#fecha_emision").val(datos['fecha_emision']);
-            $('#estadoresolucion').val(datos['estadoresolucion']);
-            $('#nombre').val(datos['nombre']);
-            $('#estado').val(datos['estado']);
-            $('#idTipoGrupo').val(datos['idTipoGrupo']);
-            $("#valor").val('2');
-            $("#idBeneficio").val(datos['idBeneficio']);
+        //Peticion hacia la api
+        const url = 'http://localhost:3000/beneficios/getBeneficio';
+        const respuesta = await fetch(url, {
+            method: 'POST',
+            body: datos
+        })
+        const resultado = await respuesta.json();
 
 
-            if (datos['estadoresolucion'] === 'COMPLETADO') {
-                $("#estadoresolucion option[value='COMPLETADO'").attr("selected", true);
+        //console.log(resultado['estado']);
+        $(document).ready(function () {
+
+            $('#numero').val(resultado['numero_resolucion']);
+            $('#nombre').val(resultado['nombre']);
+            $('#fecha_emision').val(resultado['fecha_emision']);
+            $('#estado').val(resultado['estado']);
+            $('#idresolucion_x_beneficio').val(resultado['idres']);
+            $('#idBeneficio').val(resultado['id']);
+            $('#cod').val(2);
+
+
+
+            if (resultado['estado'] === 'activo') {
+                $("#estado option[value='activo'").attr("selected", true);
             } else {
-                $("#estadoresolucion option[value='PENDIENTE'").attr("selected", true);
+                $("#estado option[value='inactivo'").attr("selected", true);
             }
 
-            if (datos['estado'] === 'ACTIVO') {
-                $("#estado option[value='ACTIVO'").attr("selected", true);
-            } else {
-                $("#estado option[value='INACTIVO'").attr("selected", true);
-            }
+
+        });
 
 
+    } catch (error) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error...',
+            text: 'Hubo un error !',
 
-
-
-        }
-    });
+        })
+    }
 
 }
 
@@ -517,38 +523,12 @@ async function asignarBeneficioGrupo() {
         Swal.fire({
             icon: 'error',
             title: 'Error...',
-            text: 'Hubo un error al guardar la cita!',
+            text: 'Hubo un error al guardar la el Beneficio!',
 
         })
     }
 
-    // $.ajax({
-    //     type: "POST",
-    //     data: param,
-    //     url: "setDatos.php",
 
-    //     success: function (r) {
-
-    //         if (r == 0) {
-
-    //             // Swal.fire('ERORR !!', 'EL BENEFICIO YA ESTA ASIGNADO ', 'error');
-    //             Swal.fire({
-    //                 title: 'AVISO',
-    //                 text: 'EL BENEFICIO YA EXISTE Y FUE ACTUALIZADO',
-    //                 icon: 'success',
-    //             })
-    //         } else {
-    //             Swal.fire({
-    //                 title: 'EXITO',
-    //                 text: 'BENEFICIO ASIGNADO CORRECTAMENTE!',
-    //                 icon: 'success',
-    //             })
-
-    //         }
-
-
-    //     }
-    // });
 
 
 }
@@ -882,7 +862,7 @@ async function getIntegrante(id) {
         })
     }
 }
-
+//no usado
 async function setIntegrante() {
     const nombre_tipo = document.querySelector('#nombre_tipo').value;
     const datos = new FormData();
@@ -916,10 +896,122 @@ async function setIntegrante() {
         })
     }
 }
+async function buscarAlumno(dni) {
 
-async function actualizarIntegrante() {
+    const datos = new FormData();
+    datos.append('dni', dni);
+    try {
+        //Peticion hacia la api
+        const url = 'http://localhost:3000/api/alumno';
+        const respuesta = await fetch(url, {
+            method: 'POST',
+            body: datos
+        })
+        const resultado = await respuesta.json();
+
+        modal('modal-integrante', 'btn', 'close-integrante');
+        console.log(resultado);
+
+        $(document).ready(function () {
+
+            $('#dni').val(resultado['dni']);
+            $('#nombre').val(resultado['nombre']);
+        });
+
+
+    } catch (error) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error...',
+            text: 'Hubo un error !',
+
+        })
+    }
+}
+async function crearBeneficio() {
+
+    const numero = document.querySelector('#numero');
+    const fecha_emision = document.querySelector('#fecha_emision');
+    const estado = document.querySelector('#estado');
+    const nombre = document.querySelector('#nombre');
+    const idbeneficio = document.querySelector('#idBeneficio');
+    const idres = document.querySelector('#idresolucion_x_beneficio');
+    const cod = document.querySelector('#cod');
+    if (nombre.value === '') {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error !',
+            text: 'El nombre es obligatorio',
+        })
+
+        return;
+    }
+
+    const datos = new FormData();
+    datos.append("resolucion_x_beneficio[numero_resolucion]", numero.value);
+    datos.append("resolucion_x_beneficio[fecha_emision]", fecha_emision.value);
+    datos.append("resolucion_x_beneficio[estado]", estado.value);
+    datos.append("resolucion_x_beneficio[id]", idres.value)
+    datos.append("beneficio[nombre]", nombre.value);
+    datos.append("beneficio[id]", idbeneficio.value);
+    datos.append("cod", cod.value);
+
+    try {
+        //Peticion hacia la api
+        const url = 'http://localhost:3000/beneficios/crear';
+        const respuesta = await fetch(url, {
+            method: 'POST',
+            body: datos
+        })
+        const resultado = await respuesta.json();
+
+
+        if (resultado) {
+            if (cod.value == 1) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'MUY BIEN !',
+                    text: 'Beneficio Creado Correctamente',
+                }).then(() => {
+                    numero.value = '';
+                    fecha_emision.value = '';
+                    estado.value = '';
+                    nombre.value = '';
+
+                })
+            } else {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'MUY BIEN !',
+                    text: 'Beneficio Actualizado Correctamente',
+                }).then(() => {
+                    numero.value = '';
+                    fecha_emision.value = '';
+                    estado.value = '';
+                    nombre.value = '';
+
+
+                })
+            }
+        }
+    } catch (error) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error...',
+            text: 'Hubo un error al guardar el Beneficio!',
+
+        })
+    }
+
+
 
 }
+
+
+
+
+
+
 
 
 

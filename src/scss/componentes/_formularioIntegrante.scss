@@ -1,0 +1,11 @@
+@use "base/variables" as v;
+@use "base/mixins" as m;
+.contenedor-integrante {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  .columna-integrante {
+    display: flex;
+    flex-direction: column;
+  }
+}

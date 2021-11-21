@@ -2,6 +2,7 @@
 
 namespace Controllers;
 
+use Model\Integrante;
 use Model\TipoGrupo;
 
 class APIController
@@ -18,5 +19,13 @@ class APIController
         $tipo = new TipoGrupo($_POST);
         $resultado = $tipo->guardar();
         echo json_encode(['resultado' => $resultado]);
+    }
+
+
+    public static function getAlumno()
+    {
+        $dni = $_POST['dni'];
+        $alumno = Integrante::where('dni', $dni);
+        echo json_encode($alumno);
     }
 }

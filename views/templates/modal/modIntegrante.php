@@ -1,64 +1,30 @@
 <div class="buscar" id="cont_buscar">
     <label for="buscar" id="lbBuscar">Buscar</label>
     <input type="text" name="buscar" id="buscar" placeholder="Buscar por DNI">
-    <button type="button" id="btnBuscarDNI" name="btnBuscarDNI" onclick="BuscarIntegrante($('#buscar').val())">Buscar</button>
+    <button type="button" id="btnBuscarDNI" name="btnBuscarDNI" onclick="buscarAlumno($('#buscar').val())">Buscar</button>
 </div>
 
-<div class="contenedor-usuario">
-    <div class="columna-usuario">
+<div class="contenedor-integrante">
+    <div class="columna-integrante">
         <label for="dni">DNI</label>
-        <input type="text" name="integrante[dni]" id="dni">
-
+        <input type="text" name="integrante[dni]" id="dni" disabled>
         <label for="nombre">Nombre</label>
-        <input type="text" name="integrante[nombre]" id="nombre">
-
-        <label for="apellido">Apellido</label>
-        <input type="text" name="integrante[apellido]" id="apellido">
-
-
-        <label for="genero">Género</label>
-        <select name="integrante[genero]" id="genero">
-            <option value="" disabled selected>--Seleccione--</option>
-            <option value="Masculino">Masculino</option>
-            <option value="Femenino">Femenino</option>
-        </select>
-
-        <label for="direccion">Dirección</label>
-        <input type="text" name="integrante[direccion]" id="direccion">
-
+        <input type="text" name="integrante[nombre]" id="nombre" disabled>
 
     </div>
 
-    <div class="columna-usuario">
-        <label for="email">Email</label>
-        <input type="email" name="integrante[email]" id="email">
+    <div class="columna-integrante">
 
-        <label for="telefono">Teléfono</label>
-        <input type="number" name="integrante[telefono]" id="telefono" placeholder="Ingrese teléfono">
 
-        <label for="codigo_alumno">Código</label>
-        <input type="text" name="integrante[codigo_alumno]" id="codigo_alumno">
-
-        <label for="idEscuela" nombre-usu>Escuela</label>
-        <select name="integrante[idEscuela]" id="idEscuela">
+        <label for="idCondicionEconomica">Condición Socioeconomica</label>
+        <select name="integrante[idCondicionEconomica]" id="idCondicionEconomica">
             <option value="" selected disabled>--Seleccione--</option>
-            <?php while ($row = mysqli_fetch_assoc($escuelas)) : ?>
-                <option <?php // echo $estudiante->idEscuela == $row['id'] ? 'selected' : '' 
-                        ?> value="<?php echo $row['id']; ?>"><?php echo $row['nombre']; ?>
-                <?php endwhile; ?></option>
-
+            <?php foreach ($condiciones as $condicion) : ?>
+                <option value="<?php echo $condicion->id; ?>"><?php echo $condicion->nombre; ?>
+                <?php endforeach; ?></option>
         </select>
-
-
-
-
-        <label for="nombre_procedencia">Procedencia</label>
-        <input type="text" name="integrante[nombre_procedencia]" id="nombre_procedencia">
-
-    </div>
-
-    <div class="columna-usuario">
-
+        <label for="descripcion">Descripción</label>
+        <textarea name="integrante[descripcion]" id="descripcion" cols="30" rows="4"></textarea>
 
 
         <label for="estado">Estado</label>
@@ -67,23 +33,13 @@
             <option value="activo">Activo</option>
             <option value="inactivo">Inactivo</option>
         </select>
-
-
-        <label for="idCondicionEconomica">Condición Socioeconomica</label>
-        <select name="integrante[idCondicionEconomica]" id="idCondicionEconomica">
-            <option value="" selected disabled>--Seleccione--</option>
-            <?php foreach ($condiciones as $condicion) : ?>
-                <option <?php //echo $estudiante->idCondicionEconomica == $row['idCondicionEconomica'] ? 'selected' : '' 
-                        ?> value="<?php echo $condicion->id; ?>"><?php echo $condicion->nombre; ?>
-                <?php endforeach; ?></option>
-
-        </select>
-        <label for="descripcion">Descripción</label>
-        <textarea name="integrante[descripcion]" id="descripcion" cols="30" rows="4"></textarea>
-
         <input type="hidden" name="cod" value="2" id="valor">
         <input type="hidden" name="integrante[idPersona]" value='' id="idPersona">
         <button type="button" id="actualizarIntegrante" onclick="actualizarIntegrante()">Aceptar</button>
+    </div>
+
+    <div class="columna-integrante">
+
 
     </div>
 

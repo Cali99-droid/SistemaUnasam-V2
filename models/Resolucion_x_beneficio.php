@@ -6,10 +6,10 @@ class Resolucion_x_beneficio extends ActiveRecord
 {
     //base datos
     protected static $tabla = 'resolucion_x_beneficio';
-    protected static $columnasDB = ['id', 'numero', 'fecha_emision', 'estado', 'beneficio_id'];
+    protected static $columnasDB = ['id', 'numero_resolucion', 'fecha_emision', 'estado', 'beneficio_id'];
 
     public $id;
-    public $numero;
+    public $numero_resolucion;
     public $fecha_emision;
     public $estado;
     public $beneficio_id;
@@ -18,7 +18,7 @@ class Resolucion_x_beneficio extends ActiveRecord
     public function __construct($args = [])
     {
         $this->id = $args['id'] ?? null;
-        $this->numero = $args['numero'] ?? '';
+        $this->numero_resolucion = $args['numero_resolucion'] ?? '';
         $this->fecha_emision = $args['fecha_emision'] ?? '';
         $this->estado = $args['estado'] ?? '';
         $this->beneficio_id = $args['beneficio_id'] ?? '';

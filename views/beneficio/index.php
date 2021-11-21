@@ -36,7 +36,7 @@
 
 
 
-                            <button type="button" class="boton-acciones" onclick="actualizarBeneficio(   <?php echo $beneficio->id; ?>, 'modal-agregar-bene', 'boton-agregar-beneficio', 'close')">
+                            <button type="button" class="boton-acciones" onclick="actualizarBeneficio(<?php echo $beneficio->id; ?>)">
                                 <i class=" fas fa-pencil-alt"></i> </button>
 
 
@@ -74,8 +74,7 @@
         </div>
         <form method="POST" class="formulario-beneficio">
 
-            <?php //include 'includes/templates/modales/modBeneficio.php'; 
-            ?>
+            <?php include_once "modBeneficio.php"; ?>
 
 
         </form>

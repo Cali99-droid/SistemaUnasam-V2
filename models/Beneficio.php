@@ -17,6 +17,15 @@ class Beneficio extends ActiveRecord
         $this->nombre = $args['nombre'] ?? '';
     }
 
+
+    public function getResolucion()
+    {
+        $query = 'SELECT b.id, b.nombre, r.id idres, r.numero_resolucion, r.fecha_emision, r.estado, r.beneficio_id 
+        FROM beneficio b left JOIN resolucion_x_beneficio r on b.id = r.beneficio_id WHERE b.id = ' . $this->id;
+        $resultado = self::consulta($query);
+        return $resultado;
+    }
+
     /**
      * Mensajes de validacion
      */
