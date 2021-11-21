@@ -36,9 +36,10 @@ $router->post('/api/setTntegrante', [GrupoController::class, 'setIntegrante']);
 
 //beneficios
 $router->get('/beneficios', [BeneficioController::class, 'index']);
+$router->post('/beneficios/getBeneficio', [BeneficioController::class, 'getBeneficio']);
 $router->post('/beneficios', [BeneficioController::class, 'index']);
 $router->post('/beneficios/asignar', [BeneficioController::class, 'asignarBeneficio']);
-
+$router->post('/beneficios/crear', [BeneficioController::class, 'crear']);
 //Eventos
 $router->get('/eventos', [EventoController::class, 'index']);
 $router->post('/eventos', [EventoController::class, 'index']);
@@ -58,5 +59,6 @@ $router->post('admin/usuarios', [AdminController::class, 'index']);
 //API
 $router->post('/api/tipos', [APIController::class, 'guardarTipo']);
 $router->get('/api/tipos', [APIController::class, 'getTipos']);
+$router->post('/api/alumno',  [APIController::class, 'getAlumno']);
 // Comprueba y valida las rutas, que existan y les asigna las funciones del Controlador
 $router->comprobarRutas();
