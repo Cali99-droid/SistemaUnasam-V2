@@ -139,18 +139,23 @@ class GrupoController
     public static function setAsistencia()
     {
         isAuth();
+        $resultado = [];
         $idinvitacion = $_POST['invitacion_id'];
         $participacionAlumno = new ParticipacionAlumno($_POST);
-
-        $participacionAlumno->usuario_id = $_SESSION['id'];
-        $idsemestre = Semestre::getIdSemestreActual($idinvitacion);
-
-        if (is_null($idsemestre)) {
-            $participacionAlumno->semestre_id = '1';
+        if ($participacionAlumno->existe()) {
+            $resultado['resultado'] = false;
         } else {
-            $participacionAlumno->semestre_id = $idsemestre;
+            $participacionAlumno->usuario_id = $_SESSION['id'];
+            $idsemestre = Semestre::getIdSemestreActual($idinvitacion);
+
+            if (is_null($idsemestre)) {
+                $participacionAlumno->semestre_id = '1';
+            } else {
+                $participacionAlumno->semestre_id = $idsemestre;
+            }
+            $resultado = $participacionAlumno->guardar();
         }
-        $resultado = $participacionAlumno->guardar();
+
         echo json_encode($resultado);
     }
 
@@ -181,11 +186,17 @@ class GrupoController
 
     public static function setBeneficio()
     {
+        //$resultado = [];
         $beneficioAlumno = new Beneficio_x_alumno($_POST);
+        // if ($beneficioAlumno->existe()) {
+        //     $resultado['resultado'] = false;
+        // } else {
         $id = $beneficioAlumno->getSemestre();
         $beneficioAlumno->semestre_id = $id;
         $beneficioAlumno->usuario_id = $_SESSION['id'];
         $resultado = $beneficioAlumno->guardar();
+        // }
+
         echo json_encode($resultado);
     }
 
@@ -194,6 +205,17 @@ class GrupoController
         $idAlumnoGrupo = $_POST['idAlumnoGrupo'];
         $beneficiosAlumnos = Beneficio_x_alumno::where_all('alumno_x_grupo_id', $idAlumnoGrupo);
         $beneficioAlumno = end($beneficiosAlumnos);
+        $beneficioAlumno->getNombreBeneficio();
         echo json_encode($beneficioAlumno);
+    }
+
+
+    public static function updBeneficioEst()
+    {
+        $id = $_POST['id'];
+        $bena = Beneficio_x_alumno::find($id);
+        $bena->actEstado();
+        $resultado = $bena->guardar();
+        echo json_encode($bena);
     }
 }

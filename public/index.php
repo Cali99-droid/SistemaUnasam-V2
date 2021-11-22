@@ -34,6 +34,7 @@ $router->post('/integrante/setAsistencia', [GrupoController::class, 'setAsistenc
 $router->post('/integrante/deleteAsistencia', [GrupoController::class, 'deleteAsistencia']);
 $router->post('/integrante/setBeneficio', [GrupoController::class, 'setBeneficio']);
 $router->post('/integrante/getBeneficio', [GrupoController::class, 'getBeneficio']);
+$router->post('/integrante/updBeneficioEst', [GrupoController::class, 'updBeneficioEst']);
 //TODO
 $router->post('/api/getIntegrante', [GrupoController::class, 'getIntegrante']);
 $router->post('/api/setTntegrante', [GrupoController::class, 'setIntegrante']);

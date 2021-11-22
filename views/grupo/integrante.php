@@ -126,6 +126,7 @@
                         <thead>
                             <tr>
                                 <th>Beneficio</th>
+
                                 <th>Estado</th>
                                 <th>Acciones</th>
                             </tr>
@@ -164,6 +165,7 @@
                         <thead>
                             <tr>
                                 <th>Nombre</th>
+                                <th>Descripcion</th>
                                 <th>Fecha de Asignación</th>
                                 <th>Estado</th>
 
@@ -175,10 +177,11 @@
 
 
                                 <tr>
-                                    <td><?php echo $bena->estado; ?></td>
+                                    <td><?php echo $bena->getNombreBeneficio(); ?></td>
+                                    <td><?php echo $bena->descripcion; ?></td>
                                     <td><?php echo $bena->fecha_efectiva; ?></td>
 
-                                    <td><a type="button" id="boton-activar" onclick="actualizarEstadoBeneficio(<?php echo  $bena->id ?>)" class="<?php echo  $bena->estado == 'COMPLETADO' ? 'label-ok ' : 'label' ?>"><?php echo $bena->estado; ?></a></td>
+                                    <td><button id="boton-activar<?php echo  $bena->id ?>" onclick="actualizarEstadoBeneficio(<?php echo  $bena->id ?>)" class="<?php echo  $bena->estado == 'COMPLETADO' ? 'label-ok ' : 'label' ?>"><?php echo $bena->estado; ?></button></td>
 
 
                                 </tr>

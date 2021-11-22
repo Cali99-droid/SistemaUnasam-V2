@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 //cas
-document.getElementById("participaciones").click();
+
 function navegacion() {
     const contenedor = document.querySelector('.contenedor-barra');
     const logo = document.querySelector('.contenido-cabecera');
@@ -56,6 +56,12 @@ function eventListeners() {
     const busc = document.getElementById('buscarIntegrante');
     if (busc != null) {
         busc.addEventListener('keyup', buscarRegistro);
+    }
+
+    //busca tipo
+    const buscaTipo = document.getElementById('buscarTipo');
+    if (buscaTipo != null) {
+        buscaTipo.addEventListener('keyup', buscarRegistro);
     }
 
 
@@ -405,11 +411,12 @@ function asignarBeneficio(idbeneficioXtipo, idAlumnoGrupo) {
 
 }
 async function confirmarBeneficio() {
-
+    const close = document.getElementById('close-ben');
     const descripcion = document.querySelector('#descripcion');
     const estado = document.querySelector('#estado');
     const idbeneficioXtipo = document.querySelector('#idbeneficioXtipo');
     const idAlumnoGrupo = document.querySelector('#idAlumnoGrupo');
+
     datos = new FormData();
     datos.append('beneficio_x_tipo_grupo_id', idbeneficioXtipo.value);
     datos.append('alumno_x_grupo_id', idAlumnoGrupo.value);
@@ -417,7 +424,7 @@ async function confirmarBeneficio() {
     datos.append('estado', estado.value);
     try {
         //Peticion hacia la api
-        const url = 'http://localhost:3000//integrante/setBeneficio';
+        const url = 'http://localhost:3000/integrante/setBeneficio';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -434,13 +441,20 @@ async function confirmarBeneficio() {
 
             }).then(() => {
 
-                // close.click();
+                close.click();
                 document.getElementById("ben").click();
                 mostrarBeneficios(idAlumnoGrupo.value);
 
             })
 
 
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'El Beneficio ya fue asignado!',
+
+            })
         }
     } catch (error) {
         Swal.fire({
@@ -453,33 +467,51 @@ async function confirmarBeneficio() {
 
 }
 
-function actualizarEstadoBeneficio($id) {
-    var param = { "id": $id, "cod": 2 };
-    $.ajax({
-        type: "POST",
-        data: param,
-        url: "setDatos.php",
+async function actualizarEstadoBeneficio(id) {
+    const idAlumnoGrupo = document.getElementById("idAlumnoGrupo");
+    const boton = document.getElementById('boton-activar' + id);
+    datos = new FormData();
+    datos.append('id', id);
+    try {
+        //Peticion hacia la api
+        const url = 'http://localhost:3000/integrante/updBeneficioEst';
+        const respuesta = await fetch(url, {
+            method: 'POST',
+            body: datos
+        })
+        const resultado = await respuesta.json();
+        console.log(resultado);
 
-        success: function (r) {
+        if (resultado) {
+            if (boton.classList.contains('label')) {
+                boton.classList.remove('label')
+                boton.classList.add('label-ok');
+                boton.textContent = 'COMPLETADO';
+            } else {
+                boton.classList.remove('label-ok');
+                boton.classList.add('label');
+                boton.textContent = 'PENDIENTE';
+            }
             Swal.fire({
-                title: 'EXITO',
-                text: 'ESTADO MODIFICADO CON ÉXITO !',
                 icon: 'success',
-                showDenyButton: false,
-                showCancelButton: false,
-                confirmButtonText: 'Aceptar',
-                // denyButtonText: `Don't save`,
-            }).then((result) => {
-                /* Read more about isConfirmed, isDenied below */
-                if (result.isConfirmed) {
-                    window.location.reload();
-                }
+                title: 'MUY BIEN !',
+                text: 'Estado actualizado correctamente!'
+
+            }).then(() => {
+
+
             })
 
 
-
         }
-    });
+    } catch (error) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error...',
+            text: 'Hubo un error al actualizar el estado !',
+
+        })
+    }
 
 }
 
@@ -495,6 +527,7 @@ function modalAsignar(idbeneficio, nombre, modal_asigBen, boton_agregar_usu, clo
     });
 
 }
+//TODO validar eso
 async function asignarBeneficioGrupo() {
     var idbeneficio = document.getElementById('idbeneficio').value;
     var idTipoGrupo = document.getElementById('idTipoGrupo').value;
@@ -702,7 +735,7 @@ async function confirmarAsistencia() {
             body: datos
         })
         const resultado = await respuesta.json();
-
+        console.log(resultado);
         if (resultado.resultado) {
 
             Swal.fire({
@@ -719,6 +752,13 @@ async function confirmarAsistencia() {
             })
 
 
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error !',
+                text: 'El Alumno ya participo en el evento!',
+
+            })
         }
     } catch (error) {
         Swal.fire({
@@ -738,6 +778,22 @@ function crearBoton() {
     ic.classList.add('fa-plus-circle');
     boton.textContent = 'Quitar ';
     boton.appendChild(ic);
+
+    return boton;
+
+}
+function crearBotonEstado(text) {
+    const boton = document.createElement('BUTTON');
+
+
+    //const ic = document.createElement('I');
+    if (text === 'COMPLETADO') {
+        boton.classList.add('label-ok');
+    } else {
+        boton.classList.add('label');
+    }
+    boton.textContent = text;
+    //  boton.appendChild(ic);
 
     return boton;
 
@@ -789,8 +845,6 @@ async function mostrarParticipaciones(idAlumnoGrupo) {
 }
 
 async function quitarParticipacion(id, idAlumno) {
-
-
     const datos = new FormData();
     datos.append('id', id);
     try {
@@ -834,23 +888,25 @@ async function mostrarBeneficios(idAlumnoGrupo) {
             body: datos
         })
         const ult = await respuesta.json();
-        console.log(ult);
 
         const cuerpo = document.getElementById('cuerpo-asig');
         const fila = document.createElement('TR');
         // const boton = document.getElementById('accion-boton');
-        for (let index = 0; index < 3; index++) {
+        for (let index = 0; index < 4; index++) {
             const col = document.createElement('TD');
-            if (index === 2) {
-                col.appendChild(crearBoton());
+            if (index === 3) {
+                col.appendChild(crearBotonEstado(ult.estado));
             } else {
-                if (index === 1) {
-                    col.textContent = ult.tipo;
+                if (index === 2) {
+                    col.textContent = ult.fecha_efectiva;
                 } else {
-                    col.textContent = ult.nombreEvento;
+                    if (index === 0) {
+                        col.textContent = ult.nombreBeneficio;
+                    } else {
+                        col.textContent = ult.descripcion;
+                    }
 
                 }
-
             }
 
             fila.appendChild(col);
@@ -1243,7 +1299,9 @@ async function guardarIntegrante() {
 
 }
 
-
+if (document.getElementById("participaciones")) {
+    document.getElementById("participaciones").click();
+}
 
 
 

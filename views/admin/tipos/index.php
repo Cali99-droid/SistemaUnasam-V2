@@ -6,7 +6,7 @@
     <div class="acciones-grupo">
         <div class="buscar">
             <i class="fas fa-search"></i>
-            <input type="text" placeholder="Buscar">
+            <input type="text" placeholder="Buscar" id="buscarTipo" class="busqueda">
         </div>
 
         <div class="nuevo-grupo">
@@ -17,41 +17,42 @@
 
     <div class="contenedor-tabla tab-beneficio">
 
-        <table>
-            <tr>
-                <thead>
-                    <tr>
-                        <th>Tipos</th>
-                        <th>Acciones</th>
-                    </tr>
+        <table id="mytable">
 
-                </thead>
+            <thead>
+                <tr>
+                    <th>Tipos</th>
+                    <th>Acciones</th>
+                </tr>
+
+            </thead>
+            <tbody>
 
                 <?php foreach ($tipos as $tipo) :  ?>
-            <tr>
-                <td><?php echo $tipo->nombre; ?></td>
+                    <tr>
+                        <td><?php echo $tipo->nombre; ?></td>
 
-                <td>
-                    <form method="GET" target="frame">
-
-
-                        <button type="button" class="boton-acciones" onclick="actualizarTipo(<?php echo $tipo->id; ?>, 'modal-tipo', 'boton-actualizar-tipo', 'close-tipo')">
-                            <i class=" fas fa-pencil-alt"></i> </button>
+                        <td>
+                            <form method="GET" target="frame">
 
 
-                        <input type="hidden" name="id" value="<?php echo $tipo->id; ?>">
-                        <button type="button" class="boton-acciones borrar">
-                            <i class="fas fa-trash"></i> </button>
+                                <button type="button" class="boton-acciones" onclick="actualizarTipo(<?php echo $tipo->id; ?>, 'modal-tipo', 'boton-actualizar-tipo', 'close-tipo')">
+                                    <i class=" fas fa-pencil-alt"></i> </button>
+
+
+                                <input type="hidden" name="id" value="<?php echo $tipo->id; ?>">
+                                <button type="button" class="boton-acciones borrar">
+                                    <i class="fas fa-trash"></i> </button>
 
 
 
-                    </form>
+                            </form>
 
-                </td>
-            </tr>
-        <?php endforeach; ?>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
 
-        </tbody>
+            </tbody>
 
 
 
@@ -70,6 +71,7 @@
 </div>
 
 <!--ventana modal-->
+
 <div class="modal-agregar" id="modal-tipo">
 
 
@@ -87,7 +89,7 @@
 
             <input type="hidden" name="cod" value="1" id="valor">
             <input type="hidden" name="idTipoGrupo" value='' id="idTipoGrupo">
-            <button type="submit">Aceptar</button>
+            <button type="button" id="crearTipo">Aceptar</button>
 
         </form>
 

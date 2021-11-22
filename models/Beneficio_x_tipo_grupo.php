@@ -23,26 +23,13 @@ class Beneficio_x_tipo_grupo extends ActiveRecord
     }
 
 
-    /**
-     * Mensajes de validacion
-     */
 
-    //revisa si un estado ya existe
-    public function existeBeneficio_tipo_grupo()
-    {
-        $query = " SELECT * FROM " . self::$tabla . " WHERE id = '" . $this->id . "' LIMIT 1";
-        $resultado = self::$db->query($query);
-        if ($resultado->num_rows) {
-            self::$alertas['error'][] = 'El estado ya esta registrado';
-        }
-
-        return $resultado;
-    }
 
     public function getNombreBeneficio()
     {
         $id = $this->beneficio_id;
         $beneficio = Beneficio::find($id);
+
         return $beneficio->nombre;
     }
 }

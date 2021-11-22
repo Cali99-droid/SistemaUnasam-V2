@@ -38,4 +38,15 @@ class ParticipacionAlumno extends ActiveRecord
     {
         $this->nombreEvento = $this->getEvento();
     }
+
+    public function existe()
+    {
+        $query = 'SELECT * FROM PARTICIPACION_ALUMNO WHERE alumno_x_grupo_id = ' . $this->alumno_x_grupo_id . ' AND invitacion_id = ' . $this->invitacion_id;
+        $part = self::SQL_primer($query);
+        if ($part) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

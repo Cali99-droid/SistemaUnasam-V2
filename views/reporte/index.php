@@ -13,7 +13,7 @@
     </div>
 
     <div class="grupo">
-        <a href="/reporte/reporte2.php">
+        <a href="reporte2.php">
             <div class="container">
                 <h4>Reporte 2</h4>
             </div>
@@ -36,7 +36,6 @@
                 <h4>Reporte 4</h4>
             </div>
         </a>
-
     </div>
 
     <div class="grupo">
