@@ -1,3 +1,5 @@
+const tab = '';
+
 document.addEventListener('DOMContentLoaded', function () {
 
     eventListeners();
@@ -6,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 //cas
-
+document.getElementById("participaciones").click();
 function navegacion() {
     const contenedor = document.querySelector('.contenedor-barra');
     const logo = document.querySelector('.contenido-cabecera');
@@ -394,58 +396,62 @@ function buscarRegistro() {
 }
 
 function asignarBeneficio(idbeneficioXtipo, idAlumnoGrupo) {
+    modalS('modal-asigBeneficio', 'btn', 'close-ben');
+    $(document).ready(function () {
+        $("#idbeneficioXtipo").val(idbeneficioXtipo);
+    });
+    const btn = document.querySelector('#btn_confirmarBen');
+    btn.addEventListener('click', confirmarBeneficio);
 
-    var param = { "idbeneficioXtipo": idbeneficioXtipo, "idAlumnoGrupo": idAlumnoGrupo, "cod": 1 }
-    $.ajax({
-        type: "POST",
-        data: param,
-        url: "setDatos.php",
+}
+async function confirmarBeneficio() {
 
-        success: function (r) {
-
-            if (r == 0) {
-
-                // Swal.fire('ERORR !!', 'EL BENEFICIO YA ESTA ASIGNADO ', 'error');
-                Swal.fire({
-                    title: 'ERROR',
-                    text: 'EL BENEFICIO YA ESTA ASIGNADO!',
-                    icon: 'error',
-                    showDenyButton: false,
-                    showCancelButton: false,
-                    confirmButtonText: 'Aceptar',
-                    // denyButtonText: `Don't save`,
-                }).then((result) => {
-                    /* Read more about isConfirmed, isDenied below */
-                    document.getElementById("ben").click();
-                })
-
-            } else {
-                Swal.fire({
-                    title: 'EXITO',
-                    text: 'BENEFICIO ASIGNADO CORRECTAMENTE!',
-                    icon: 'success',
-                    showDenyButton: false,
-                    showCancelButton: false,
-                    confirmButtonText: 'Aceptar',
-
-                    // denyButtonText: `Don't save`,
-                }).then((result) => {
-                    /* Read more about isConfirmed, isDenied below */
-                    if (result.isConfirmed) {
-                        //window.location.reload();
-                        document.getElementById("ben").click();
-                    }
-                })
+    const descripcion = document.querySelector('#descripcion');
+    const estado = document.querySelector('#estado');
+    const idbeneficioXtipo = document.querySelector('#idbeneficioXtipo');
+    const idAlumnoGrupo = document.querySelector('#idAlumnoGrupo');
+    datos = new FormData();
+    datos.append('beneficio_x_tipo_grupo_id', idbeneficioXtipo.value);
+    datos.append('alumno_x_grupo_id', idAlumnoGrupo.value);
+    datos.append('descripcion', descripcion.value);
+    datos.append('estado', estado.value);
+    try {
+        //Peticion hacia la api
+        const url = 'http://localhost:3000//integrante/setBeneficio';
+        const respuesta = await fetch(url, {
+            method: 'POST',
+            body: datos
+        })
+        const resultado = await respuesta.json();
 
 
-            }
+        if (resultado.resultado) {
+
+            Swal.fire({
+                icon: 'success',
+                title: 'MUY BIEN !',
+                text: 'Beneficio asignado correctamente!'
+
+            }).then(() => {
+
+                // close.click();
+                document.getElementById("ben").click();
+                mostrarBeneficios(idAlumnoGrupo.value);
+
+            })
 
 
         }
-    });
+    } catch (error) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error...',
+            text: 'Hubo un error al guardar la beneficio!',
+
+        })
+    }
 
 }
-
 
 function actualizarEstadoBeneficio($id) {
     var param = { "id": $id, "cod": 2 };
@@ -664,7 +670,7 @@ function crearEvento() {
 
 
 function asignarAsistencia(idinvitacion, idAlumnoGrupo, modal_asis, boton_agregar_usu, close_usu) {
-    modal(modal_asis, boton_agregar_usu, close_usu);
+    modalS(modal_asis, boton_agregar_usu, close_usu);
 
     $(document).ready(function () {
 
@@ -677,46 +683,192 @@ function asignarAsistencia(idinvitacion, idAlumnoGrupo, modal_asis, boton_agrega
 }
 
 
-function confirmarAsistencia() {
-    var idinvitacion = document.getElementById("idinvitacion").value;
-    var idAlumnoGrupo = document.getElementById("idAlumnoGrupo").value;
-    var tipo = document.getElementById("tipo").value;
-    var param = { "idinvitacion": idinvitacion, "idAlumnoGrupo": idAlumnoGrupo, "tipo": tipo, "cod": 7 };
-    $.ajax({
-        type: "POST",
-        data: param,
-        url: "setDatos.php",
+async function confirmarAsistencia() {
+    const close = document.getElementById('close-asis');
+    const idinvitacion = document.getElementById("idinvitacion");
+    const idAlumnoGrupo = document.getElementById("idAlumnoGrupo");
+    const tipo = document.getElementById("tipo");
 
-        success: function (r) {
-            console.log(r);
-            if (r == 0) {
+    datos = new FormData();
+    datos.append('invitacion_id', idinvitacion.value);
+    datos.append('alumno_x_grupo_id', idAlumnoGrupo.value);
+    datos.append('tipo', tipo.value);
 
-                // Swal.fire('ERORR !!', 'EL BENEFICIO YA ESTA ASIGNADO ', 'error');
-                Swal.fire({
-                    title: 'ERROR',
-                    text: 'El estudiante ya participó en el evento ',
-                    icon: 'error',
-                })
-            } else {
-                Swal.fire({
-                    position: 'top-end',
-                    icon: 'success',
-                    title: 'La Asistencia fue confirmada',
-                    showConfirmButton: false,
-                    timer: 1500
+    try {
+        //Peticion hacia la api
+        const url = 'http://localhost:3000/integrante/setAsistencia';
+        const respuesta = await fetch(url, {
+            method: 'POST',
+            body: datos
+        })
+        const resultado = await respuesta.json();
 
-                })
+        if (resultado.resultado) {
 
-                $("#tipo").val('');
+            Swal.fire({
+                icon: 'success',
+                title: 'MUY BIEN !',
+                text: 'Asistencia asignada correctamente!'
 
-            }
+            }).then(() => {
+
+                close.click();
+                document.getElementById("participaciones").click();
+                mostrarParticipaciones(idAlumnoGrupo.value);
+
+            })
 
 
         }
-    });
+    } catch (error) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error...',
+            text: 'Hubo un error al guardar la asistencia!',
+
+        })
+    }
+}
+function crearBoton() {
+    const boton = document.createElement('BUTTON');
+    boton.classList.add('boton-asignar');
+
+    const ic = document.createElement('I');
+    ic.classList.add('fas');
+    ic.classList.add('fa-plus-circle');
+    boton.textContent = 'Quitar ';
+    boton.appendChild(ic);
+
+    return boton;
+
+}
+async function mostrarParticipaciones(idAlumnoGrupo) {
+
+    const datos = new FormData();
+    datos.append('idAlumnoGrupo', idAlumnoGrupo);
+    try {
+        //Peticion hacia la api
+        const url = 'http://localhost:3000/integrante/getParticipaciones';
+        const respuesta = await fetch(url, {
+            method: 'POST',
+            body: datos
+        })
+        const ult = await respuesta.json();
+        const cuerpo = document.getElementById('cuerpo');
+        const fila = document.createElement('TR');
+        // const boton = document.getElementById('accion-boton');
+        for (let index = 0; index < 3; index++) {
+            const col = document.createElement('TD');
+            if (index === 2) {
+                col.appendChild(crearBoton());
+            } else {
+                if (index === 1) {
+                    col.textContent = ult.tipo;
+                } else {
+                    col.textContent = ult.nombreEvento;
+
+                }
+
+            }
+
+            fila.appendChild(col);
+
+        }
+        cuerpo.appendChild(fila);
+
+
+    } catch (error) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error...',
+            text: 'Hubo un error al guardar el tipo!',
+
+        })
+    }
 
 }
 
+async function quitarParticipacion(id, idAlumno) {
+
+
+    const datos = new FormData();
+    datos.append('id', id);
+    try {
+        //Peticion hacia la api
+        const url = 'http://localhost:3000/integrante/deleteAsistencia';
+        const respuesta = await fetch(url, {
+            method: 'POST',
+            body: datos
+        })
+        const resultado = await respuesta.json();
+
+        if (resultado) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Eliminado',
+                text: 'La participacion fue Eliminada correctamente!',
+            }).then(() => {
+                window.location.reload();
+
+            })
+        }
+    } catch (error) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error...',
+            text: 'Hubo un error al eliminar!',
+
+        })
+    }
+}
+
+async function mostrarBeneficios(idAlumnoGrupo) {
+
+    const datos = new FormData();
+    datos.append('idAlumnoGrupo', idAlumnoGrupo);
+    try {
+        //Peticion hacia la api
+        const url = 'http://localhost:3000/integrante/getBeneficio';
+        const respuesta = await fetch(url, {
+            method: 'POST',
+            body: datos
+        })
+        const ult = await respuesta.json();
+        console.log(ult);
+
+        const cuerpo = document.getElementById('cuerpo-asig');
+        const fila = document.createElement('TR');
+        // const boton = document.getElementById('accion-boton');
+        for (let index = 0; index < 3; index++) {
+            const col = document.createElement('TD');
+            if (index === 2) {
+                col.appendChild(crearBoton());
+            } else {
+                if (index === 1) {
+                    col.textContent = ult.tipo;
+                } else {
+                    col.textContent = ult.nombreEvento;
+
+                }
+
+            }
+
+            fila.appendChild(col);
+
+        }
+        cuerpo.appendChild(fila);
+
+
+    } catch (error) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error...',
+            text: 'Hubo un error al guardar el tipo!',
+
+        })
+    }
+
+}
 function openPage(pageName, elmnt, color) {
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
@@ -736,8 +888,6 @@ function botonGrupo() {
     if (crearTipo) {
         crearTipo.onclick = crearTipof;
     }
-
-
 
 }
 
@@ -771,7 +921,7 @@ async function crearTipof() {
         Swal.fire({
             icon: 'error',
             title: 'Error...',
-            text: 'Hubo un error al guardar la cita!',
+            text: 'Hubo un error al guardar el tipo!',
 
         })
     }
@@ -897,6 +1047,15 @@ async function setIntegrante() {
     }
 }
 async function buscarAlumno(dni) {
+    //validar DNI
+    if (dni.length >= 9 || dni.length === 0) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error...',
+            text: 'El DNI Debe Tener 8 Dígitos',
+        })
+        return;
+    }
 
     const datos = new FormData();
     datos.append('dni', dni);
@@ -907,18 +1066,28 @@ async function buscarAlumno(dni) {
             method: 'POST',
             body: datos
         })
+
+
         const resultado = await respuesta.json();
 
-        modal('modal-integrante', 'btn', 'close-integrante');
-        console.log(resultado);
+        if (resultado) {
+            $(document).ready(function () {
 
-        $(document).ready(function () {
+                $('#dni').val(resultado['dni']);
+                $('#nombre').val(resultado['nombre']);
+                $('#idCondicionEconomica').val(resultado['idCondicionEconomica']);
+                $('#descripcion').val(resultado['descripcion']);
+                $('#estado').val(resultado['estado']);
+                $('#buscar').val('');
+            });
+        } else {
+            Swal.fire({
+                icon: 'info',
+                title: 'Aviso!',
+                text: 'No Existe El Alumno !',
+            })
 
-            $('#dni').val(resultado['dni']);
-            $('#nombre').val(resultado['nombre']);
-        });
-
-
+        }
     } catch (error) {
         Swal.fire({
             icon: 'error',
@@ -1002,8 +1171,75 @@ async function crearBeneficio() {
 
         })
     }
+}
+
+async function guardarIntegrante() {
+
+    const dni = document.querySelector('#dni');
+    const nombre = document.querySelector('#nombre');
+    const idCondicionEconomica = document.querySelector('#idCondicionEconomica');
+    const descripcion = document.querySelector('#descripcion');
+    const estado = document.querySelector('#estado');
+    const cod = document.querySelector('#cod');
+    const idgrupo = document.querySelector('#idgrupo');
+
+    const datos = new FormData();
+    datos.append('dni', dni.value);
+    datos.append('idCondicionEconomica', idCondicionEconomica.value);
+    datos.append('descripcion', descripcion.value);
+    datos.append('estado', estado.value);
+    datos.append('idgrupo', idgrupo.value);
+    datos.append('cod', cod.value);
+
+    try {
+        //Peticion hacia la api
+        const url = 'http://localhost:3000/api/crearAlumno';
+        const respuesta = await fetch(url, {
+            method: 'POST',
+            body: datos
+        })
+        const resultado = await respuesta.json();
+        console.log(resultado);
+
+        if (resultado) {
+            if (cod.value == 1) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'MUY BIEN !',
+                    text: 'Integrante Asignado Correctamente',
+                }).then(() => {
 
 
+                })
+            } else {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'MUY BIEN !',
+                    text: 'Integrante Actualizado Correctamente',
+                }).then(() => {
+                    numero.value = '';
+                    fecha_emision.value = '';
+                    estado.value = '';
+                    nombre.value = '';
+
+
+                })
+            }
+        } else {
+            Swal.fire({
+                icon: 'info',
+                title: 'AVISO!',
+                text: 'EL Alumno Ya Pertenece al Grupo !',
+            })
+        }
+    } catch (error) {
+        // Swal.fire({
+        //     icon: 'error',
+        //     title: 'Error...',
+        //     text: 'Hubo un error al guardar el Beneficio!',
+
+        // })
+    }
 
 }
 
@@ -1015,4 +1251,3 @@ async function crearBeneficio() {
 
 
 
- //document.getElementById("defaultOpen").click();

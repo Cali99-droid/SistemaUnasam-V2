@@ -25,20 +25,4 @@ class Beneficio extends ActiveRecord
         $resultado = self::consulta($query);
         return $resultado;
     }
-
-    /**
-     * Mensajes de validacion
-     */
-
-    //revisa si un nombre ya existe
-    public function existeBeneficio()
-    {
-        $query = " SELECT * FROM " . self::$tabla . " WHERE nombre = '" . $this->nombre . "' LIMIT 1";
-        $resultado = self::$db->query($query);
-        if ($resultado->num_rows) {
-            self::$alertas['error'][] = 'El nombre ya esta registrado';
-        }
-
-        return $resultado;
-    }
 }

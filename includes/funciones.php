@@ -26,6 +26,17 @@ function validarORedireccionar(string $url)
     return $id;
 }
 
+function validarORedireccionarDNI(string $url)
+{
+    $dni = $_GET['dni'];
+    $dni = filter_var($dni, FILTER_VALIDATE_INT);
+
+    if (!$dni) {
+        header("Location: ${url}");
+    }
+    return $dni;
+}
+
 
 function isAuth(): void
 {

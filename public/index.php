@@ -28,7 +28,12 @@ $router->get('/grupos', [GrupoController::class, 'index']);
 $router->post('/grupos', [GrupoController::class, 'index']);
 $router->get('/grupo', [GrupoController::class, 'grupo']);
 $router->post('/grupo', [GrupoController::class, 'grupo']);
+$router->post('/integrante/getParticipaciones', [GrupoController::class, 'getParticipaciones']);
 $router->get('/integrante', [GrupoController::class, 'integrante']);
+$router->post('/integrante/setAsistencia', [GrupoController::class, 'setAsistencia']);
+$router->post('/integrante/deleteAsistencia', [GrupoController::class, 'deleteAsistencia']);
+$router->post('/integrante/setBeneficio', [GrupoController::class, 'setBeneficio']);
+$router->post('/integrante/getBeneficio', [GrupoController::class, 'getBeneficio']);
 //TODO
 $router->post('/api/getIntegrante', [GrupoController::class, 'getIntegrante']);
 $router->post('/api/setTntegrante', [GrupoController::class, 'setIntegrante']);
@@ -60,5 +65,6 @@ $router->post('admin/usuarios', [AdminController::class, 'index']);
 $router->post('/api/tipos', [APIController::class, 'guardarTipo']);
 $router->get('/api/tipos', [APIController::class, 'getTipos']);
 $router->post('/api/alumno',  [APIController::class, 'getAlumno']);
+$router->post('/api/crearAlumno',  [APIController::class, 'setAlumno']);
 // Comprueba y valida las rutas, que existan y les asigna las funciones del Controlador
 $router->comprobarRutas();

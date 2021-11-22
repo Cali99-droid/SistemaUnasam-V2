@@ -74,7 +74,7 @@
                                     <i class="fas fa-trash"></i> </button>
 
 
-                                <a class="enlace" href="/integrante?dni=<?php echo $integrante->dni; ?>">Ver Mas</a>
+                                <a class="enlace" href="/integrante?dni=<?php echo $integrante->dni . '&id=' . $grupo->id; ?>">Ver Mas</a>
 
                             </form>
 

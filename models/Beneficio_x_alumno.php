@@ -22,7 +22,7 @@ class Beneficio_x_alumno extends ActiveRecord
     {
         $this->id = $args['id'] ?? null;
         $this->estado = $args['estado'] ?? '';
-        $this->fecha_efectiva = $args['fecha_efectiva'] ?? '';
+        $this->fecha_efectiva = date('Y-m-d', strtotime($this->fecha_efectiva . "- 1 days"));
         $this->descripcion = $args['descripcion'] ?? '';
         $this->semestre_id = $args['semestre_id'] ?? '';
         $this->beneficio_x_tipo_grupo_id = $args['beneficio_x_tipo_grupo_id'] ?? '';
@@ -31,19 +31,15 @@ class Beneficio_x_alumno extends ActiveRecord
     }
 
 
-    /**
-     * Mensajes de validacion
-     */
-
-    //revisa si un estado ya existe
-    public function existeBeneficioAlumno()
+    public function getSemestre()
     {
-        $query = " SELECT * FROM " . self::$tabla . " WHERE id = '" . $this->id . "' LIMIT 1";
-        $resultado = self::$db->query($query);
-        if ($resultado->num_rows) {
-            self::$alertas['error'][] = 'El estado ya esta registrado';
+        $query = "SELECT * FROM semestre WHERE " . $this->fecha_efectiva . " BETWEEN fecha_inicio AND fecha_fin";
+        $semestre = Semestre::SQL_primer($query);
+        if (is_null($semestre)) {
+            $semestre_id = '1';
+        } else {
+            $semestre_id = $semestre->id;
         }
-
-        return $resultado;
+        return $semestre_id;
     }
 }

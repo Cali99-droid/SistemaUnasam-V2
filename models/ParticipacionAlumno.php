@@ -14,7 +14,7 @@ class ParticipacionAlumno extends ActiveRecord
     public $usuario_id;
     public $semestre_id;
     public $invitacion_id;
-
+    public $nombreEvento;
 
     public function __construct($args = [])
     {
@@ -26,20 +26,16 @@ class ParticipacionAlumno extends ActiveRecord
         $this->invitacion_id = $args['invitacion_id'] ?? '';
     }
 
-
-    /*
-           Mensajes de validacion
-     
-*/
-    //revisa si un alumno ya participò en una invitacion en un grupo
-    public function existeEvento()
+    public function getEvento()
     {
-        $query = " SELECT * FROM " . self::$tabla . " alumno_x_grupo_id = '" . $this->alumno_x_grupo_id . "' invitacion_id='" . $this->invitacion_id . "' LIMIT 1";
-        $resultado = self::$db->query($query);
-        if ($resultado->num_rows) {
-            self::$alertas['error'][] = 'El participante ya participó en la invitación';
-        }
+        $invitacion = Invitacion::find($this->invitacion_id);
+        $evento = $invitacion->getEvento();
 
-        return $resultado;
+        return $evento->nombre;
+    }
+
+    public function setEvento()
+    {
+        $this->nombreEvento = $this->getEvento();
     }
 }

@@ -1,4 +1,4 @@
-<?php //debuguear($beneficioAsignados);
+<?php //debuguear($integrante);
 ?>
 <div class="contenedor-grupos">
 
@@ -29,9 +29,9 @@
 
     <div class="detalles-integrante">
         <div class="tabs">
-            <button class="tablink" onclick="openPage('invitacion', this, ' #005b82')">Invitaciones</button>
-            <button class="tablink" onclick="openPage('participacion', this, ' #005b82')" id="defaultOpen">Participaciones</button>
-            <button class="tablink" onclick="openPage('beneficiosDerecho', this, '#008896')">Derechos</button>
+            <button id="defaultOpen" class="tablink" onclick="openPage('invitacion', this, ' #005b82')">Invitaciones</button>
+            <button id="participaciones" class="tablink" onclick="openPage('participacion', this, ' #005b82')">Participaciones</button>
+            <button class="tablink" id="benDer" onclick="openPage('beneficiosDerecho', this, '#008896')">Derechos</button>
             <button id="ben" class="tablink" onclick="openPage('beneficiosAsig', this, '#008896')">Beneficios</button>
         </div>
 
@@ -54,22 +54,22 @@
                         <tbody>
 
                             <?php foreach ($invitaciones as $invitacion) :  ?>
-                                <?php
 
-
-
-                                ?>
                                 <tr>
                                     <td><?php echo $invitacion->getEvento()->nombre; ?></td>
                                     <td><?php echo $invitacion->fecha_hora; ?></td>
 
 
-                                    <td><a class="<?php echo $invitacion->estado == 'VIGENTE' ? 'label-ok' : 'label' ?>"><?php echo  $invitacion->estado; ?></a></td>
+                                    <td><a class="<?php echo $invitacion->estado == 'CUMPLIDO' ? 'label-ok' : 'label' ?>"><?php echo  $invitacion->estado; ?></a></td>
 
                                     <td><?php echo $invitacion->observacion; ?></td>
 
                                     <td><button id="asignar-asistencia" class="boton-asignar" onclick="asignarAsistencia('<?php echo $invitacion->id; ?>',
-                                '<?php echo $integrante->idAlumnoGrupo; ?>','modal-asistencia', 'btn', 'close-asis' )"><i class="fas fa-plus-circle"></i> Asignar Asistencia</button></td>
+                                '<?php echo $integrante->idAlumnoGrupo; ?>','modal-asistencia', 'btn', 'close-asis' )"><i class="fas fa-plus-circle"></i> Asignar Asistencia</button>
+                                        <button class="boton-asignar quitar oculto" id="quitar"><i class="fas fa-minus-circle"></i> Quitar</button>
+                                        <!--<button class="boton-asignar quitar oculto" id="quitar"><i class="fas fa-minus-circle"></i> Quitar</button>  -->
+
+                                    </td>
 
                                 </tr>
                             <?php endforeach; ?>
@@ -89,22 +89,22 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>Nombre</th>
-                                <th>Evento</th>
-                                <th>Estado</th>
 
+
+                                <th>Evento</th>
+                                <th>Tipo de Participacion</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="cuerpo">
 
                             <?php foreach ($participaciones as $participacion) : ?>
 
                                 <tr>
+                                    <td><?php echo $participacion->getEvento(); ?></td>
                                     <td><?php echo $participacion->tipo; ?></td>
-                                    <td><?php echo $participacion->tipo; ?></td>
-                                    <td><?php echo $participacion->tipo; ?></td>
-                                    <td><button class="boton-asignar"><i class="fas fa-plus-circle"></i> Accion</button></td>
+
+                                    <td><button onclick="quitarParticipacion(<?php echo $participacion->id ?>, <?php echo $integrante->idAlumnoGrupo; ?>)" class="boton-asignar"><i class="fas fa-plus-circle"></i> Quitar</button></td>
 
                                 </tr>
                             <?php endforeach; ?>
@@ -139,9 +139,7 @@
 
                                     <td><a class="<?php echo $beneficio->estado == 'ACTIVO' ? 'label-ok' : 'label' ?>"><?php echo $beneficio->estado; ?></a></td>
 
-                                    <td><button class="boton-asignar" onclick="asignarBeneficio(<?php //echo $beneficio->getIdBeneXTipo($idTipo) 
-                                                                                                ?>, <?php //echo $id['idAlumnoGrupo'] 
-                                                                                                    ?>)"> <i class="fas fa-plus-circle"></i> Asignar</button></td>
+                                    <td><button class="boton-asignar" onclick="asignarBeneficio(<?php echo $beneficio->id ?> , <?php echo $integrante->idAlumnoGrupo ?>)"> <i class="fas fa-plus-circle"></i> Asignar</button></td>
                                 </tr>
                             <?php endforeach; ?>
 
@@ -168,10 +166,10 @@
                                 <th>Nombre</th>
                                 <th>Fecha de Asignación</th>
                                 <th>Estado</th>
-                                <th>Acciones</th>
+
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="cuerpo-asig">
 
                             <?php foreach ($beneficioAsignados as $bena) : ?>
 
@@ -180,23 +178,17 @@
                                     <td><?php echo $bena->estado; ?></td>
                                     <td><?php echo $bena->fecha_efectiva; ?></td>
 
-                                    <td><a type="button" id="boton-activar" onclick="actualizarEstadoBeneficio(<?php echo  $bena->id ?>)" class="<?php echo  $bena->estado == 'CUMPLIDO' ? 'label-ok ' : 'label' ?>"><?php echo  $bena->estado; ?></a></td>
+                                    <td><a type="button" id="boton-activar" onclick="actualizarEstadoBeneficio(<?php echo  $bena->id ?>)" class="<?php echo  $bena->estado == 'COMPLETADO' ? 'label-ok ' : 'label' ?>"><?php echo $bena->estado; ?></a></td>
 
-                                    <td><button>Quitar</button></td>
+
                                 </tr>
                             <?php endforeach; ?>
 
                         </tbody>
                     </table>
                 </div>
-
-
-
-
             </div>
         </div>
-
-
     </div>
 
 
@@ -208,15 +200,43 @@
     <div class="contenido-modal-grupo   modal-eventos">
         <div class="encabezado-modal">
             <h2 id="titulo_integrante">Asignar Asistencia</h2>
-            <span class=" close close-asis">&times;</span>
+            <span class=" close close-asis" id="close-asis">&times;</span>
         </div>
 
         <div>
             <label for="tipo">Tipo de participación</label>
             <input type="text" name="tipo" id="tipo">
             <input type="hidden" value="" name="idinvitacion" id="idinvitacion">
-            <input type="hidden" value="" name="idAlumnoGrupo" id="idAlumnoGrupo">
+            <input type="hidden" value="<?php echo $integrante->idAlumnoGrupo; ?>" name="idAlumnoGrupo" id="idAlumnoGrupo">
             <button onclick="confirmarAsistencia()">Aceptar</button>
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+<div class="modal-agregar" id="modal-asigBeneficio">
+
+    <div class="contenido-modal-grupo   modal-eventos">
+        <div class="encabezado-modal">
+            <h2 id="titulo_integrante">Asignar Beneficio</h2>
+            <span class=" close close-ben" id="close-ben">&times;</span>
+        </div>
+
+        <div>
+            <label for="tipo">Descripcion</label>
+            <input type="text" name="descripcion" id="descripcion">
+            <label for="estado">Estado</label>
+            <select name="estado" id="estado">
+                <option value="COMPLETADO">COMPLETADO</option>
+                <option value="PENDIENTE">PENDIENTE</option>
+            </select>
+            <input type="hidden" id="idbeneficioXtipo">
+
+            <button id="btn_confirmarBen">Aceptar</button>
         </div>
 
 

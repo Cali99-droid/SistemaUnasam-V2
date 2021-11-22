@@ -13,6 +13,7 @@ use Model\CondicionEconomica;
 use Model\Integrante;
 use Model\Invitacion;
 use Model\ParticipacionAlumno;
+use Model\Semestre;
 
 class GrupoController
 {
@@ -99,11 +100,17 @@ class GrupoController
 
     public static function integrante(Router $router)
     {
+        $idgrupo = validarORedireccionar('/grupos');
+        $dni = validarORedireccionarDNI('/grupos');
 
-        $dni = $_GET['dni'];
-        $integrante = Integrante::where('dni', $dni);
-        $grupo = Grupo::find($integrante->idgrupo_universitario);
-        $invitaciones = Invitacion::where_all('grupo_universitario_id', $grupo->id);
+        $query = "SELECT * FROM vista_estudiantes WHERE dni = " . $dni . " AND " . "idgrupo_universitario = " . $idgrupo;
+        $integrante = Integrante::SQL_primer($query);
+
+        if (is_null($integrante)) {
+            header('Location: /grupos');
+        }
+        $grupo = Grupo::find($idgrupo);
+        $invitaciones = Invitacion::where_all('grupo_universitario_id', $idgrupo);
         $participaciones = ParticipacionAlumno::where_all('alumno_x_grupo_id', $integrante->idAlumnoGrupo);
         $beneficios = Beneficio_x_tipo_grupo::where_all('tipo_grupo_id', $grupo->tipo_grupo_id);
         $beneficioAsignados = Beneficio_x_alumno::where_all('alumno_x_grupo_id',  $integrante->idAlumnoGrupo);
@@ -120,6 +127,33 @@ class GrupoController
         ]);
     }
 
+    public static function getParticipaciones()
+    {
+        $idAlumnoGrupo = $_POST['idAlumnoGrupo'];
+        $participaciones = ParticipacionAlumno::where_all('alumno_x_grupo_id', $idAlumnoGrupo);
+        $participacion = end($participaciones);
+        $participacion->setEvento();
+        echo json_encode($participacion);
+    }
+
+    public static function setAsistencia()
+    {
+        isAuth();
+        $idinvitacion = $_POST['invitacion_id'];
+        $participacionAlumno = new ParticipacionAlumno($_POST);
+
+        $participacionAlumno->usuario_id = $_SESSION['id'];
+        $idsemestre = Semestre::getIdSemestreActual($idinvitacion);
+
+        if (is_null($idsemestre)) {
+            $participacionAlumno->semestre_id = '1';
+        } else {
+            $participacionAlumno->semestre_id = $idsemestre;
+        }
+        $resultado = $participacionAlumno->guardar();
+        echo json_encode($resultado);
+    }
+
     public static function getIntegrante()
     {
         $id = $_POST['id'];
@@ -134,5 +168,32 @@ class GrupoController
 
         $integrante =  Integrante::where('idpersona', $id);
         echo json_encode($integrante);
+    }
+
+    public static function deleteAsistencia()
+    {
+        $id = $_POST['id'];
+        $participacion = ParticipacionAlumno::find($id);
+        $resultado = $participacion->eliminar();
+        echo json_encode($resultado);
+    }
+
+
+    public static function setBeneficio()
+    {
+        $beneficioAlumno = new Beneficio_x_alumno($_POST);
+        $id = $beneficioAlumno->getSemestre();
+        $beneficioAlumno->semestre_id = $id;
+        $beneficioAlumno->usuario_id = $_SESSION['id'];
+        $resultado = $beneficioAlumno->guardar();
+        echo json_encode($resultado);
+    }
+
+    public static function getBeneficio()
+    {
+        $idAlumnoGrupo = $_POST['idAlumnoGrupo'];
+        $beneficiosAlumnos = Beneficio_x_alumno::where_all('alumno_x_grupo_id', $idAlumnoGrupo);
+        $beneficioAlumno = end($beneficiosAlumnos);
+        echo json_encode($beneficioAlumno);
     }
 }

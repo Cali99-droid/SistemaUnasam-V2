@@ -1,6 +1,6 @@
 <div class="buscar" id="cont_buscar">
     <label for="buscar" id="lbBuscar">Buscar</label>
-    <input type="text" name="buscar" id="buscar" placeholder="Buscar por DNI">
+    <input type="number" name="buscar" id="buscar" placeholder="Buscar por DNI" |>
     <button type="button" id="btnBuscarDNI" name="btnBuscarDNI" onclick="buscarAlumno($('#buscar').val())">Buscar</button>
 </div>
 
@@ -17,7 +17,7 @@
 
 
         <label for="idCondicionEconomica">Condición Socioeconomica</label>
-        <select name="integrante[idCondicionEconomica]" id="idCondicionEconomica">
+        <select name="integrante[idCondicionEconomica]" id="idCondicionEconomica" required>
             <option value="" selected disabled>--Seleccione--</option>
             <?php foreach ($condiciones as $condicion) : ?>
                 <option value="<?php echo $condicion->id; ?>"><?php echo $condicion->nombre; ?>
@@ -33,14 +33,11 @@
             <option value="activo">Activo</option>
             <option value="inactivo">Inactivo</option>
         </select>
-        <input type="hidden" name="cod" value="2" id="valor">
+        <input type="hidden" name="cod" value="1" id="cod">
+
         <input type="hidden" name="integrante[idPersona]" value='' id="idPersona">
-        <button type="button" id="actualizarIntegrante" onclick="actualizarIntegrante()">Aceptar</button>
-    </div>
 
-    <div class="columna-integrante">
-
-
+        <button type="button" id="actualizarIntegrante" onclick="guardarIntegrante()">Aceptar</button>
     </div>
 
 </div>

@@ -53,4 +53,12 @@ class Integrante extends ActiveRecord
         $this->idAlumnoGrupo = $args['idAlumnoGrupo'] ?? '';
         $this->idPersona = $args['idPersona'] ?? '';
     }
+
+
+    public function asignarGrupo($descripcion, $estado, $idgrupo)
+    {
+        $query = "CALL p_ingresar_alumno_grupo('" . $this->codigo . "'," . $this->idPersona . ", '" . $descripcion . "',curdate(), '" . $estado . "'," . $idgrupo . ");";
+        $resultado = self::consulta($query);
+        return $query;
+    }
 }

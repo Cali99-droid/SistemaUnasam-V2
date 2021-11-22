@@ -157,6 +157,7 @@ class ActiveRecord
         return [
             'resultado' =>  $resultado,
             'id' => self::$db->insert_id
+
         ];
     }
 
@@ -221,5 +222,11 @@ class ActiveRecord
     {
         $resultado = self::$db->query($query);
         return $resultado;
+    }
+
+    public static function SQL_primer($query)
+    {
+        $resultado = self::consultarSQL($query);
+        return array_shift($resultado);
     }
 }

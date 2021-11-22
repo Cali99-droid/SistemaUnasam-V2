@@ -37,7 +37,13 @@ class Semestre extends ActiveRecord
         if ($resultado->num_rows) {
             self::$alertas['error'][] = 'El nombre ya esta registrado';
         }
-
         return $resultado;
+    }
+
+    public static function getIdSemestreActual($idinvitacion)
+    {
+        $query = "SELECT f_idSemestreInv(" . $idinvitacion . ") valor;";
+        $resultado = self::consulta($query)->fetch_assoc();
+        return $resultado['valor'];
     }
 }
