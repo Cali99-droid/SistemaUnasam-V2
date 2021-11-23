@@ -10,7 +10,7 @@
         </div>
 
         <div class="nuevo-grupo">
-            <a href="nuevo-evento.php" class="boton-grupo" id="boton-agregar-evento">
+            <a href="/nuevo-evento" class="boton-grupo" id="boton-agregar-evento">
                 <i class="fas fa-plus-circle"></i> Agregar Evento
             </a>
         </div>

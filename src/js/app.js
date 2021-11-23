@@ -627,78 +627,117 @@ function asignarInvitacionGrupo() {
 }
 
 
-function crearOrganizador() {
-    var nombre = document.getElementById('nombre_org').value;
-    var contacto = document.getElementById('contacto').value;
-    var param = { "nombre": nombre, "contacto": contacto, "cod": 5 };
-    $.ajax({
-        type: "POST",
-        data: param,
-        url: "setDatos.php",
+async function crearOrganizador() {
+    var nombre = document.getElementById('nombre_org');
+    var contacto = document.getElementById('contacto');
+    datos = new FormData();
 
-        success: function (r) {
-
-            if (r == 0) {
-
-                // Swal.fire('ERORR !!', 'EL BENEFICIO YA ESTA ASIGNADO ', 'error');
-                Swal.fire({
-                    title: 'ERROR',
-                    text: 'Error en la creacion',
-                    icon: 'error',
-                })
-            } else {
-                Swal.fire({
-                    title: 'EXITO',
-                    text: 'ORGANIZACION CREADA CORRECTAMENTE!',
-                    icon: 'success',
-                })
-
-                $("#nombre_org").val('');
-                $("#contacto").val('');
-
-            }
+    datos.append('nombre', nombre.value);
+    datos.append('contacto', contacto.value)
+    try {
+        //Peticion hacia la api
+        const url = 'http://localhost:3000/crear-org';
+        const respuesta = await fetch(url, {
+            method: 'POST',
+            body: datos
+        })
+        const resultado = await respuesta.json();
 
 
+        if (resultado.resultado) {
+
+            Swal.fire({
+                icon: 'success',
+                title: 'MUY BIEN !',
+                text: 'Organizador creado correctamente!'
+
+            }).then(() => {
+                nombre.value = '';
+                contacto.value = '';
+
+
+
+
+            })
+
+
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'ERROR !',
+                text: 'Error al crear un organizador!',
+
+            })
         }
-    });
+    } catch (error) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error...',
+            text: 'Hubo un error al guardar el organizador!',
+
+        })
+    }
+
 
 }
 
-function crearEvento() {
-    $(document).ready(function () {
-        param = $('#form-evento').serialize();
-        param += '&cod=6';
-        $.ajax({
-            type: "POST",
-            data: param,
-            url: "setDatos.php",
+async function crearEvento() {
+    const nombre = document.getElementById('nombre_evento');
+    const fecha_inicio = document.getElementById('fecha_inicio');
+    const fecha_fin = document.getElementById('fecha_fin');
+    const organizador_id = document.getElementById('idorganizador');
 
-            success: function (r) {
-
-                if (r == 0) {
-
-                    // Swal.fire('ERORR !!', 'EL BENEFICIO YA ESTA ASIGNADO ', 'error');
-                    Swal.fire({
-                        title: 'AVISO',
-                        text: 'EL NOMBRE DEL EVENTO SE REPITE',
-                        icon: 'error',
-                    })
-                } else {
-                    Swal.fire({
-                        title: 'EXITO',
-                        text: 'EVENTO CREADO CORRECTAMENTE!',
-                        icon: 'success',
-                    })
-
-                    $("#nombre_org").val('');
-                    $("#contacto").val('');
-
-                }
+    datos = new FormData();
+    datos.append('nombre', nombre.value);
+    datos.append('fecha_inicio', fecha_inicio.value);
+    datos.append('fecha_fin', fecha_fin.value);
+    datos.append('organizador_id', organizador_id.value)
 
 
-            }
-        });
-    });
+    try {
+        //Peticion hacia la api
+        const url = 'http://localhost:3000/crear-evento';
+        const respuesta = await fetch(url, {
+            method: 'POST',
+            body: datos
+        })
+        const resultado = await respuesta.json();
+        console.log(resultado);
+
+        if (resultado.resultado) {
+
+            Swal.fire({
+                icon: 'success',
+                title: 'MUY BIEN !',
+                text: 'Evento creado correctamente!'
+
+            }).then(() => {
+                nombre.value = '';
+                fecha_fin.value = '';
+                fecha_inicio.value = '';
+
+
+
+            })
+
+
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'ERROR !',
+                text: 'Error al crear un evento!',
+
+            })
+        }
+    } catch (error) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error...',
+            text: 'Hubo un error al guardar el evento!',
+
+        })
+    }
+
 }
 
 
