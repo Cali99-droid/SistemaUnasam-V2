@@ -125,8 +125,8 @@
                 position: 'none'
             },
             chart: {
-                title: 'Participaciones',
-                subtitle: 'Cantidad de Participación por escuelas'
+                title: 'TOP 5 ESCUELAS',
+                subtitle: 'Mayor de Participación por escuelas'
             },
             bars: 'horizontal', // Required for Material Bar Charts.
             axes: {

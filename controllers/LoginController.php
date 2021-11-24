@@ -41,4 +41,8 @@ class LoginController
         $_SESSION = [];
         header('Location: /');
     }
+    public static function perfil(Router $router)
+    {
+        $router->render('perfil/index', []);
+    }
 }

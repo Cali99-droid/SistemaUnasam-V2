@@ -1,6 +1,6 @@
 <?php
 
-$db = mysqli_connect('localhost', 'root', 'root', 'app_unasam');
+$db = mysqli_connect('localhost', 'root', '998696334', 'app_unasam');
 
 
 if (!$db) {

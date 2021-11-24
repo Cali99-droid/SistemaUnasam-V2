@@ -70,7 +70,7 @@
                     </div>
 
                     <div class="contenido-perfil" id="contenido-perfil">
-                        <button>Ver Perfil</button>
+                    <a href="/perfil"><button>Ver Perfil</button></a>
                         <a href="/logout"><button class="boton-salir">Salir</button></a>
                     </div>
 

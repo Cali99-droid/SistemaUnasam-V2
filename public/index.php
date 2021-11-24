@@ -18,7 +18,7 @@ $router = new Router();
 $router->get('/', [LoginController::class, 'login']);
 $router->post('/', [LoginController::class, 'login']);
 $router->get('/logout', [LoginController::class, 'logout']);
-
+$router->get('/perfil', [LoginController::class, 'perfil']);
 /** Area privada   **/
 // Inicio
 $router->get('/inicio', [InicioController::class, 'index']);
@@ -62,7 +62,6 @@ $router->get('/tipos', [AdminController::class, 'tipos']);
 $router->get('/usuarios', [AdminController::class, 'users']);
 $router->get('/semestres', [AdminController::class, 'semestres']);
 $router->post('admin/usuarios', [AdminController::class, 'index']);
-$router->get('/roles', [AdminController::class, 'roles']);
 
 
 //API
