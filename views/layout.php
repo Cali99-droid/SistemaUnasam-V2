@@ -44,6 +44,7 @@
                         <div class="sub-item " id="sub-item">
                             <a href="/tipos">Tipos de Grupos</a>
                             <a href="/usuarios">Usuarios</a>
+                            <a href="/roles">Roles</a>
                             <a href="/semestres">Semestres</a>
                         </div>
                     </div>

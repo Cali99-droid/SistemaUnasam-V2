@@ -62,6 +62,7 @@ $router->get('/tipos', [AdminController::class, 'tipos']);
 $router->get('/usuarios', [AdminController::class, 'users']);
 $router->get('/semestres', [AdminController::class, 'semestres']);
 $router->post('admin/usuarios', [AdminController::class, 'index']);
+$router->get('/roles', [AdminController::class, 'roles']);
 
 
 //API

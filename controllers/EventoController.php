@@ -4,14 +4,16 @@ namespace Controllers;
 
 use Model\Evento;
 use Model\Organizador;
+use Model\Grupo;
 use MVC\Router;
 
 class EventoController
 {
-    public static function index(Router $router)
-    {
+    public static function index(Router $router){
+
+        $grupos = Grupo::all();
         $eventos = Evento::all();
-        $router->render('evento/index', ['eventos' => $eventos]);
+        $router->render('evento/index', ['eventos' => $eventos,'grupos'=> $grupos]);
     }
 
     public static function v_crear(Router $router)

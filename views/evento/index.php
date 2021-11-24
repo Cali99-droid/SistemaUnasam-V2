@@ -79,7 +79,7 @@
         </div>
         <form class="formulario-invitacion">
 
-            <?php include 'includes/templates/modales/asignarInvitacion.php'; ?>
+            <?php include 'asignarInvitacion.php'; ?>
         </form>
     </div>
 

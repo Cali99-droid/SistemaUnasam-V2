@@ -28,4 +28,10 @@ class AdminController
         $semestres = Semestre::all();
         $router->render('admin/semestres/index', ['semestres' => $semestres]);
     }
+
+    public static function roles(Router $router)
+    {
+        $semestres = Semestre::all();
+        $router->render('admin/roles/index', ['semestres' => $semestres]);
+    }
 }
