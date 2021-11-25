@@ -8,13 +8,24 @@
                 <p>Filtros</p>
             </div>
         </div>
+        <div class="tabs tabs__grafico">
+            <button id="defaultOpen" class="tablink" onclick="openPage('piechart', this, ' #005b82','dash')">Participaciones</button>
+            <button id="participaciones" class="tablink" onclick="openPage('piechart1', this, ' #005b82','dash')">Invitaciones</button>
+            <button class="tablink" id="benDer" onclick="openPage('piechart2', this, '#008896', 'dash')">Participacion Escuela</button>
+            <button id="ben" class="tablink" onclick="openPage('piechart3', this, '#008896','dash')">Participacion por fecha</button>
+            <button id="" class="tablink" onclick="openPage('beneficioG', this, '#008896','dash')">Beneficios</button>
+            <button id="" class="tablink" onclick="openPage('falsta', this, '#008896','dash')">Add</button>
+        </div>
         <div class="contenido-dash">
             <div class="dash" id="piechart"></div>
             <div class="dash" id="piechart1"></div>
             <div class="dash" id="piechart2"></div>
             <div class="dash" id="piechart3"></div>
-            <div class="dash" id="piechart4"></div>
-            <div class="dash" id="piechart5"></div>
+            <div class="dash " id="beneficioG">
+                <div class="" id="piechart4"></div>
+                <div class="" id="piechart5"></div>
+            </div>
+
         </div>
     </div>
 
@@ -60,6 +71,8 @@
         ]);
 
         var options = {
+            width: 1000,
+            heigth: 800,
             title: 'Participantes por Grupo'
         };
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
@@ -120,7 +133,8 @@
 
         var options = {
             title: 'Chess opening moves',
-            width: 300,
+            width: 600,
+            height: 400,
             legend: {
                 position: 'none'
             },
@@ -158,6 +172,7 @@
         ]);
 
         var options = {
+
             legend: 'none',
             colors: ['#15A0C8'],
             pointSize: 30,

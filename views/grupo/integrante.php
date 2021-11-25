@@ -29,10 +29,10 @@
 
     <div class="detalles-integrante">
         <div class="tabs">
-            <button id="defaultOpen" class="tablink" onclick="openPage('invitacion', this, ' #005b82')">Invitaciones</button>
-            <button id="participaciones" class="tablink" onclick="openPage('participacion', this, ' #005b82')">Participaciones</button>
-            <button class="tablink" id="benDer" onclick="openPage('beneficiosDerecho', this, '#008896')">Derechos</button>
-            <button id="ben" class="tablink" onclick="openPage('beneficiosAsig', this, '#008896')">Beneficios</button>
+            <button id="defaultOpen" class="tablink" onclick="openPage('invitacion', this, ' #005b82', 'tabcontent')">Invitaciones</button>
+            <button id="participaciones" class="tablink" onclick="openPage('participacion', this, ' #005b82', 'tabcontent')">Participaciones</button>
+            <button class="tablink" id="benDer" onclick="openPage('beneficiosDerecho', this, '#008896', 'tabcontent')">Derechos</button>
+            <button id="ben" class="tablink" onclick="openPage('beneficiosAsig', this, '#008896', 'tabcontent')">Beneficios</button>
         </div>
 
 

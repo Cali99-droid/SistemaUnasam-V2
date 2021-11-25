@@ -13,14 +13,8 @@
   }
   .contenido-dash {
     width: 100%;
-    margin-top: 2rem;
-    display: grid;
-    gap: 0.5rem;
-    grid-template-columns: repeat(3, 1fr);
 
     .dash {
-      width: 40rem;
-      height: 30rem;
       margin: 0 auto;
     }
   }

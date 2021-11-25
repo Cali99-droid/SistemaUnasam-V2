@@ -289,9 +289,10 @@ async function actualizarBeneficio(id) {
 
 }
 
-function actualizarEvento(id, modal_ev, boton_agregar_ev, close_ev) {
+//no usado 
+function actualizarEvento(id) {
 
-    modal(modal_ev, boton_agregar_ev, close_ev);
+    modal('modal-agregar-ev', 'boton-agregar-evento', 'close-evento');
 
     var param = { "id": id, "cod": 4 }
 
@@ -587,51 +588,77 @@ function invitarGrupo(idevento, nombre_evento, modal_invi, boton_agregar_usu, cl
 }
 
 
-function asignarInvitacionGrupo() {
-    var idevento = document.getElementById('idevento').value;
-    var idGrupo = document.getElementById('idGrupo').value;
-    var fechaHoraInvitacion = document.getElementById('fechaHoraInvitacion').value;
-    var Observacion = document.getElementById('Observacion').value;
-    var param = { "invitacion[idEventosrealizados]": idevento, "invitacion[idgrupo_universitario]": idGrupo, "invitacion[fechaHoraInvitacion]": fechaHoraInvitacion, "invitacion[Observacion]": Observacion, "cod": 4 }
+async function asignarInvitacionGrupo() {
+    const idevento = document.getElementById('idevento');
+    const idGrupo = document.getElementById('idGrupo');
+    const fechaHoraInvitacion = document.getElementById('fechaHoraInvitacion');
+    const Observacion = document.getElementById('Observacion');
+
+    datos = new FormData();
+    datos.append('evento_id', idevento.value);
+    datos.append('grupo_universitario_id', idGrupo.value);
+    datos.append('observacion', Observacion.value);
+    datos.append('fecha_hora', fechaHoraInvitacion.value);
+    try {
+        //Peticion hacia la api
+        const url = 'http://localhost:3000//eventos/invitar-grupo';
+        const respuesta = await fetch(url, {
+            method: 'POST',
+            body: datos
+        })
+        const resultado = await respuesta.json();
+        console.log(resultado);
+
+        if (resultado.resultado) {
+
+            Swal.fire({
+                icon: 'success',
+                title: 'MUY BIEN !',
+                text: 'Invitacion asignada correctamente!'
+
+            }).then(() => {
+                fechaHoraInvitacion.value = '';
+                Observacion.value = '';
+
+            })
 
 
-    $.ajax({
-        type: "POST",
-        data: param,
-        url: "setDatos.php",
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'ERROR !',
+                text: 'Error al tratar invitar !',
 
-        success: function (r) {
-
-            if (r == 0) {
-
-                // Swal.fire('ERORR !!', 'EL BENEFICIO YA ESTA ASIGNADO ', 'error');
-                Swal.fire({
-                    title: 'AVISO',
-                    text: 'El grupo ya esta invitado',
-                    icon: 'success',
-                })
-            } else {
-                Swal.fire({
-                    title: 'EXITO',
-                    text: 'INVITACION ASIGNADA CORRECTAMENTE!',
-                    icon: 'success',
-                })
-
-            }
-
-
+            })
         }
-    });
+    } catch (error) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error...',
+            text: 'Hubo un error al guardar la invitacion!',
+
+        })
+    }
+
 
 
 }
 
 
 async function crearOrganizador() {
-    var nombre = document.getElementById('nombre_org');
-    var contacto = document.getElementById('contacto');
+    const nombre = document.getElementById('nombre_org');
+    const contacto = document.getElementById('contacto');
     datos = new FormData();
+    if (nombre.value === '') {
+        Swal.fire({
+            icon: 'error',
+            title: 'ERROR !',
+            text: 'El organizador es obligatorio!',
 
+        })
+
+        return;
+    }
     datos.append('nombre', nombre.value);
     datos.append('contacto', contacto.value)
     try {
@@ -654,9 +681,6 @@ async function crearOrganizador() {
             }).then(() => {
                 nombre.value = '';
                 contacto.value = '';
-
-
-
 
             })
 
@@ -686,12 +710,13 @@ async function crearEvento() {
     const fecha_inicio = document.getElementById('fecha_inicio');
     const fecha_fin = document.getElementById('fecha_fin');
     const organizador_id = document.getElementById('idorganizador');
-
+    const id = document.getElementById('idevento');
     datos = new FormData();
     datos.append('nombre', nombre.value);
     datos.append('fecha_inicio', fecha_inicio.value);
     datos.append('fecha_fin', fecha_fin.value);
     datos.append('organizador_id', organizador_id.value)
+    datos.append('id', id.value);
 
 
     try {
@@ -704,20 +729,17 @@ async function crearEvento() {
         const resultado = await respuesta.json();
         console.log(resultado);
 
-        if (resultado.resultado) {
+        if (resultado) {
 
             Swal.fire({
                 icon: 'success',
                 title: 'MUY BIEN !',
-                text: 'Evento creado correctamente!'
+                text: 'Evento registrado correctamente!'
 
             }).then(() => {
                 nombre.value = '';
                 fecha_fin.value = '';
                 fecha_inicio.value = '';
-
-
-
             })
 
 
@@ -964,9 +986,9 @@ async function mostrarBeneficios(idAlumnoGrupo) {
     }
 
 }
-function openPage(pageName, elmnt, color) {
+function openPage(pageName, elmnt, color, clase) {
     var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tabcontent");
+    tabcontent = document.getElementsByClassName(clase);
     for (i = 0; i < tabcontent.length; i++) {
         tabcontent[i].style.display = "none";
     }
