@@ -19,6 +19,8 @@ class InicioController
         $particionesFecha = Dash::getParticipacionesPorFecha();
         $estadoBeneficios = Dash::getEstadoBeneficios();
         $beneficiosPendientes = Dash::getBeneficiosPendientes();
+        $escuelas   = Dash::getEscuelas();
+        $muestraDash   = Dash::muestraDash();
         $router->render(
             'inicio/index',
             [
@@ -27,8 +29,9 @@ class InicioController
                 'top' => $top,
                 'particionesFecha' => $particionesFecha,
                 'estadoBeneficios' => $estadoBeneficios,
-                'beneficiosPendientes' => $beneficiosPendientes
-
+                'beneficiosPendientes' => $beneficiosPendientes,
+                'escuelas' => $escuelas,
+                'muestraDash' => $muestraDash
             ]
         );
     }
