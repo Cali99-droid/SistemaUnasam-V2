@@ -50,8 +50,10 @@ $router->post('/beneficios/crear', [BeneficioController::class, 'crear']);
 $router->get('/eventos', [EventoController::class, 'index']);
 $router->post('/eventos', [EventoController::class, 'index']);
 $router->get('/nuevo-evento', [EventoController::class, 'v_crear']);
+$router->get('/actualizar-evento', [EventoController::class, 'v_actualizar']);
 $router->post('/crear-evento', [EventoController::class, 'crear']);
 $router->post('/crear-org', [EventoController::class, 'crearOrg']);
+$router->post('/eventos/invitar-grupo', [EventoController::class, 'invitar']);
 //Reportes
 $router->get('/reporte', [ReporteController::class, 'index']);
 $router->post('/reporte', [ReporteController::class, 'index']);

@@ -4,7 +4,7 @@
 
 <div class="contenedor-grupos">
     <div class="titulo-grupos">
-        <h2 class="no-margin">Nuevo Evento</h2>
+        <h2 class="no-margin">Editar Evento</h2>
     </div>
 
     <?php include 'form.php' ?>

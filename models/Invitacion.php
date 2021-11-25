@@ -20,10 +20,10 @@ class Invitacion extends ActiveRecord
     public function __construct($args = [])
     {
         $this->id = $args['id'] ?? null;
-        $this->fecha_registro = $args['fecha_registro'] ?? '';
+        $this->fecha_registro = $args['fecha_registro'] ?? date('Y-m-d');
         $this->fecha_hora = $args['fecha_hora'] ?? '';
-        $this->estado = $args['estado'] ?? '';
-        $this->observación = $args['observacion'] ?? '';
+        $this->estado = $args['estado'] ?? 'PENDIENTE';
+        $this->observacion = $args['observacion'] ?? '';
         $this->evento_id = $args['evento_id'] ?? '';
         $this->grupo_universitario_id = $args['grupo_universitario_id'] ?? '';
     }

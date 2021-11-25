@@ -36,8 +36,7 @@
                         <td><?php echo  $evento->fecha_fin; ?></td>
                         <td>
 
-                            <button type="button" class="boton-acciones" onclick="actualizarEvento(<?php echo $evento->id; ?>,'modal-agregar-ev', 'boton-agregar-evento', 'close-evento')">
-                                <i class=" fas fa-pencil-alt"></i> </button>
+                            <a type="button" class="boton-acciones" href="/actualizar-evento?id=<?php echo $evento->id ?>"> <i class=" fas fa-pencil-alt"></i> </a>
 
 
                             <input type="hidden" name="id" value="<?php echo $evento->id; ?>">
@@ -89,6 +88,5 @@
 <script>
     $(document).ready(function() {
         $('#idGrupo').select2();
-
     });
 </script>
