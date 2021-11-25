@@ -986,9 +986,9 @@ async function mostrarBeneficios(idAlumnoGrupo) {
     }
 
 }
-function openPage(pageName, elmnt, color) {
+function openPage(pageName, elmnt, color, clase) {
     var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tabcontent");
+    tabcontent = document.getElementsByClassName(clase);
     for (i = 0; i < tabcontent.length; i++) {
         tabcontent[i].style.display = "none";
     }
