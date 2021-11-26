@@ -65,8 +65,10 @@ $router->get('/usuarios', [AdminController::class, 'users']);
 $router->get('/semestres', [AdminController::class, 'semestres']);
 $router->post('admin/usuarios', [AdminController::class, 'index']);
 $router->get('/roles', [AdminController::class, 'roles']);
-
-
+$router->post('/crear-rol', [AdminController::class, 'crearRol']);
+$router->post('/get-rol', [AdminController::class, 'getRol']);
+$router->post('/crear-user', [AdminController::class, 'crearUser']);
+$router->post('/get-user', [AdminController::class, 'getUser']);
 //API
 $router->post('/api/tipos', [APIController::class, 'guardarTipo']);
 $router->get('/api/tipos', [APIController::class, 'getTipos']);

@@ -1,3 +1,6 @@
+<?php //debuguear($privilegios);
+?>
+
 <div class="contenedor-grupos">
     <div class="titulo-grupos">
         <h2 class="no-margin">Gestión de Roles</h2>
@@ -10,25 +13,7 @@
         </div>
 
         <div class="nuevo-grupo">
-            <form method="POST" class="formulario-grupo">
-
-                <label for="nombre">Tipo Rol</label>
-                <input type="text" name="semestre[nombre]" id="nombre">
-
-               
-                <div class="estado">
-                   
-                    <input type="checkbox" name="semestre[estado]" id="estado" value="activo">GRUPOS
-                    <input type="checkbox" name="semestre[estado]" id="estado" value="activo">EVENTOS
-                    <input type="checkbox" name="semestre[estado]" id="estado" value="activo">SEMESTRE
-                    <input type="checkbox" name="semestre[estado]" id="estado" value="activo">BENEFICIOS
-                    <input type="checkbox" name="semestre[estado]" id="estado" value="activo">ADMINISTRADOR
-                    
-                </div>
-
-                <button class="" type="submit">Aceptar</button>
-
-            </form>
+            <button class="boton-grupo" onclick=" modal('modal-agregar-rol', 'boton-agregar-beneficio', 'close-rol');"><i class="fas fa-plus-circle"></i> Nuevo Rol</button>
         </div>
     </div>
 
@@ -37,12 +22,21 @@
         <table>
             <thead>
                 <tr>
+                    <th>ID</th>
                     <th>ROL</th>
-                    <th>PERIMISOS</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
+                <?php foreach ($roles as $rol) : ?>
+                    <tr>
+                        <td><?php echo $rol->id; ?></td>
+                        <td><?php echo $rol->nombre; ?></td>
+                        <td> <button onclick="actualizarRol(<?php echo $rol->id;  ?>)" type="button" class="boton-acciones">
+                                <i class="fas fa-pen"></i> </button></td>
+                    </tr>
+
+                <?php endforeach; ?>
 
             </tbody>
 
@@ -53,20 +47,22 @@
 
 </div>
 
-</div>
+<div class="modal-agregar" id="modal-agregar-rol">
 
 
-
-</div>
-</div>
-
-<!--ventana modal-->
-<div class="modal-agregar" id="modal-agregar-semestre">
-
-
-    <div class="contenido-modal-grupo">
+    <div class="modal-beneficio contenido-modal-grupo ">
         <div class="encabezado-modal">
-            <h2>Nuevo Semestre</h2>
-            <span class="close">&times;</span>
+            <h2>Crear Rol: <span id="nombreRol"></span></h2>
+            <span class="close close-rol">&times;</span>
 
         </div>
+        <form class="asignar-grupo" method="POST">
+
+            <?php include 'form.php';
+            ?>
+
+
+        </form>
+
+    </div>
+</div>

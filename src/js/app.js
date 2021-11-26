@@ -361,21 +361,76 @@ function buscarUsuario(dni) {
 }
 
 
-function actualizarUsuario(dni, modal_usu, boton_agregar_usu, close_usu) {
+async function actualizarUsuario(dni, modal_usu, boton_agregar_usu, close_usu) {
 
     modal(modal_usu, boton_agregar_usu, close_usu);
-    buscarUsuario(dni);
-
     $(document).ready(function () {
-
-
-
         $("#bus_user").hide();
-
         $("#titulo_user").text('Editar Usuario');
         $("#valor").val('2');
         $("")
     });
+
+
+    dat = new FormData();
+    dat.append('dni', dni);
+    try {
+
+        //Peticion hacia la api
+        const url = 'http://localhost:3000/get-user';
+        const respuesta = await fetch(url, {
+            method: 'POST',
+            body: dat
+        })
+        const datos = await respuesta.json();
+
+
+        //console.log(resultado['estado']);
+        $(document).ready(function () {
+
+            $('#dni').val(datos['dni']);
+            $('#nombre').val(datos['nombre']);
+            $('#apellido').val(datos['apellido']);
+            $('#direccion').val(datos['direccion']);
+            $('#email').val(datos['email']);
+            $('#telefono').val(datos['telefono']);
+            $('#usuario').val(datos['usuario']);
+            $('#password').val(datos['password']);
+            $('#rol').val(datos['idTipoUsu']);
+            $('#estado').val(datos['estado']);
+            $('#idusu').val(datos['idUsuario']);
+            $('#cod').val(2);
+            var val = datos['estado'];
+            var rol = datos['idTipoUsu'];
+
+
+
+            var recepcionaDatos = datos['genero'];
+            if (recepcionaDatos === 'Masculino') {
+                $("#genero option[value='Masculino'").attr("selected", true);
+            } else {
+                $("#genero option[value='Femenino'").attr("selected", true);
+            }
+
+
+
+        });
+
+
+    } catch (error) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error...',
+            text: 'Hubo un error !',
+
+        })
+    }
+
+
+
+
+
+
 
 }
 
@@ -1350,6 +1405,105 @@ async function guardarIntegrante() {
             })
         }
     } catch (error) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error...',
+            text: 'Hubo un error al guardar el Beneficio!',
+
+        })
+    }
+
+}
+
+async function actualizarRol(id) {
+    modal('modal-agregar-rol', 'boton-agregar-beneficio', 'close-rol');
+
+    const datos = new FormData();
+    datos.append('id', id);
+
+    try {
+
+        //Peticion hacia la api
+        const url = 'http://localhost:3000/get-rol';
+        const respuesta = await fetch(url, {
+            method: 'POST',
+            body: datos
+        })
+        const resultado = await respuesta.json();
+        const perm = resultado.permisos;
+        //console.log(perm);
+        const checks = document.querySelectorAll('.chek');
+        perm.forEach(element => {
+            checks.forEach(el => {
+                if (element.opciones_id == el.value) {
+                    el.checked = true;
+                }
+            });
+
+        });
+        //console.log(resultado['estado']);
+        $(document).ready(function () {
+
+
+            $('#nombre').val(resultado['nombre']);
+            $('#idRol').val(resultado['id']);
+            $('#cod').val(2);
+
+        });
+
+
+    } catch (error) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error...',
+            text: 'Hubo un error !',
+
+        })
+    }
+
+
+
+}
+
+async function crearRol() {
+
+
+    const nombre = document.getElementById('nombre');
+    const cod = document.getElementById('cod');
+    const id = document.getElementById('idRol');
+    let valoresCheck = [];
+
+    $("input[type=checkbox]:checked").each(function () {
+        valoresCheck.push(this.value);
+    });
+
+    datos = new FormData();
+    datos.append('nombre', nombre.value);
+    datos.append('cod', cod.value);
+    datos.append('id', id.value);
+    datos.append('ids', valoresCheck);
+
+    try {
+        //Peticion hacia la api
+        const url = 'http://localhost:3000/crear-rol';
+        const respuesta = await fetch(url, {
+            method: 'POST',
+            body: datos
+        })
+
+        const resultado = await respuesta.json();
+        console.log(resultado);
+
+        if (resultado.resultado) {
+
+            Swal.fire({
+                icon: 'success',
+                title: 'MUY BIEN !',
+                text: 'Rol Creado Correctamente',
+            })
+
+        }
+    } catch (error) {
         // Swal.fire({
         //     icon: 'error',
         //     title: 'Error...',
@@ -1358,7 +1512,113 @@ async function guardarIntegrante() {
         // })
     }
 
+
+
 }
+
+
+async function crearUser() {
+
+    const dni = document.getElementById('dni');
+    const nombre = document.getElementById('nombre');
+    const apellido = document.getElementById('apellido');
+    const genero = document.getElementById('genero');
+    const direccion = document.getElementById('direccion');
+    const email = document.getElementById('email');
+    const telefono = document.getElementById('telefono');
+    const usuario = document.getElementById('usuario');
+    const pass = document.getElementById('password');
+    const estado = document.getElementById('estado');
+    const rol = document.getElementById('rol');
+    const idUsuario = document.getElementById('idusu');
+    const cod = document.getElementById('cod');
+
+
+
+    datos = new FormData();
+    datos.append('dni', dni.value);
+    datos.append('nombre', nombre.value);
+    datos.append('apellido', apellido.value);
+    datos.append('genero', genero.value);
+    datos.append('direccion', direccion.value);
+    datos.append('usuario', usuario.value);
+    datos.append('pass', pass.value);
+    datos.append('idTipoUsu', rol.value);
+    datos.append('estado', estado.value);
+    datos.append('email', email.value);
+    datos.append('telefono', telefono.value);
+    datos.append('idUsuario', idUsuario.value);
+    datos.append('cod', cod.value);
+
+    try {
+        //Peticion hacia la api
+        const url = 'http://localhost:3000/crear-user';
+        const respuesta = await fetch(url, {
+            method: 'POST',
+            body: datos
+        })
+        const resultado = await respuesta.json();
+        console.log(resultado);
+
+
+        if (resultado == 1) {
+
+            Swal.fire({
+                icon: 'success',
+                title: 'MUY BIEN !',
+                text: 'Usuario creado correctamente!'
+
+            }).then(() => {
+                //limpiar campos
+
+
+            })
+
+
+        } else {
+            if (resultado == 2) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'MUY BIEN !',
+                    text: 'Usuario actualizado correctamente!'
+
+                }).then(() => {
+                    //limpiar campos
+
+
+                })
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'ERROR !',
+                    text: 'El usuario ya existe!',
+                })
+            }
+
+        }
+    } catch (error) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error...',
+            text: 'Hubo un error al guardar el organizador!',
+
+        })
+    }
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
 
 if (document.getElementById("participaciones")) {
     document.getElementById("participaciones").click();
