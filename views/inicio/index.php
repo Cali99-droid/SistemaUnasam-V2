@@ -14,7 +14,7 @@
             <button class="tablink" id="benDer" onclick="openPage('piechart2', this, '#008896', 'dash')">Participacion Escuela</button>
             <button id="ben" class="tablink" onclick="openPage('piechart3', this, '#008896','dash')">Participacion por fecha</button>
             <button id="" class="tablink" onclick="openPage('beneficioG', this, '#008896','dash')">Beneficios</button>
-            <button id="" class="tablink" onclick="openPage('falsta', this, '#008896','dash')">Add</button>
+            <button id="tendencia" class="tablink" onclick="openPage('piechart6', this, '#008896','dash')">Tendencia</button>
         </div>
         <div class="contenido-dash">
             <div class="dash" id="piechart"></div>
@@ -25,7 +25,7 @@
                 <div class="" id="piechart4"></div>
                 <div class="" id="piechart5"></div>
             </div>
-
+            <div class="dash" id="piechart6"></div>
         </div>
     </div>
 
@@ -51,14 +51,15 @@
     google.charts.load("current", {
         packages: ["corechart"]
     });
-
+    google.charts.load('current', {'packages':['line']});
+    
     google.charts.setOnLoadCallback(dibujaBeneficiosPen);
     google.charts.setOnLoadCallback(dibujaEstadoBeneficios);
     google.charts.setOnLoadCallback(dibujaFecha);
     google.charts.setOnLoadCallback(dibujaTop);
     google.charts.setOnLoadCallback(drawStuff);
     google.charts.setOnLoadCallback(drawChart);
-
+    google.charts.setOnLoadCallback(dibujaTendencia);
     function drawChart() {
 
         var data = google.visualization.arrayToDataTable([
@@ -139,8 +140,8 @@
                 position: 'none'
             },
             chart: {
-                title: 'Participaciones',
-                subtitle: 'Cantidad de Participación por escuelas'
+                title: 'TOP 5 ESCUELAS',
+                subtitle: 'Mayor de Participación por escuelas'
             },
             bars: 'horizontal', // Required for Material Bar Charts.
             axes: {
@@ -226,4 +227,38 @@
         var chart = new google.visualization.PieChart(document.getElementById('piechart5'));
         chart.draw(data, options);
     }
+    /* INICIO*/
+
+    function dibujaTendencia() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'MESES');
+        <?php while ($fila = $escuelas->fetch_assoc()) {
+        ?>
+            data.addColumn('number',
+                <?php
+                echo " '" . $fila["nombre"] . "'";
+                ?>);
+        <?php
+        } ?>
+        <?php echo $muestraDash; ?>
+
+        var options = {
+            chart: {
+                title: 'Tendencia de participaciones por escuelas',
+                subtitle: 'cantidad de estudiantes'
+            },
+            width: 1000,
+        height: 500,
+        axes: {
+          x: {
+            0: {side: 'bot'}
+          }
+        }
+        };
+        var chart = new google.charts.Line(document.getElementById('piechart6'));
+        chart.draw(data, google.charts.Line.convertOptions(options));
+
+    }
+
+    /* FIN*/
 </script>

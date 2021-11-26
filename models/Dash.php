@@ -81,4 +81,66 @@ group by e.id;";
         $resultado = self::$db->query($query);
         return $resultado;
     }
+    public static function getEscuelas()
+    {
+
+        $query = "SELECT e.nombre ,date_format(fecha_Hora,'%Y-%m') Inicio,count(*) Tendencia
+        from alumno a 
+       inner join escuela e on e.id=a.Escuela_id
+       inner join facultad f on f.id=e.Facultad_id
+       inner join alumno_x_grupo ag on ag.Alumno_id=a.id
+       inner join participacion_alumno pa on pa.alumno_x_grupo_id=ag.id
+       inner join invitacion i on i.id=pa.invitacion_id
+       group by e.id";
+        $resultado = self::$db->query($query);
+        return $resultado;
+    }
+    public static function getFechas()
+    {
+
+        $query = "SELECT e.nombre ,date_format(fecha_Hora,'%Y-%m') Inicio,count(*) Tendencia
+        from alumno a 
+       inner join escuela e on e.id=a.Escuela_id
+       inner join facultad f on f.id=e.Facultad_id
+       inner join alumno_x_grupo ag on ag.Alumno_id=a.id
+       inner join participacion_alumno pa on pa.alumno_x_grupo_id=ag.id
+       inner join invitacion i on i.id=pa.invitacion_id
+       group by Inicio order by Inicio";
+        $resultado = self::$db->query($query);
+        return $resultado;
+    }
+    public static function cantidad($fecha, $escuela)
+    {
+       
+        $query = "SELECT e.nombre ,date_format(fecha_Hora,'%Y-%m') Inicio,count(*) Tendencia
+  from alumno a 
+ inner join escuela e on e.id=a.Escuela_id
+ inner join facultad f on f.id=e.Facultad_id
+ inner join alumno_x_grupo ag on ag.Alumno_id=a.id
+ inner join participacion_alumno pa on pa.alumno_x_grupo_id=ag.id
+ inner join invitacion i on i.id=pa.invitacion_id
+ group by Inicio,e.nombre having Inicio='" . $fecha . "' and e.nombre='" . $escuela . "'  order by Inicio";
+        $resultado = self::$db->query($query);
+        if ($resultado->num_rows > 0)
+            while ($fila = $resultado->fetch_assoc()) {
+                return $fila["Tendencia"];
+            }
+        else
+            return 0;
+    }
+
+public static function muestraDash(){
+ $mensaje="data.addRows([";
+ foreach (self::getFechas()->fetch_all() as $fechass) {
+    $mensaje.= "['" . $fechass[1] . "'";
+    
+    $fila2 = self::getEscuelas()->fetch_all();
+    for ($i = 0; $i < self::getEscuelas()->num_rows; $i++) {
+        $mensaje.=", " . self::cantidad($fechass[1],$fila2[$i][0]);
+    }
+    $mensaje.= "],";
+}
+return $mensaje.']);';
+}
+    
 }

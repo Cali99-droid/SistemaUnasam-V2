@@ -18,7 +18,7 @@ $router = new Router();
 $router->get('/', [LoginController::class, 'login']);
 $router->post('/', [LoginController::class, 'login']);
 $router->get('/logout', [LoginController::class, 'logout']);
-
+$router->get('/perfil', [LoginController::class, 'perfil']);
 /** Area privada   **/
 // Inicio
 $router->get('/inicio', [InicioController::class, 'index']);
