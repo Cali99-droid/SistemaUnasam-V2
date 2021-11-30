@@ -50,7 +50,8 @@ class DatosUser extends ActiveRecord
 
     public function crearUser()
     {
-        $query = "CALL proc_insertUsuario('" . $this->dni . "', '" . $this->nombre . "', '" . $this->apellido . "', '" . $this->genero . "', '" . $this->direccion . "','" . $this->email . "', '" . $this->telefono . "', '" . $this->usuario . "', '" . $this->dni . "', '" . $this->estado . "', '" . $this->idTipoUsu . "');";
+        $psw =  password_hash($this->dni, PASSWORD_BCRYPT);
+        $query = "CALL proc_insertUsuario('" . $this->dni . "', '" . $this->nombre . "', '" . $this->apellido . "', '" . $this->genero . "', '" . $this->direccion . "','" . $this->email . "', '" . $this->telefono . "', '" . $this->usuario . "', '" . $psw . "', '" . $this->estado . "', '" . $this->idTipoUsu . "');";
 
         $resultado = self::consulta($query);
         return $resultado;

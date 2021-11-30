@@ -25,6 +25,7 @@ class Opcion_x_tipo extends ActiveRecord
     public static function getPermisos($id)
     {
         $permisos = Opcion_x_tipo::where_all('tipo_usuario_id', $id);
+
         return $permisos;
     }
 

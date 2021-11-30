@@ -36,7 +36,7 @@
                             <form method="GET" target="frame">
 
 
-                                <button type="button" class="boton-acciones" onclick="actualizarTipo(<?php echo $tipo->id; ?>, 'modal-tipo', 'boton-actualizar-tipo', 'close-tipo')">
+                                <button type="button" class="boton-acciones" onclick="actualizarTipo(<?php echo $tipo->id; ?>, '<?php echo $tipo->nombre; ?>')">
                                     <i class=" fas fa-pencil-alt"></i> </button>
 
 

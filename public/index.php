@@ -18,11 +18,19 @@ $router = new Router();
 $router->get('/', [LoginController::class, 'login']);
 $router->post('/', [LoginController::class, 'login']);
 $router->get('/logout', [LoginController::class, 'logout']);
-$router->get('/perfil', [LoginController::class, 'perfil']);
+
+$router->get('/olvide', [LoginController::class, 'olvide']);
+$router->post('/olvide', [LoginController::class, 'olvide']);
+
+$router->get('/recuperar', [LoginController::class, 'recuperar']);
+$router->post('/recuperar', [LoginController::class, 'recuperar']);
 /** Area privada   **/
 // Inicio
 $router->get('/inicio', [InicioController::class, 'index']);
 
+//perfil
+$router->get('/perfil', [LoginController::class, 'perfil']);
+$router->post('/perfil', [LoginController::class, 'perfil']);
 //Grupos
 $router->get('/grupos', [GrupoController::class, 'index']);
 $router->post('/grupos', [GrupoController::class, 'index']);
@@ -62,13 +70,16 @@ $router->post('/reporte', [ReporteController::class, 'index']);
 //admin
 $router->get('/tipos', [AdminController::class, 'tipos']);
 $router->get('/usuarios', [AdminController::class, 'users']);
-$router->get('/semestres', [AdminController::class, 'semestres']);
+
 $router->post('admin/usuarios', [AdminController::class, 'index']);
 $router->get('/roles', [AdminController::class, 'roles']);
 $router->post('/crear-rol', [AdminController::class, 'crearRol']);
 $router->post('/get-rol', [AdminController::class, 'getRol']);
 $router->post('/crear-user', [AdminController::class, 'crearUser']);
 $router->post('/get-user', [AdminController::class, 'getUser']);
+//admin:semestres
+$router->get('/semestres', [AdminController::class, 'semestres']);
+$router->post('/semestres', [AdminController::class, 'setSemestre']);
 //API
 $router->post('/api/tipos', [APIController::class, 'guardarTipo']);
 $router->get('/api/tipos', [APIController::class, 'getTipos']);

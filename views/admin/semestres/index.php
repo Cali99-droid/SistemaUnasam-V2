@@ -35,7 +35,7 @@
                     <td>
 
 
-                        <button type="button" class="boton-acciones" onclick="actualizarSemestre(<?php echo $semestre->id; ?>,'modal-agregar-semestre', 'boton', 'close')">
+                        <button type="button" class="boton-acciones" onclick="actualizarSemestre(<?php echo $semestre->id; ?>,'<?php echo $semestre->nombre; ?>', '<?php echo $semestre->fecha_inicio; ?>', '<?php echo $semestre->fecha_fin; ?>', '<?php echo $semestre->estado; ?>')">
                             <i class=" fas fa-pencil-alt"></i> </button>
 
 
@@ -86,10 +86,13 @@
 
             <div class="estado">
                 <label for="estado">Estado</label>
-                <input type="checkbox" name="semestre[estado]" id="estado" value="activo" <?php echo $semestre->estado == 'activo' ? 'checked' : '' ?>>
+                <select name="estado" id="estado">
+                    <option value="ACTIVO">ACTIVO</option>
+                    <option value="INACTIVO">INACTIVO</option>
+                </select>
 
             </div>
-
-            <button class="" type="submit">Aceptar</button>
+            <input id="idSemestre" type="hidden" value="">
+            <button type="button" onclick="crearSemestre()">Aceptar</button>
 
         </form>

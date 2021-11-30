@@ -6,14 +6,15 @@ class Usuario extends ActiveRecord
 {
     //base datos
     protected static $tabla = 'usuario';
-    protected static $columnasDB = ['id', 'usuario', 'pass', 'estado', 'tipo_usuario_id'];
+    protected static $columnasDB = ['id', 'usuario', 'pass', 'estado', 'tipo_usuario_id', 'confirmado', 'token'];
 
     public $id;
     public $usuario;
     public $pass;
     public $estado;
     public $tipo_usuario_id;
-
+    public $confirmado;
+    public $token;
 
     public function __construct($args = [])
     {
@@ -22,6 +23,15 @@ class Usuario extends ActiveRecord
         $this->pass = $args['pass'] ?? '';
         $this->estado = $args['estado'] ?? '';
         $this->tipo_usuario_id = $args['tipo_usuario_id'] ?? '';
+        $this->confirmado = $args['confirmado'] ?? '';
+        $this->token = $args['token'] ?? '';
+    }
+
+    public function getDatos()
+    {
+        $id =  $this->id;
+        $datos = DatosUser::where('idUsuario', $id);
+        return $datos;
     }
 
 
@@ -43,7 +53,7 @@ class Usuario extends ActiveRecord
 
     public function hashPassword()
     {
-        $this->password = password_hash($this->password, PASSWORD_BCRYPT);
+        $this->pass = password_hash($this->pass, PASSWORD_BCRYPT);
     }
 
 
@@ -77,11 +87,16 @@ class Usuario extends ActiveRecord
 
     public function comprobarPassword($password)
     {
-        //  $resultado = password_verify($password, $this->password);
-        if ($this->pass === $password) {
+        $resultado = password_verify($password, $this->pass);
+        if ($resultado) {
             return true;
         } else {
             self::$alertas['error'][] = 'Password incorrecto ';
         }
+    }
+
+    public function crearToken()
+    {
+        $this->token = uniqid();
     }
 }

@@ -110,4 +110,18 @@ class AdminController
         $user = DatosUser::where('dni', $dni);
         echo json_encode($user);
     }
+
+    public static function setSemestre()
+    {
+        $id = $_POST['id'];
+        $semestre = new Semestre($_POST);
+        if ($id) {
+            $resultado = $semestre->actualizar();
+        } else {
+            $resultado = $semestre->crear();
+            $resultado =  $resultado['resultado'];
+        }
+
+        echo json_encode($resultado);
+    }
 }

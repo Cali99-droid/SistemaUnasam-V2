@@ -212,28 +212,13 @@ function actualizarIntegrante(dni, modal_integrante, boton, close) {
 
 }
 
-function actualizarTipo(id, modal_tipo, boton_agregar_tipo, close_tipo) {
+async function actualizarTipo(id, nombre) {
 
-    modal(modal_tipo, boton_agregar_tipo, close_tipo);
+    modal('modal-tipo', 'boton-actualizar-tipo', 'close-tipo');
 
+    $("#idTipoGrupo").val(id);
+    $("#nombre_tipo").val(nombre);
 
-    var param = { "id": id, "cod": 2 }
-
-    $.ajax({
-        type: "POST",
-        data: param,
-        url: "obtenDatos.php",
-        success: function (r) {
-
-            datos = jQuery.parseJSON(r); // vas a castear el array json uno a uno
-
-            $('#nombre_tipo').val(datos['nombre_tipo']);
-            $('#titulo_tipo').text('Actualizar Tipo');
-            $('#idTipoGrupo').val(datos['idTipoGrupo']);
-            $('#valor').val('2');
-
-        }
-    });
 
 }
 
@@ -434,10 +419,13 @@ async function actualizarUsuario(dni, modal_usu, boton_agregar_usu, close_usu) {
 
 }
 
-function actualizarSemestre(id, modal_se, boton_se, close_se) {
-    modal(modal_se, boton_se, close_se);
-
-
+function actualizarSemestre(id, nombre, fecha_inicio, fecha_fin, estado) {
+    modal('modal-agregar-semestre', 'boton', 'close');
+    $('#nombre').val(nombre);
+    $('#fecha_inicio').val(fecha_inicio);
+    $('#fecha_final').val(fecha_fin);
+    $('#estado').val(estado);
+    $('#idSemestre').val(id);
 }
 
 
@@ -1065,8 +1053,10 @@ function botonGrupo() {
 
 async function crearTipof() {
     const nombre_tipo = document.querySelector('#nombre_tipo');
+    const id = document.querySelector('#idTipoGrupo');
     const datos = new FormData();
     datos.append('nombre', nombre_tipo.value);
+    datos.append('id', id.value);
     try {
         //Peticion hacia la api
         const url = 'http://localhost:3000/api/tipos';
@@ -1076,13 +1066,14 @@ async function crearTipof() {
         })
         const resultado = await respuesta.json();
 
-        if (resultado.resultado) {
+        if (resultado) {
             Swal.fire({
                 icon: 'success',
                 title: 'Tipo Creado',
-                text: 'El tipo fue creado correctamente!',
+                text: 'El tipo fue registrado correctamente!',
             }).then(() => {
                 nombre_tipo.value = '';
+                id.value = '';
                 cargarTipos();
 
 
@@ -1431,7 +1422,7 @@ async function actualizarRol(id) {
         })
         const resultado = await respuesta.json();
         const perm = resultado.permisos;
-        //console.log(perm);
+        console.log(perm);
         const checks = document.querySelectorAll('.chek');
         perm.forEach(element => {
             checks.forEach(el => {
@@ -1477,6 +1468,14 @@ async function crearRol() {
         valoresCheck.push(this.value);
     });
 
+    if (nombre.value == '') {
+        Swal.fire({
+            icon: 'info',
+            title: 'Error !',
+            text: 'El nombre es obligatorio',
+        })
+        return;
+    }
     datos = new FormData();
     datos.append('nombre', nombre.value);
     datos.append('cod', cod.value);
@@ -1609,7 +1608,58 @@ async function crearUser() {
 
 }
 
+async function crearSemestre() {
+    const nombre = document.querySelector('#nombre');
+    const fecha_inicio = document.querySelector('#fecha_inicio');
+    const fecha_final = document.querySelector('#fecha_final');
+    const estado = document.querySelector('#estado');
+    const id = document.querySelector('#idSemestre');
+    const datos = new FormData();
+    datos.append('nombre', nombre.value);
+    datos.append('fecha_inicio', fecha_inicio.value);
+    datos.append('fecha_fin', fecha_final.value);
+    datos.append('estado', estado.value);
+    datos.append('id', id.value);
+    try {
+        //Peticion hacia la api
+        const url = 'http://localhost:3000/semestres';
+        const respuesta = await fetch(url, {
+            method: 'POST',
+            body: datos
+        })
+        const resultado = await respuesta.json();
+        console.log(resultado);
 
+        if (resultado) {
+            Swal.fire({
+                icon: 'success',
+                title: 'MUY BIEN ',
+                text: 'El semestre fue registrado correctamente!',
+            }).then(() => {
+                $('#nombre').val('');
+                $('#fecha_inicio').val('');
+                $('#fecha_final').val('');
+                $('#idSemestre').val('');
+
+
+            })
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'ERORR ',
+                text: 'El semestre no fue registrado!',
+            })
+        }
+    } catch (error) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error...',
+            text: 'Hubo un error al guardar el semestre!',
+
+        })
+    }
+
+}
 
 
 

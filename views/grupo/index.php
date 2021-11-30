@@ -52,14 +52,12 @@
             <span class="close close-grupo">&times;</span>
 
         </div>
-        <form class="formulario-grupo" method="POST" enctype="multipart/form-data">
+        <form class="formulario-grupo" method="POST" action="/grupos" enctype="multipart/form-data">
 
             <?php include 'formulario.php'; ?>
 
             <button type="submit" id="crearGrupo">Aceptar</button>
-
         </form>
-
     </div>
 </div>
 <script type="text/javascript">

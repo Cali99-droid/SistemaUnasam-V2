@@ -17,9 +17,18 @@ class APIController
 
     public static function guardarTipo()
     {
+        $id = $_POST['id'];
         $tipo = new TipoGrupo($_POST);
-        $resultado = $tipo->guardar();
-        echo json_encode(['resultado' => $resultado]);
+        if ($id) {
+            $resultado = $tipo->actualizar();
+        } else {
+            $resultado = $tipo->crear();
+            $resultado =  $resultado['resultado'];
+        }
+
+
+        // $resultado = $tipo->guardar();['resultado' => $resultado]
+        echo json_encode($resultado);
     }
 
 

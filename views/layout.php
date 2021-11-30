@@ -34,7 +34,7 @@
                 </div>
                 <div class="items">
 
-                    <a href="/inicio" title="Tnicio"><i class='bx bxs-home' style='color:#e1e1e1'></i>Inicio</a>
+                    <a href="/inicio" title="Inicio"><i class='bx bxs-home' style='color:#e1e1e1'></i>Inicio</a>
                     <a href="/grupos" title="Grupos"><i class='bx bx-group'></i>Grupos</a>
                     <a href="/beneficios" title="Beneficios"><i class='bx bx-medal'></i>Beneficios</a>
                     <a href="/eventos" title="Eventos"><i class='bx bxs-calendar'></i>Eventos</a>
@@ -70,7 +70,7 @@
                     </div>
 
                     <div class="contenido-perfil" id="contenido-perfil">
-                    <a href="/perfil"><button>Ver Perfil</button></a>
+                        <a href="/perfil"><button>Ver Perfil</button></a>
                         <a href="/logout"><button class="boton-salir">Salir</button></a>
                     </div>
 
