@@ -1,24 +1,19 @@
-<div>
-    <div>
-        <label for="fechaHoraInvitacion">Fecha y Hora</label>
-        <input type="datetime-local" name="fechaHoraInvitacion" id="fechaHoraInvitacion">
+<label for="fechaHoraInvitacion">Fecha y Hora:</label>
+<input type="datetime-local" name="fechaHoraInvitacion" id="fechaHoraInvitacion">
 
-        <label for="Observacion">Observacion</label>
-        <textarea name="Observacion" id="Observacion" cols="30" rows="10"></textarea>
-    </div>
-    <div>
-        <input type="hidden" value="" id="idevento">
+<label for="Observacion">Observacion:</label>
+<textarea name="Observacion" id="Observacion" cols="30" rows="10"></textarea>
 
-        <select class="js-example-basic-single " id="idGrupo" name="idGrupo">
-            <?php foreach ($grupos as $grupo) : ?>
-                <option value="<?php echo $grupo->id ?>"><?php echo $grupo->nombre ?></option>
-            <?php endforeach; ?>
-        </select>
+<input type="hidden" value="" id="idevento">
 
-    </div>
+<label for="idGrupo">Grupo:</label>
+<select class="js-example-basic-single " id="idGrupo" name="idGrupo">
+    <?php foreach ($grupos as $grupo) : ?>
+        <option value="<?php echo $grupo->id ?>"><?php echo $grupo->nombre ?></option>
+    <?php endforeach; ?>
+</select>
 
-    <div>
-        <button onclick="asignarInvitacionGrupo()" type="button">Invitar</button>
-    </div>
 
-</div>
+
+
+<button class="btn-asignar" onclick="asignarInvitacionGrupo()" type="button">Invitar</button>

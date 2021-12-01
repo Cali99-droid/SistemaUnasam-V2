@@ -10,7 +10,7 @@
         </div>
 
         <div class="nuevo-grupo">
-            <button type="button" class="boton-grupo" id="boton-agregar-semestre" onclick="modal('modal-agregar-semestre', 'boton-agregar-semestre', 'close')">
+            <button type="button" class="btn-asignar" id="boton-agregar-semestre" onclick="modal('modal-agregar-semestre', 'boton-agregar-semestre', 'close')">
                 <i class=" fas fa-plus-circle"></i> Agregar Semestre</button>
         </div>
     </div>
@@ -35,13 +35,13 @@
                     <td>
 
 
-                        <button type="button" class="boton-acciones" onclick="actualizarSemestre(<?php echo $semestre->id; ?>,'<?php echo $semestre->nombre; ?>', '<?php echo $semestre->fecha_inicio; ?>', '<?php echo $semestre->fecha_fin; ?>', '<?php echo $semestre->estado; ?>')">
-                            <i class=" fas fa-pencil-alt"></i> </button>
+                        <button type="button" class="btn-asignar" onclick="actualizarSemestre(<?php echo $semestre->id; ?>,'<?php echo $semestre->nombre; ?>', '<?php echo $semestre->fecha_inicio; ?>', '<?php echo $semestre->fecha_fin; ?>', '<?php echo $semestre->estado; ?>')">
+                            <i class=" fas fa-pencil-alt"></i> Editar</button>
 
 
                         <input type="hidden" name="id" value="<?php echo $semestre->id; ?>">
-                        <button type="button" class="boton-acciones borrar">
-                            <i class="fas fa-trash"></i> </button>
+                        <button type="button" class="btn-asignar">
+                            <i class="fas fa-trash"></i> Borrar</button>
 
 
 
@@ -84,15 +84,19 @@
             <label for="fecha_final">Fecha fin</label>
             <input type="date" name="semestre[fecha_final]" id="fecha_final">
 
-            <div class="estado">
-                <label for="estado">Estado</label>
-                <select name="estado" id="estado">
-                    <option value="ACTIVO">ACTIVO</option>
-                    <option value="INACTIVO">INACTIVO</option>
-                </select>
 
-            </div>
+            <label for="estado">Estado</label>
+            <select name="estado" id="estado">
+                <option value="ACTIVO">ACTIVO</option>
+                <option value="INACTIVO">INACTIVO</option>
+            </select>
+
             <input id="idSemestre" type="hidden" value="">
             <button type="button" onclick="crearSemestre()">Aceptar</button>
 
         </form>
+
+    </div>
+
+
+</div>

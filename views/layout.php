@@ -59,7 +59,7 @@
                 <div class="semestre">
                     <button type="button" class="openbtn">☰</button>
                     <!--onclick="openNav()"-->
-                    <h2>Semestre 2021 - I</h2>
+                    <h2></h2>
                 </div>
 
                 <div class="perfil" id="perfil">

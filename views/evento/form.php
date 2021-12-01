@@ -19,20 +19,20 @@
                         <?php endforeach; ?>
                     </select>
 
-                    <button type="button" onclick="modal('modal-org', 'boton-agregar-integrante', 'close-org')">Nuevo Organizador</button>
+                    <button type="button" onclick="modal('modal-org', 'boton-agregar-integrante', 'close-org')"> <i class="fas fa-plus-circle"> </i> Nuevo Organizador</button>
 
 
                 </div>
-
+                <div class="botones-accion">
+                    <input type="hidden" value="<?php echo $evento->id ?>" id="idevento">
+                    <button id="btnAgregarEvento" onclick="crearEvento()" type="button"><i class="far fa-save"></i> Guardar</button>
+                    <button id="btnCancelar" type="reset">Cancelar</button>
+                </div>
 
             </div>
 
             <div class="entrada">
-                <div class="botones-accion">
-                    <input type="hidden" value="<?php echo $evento->id ?>" id="idevento">
-                    <button id="btnAgregarEvento" onclick="crearEvento()" type="button">Guardar</button>
-                    <button id="btnCancelar">Cancelar</button>
-                </div>
+
 
             </div>
         </form>

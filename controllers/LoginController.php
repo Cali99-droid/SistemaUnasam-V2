@@ -101,7 +101,9 @@ class LoginController
     {
         $alertas = [];
         $error = false;
+
         $token = s($_GET['token']);
+
         // //buscar usuario por token
         $usuario = Usuario::where('token', $token);
 

@@ -10,7 +10,7 @@
         </div>
 
         <div class="nuevo-grupo">
-            <a href="/nuevo-evento" class="boton-grupo" id="boton-agregar-evento">
+            <a href="/nuevo-evento" class="btn-asignar" id="boton-agregar-evento">
                 <i class="fas fa-plus-circle"></i> Agregar Evento
             </a>
         </div>
@@ -35,21 +35,22 @@
                         <td><?php echo $evento->fecha_inicio; ?></td>
                         <td><?php echo  $evento->fecha_fin; ?></td>
                         <td>
-
-                            <a type="button" class="boton-acciones" href="/actualizar-evento?id=<?php echo $evento->id ?>"> <i class=" fas fa-pencil-alt"></i> </a>
-
-
-                            <input type="hidden" name="id" value="<?php echo $evento->id; ?>">
-                            <button type="button" class="boton-acciones borrar">
-                                <i class="fas fa-trash"></i> </button>
-
-
-                            <button onclick="invitarGrupo(
+                            <button class="btn-asignar" onclick="invitarGrupo(
                                 <?php echo $evento->id; ?>,
                                '<?php echo $evento->nombre; ?>',
                                'modal_invitar', 
                                 'boton_agregar_usu', 
-                                'inv')">Invitar Grupos</button>
+                                'inv')"> <i class="fas fa-user-plus"></i> Invitar</button>
+
+
+                            <a class="btn-asignar" href="/actualizar-evento?id=<?php echo $evento->id ?>"> <i class=" fas fa-pencil-alt"></i> Editar</a>
+
+
+                            <input type="hidden" name="id" value="<?php echo $evento->id; ?>">
+                            <button type="button" class="btn-asignar">
+                                <i class="fas fa-trash"></i> Borrar</button>
+
+
 
 
                         </td>
@@ -76,10 +77,13 @@
             <span class=" close inv">&times;</span>
 
         </div>
-        <form class="formulario-invitacion">
+        <div>
+            <form class="formulario-grupo">
 
-            <?php include 'asignarInvitacion.php'; ?>
-        </form>
+                <?php include 'asignarInvitacion.php'; ?>
+            </form>
+        </div>
+
     </div>
 
 

@@ -29,13 +29,19 @@
     </HR>
 
 
-    <div>
+
+
+
+    <?php include_once __DIR__ . "/../templates/alertas.php" ?>
+    <div class="contenido-form-per">
         <h3>Cambiar Contraseña</h3>
-        <?php include_once __DIR__ . "/../templates/alertas.php" ?>
-        <form class="formulario-grupo " method="POST" action="/perfil">
+        <form class="formulario-perfil" method="POST" action="/perfil">
             <?php include_once __DIR__ . "/../templates/recuperacion.php" ?>
         </form>
     </div>
+
+
+
 
     <script type="text/javascript">
         $(document).ready(function() {

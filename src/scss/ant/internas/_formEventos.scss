@@ -1,9 +1,8 @@
 .contenedor-grupos {
   .formulario-evento {
     padding: 2rem;
-    width: 95%;
+    width: 55%;
     margin: 0 auto;
-    @include grid(2, 1rem);
 
     .entrada {
       display: flex;

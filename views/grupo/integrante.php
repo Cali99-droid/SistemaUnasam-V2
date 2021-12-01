@@ -16,12 +16,11 @@
         </div>
         <div class="datos">
             <div class=" datos--general zoom">
-                <p class="info"><strong> Total participaciones:</strong> 3</p>
+                <p class="info"><strong> </strong> </p>
 
             </div>
             <div class=" datos--general zoom">
-                <p class="info"><strong> Total Beneficios Asignados Pendientes:</strong> <?php //echo $cantidadActivo 
-                                                                                            ?> </p>
+                <p class="info"><strong> </strong> </p>
             </div>
         </div>
 
@@ -29,10 +28,10 @@
 
     <div class="detalles-integrante">
         <div class="tabs">
-            <button id="defaultOpen" class="tablink" onclick="openPage('invitacion', this, ' #005b82', 'tabcontent')">Invitaciones</button>
-            <button id="participaciones" class="tablink" onclick="openPage('participacion', this, ' #005b82', 'tabcontent')">Participaciones</button>
-            <button class="tablink" id="benDer" onclick="openPage('beneficiosDerecho', this, '#008896', 'tabcontent')">Derechos</button>
-            <button id="ben" class="tablink" onclick="openPage('beneficiosAsig', this, '#008896', 'tabcontent')">Beneficios</button>
+            <button id="defaultOpen" class="tablink" onclick="openPage('invitacion', this, ' #0055a1', 'tabcontent')">Invitaciones</button>
+            <button id="participaciones" class="tablink" onclick="openPage('participacion', this, ' #0055a1', 'tabcontent')">Participaciones</button>
+            <button class="tablink" id="benDer" onclick="openPage('beneficiosDerecho', this, '#0055a1', 'tabcontent')">Derechos</button>
+            <button id="ben" class="tablink" onclick="openPage('beneficiosAsig', this, ' #0055a1', 'tabcontent')">Beneficios</button>
         </div>
 
 
@@ -207,11 +206,14 @@
         </div>
 
         <div>
-            <label for="tipo">Tipo de participación</label>
-            <input type="text" name="tipo" id="tipo">
-            <input type="hidden" value="" name="idinvitacion" id="idinvitacion">
-            <input type="hidden" value="<?php echo $integrante->idAlumnoGrupo; ?>" name="idAlumnoGrupo" id="idAlumnoGrupo">
-            <button onclick="confirmarAsistencia()">Aceptar</button>
+            <form class="formulario-grupo">
+                <label for="tipo">Tipo de participación</label>
+                <input type="text" name="tipo" id="tipo">
+                <input type="hidden" value="" name="idinvitacion" id="idinvitacion">
+                <input type="hidden" value="<?php echo $integrante->idAlumnoGrupo; ?>" name="idAlumnoGrupo" id="idAlumnoGrupo">
+                <button onclick="confirmarAsistencia()" class="btn-asignar">Aceptar</button>
+            </form>
+
         </div>
 
 
@@ -230,16 +232,19 @@
         </div>
 
         <div>
-            <label for="tipo">Descripcion</label>
-            <input type="text" name="descripcion" id="descripcion">
-            <label for="estado">Estado</label>
-            <select name="estado" id="estado">
-                <option value="COMPLETADO">COMPLETADO</option>
-                <option value="PENDIENTE">PENDIENTE</option>
-            </select>
-            <input type="hidden" id="idbeneficioXtipo">
+            <form class="formulario-grupo">
+                <label for="tipo">Descripcion</label>
+                <input type="text" name="descripcion" id="descripcion">
 
-            <button id="btn_confirmarBen">Aceptar</button>
+                <label for="estado">Estado</label>
+                <select name="estado" id="estado">
+                    <option value="COMPLETADO">COMPLETADO</option>
+                    <option value="PENDIENTE">PENDIENTE</option>
+                </select>
+                <input type="hidden" id="idbeneficioXtipo">
+
+                <button id="btn_confirmarBen" class="btn-asignar">Aceptar</button>
+            </form>
         </div>
 
 

@@ -12,7 +12,7 @@
         </div>
 
         <div class="nuevo-grupo">
-            <button type="button" class="boton-grupo" id="boton-agregar-usuario" onclick="modal('modal-agregar', 'boton-agregar-usuario', 'close')">
+            <button type="button" class="btn-asignar" id="boton-agregar-usuario" onclick="modal('modal-agregar', 'boton-agregar-usuario', 'close')">
                 <i class="fas fa-plus-circle"></i> Agregar Usuario</button>
         </div>
     </div>
@@ -40,18 +40,12 @@
                     <td><label for="estado<?php echo $user->idUsuario ?>">Activo </label><input id="estado<?php echo $user->idUsuario ?>" name="estado<?php echo $user->idUsuario ?>" type="checkbox" <?php echo $user->estado == 'activo' ? 'checked' : '' ?> value="activo"> </td>
 
                     <td>
-                        <form method="GET" target="frame">
+                        <button type="button" class="btn-asignar" onclick="actualizarUsuario(<?php echo $user->dni; ?>, 'modal-agregar', 'boton-actualizar-tipo', 'close')">
+                            <i class=" fas fa-pencil-alt"></i> Editar</button>
 
-
-                            <button type="button" class="boton-acciones" onclick="actualizarUsuario(<?php echo $user->dni; ?>, 'modal-agregar', 'boton-actualizar-tipo', 'close')">
-                                <i class=" fas fa-pencil-alt"></i> </button>
-
-
-                            <input type="hidden" name="id" value="<?php echo $user->idUsuario; ?>">
-                            <button type="button" class="boton-acciones borrar">
-                                <i class="fas fa-trash"></i> </button>
-                        </form>
-
+                        <input type="hidden" name="id" value="<?php echo $user->idUsuario; ?>">
+                        <button type="button" class="btn-asignar">
+                            <i class="fas fa-trash"></i> Borrar</button>
                     </td>
                 </tr>
 
@@ -86,7 +80,7 @@
             <div class="buscar" id="bus_user">
                 <label for="buscar_user">Buscar</label>
                 <input type="text" name="buscar_user" id="buscar_user" placeholder="Buscar por DNI">
-                <button type="button" id="btnBuscauser" name="btnBuscauser" onclick="buscarUsuario($('#buscar_user').val())">Buscar</button>
+                <button class="btn-asignar" type="button" id="btnBuscauser" name="btnBuscauser" onclick="buscarUsuario($('#buscar_user').val())">Buscar</button>
             </div>
 
             <div class="contenedor-usuario">
@@ -116,7 +110,8 @@
 
                     <label for="telefono">Teléfono</label>
                     <input type="number" name="telefono" id="telefono" placeholder="Ingrese teléfono">
-
+                    <label for="usuario" nombre-usu>Nombre de Usuario</label>
+                    <input type="text" name="usuario" id="usuario" placeholder="Ingrese nombre de Usuario">
                 </div>
 
                 <div class="columna-usuario">
@@ -124,17 +119,12 @@
 
 
 
-                    <label for="usuario" nombre-usu>Nombre de Usuario</label>
-                    <input type="text" name="usuario" id="usuario" placeholder="Ingrese nombre de Usuario">
+                    <label for="estado">Estado</label>
+                    <select name="estado" id="estado">
+                        <option value="activo">ACTIVO</option>
+                        <option value="inactivo">INACTIVO</option>
+                    </select>
 
-                    <label for="password">Clave de Usuario</label>
-                    <input type="password" name="password" id="password" placeholder="Ingrese Password de Usuario">
-                    <div class="estado">
-                        <select name="estado" id="estado">
-                            <option value="activo">ACTIVO</option>
-                            <option value="inactivo">INACTIVO</option>
-                        </select>
-                    </div>
 
                     <label for="rol">Rol</label>
                     <select name="rol" id="rol">

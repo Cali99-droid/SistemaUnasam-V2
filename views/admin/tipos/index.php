@@ -10,7 +10,7 @@
         </div>
 
         <div class="nuevo-grupo">
-            <button type="button" class="boton-grupo" id="boton-agregar-tipo" onclick="modal( 'modal-tipo', 'boton-agregar-tipo', 'close-tipo', 'nuevo tipo')">
+            <button type="button" class="btn-asignar" id="boton-agregar-tipo" onclick="modal( 'modal-tipo', 'boton-agregar-tipo', 'close-tipo', 'nuevo tipo')">
                 <i class="fas fa-plus-circle"></i> Agregar Tipos</button>
         </div>
     </div>
@@ -36,13 +36,13 @@
                             <form method="GET" target="frame">
 
 
-                                <button type="button" class="boton-acciones" onclick="actualizarTipo(<?php echo $tipo->id; ?>, '<?php echo $tipo->nombre; ?>')">
-                                    <i class=" fas fa-pencil-alt"></i> </button>
+                                <button type="button" class="btn-asignar" onclick="actualizarTipo(<?php echo $tipo->id; ?>, '<?php echo $tipo->nombre; ?>')">
+                                    <i class=" fas fa-pencil-alt"></i> Editar</button>
 
 
                                 <input type="hidden" name="id" value="<?php echo $tipo->id; ?>">
-                                <button type="button" class="boton-acciones borrar">
-                                    <i class="fas fa-trash"></i> </button>
+                                <button type="button" class="btn-asignar">
+                                    <i class="fas fa-trash"></i> Borrar</button>
 
 
 

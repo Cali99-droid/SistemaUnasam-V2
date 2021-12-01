@@ -13,7 +13,7 @@
         </div>
 
         <div class="nuevo-grupo">
-            <button class="boton-grupo" onclick=" modal('modal-agregar-rol', 'boton-agregar-beneficio', 'close-rol');"><i class="fas fa-plus-circle"></i> Nuevo Rol</button>
+            <button class="btn-asignar" onclick=" modal('modal-agregar-rol', 'boton-agregar-beneficio', 'close-rol');"><i class="fas fa-plus-circle"></i> Nuevo Rol</button>
         </div>
     </div>
 
@@ -32,8 +32,8 @@
                     <tr>
                         <td><?php echo $rol->id; ?></td>
                         <td><?php echo $rol->nombre; ?></td>
-                        <td> <button onclick="actualizarRol(<?php echo $rol->id;  ?>)" type="button" class="boton-acciones">
-                                <i class="fas fa-pen"></i> </button></td>
+                        <td> <button class="btn-asignar" onclick="actualizarRol(<?php echo $rol->id;  ?>)" type="button" class="boton-acciones">
+                                <i class="fas fa-pen"></i> Editar</button></td>
                     </tr>
 
                 <?php endforeach; ?>
@@ -56,13 +56,14 @@
             <span class="close close-rol">&times;</span>
 
         </div>
-        <form class="asignar-grupo" method="POST">
+        <div>
+            <form class="formulario-grupo" method="POST">
 
-            <?php include 'form.php';
-            ?>
+                <?php include 'form.php'; ?>
 
+            </form>
+        </div>
 
-        </form>
 
     </div>
 </div>

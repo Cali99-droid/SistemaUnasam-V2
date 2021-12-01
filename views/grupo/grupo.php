@@ -28,15 +28,12 @@
         <div class=" nuevo-grupo botones-grupo">
 
 
-            <button type="submit" id="boton-agregar-evento" onclick="modal('modal-evento', 'boton-agregar-evento', 'close-evento')">
-                <i class="far fa-calendar-plus"></i> Asignar Evento
-            </button>
 
-            <button type="submit" class="boton-grupo" id="boton-agregar-integrante" onclick="modal('modal-integrante', 'boton-agregar-integrante', 'close-integrante')">
+            <button type="submit" class="btn-asignar" id=" boton-agregar-integrante" onclick="modal('modal-integrante', 'boton-agregar-integrante', 'close-integrante')">
                 <i class="fas fa-user-plus"></i> Nuevo Integrante
             </button>
 
-            <button type="submit" id=" boton-agregar-grupo" onclick="modal('modal-grupo', 'boton-agregar-grupo', 'close-grupo')"">
+            <button class="btn-asignar" type="submit" id=" boton-agregar-grupo" onclick="modal('modal-grupo', 'boton-agregar-grupo', 'close-grupo')"">
             <i class=" fas fa-pencil-alt"></i> Editar Grupo
             </button>
 
@@ -64,17 +61,16 @@
                         <td><?php echo $integrante->codigo; ?></td>
                         <td><span class="<?php echo $integrante->estado == 'activo' ? 'label-ok' : 'label' ?>"><?php echo $integrante->estado; ?></span></td>
                         <td>
-                            <form method="POST" class="w-100">
+                            <form method="POST">
+
+                                <button type="button" class="btn-asignar" onclick="getIntegrante(<?php echo $integrante->idPersona ?>)">
+                                    <i class=" fas fa-pencil-alt"></i> Editar</button>
+
+                                <button type="button" class="btn-asignar">
+                                    <i class="fas fa-trash"></i> Borrar</button>
 
 
-                                <button type="button" class="boton-acciones" onclick="getIntegrante(<?php echo $integrante->idPersona ?>)">
-                                    <i class=" fas fa-pencil-alt"></i> </button>
-
-                                <button type="button" class="boton-acciones borrar">
-                                    <i class="fas fa-trash"></i> </button>
-
-
-                                <a class="enlace" href="/integrante?dni=<?php echo $integrante->dni . '&id=' . $grupo->id; ?>">Ver Mas</a>
+                                <a class="btn-asignar" href="/integrante?dni=<?php echo $integrante->dni . '&id=' . $grupo->id; ?>"><i class="fas fa-eye"></i> Ver Mas...</a>
 
                             </form>
 

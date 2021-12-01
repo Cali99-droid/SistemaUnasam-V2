@@ -33,17 +33,13 @@
                         <td><?php echo $beneficio->nombre; ?></td>
 
                         <td>
-
-
-
-                            <button type="button" class="boton-acciones" onclick="actualizarBeneficio(<?php echo $beneficio->id; ?>)">
-                                <i class=" fas fa-pencil-alt"></i> </button>
-
-
+                            <button class="btn-asignar" onclick="modalAsignar(<?php echo $beneficio->id; ?>, '<?php echo $beneficio->nombre; ?>','modal-asignar-grupo', 'boton-agregar-beneficio', 'asig')"><i class="fas fa-plus-circle"></i> Asignar</button>
+                            <button type="button" class="btn-asignar" onclick="actualizarBeneficio(<?php echo $beneficio->id; ?>)">
+                                <i class=" fas fa-pencil-alt"></i> Editar</button>
                             <input type="hidden" name="id" value="<?php echo $beneficio->id; ?>">
-                            <button type="button" class="boton-acciones borrar">
-                                <i class="fas fa-trash"></i> </button>
-                            <button onclick="modalAsignar(<?php echo $beneficio->id; ?>, '<?php echo $beneficio->nombre; ?>','modal-asignar-grupo', 'boton-agregar-beneficio', 'asig')">Asignar a Grupos</button>
+                            <button type="button" class="btn-asignar">
+                                <i class="fas fa-trash"></i> Borrar</button>
+
                         </td>
                     </tr>
                 <?php endforeach; ?>
@@ -91,13 +87,14 @@
             <span class="close asig">&times;</span>
 
         </div>
-        <form class="asignar-grupo">
+        <div>
+            <form class="formulario-grupo">
 
-            <?php include 'asignarGrupo.php';
-            ?>
+                <?php include 'asignarGrupo.php';
+                ?>
+            </form>
+        </div>
 
-
-        </form>
 
     </div>
 </div>

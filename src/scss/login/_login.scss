@@ -220,12 +220,15 @@ span.psw {
 
 /*FOTERR*/
 .footer {
-  color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 23.3rem;
   background-color: #333333;
+}
+
+.footer p {
+  color: #fff;
 }
 
 /* Change styles for span and cancel button on extra small screens */
