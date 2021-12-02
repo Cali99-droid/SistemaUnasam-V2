@@ -61,6 +61,7 @@ class AdminController
 
             $rol = new Rol($_POST);
             $res = $rol->crear();
+            
             $id = $res['id'];
             for ($i = 0; $i < sizeof($array); $i++) {
                 $ot = new Opcion_x_tipo();

@@ -135,7 +135,7 @@
 
                     <input type="hidden" name="cod" value="1" id="cod">
                     <input type="hidden" name="idusu" value='' id="idusu">
-                    <button class="" type="reset" onclick="crearUser()">Aceptar</button>
+                    <button class="" type="button" onclick="crearUser()">Aceptar</button>
 
                 </div>
 

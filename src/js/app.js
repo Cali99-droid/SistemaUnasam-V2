@@ -754,6 +754,36 @@ async function crearEvento() {
     const fecha_fin = document.getElementById('fecha_fin');
     const organizador_id = document.getElementById('idorganizador');
     const id = document.getElementById('idevento');
+    if (nombre.value.trim().length  == 0) {
+        nombre.value="";
+        nombre.focus();
+        Swal.fire({
+            icon: 'warning',
+            title: 'ADVEVERTENCIA !',
+            text: 'El nombre del evento es obligatorio'
+        })
+        return;
+    }
+    if (fecha_inicio.value.trim().length  == 0) {
+        fecha_inicio.value="";
+        fecha_inicio.focus();
+        Swal.fire({
+            icon: 'warning',
+            title: 'ADVEVERTENCIA !',
+            text: 'La fecha final es obligatoria es obligatoria'
+        })
+        return;
+    }
+    if (fecha_fin.value.trim().length  == 0) {
+        fecha_fin.value="";
+        fecha_fin.focus();
+        Swal.fire({
+            icon: 'warning',
+            title: 'ADVEVERTENCIA !',
+            text: 'La fecha final es obligatoria es obligatoria'
+        })
+        return;
+    }
     datos = new FormData();
     datos.append('nombre', nombre.value);
     datos.append('fecha_inicio', fecha_inicio.value);
@@ -1054,9 +1084,22 @@ function botonGrupo() {
 async function crearTipof() {
     const nombre_tipo = document.querySelector('#nombre_tipo');
     const id = document.querySelector('#idTipoGrupo');
+    if (nombre_tipo.value.trim().length  == 0) {
+        nombre_tipo.value="";
+        nombre_tipo.focus();
+        Swal.fire({
+            icon: 'warning',
+            title: 'ADVEVERTENCIA !',
+            text: 'El nombre es obligatorio',
+        })
+        return;
+    }
+
+
     const datos = new FormData();
     datos.append('nombre', nombre_tipo.value);
     datos.append('id', id.value);
+
     try {
         //Peticion hacia la api
         const url = 'http://localhost:3000/api/tipos';
@@ -1269,7 +1312,7 @@ async function crearBeneficio() {
     const idbeneficio = document.querySelector('#idBeneficio');
     const idres = document.querySelector('#idresolucion_x_beneficio');
     const cod = document.querySelector('#cod');
-    if (nombre.value === '') {
+    if (nombre.value.trim().length  === 0) {
         Swal.fire({
             icon: 'error',
             title: 'Error !',
@@ -1468,10 +1511,12 @@ async function crearRol() {
         valoresCheck.push(this.value);
     });
 
-    if (nombre.value == '') {
+    if (nombre.value.trim().length  == 0) {
+        nombre.value="";
+        nombre.focus();
         Swal.fire({
-            icon: 'info',
-            title: 'Error !',
+            icon: 'warning',
+            title: 'ADVEVERTENCIA !',
             text: 'El nombre es obligatorio',
         })
         return;
@@ -1526,13 +1571,120 @@ async function crearUser() {
     const email = document.getElementById('email');
     const telefono = document.getElementById('telefono');
     const usuario = document.getElementById('usuario');
-    const pass = document.getElementById('password');
+    //const pass = document.getElementById('password');
     const estado = document.getElementById('estado');
     const rol = document.getElementById('rol');
     const idUsuario = document.getElementById('idusu');
     const cod = document.getElementById('cod');
 
+    if (dni.value.trim().length  == 0) {
+        dni.value="";
+        dni.focus();
+        Swal.fire({
+            icon: 'warning',
+            title: 'ADVERTENCIA !',
+            text: 'El DNI es obligatorio'
+        })
+        return;
+    }
 
+    if (nombre.value.trim().length  == 0) {
+        nombre.value="";
+        nombre.focus();
+        Swal.fire({
+            icon: 'warning',
+            title: 'ADVERTENCIA !',
+            text: 'El nombre del usuario es obligatorio'
+        })
+        return;
+    }
+
+    if (apellido.value.trim().length  == 0) {
+        apellido.value="";
+        apellido.focus();
+        Swal.fire({
+            icon: 'warning',
+            title: 'ADVERTENCIA !',
+            text: 'El apellido del usuario es obligatorio'
+        })
+        return;
+    }
+
+    if (genero.value.trim().length  == 0) {
+        //apellido.value="";
+        //apellido.focus();
+        Swal.fire({
+            icon: 'warning',
+            title: 'ADVERTENCIA !',
+            text: 'Seleccione el genero del usuario'
+        })
+        return;
+    }
+
+    if (direccion.value.trim().length  == 0) {
+        direccion.value="";
+        direccion.focus();
+        Swal.fire({
+            icon: 'warning',
+            title: 'ADVERTENCIA !',
+            text: 'La dirección del usuario es obligatorio'
+        })
+        return;
+    }
+
+    if (email.value.trim().length  == 0) {
+        email.value="";
+        email.focus();
+        Swal.fire({
+            icon: 'warning',
+            title: 'ADVERTENCIA !',
+            text: 'El email del usuario es obligatorio'
+        })
+        return;
+    }
+
+    if (telefono.value.trim().length  == 0) {
+        telefono.value="";
+        telefono.focus();
+        Swal.fire({
+            icon: 'warning',
+            title: 'ADVERTENCIA !',
+            text: 'El teléfono del usuario es obligatorio'
+        })
+        return;
+    }
+    if (usuario.value.trim().length  == 0) {
+        usuario.value="";
+        usuario.focus();
+        Swal.fire({
+            icon: 'warning',
+            title: 'ADVERTENCIA !',
+            text: 'El nombre de usuario es obligatorio'
+        })
+        return;
+    }
+    
+    if (estado.value.trim().length  == 0) {
+        //estado.value="";
+        //estado.focus();
+        Swal.fire({
+            icon: 'warning',
+            title: 'ADVERTENCIA !',
+            text: 'El estado del usuario es obligatorio'
+        })
+        return;
+    }
+    if (rol.value.trim().length  == 0) {
+        //rol.value="";
+        //rol.focus();
+        Swal.fire({
+            icon: 'warning',
+            title: 'ADVERTENCIA !',
+            text: 'El rol del usuario es obligatorio'
+        })
+        return;
+    }
+    
 
     datos = new FormData();
     datos.append('dni', dni.value);
@@ -1541,7 +1693,7 @@ async function crearUser() {
     datos.append('genero', genero.value);
     datos.append('direccion', direccion.value);
     datos.append('usuario', usuario.value);
-    datos.append('pass', pass.value);
+    //datos.append('pass', pass.value);
     datos.append('idTipoUsu', rol.value);
     datos.append('estado', estado.value);
     datos.append('email', email.value);
@@ -1549,6 +1701,8 @@ async function crearUser() {
     datos.append('idUsuario', idUsuario.value);
     datos.append('cod', cod.value);
 
+    //console.log(datos);
+    
     try {
         //Peticion hacia la api
         const url = 'http://localhost:3000/crear-user';
@@ -1561,7 +1715,7 @@ async function crearUser() {
 
 
         if (resultado == 1) {
-
+            document.getElementById("form-user").reset();  
             Swal.fire({
                 icon: 'success',
                 title: 'MUY BIEN !',

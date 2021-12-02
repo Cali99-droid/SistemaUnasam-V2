@@ -36,4 +36,11 @@ class Opcion_x_tipo extends ActiveRecord
         $resultado = Opcion_x_tipo::consulta($query);
         return $resultado;
     }
+
+    public static function getPermisos2($id)
+    {
+        $permisos = Opcion_x_tipo::consulta('SELECT opciones_id FROM opcion_x_tipo o WHERE tipo_usuario_id = '.$id);
+
+        return $permisos;
+    }
 }

@@ -36,6 +36,7 @@ $router->get('/grupos', [GrupoController::class, 'index']);
 $router->post('/grupos', [GrupoController::class, 'index']);
 $router->get('/grupo', [GrupoController::class, 'grupo']);
 $router->post('/grupo', [GrupoController::class, 'grupo']);
+
 $router->post('/integrante/getParticipaciones', [GrupoController::class, 'getParticipaciones']);
 $router->get('/integrante', [GrupoController::class, 'integrante']);
 $router->post('/integrante/setAsistencia', [GrupoController::class, 'setAsistencia']);

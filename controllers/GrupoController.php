@@ -14,11 +14,21 @@ use Model\Integrante;
 use Model\Invitacion;
 use Model\ParticipacionAlumno;
 use Model\Semestre;
+use Model\DatosUser;
+use Model\Opcion_x_tipo;
+
+
 
 class GrupoController
 {
+    
+
     public static function index(Router $router)
     {
+        //session_start();
+        
+        //validarPermisos(4,1);
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $grupo = new Grupo($_POST['grupo']);
 

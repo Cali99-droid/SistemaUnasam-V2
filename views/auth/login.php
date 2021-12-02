@@ -28,16 +28,16 @@
                 <div class="container">
 
                     <label for="usuario"><b>Usuario</b></label>
-                    <input type="text" placeholder="Ingrese el usuario" name="usuario" class="login-text">
+                    <input type="text" placeholder="Ingrese el usuario" name="usuario" class="login-text" requerid>
 
                     <label for="psw"><b>Contraseña</b></label>
-                    <input type="password" placeholder="Ingrese su contraseña" name="pass" class="login-text">
+                    <input type="password" placeholder="Ingrese su contraseña" name="pass" class="login-text" requerid>
 
                     <button type="submit" class="boton-acceder">Acceder</button>
 
 
                     <div class="container" style="background-color:#f1f1f1">
-                        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancelar</button>
+                        <button type="submit" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancelar</button>
                         <span class="psw">Olvidaste tu <a href="/olvide">contraseña?</a></span>
                     </div>
 

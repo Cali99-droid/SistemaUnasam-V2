@@ -64,4 +64,11 @@ class DatosUser extends ActiveRecord
         $resultado = self::consulta($query);
         return $resultado;
     }
+
+    public static function getTipoUsuario($idUsuario)
+    {
+        $query='SELECT idTipoUsu FROM vista_usuarios WHERE idUsuario = '. $idUsuario;
+        $resultado = self::consulta($query);
+        return $resultado;
+    }
 }
