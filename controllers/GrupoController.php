@@ -21,13 +21,14 @@ use Model\Opcion_x_tipo;
 
 class GrupoController
 {
-    
+
 
     public static function index(Router $router)
     {
         //session_start();
-        
-        //validarPermisos(4,1);
+
+        // debuguear(substr($_SERVER['PATH_INFO'], 1));
+        // validarPermisos(1);
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $grupo = new Grupo($_POST['grupo']);

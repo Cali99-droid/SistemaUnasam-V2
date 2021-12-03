@@ -14,7 +14,6 @@ class EventoController
     public static function index(Router $router)
     {
 
-        validarPermisos(4,2);
 
         $grupos = Grupo::all();
         $eventos = Evento::all();

@@ -25,9 +25,9 @@ class Router
         session_start();
 
         // Arreglo de rutas protegidas...
-        // $rutas_protegidas = ['/admin', '/propiedades/crear', '/propiedades/actualizar', '/propiedades/eliminar', '/vendedores/crear', '/vendedores/actualizar', '/vendedores/eliminar'];
+        $rutas_protegidas = ['/inicio', '/perfil', '/grupos', '/grupo', '/integrante/getParticipaciones',         '/integrante', '/integrante/setAsistencia', '/integrante/deleteAsistencia', '/integrante/setBeneficio',   '/integrante/getBeneficio', '/integrante/updBeneficioEst', '/api/getIntegrante', '/api/setTntegrante',    '/beneficios', '/beneficios/getBeneficio', '/beneficios', '/beneficios/asignar', '/beneficios/crear',     '/eventos', '/eventos', '/nuevo-evento', '/actualizar-evento', '/crear-evento', '/crear-org', '/eventos/invitar-grupo', '/reporte', '/tipos', '/usuarios', 'admin/usuarios', '/roles', '/crear-rol', '/get-rol',  '/crear-user', '/get-user', '/semestres', '/api/tipos', '/api/alumno', '/api/crearAlumno'];
 
-        // $auth = $_SESSION['login'] ?? null;
+        $auth = $_SESSION['login'] ?? null;
 
         $currentUrl = $_SERVER['PATH_INFO'] ?? '/';
         $method = $_SERVER['REQUEST_METHOD'];
@@ -37,6 +37,15 @@ class Router
         } else {
             $fn = $this->postRoutes[$currentUrl] ?? null;
         }
+
+        // if (validarPermisos(substr($_SERVER['PATH_INFO'], 1))) {
+        //     // if (in_array($currentUrl, $rutas_protegidas) && !$auth) {
+        //     //     header('Location: /');
+        //     // }
+        // } else {
+        //     header('Location: /inicio');
+        // }
+
 
 
         if ($fn) {

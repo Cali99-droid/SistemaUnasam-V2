@@ -34,4 +34,13 @@ class Invitacion extends ActiveRecord
         $evento = Evento::find($this->evento_id);
         return $evento;
     }
+
+    public function getEstado()
+    {
+
+
+        $query = "SELECT func_EstadoInvitacion(" . $this->id . ", " . $this->fecha_hora . ") estado";
+        $estado = self::consulta($query)->fetch_object();
+        return $estado->estado;
+    }
 }

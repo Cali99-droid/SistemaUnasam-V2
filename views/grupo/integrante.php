@@ -1,4 +1,4 @@
-<?php //debuguear($integrante);
+<?php
 ?>
 <div class="contenedor-grupos">
 
@@ -59,7 +59,7 @@
                                     <td><?php echo $invitacion->fecha_hora; ?></td>
 
 
-                                    <td><a class="<?php echo $invitacion->estado == 'CUMPLIDO' ? 'label-ok' : 'label' ?>"><?php echo  $invitacion->estado; ?></a></td>
+                                    <td><a class="<?php echo $invitacion->getEstado() == 'CUMPLIDA' ? 'label-ok' : 'label' ?>"><?php echo $invitacion->getEstado();  ?></a></td>
 
                                     <td><?php echo $invitacion->observacion; ?></td>
 
@@ -211,7 +211,7 @@
                 <input type="text" name="tipo" id="tipo">
                 <input type="hidden" value="" name="idinvitacion" id="idinvitacion">
                 <input type="hidden" value="<?php echo $integrante->idAlumnoGrupo; ?>" name="idAlumnoGrupo" id="idAlumnoGrupo">
-                <button onclick="confirmarAsistencia()" class="btn-asignar">Aceptar</button>
+                <button type="reset" onclick="confirmarAsistencia()" class="btn-asignar">Aceptar</button>
             </form>
 
         </div>
@@ -243,7 +243,7 @@
                 </select>
                 <input type="hidden" id="idbeneficioXtipo">
 
-                <button id="btn_confirmarBen" class="btn-asignar">Aceptar</button>
+                <button id="btn_confirmarBen" type="reset" class="btn-asignar">Aceptar</button>
             </form>
         </div>
 

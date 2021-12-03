@@ -754,8 +754,8 @@ async function crearEvento() {
     const fecha_fin = document.getElementById('fecha_fin');
     const organizador_id = document.getElementById('idorganizador');
     const id = document.getElementById('idevento');
-    if (nombre.value.trim().length  == 0) {
-        nombre.value="";
+    if (nombre.value.trim().length == 0) {
+        nombre.value = "";
         nombre.focus();
         Swal.fire({
             icon: 'warning',
@@ -764,8 +764,8 @@ async function crearEvento() {
         })
         return;
     }
-    if (fecha_inicio.value.trim().length  == 0) {
-        fecha_inicio.value="";
+    if (fecha_inicio.value.trim().length == 0) {
+        fecha_inicio.value = "";
         fecha_inicio.focus();
         Swal.fire({
             icon: 'warning',
@@ -774,8 +774,8 @@ async function crearEvento() {
         })
         return;
     }
-    if (fecha_fin.value.trim().length  == 0) {
-        fecha_fin.value="";
+    if (fecha_fin.value.trim().length == 0) {
+        fecha_fin.value = "";
         fecha_fin.focus();
         Swal.fire({
             icon: 'warning',
@@ -909,7 +909,7 @@ function crearBoton() {
 
     const ic = document.createElement('I');
     ic.classList.add('fas');
-    ic.classList.add('fa-plus-circle');
+    ic.classList.add('fa-plus-line');
     boton.textContent = 'Quitar ';
     boton.appendChild(ic);
 
@@ -1084,8 +1084,8 @@ function botonGrupo() {
 async function crearTipof() {
     const nombre_tipo = document.querySelector('#nombre_tipo');
     const id = document.querySelector('#idTipoGrupo');
-    if (nombre_tipo.value.trim().length  == 0) {
-        nombre_tipo.value="";
+    if (nombre_tipo.value.trim().length == 0) {
+        nombre_tipo.value = "";
         nombre_tipo.focus();
         Swal.fire({
             icon: 'warning',
@@ -1312,7 +1312,7 @@ async function crearBeneficio() {
     const idbeneficio = document.querySelector('#idBeneficio');
     const idres = document.querySelector('#idresolucion_x_beneficio');
     const cod = document.querySelector('#cod');
-    if (nombre.value.trim().length  === 0) {
+    if (nombre.value.trim().length === 0) {
         Swal.fire({
             icon: 'error',
             title: 'Error !',
@@ -1511,8 +1511,8 @@ async function crearRol() {
         valoresCheck.push(this.value);
     });
 
-    if (nombre.value.trim().length  == 0) {
-        nombre.value="";
+    if (nombre.value.trim().length == 0) {
+        nombre.value = "";
         nombre.focus();
         Swal.fire({
             icon: 'warning',
@@ -1577,8 +1577,8 @@ async function crearUser() {
     const idUsuario = document.getElementById('idusu');
     const cod = document.getElementById('cod');
 
-    if (dni.value.trim().length  == 0) {
-        dni.value="";
+    if (dni.value.trim().length == 0) {
+        dni.value = "";
         dni.focus();
         Swal.fire({
             icon: 'warning',
@@ -1588,8 +1588,8 @@ async function crearUser() {
         return;
     }
 
-    if (nombre.value.trim().length  == 0) {
-        nombre.value="";
+    if (nombre.value.trim().length == 0) {
+        nombre.value = "";
         nombre.focus();
         Swal.fire({
             icon: 'warning',
@@ -1599,8 +1599,8 @@ async function crearUser() {
         return;
     }
 
-    if (apellido.value.trim().length  == 0) {
-        apellido.value="";
+    if (apellido.value.trim().length == 0) {
+        apellido.value = "";
         apellido.focus();
         Swal.fire({
             icon: 'warning',
@@ -1610,7 +1610,7 @@ async function crearUser() {
         return;
     }
 
-    if (genero.value.trim().length  == 0) {
+    if (genero.value.trim().length == 0) {
         //apellido.value="";
         //apellido.focus();
         Swal.fire({
@@ -1621,8 +1621,8 @@ async function crearUser() {
         return;
     }
 
-    if (direccion.value.trim().length  == 0) {
-        direccion.value="";
+    if (direccion.value.trim().length == 0) {
+        direccion.value = "";
         direccion.focus();
         Swal.fire({
             icon: 'warning',
@@ -1632,8 +1632,8 @@ async function crearUser() {
         return;
     }
 
-    if (email.value.trim().length  == 0) {
-        email.value="";
+    if (email.value.trim().length == 0) {
+        email.value = "";
         email.focus();
         Swal.fire({
             icon: 'warning',
@@ -1643,8 +1643,8 @@ async function crearUser() {
         return;
     }
 
-    if (telefono.value.trim().length  == 0) {
-        telefono.value="";
+    if (telefono.value.trim().length == 0) {
+        telefono.value = "";
         telefono.focus();
         Swal.fire({
             icon: 'warning',
@@ -1653,8 +1653,8 @@ async function crearUser() {
         })
         return;
     }
-    if (usuario.value.trim().length  == 0) {
-        usuario.value="";
+    if (usuario.value.trim().length == 0) {
+        usuario.value = "";
         usuario.focus();
         Swal.fire({
             icon: 'warning',
@@ -1663,8 +1663,8 @@ async function crearUser() {
         })
         return;
     }
-    
-    if (estado.value.trim().length  == 0) {
+
+    if (estado.value.trim().length == 0) {
         //estado.value="";
         //estado.focus();
         Swal.fire({
@@ -1674,7 +1674,7 @@ async function crearUser() {
         })
         return;
     }
-    if (rol.value.trim().length  == 0) {
+    if (rol.value.trim().length == 0) {
         //rol.value="";
         //rol.focus();
         Swal.fire({
@@ -1684,7 +1684,7 @@ async function crearUser() {
         })
         return;
     }
-    
+
 
     datos = new FormData();
     datos.append('dni', dni.value);
@@ -1702,7 +1702,7 @@ async function crearUser() {
     datos.append('cod', cod.value);
 
     //console.log(datos);
-    
+
     try {
         //Peticion hacia la api
         const url = 'http://localhost:3000/crear-user';
@@ -1715,7 +1715,7 @@ async function crearUser() {
 
 
         if (resultado == 1) {
-            document.getElementById("form-user").reset();  
+            document.getElementById("form-user").reset();
             Swal.fire({
                 icon: 'success',
                 title: 'MUY BIEN !',

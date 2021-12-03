@@ -63,7 +63,7 @@ group by e.id;";
         $query = "SELECT b.nombre,count(ba.estado) as cantidad from beneficio b
         inner join beneficio_x_tipo_grupo bg on b.id=bg.beneficio_id
         inner join beneficio_x_alumno ba on ba.beneficio_x_tipo_grupo_id=bg.id
-        WHERE ba.estado='PENDIENTE'
+        WHERE ba.estado='COMPLETADO'
         group by ba.estado, b.id order by nombre;";
         $resultado = self::$db->query($query);
         return $resultado;
@@ -76,7 +76,7 @@ group by e.id;";
         from beneficio b
         inner join beneficio_x_tipo_grupo bg on b.id=bg.beneficio_id
         inner join beneficio_x_alumno ba on ba.beneficio_x_tipo_grupo_id=bg.id
-        WHERE ba.estado='CUMPLIDO'
+        WHERE ba.estado='PENDIENTE'
         group by ba.estado, b.id order by nombre;";
         $resultado = self::$db->query($query);
         return $resultado;
@@ -111,7 +111,7 @@ group by e.id;";
     }
     public static function cantidad($fecha, $escuela)
     {
-       
+
         $query = "SELECT e.nombre ,date_format(fecha_Hora,'%Y-%m') Inicio,count(*) Tendencia
   from alumno a 
  inner join escuela e on e.id=a.Escuela_id
@@ -129,18 +129,18 @@ group by e.id;";
             return 0;
     }
 
-public static function muestraDash(){
- $mensaje="data.addRows([";
- foreach (self::getFechas()->fetch_all() as $fechass) {
-    $mensaje.= "['" . $fechass[1] . "'";
-    
-    $fila2 = self::getEscuelas()->fetch_all();
-    for ($i = 0; $i < self::getEscuelas()->num_rows; $i++) {
-        $mensaje.=", " . self::cantidad($fechass[1],$fila2[$i][0]);
+    public static function muestraDash()
+    {
+        $mensaje = "data.addRows([";
+        foreach (self::getFechas()->fetch_all() as $fechass) {
+            $mensaje .= "['" . $fechass[1] . "'";
+
+            $fila2 = self::getEscuelas()->fetch_all();
+            for ($i = 0; $i < self::getEscuelas()->num_rows; $i++) {
+                $mensaje .= ", " . self::cantidad($fechass[1], $fila2[$i][0]);
+            }
+            $mensaje .= "],";
+        }
+        return $mensaje . ']);';
     }
-    $mensaje.= "],";
-}
-return $mensaje.']);';
-}
-    
 }

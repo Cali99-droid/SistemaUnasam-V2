@@ -25,12 +25,13 @@ $router->post('/olvide', [LoginController::class, 'olvide']);
 $router->get('/recuperar', [LoginController::class, 'recuperar']);
 $router->post('/recuperar', [LoginController::class, 'recuperar']);
 /** Area privada   **/
-// Inicio
+//Inicio
 $router->get('/inicio', [InicioController::class, 'index']);
 
 //perfil
 $router->get('/perfil', [LoginController::class, 'perfil']);
 $router->post('/perfil', [LoginController::class, 'perfil']);
+
 //Grupos
 $router->get('/grupos', [GrupoController::class, 'index']);
 $router->post('/grupos', [GrupoController::class, 'index']);
