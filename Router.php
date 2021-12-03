@@ -38,13 +38,17 @@ class Router
             $fn = $this->postRoutes[$currentUrl] ?? null;
         }
 
-        // if (validarPermisos(substr($_SERVER['PATH_INFO'], 1))) {
-        //     // if (in_array($currentUrl, $rutas_protegidas) && !$auth) {
-        //     //     header('Location: /');
-        //     // }
-        // } else {
-        //     header('Location: /inicio');
-        // }
+
+        if (array_key_exists('PATH_INFO', $_SERVER)) {
+            if (validarPermisos($currentUrl)) {
+                // if (in_array($currentUrl, $rutas_protegidas) && !$auth) {
+                //     header('Location: /');
+                // }
+            } else {
+                header('Location: /inicio');
+            }
+        }
+
 
 
 

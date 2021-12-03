@@ -25,4 +25,15 @@ class Beneficio extends ActiveRecord
         $resultado = self::consulta($query);
         return $resultado;
     }
+
+    public function getDoc()
+    {
+        $id = $this->id;
+        $res = Resolucion_x_beneficio::where('beneficio_id', $id);
+        if ($res) {
+            return $res->doc;
+        } else {
+            return '#';
+        }
+    }
 }

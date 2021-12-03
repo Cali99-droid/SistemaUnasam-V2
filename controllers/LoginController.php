@@ -45,6 +45,7 @@ class LoginController
     }
     public static function perfil(Router $router)
     {
+        isAuth();
         $id =  $_SESSION['id'];
         $user = Usuario::find($id);
         $datos = $user->getDatos();

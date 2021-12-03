@@ -6,12 +6,13 @@ class Resolucion_x_beneficio extends ActiveRecord
 {
     //base datos
     protected static $tabla = 'resolucion_x_beneficio';
-    protected static $columnasDB = ['id', 'numero_resolucion', 'fecha_emision', 'estado', 'beneficio_id'];
+    protected static $columnasDB = ['id', 'numero_resolucion', 'fecha_emision', 'estado', 'doc', 'beneficio_id'];
 
     public $id;
     public $numero_resolucion;
     public $fecha_emision;
     public $estado;
+    public $doc;
     public $beneficio_id;
 
 
@@ -21,6 +22,7 @@ class Resolucion_x_beneficio extends ActiveRecord
         $this->numero_resolucion = $args['numero_resolucion'] ?? '';
         $this->fecha_emision = $args['fecha_emision'] ?? '';
         $this->estado = $args['estado'] ?? '';
+        $this->doc = $args['doc'] ?? '';
         $this->beneficio_id = $args['beneficio_id'] ?? '';
     }
 
@@ -30,14 +32,27 @@ class Resolucion_x_beneficio extends ActiveRecord
      */
 
     //revisa si un numero ya existe
-    public function existeResolucion()
-    {
-        $query = " SELECT * FROM " . self::$tabla . " WHERE numero = '" . $this->numero . "' LIMIT 1";
-        $resultado = self::$db->query($query);
-        if ($resultado->num_rows) {
-            self::$alertas['error'][] = 'El numero ya esta registrado';
-        }
 
-        return $resultado;
+
+    public function setDoc($doc)
+    {
+
+        if (!is_null($this->id)) {
+            //comprobar si existe el archivo
+            $this->borrarDoc();
+        }
+        //asignar al atributo de imagen el nombre de la imagen
+        if ($doc) {
+            $this->doc = $doc;
+        }
+    }
+
+    //eliminar imagen
+    public function borrarDoc()
+    {
+        $existeArchivo = file_exists(CARPETA_DOCS . $this->doc);
+        if ($existeArchivo) {
+            unlink(CARPETA_DOCS . $this->doc);
+        }
     }
 }

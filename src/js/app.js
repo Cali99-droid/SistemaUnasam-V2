@@ -248,6 +248,7 @@ async function actualizarBeneficio(id) {
             $('#fecha_emision').val(resultado['fecha_emision']);
             $('#estado').val(resultado['estado']);
             $('#idresolucion_x_beneficio').val(resultado['idres']);
+
             $('#idBeneficio').val(resultado['id']);
             $('#cod').val(2);
 
@@ -1312,6 +1313,10 @@ async function crearBeneficio() {
     const idbeneficio = document.querySelector('#idBeneficio');
     const idres = document.querySelector('#idresolucion_x_beneficio');
     const cod = document.querySelector('#cod');
+    const doc = document.querySelector('#doc');
+
+
+
     if (nombre.value.trim().length === 0) {
         Swal.fire({
             icon: 'error',
@@ -1329,6 +1334,7 @@ async function crearBeneficio() {
     datos.append("resolucion_x_beneficio[id]", idres.value)
     datos.append("beneficio[nombre]", nombre.value);
     datos.append("beneficio[id]", idbeneficio.value);
+    datos.append("doc", doc.files[0]);
     datos.append("cod", cod.value);
 
     try {
@@ -1339,6 +1345,7 @@ async function crearBeneficio() {
             body: datos
         })
         const resultado = await respuesta.json();
+        console.log(resultado);
 
 
         if (resultado) {

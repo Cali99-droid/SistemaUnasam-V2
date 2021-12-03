@@ -14,6 +14,10 @@
                 <option value="COMPLETADO">COMPLETADO</option>
                 <option value="PENDIENTE">PENDIENTE</option>
             </select>
+
+            <label for="doc">Archivo</label>
+            <input type="file" name="doc" id="doc">
+
         </div>
 
     </fieldset>

@@ -22,25 +22,47 @@ class BeneficioController
 
     public static function crear()
     {
+        //  $doc =  $_POST['doc'];
+
 
         if ($_POST['cod'] == 2) {
             //actualizando
+            $doc = $_FILES["doc"];
+            $nombreDoc = md5(uniqid(rand(), true)) . ".pdf";
+
             $beneficio = new Beneficio($_POST['beneficio']);
             $beneficio->guardar();
             $resolucion = new Resolucion_x_beneficio($_POST['resolucion_x_beneficio']);
-            $resolucion->beneficio_id = $beneficio->id;
-            if ($resolucion->id == '') {
-                $resultado = $resolucion->crear();
+            if ($resolucion->id) {
+                $ress = Resolucion_x_beneficio::find($resolucion->id);
             } else {
-                $resultado = $resolucion->guardar();
+                $ress =  new Resolucion_x_beneficio($_POST['resolucion_x_beneficio']);
+            }
+
+            $ress->beneficio_id = $beneficio->id;
+            $ress->setDoc($nombreDoc);
+            move_uploaded_file($doc["tmp_name"], CARPETA_DOCS . $nombreDoc);
+
+            if ($ress->id == '') {
+                $resultado = $ress->crear();
+            } else {
+                $resultado = $ress->guardar();
             }
         } else {
             //creando
+            $doc = $_FILES["doc"];
             $beneficio = new Beneficio($_POST['beneficio']);
             $res = $beneficio->crear();
             $id = $res['id'];
             $resolucion = new Resolucion_x_beneficio($_POST['resolucion_x_beneficio']);
             $resolucion->beneficio_id = $id;
+
+            $nombreDoc = md5(uniqid(rand(), true)) . ".pdf";
+
+            //set archivo
+            $resolucion->setDoc($nombreDoc);
+            move_uploaded_file($doc["tmp_name"], CARPETA_DOCS . $nombreDoc);
+
             $resu = $resolucion->crear();
             $resultado = $res['resultado'];
         }

@@ -39,7 +39,7 @@
                             <input type="hidden" name="id" value="<?php echo $beneficio->id; ?>">
                             <button type="button" class="btn-asignar">
                                 <i class="fas fa-trash"></i> Borrar</button>
-
+                            <a href="docs/<?php echo $beneficio->getDoc() == '#' ? '#' : $beneficio->getDoc() ?>">Ver Resolución</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>
@@ -68,7 +68,7 @@
             <span class="close">&times;</span>
 
         </div>
-        <form method="POST" class="formulario-beneficio">
+        <form method="POST" class="formulario-beneficio" enctype="multipart/form-data">
 
             <?php include_once "modBeneficio.php"; ?>
 

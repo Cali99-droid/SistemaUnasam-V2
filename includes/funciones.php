@@ -5,6 +5,8 @@ use Model\DatosUser;
 use Model\Opciones;
 
 define('CARPETA_IMAGENES', $_SERVER['DOCUMENT_ROOT'] . '/imagenes/');
+define('CARPETA_DOCS', $_SERVER['DOCUMENT_ROOT'] . '/docs/');
+
 function debuguear($variable): string
 {
     echo "<pre>";
@@ -71,43 +73,73 @@ function mostrarNotificacion($codigo)
 
     return $mensaje;
 }
-function validarPermisos($permisoIngresado)
+
+function validarPermisos($permiso)
 {
-    session_start();
-    //$idTipo = DatosUser::getTipoUsuario($_SESSION['id'])->fetch_object();
+
+    //rutas como permisos
+    $libre = ['/inicio', '/perfil', '/reporte', '/', '/logout', '/olvide', '/recuperar'];
+
+    $permisosGrupo = ['/grupos', '/grupo', '/integrante/getParticipaciones',  '/integrante', '/integrante/setAsistencia', '/integrante/deleteAsistencia', '/integrante/setBeneficio',   '/integrante/getBeneficio', '/integrante/updBeneficioEst', '/api/getIntegrante', '/api/setTntegrante'];
+
+    $permisosBeneficio = ['/beneficios', '/beneficios/getBeneficio', '/beneficios', '/beneficios/asignar', '/beneficios/crear'];
+
+    $permisosEvento = ['/eventos', '/eventos', '/nuevo-evento', '/actualizar-evento', '/crear-evento', '/crear-org', '/eventos/invitar-grupo'];
+
+    $permisosAdmin = ['/tipos', '/usuarios', 'admin/usuarios', '/roles', '/crear-rol', '/get-rol',  '/crear-user', '/get-user', '/semestres', '/api/tipos', '/api/alumno', '/api/crearAlumno'];
+
+    if (in_array($permiso, $libre)) {
+
+        return  $bandera = true;
+    }
+    isAuth();
     $id = $_SESSION['id'];
     $user = DatosUser::where('idUsuario', $id);
-    $resultado = Opcion_x_tipo::getPermisos2($user->idTipoUsu)->fetch_all();
-    $bandera = true;
-    //var_dump (($resultado['0']));
-    foreach ($resultado as $permiso) {
 
-        if ($permiso[0] == $permisoIngresado) {
-            $bandera = false;
+    $permisos = Opcion_x_tipo::getPermisos2($user->idTipoUsu)->fetch_all();
+    // $opcion = Opciones::where('nombre', $permiso);
+    $bandera = false;
+
+    if (in_array($permiso, $permisosGrupo)) {
+
+        foreach ($permisos as $permiso) {
+
+            if ($permiso[0] == 1) {
+                $bandera = true;
+            }
         }
     }
+
+    if (in_array($permiso, $permisosEvento)) {
+        foreach ($permisos as $permiso) {
+
+            if ($permiso[0] == 2) {
+                $bandera = true;
+            }
+        }
+    }
+
+    if (in_array($permiso, $permisosBeneficio)) {
+        foreach ($permisos as $permiso) {
+
+            if ($permiso[0] == 4) {
+                $bandera = true;
+            }
+        }
+    }
+    if (in_array($permiso, $permisosAdmin)) {
+        foreach ($permisos as $permiso) {
+
+            if ($permiso[0] == 5) {
+                $bandera = true;
+            }
+        }
+    }
+
+    if (in_array($permiso, $libre)) {
+
+        $bandera = true;
+    }
+
     return $bandera;
 }
-// function validarPermisos($permisoIngresado)
-// {
-//     // $idTipo = DatosUser::getTipoUsuario($_SESSION['id'])->fetch_object();
-//     $id = $_SESSION['id'];
-//     $user = DatosUser::where('idUsuario', $id);
-
-//     $resultado = Opcion_x_tipo::getPermisos2($user->idTipoUsu)->fetch_all();
-//     $opcion = Opciones::where('nombre', $permisoIngresado);
-//     $bandera = false;
-//     //var_dump (($resultado['0']));
-//     if ($permisoIngresado == 'inicio') {
-//         $bandera = true;
-//     } else {
-//         foreach ($resultado as $permiso) {
-
-//             if ($permiso[0] == $opcion->id) {
-//                 $bandera = true;
-//             }
-//         }
-//     }
-
-//     return $bandera;
-// }
