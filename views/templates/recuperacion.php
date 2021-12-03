@@ -16,7 +16,7 @@
 
 
 <input type="reset" class="btn-asignar" value="Cancelar">
-<button class="btn-asignar">
+<button type="button" class="btn-asignar">
     Aceptar
 </button>
 </input>
