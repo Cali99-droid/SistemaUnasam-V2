@@ -69,7 +69,7 @@ CREATE TABLE `alumno_x_grupo` (
   KEY `fk_ALUMNO_X_GRUPO_ALUMNO1_idx` (`alumno_id`),
   CONSTRAINT `fk_ALUMNO_X_GRUPO_ALUMNO1` FOREIGN KEY (`alumno_id`) REFERENCES `alumno` (`id`),
   CONSTRAINT `fk_ALUMNO_X_GRUPO_GRUPO_UNIVERSITARIO1` FOREIGN KEY (`grupo_universitario_id`) REFERENCES `grupo_universitario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -78,7 +78,7 @@ CREATE TABLE `alumno_x_grupo` (
 
 LOCK TABLES `alumno_x_grupo` WRITE;
 /*!40000 ALTER TABLE `alumno_x_grupo` DISABLE KEYS */;
-INSERT INTO `alumno_x_grupo` VALUES (1,'2016-05-05','activo',1,1),(2,'2018-08-05','activo',3,1),(3,'2016-10-12','activo',3,3),(4,'2017-05-05','activo',4,2),(5,'2020-05-05','activo',4,7),(6,'2019-06-15','activo',1,3),(7,'2018-08-05','activo',3,5),(8,'2016-10-12','activo',1,4),(9,'2019-05-05','activo',4,6),(10,'2020-10-25','activo',1,7),(11,'2021-11-21','activo',1,5),(12,'2021-11-21','activo',1,10),(13,'2021-11-21','activo',3,10),(14,'2021-11-21','activo',5,10),(15,'2021-11-21','activo',5,6);
+INSERT INTO `alumno_x_grupo` VALUES (1,'2016-05-05','activo',1,1),(2,'2018-08-05','activo',3,1),(3,'2016-10-12','activo',3,3),(4,'2017-05-05','activo',4,2),(5,'2020-05-05','activo',4,7),(6,'2019-06-15','activo',1,3),(7,'2018-08-05','activo',3,5),(8,'2016-10-12','activo',1,4),(9,'2019-05-05','activo',4,6),(10,'2020-10-25','activo',1,7),(11,'2021-11-21','activo',1,5),(12,'2021-11-21','activo',1,10),(13,'2021-11-21','activo',3,10),(14,'2021-11-21','activo',5,10),(15,'2021-11-21','activo',5,6),(16,'2021-12-02','activo',6,7),(17,'2021-12-02','activo',6,3);
 /*!40000 ALTER TABLE `alumno_x_grupo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -131,7 +131,7 @@ CREATE TABLE `beneficio_x_alumno` (
   CONSTRAINT `fk_BENEFICIO_X_ALUMNO_BENEFICIO_X_TIPO_GRUPO1` FOREIGN KEY (`beneficio_x_tipo_grupo_id`) REFERENCES `beneficio_x_tipo_grupo` (`id`),
   CONSTRAINT `fk_BENEFICIO_X_ALUMNO_SEMESTRE1` FOREIGN KEY (`semestre_id`) REFERENCES `semestre` (`id`),
   CONSTRAINT `fk_BENEFICIO_X_ALUMNO_USUARIO1` FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -140,7 +140,7 @@ CREATE TABLE `beneficio_x_alumno` (
 
 LOCK TABLES `beneficio_x_alumno` WRITE;
 /*!40000 ALTER TABLE `beneficio_x_alumno` DISABLE KEYS */;
-INSERT INTO `beneficio_x_alumno` VALUES (1,'COMPLETADO','2021-11-22','una desc',1,2,11,1),(2,'COMPLETADO','2021-11-22','una desc 2',1,2,11,1),(3,'COMPLETADO','2021-11-22','una desc 3',1,2,11,1),(4,'COMPLETADO','2021-11-22','una desc',1,2,11,1),(5,'COMPLETADO','2021-11-22','una desc 4',1,2,11,1),(6,'COMPLETADO','2021-11-22','una desc 5',1,2,11,1),(7,'COMPLETADO','2021-11-21','una desc 6',1,2,11,1),(8,'PENDIENTE','2021-11-21','una desc 6',1,2,11,1),(9,'COMPLETADO','2021-11-21','descripcion',1,2,12,1),(10,'COMPLETADO','2021-11-21','descripcion 2',1,2,12,1),(11,'COMPLETADO','2021-11-21','descripcion 3',1,2,12,1),(12,'COMPLETADO','2021-11-21','descripcion 4',1,2,12,1),(13,'COMPLETADO','2021-11-21','descripcion 5',1,2,12,1),(14,'COMPLETADO','2021-11-21','descripcion 6',1,2,12,1),(15,'COMPLETADO','2021-11-21','descripcion 7',1,3,12,1),(16,'COMPLETADO','2021-11-21','descripcion 7',1,3,12,1),(17,'PENDIENTE','2021-11-21','de nuevo',1,3,12,1),(18,'COMPLETADO','2021-11-21','de nuevo otra vez',1,3,12,1),(19,'COMPLETADO','2021-11-21','',1,2,12,1),(20,'PENDIENTE','2021-11-24','una desc 6',1,1,13,1),(21,'COMPLETADO','2021-11-29','por un mes',1,4,1,5);
+INSERT INTO `beneficio_x_alumno` VALUES (1,'COMPLETADO','2021-11-22','una desc',1,2,11,1),(2,'COMPLETADO','2021-11-22','una desc 2',1,2,11,1),(3,'COMPLETADO','2021-11-22','una desc 3',1,2,11,1),(4,'COMPLETADO','2021-11-22','una desc',1,2,11,1),(5,'COMPLETADO','2021-11-22','una desc 4',1,2,11,1),(6,'COMPLETADO','2021-11-22','una desc 5',1,2,11,1),(7,'COMPLETADO','2021-11-21','una desc 6',1,2,11,1),(8,'PENDIENTE','2021-11-21','una desc 6',1,2,11,1),(9,'PENDIENTE','2021-11-21','descripcion',1,2,12,1),(10,'PENDIENTE','2021-11-21','descripcion 2',1,2,12,1),(11,'PENDIENTE','2021-11-21','descripcion 3',1,2,12,1),(12,'COMPLETADO','2021-11-21','descripcion 4',1,2,12,1),(13,'COMPLETADO','2021-11-21','descripcion 5',1,2,12,1),(14,'COMPLETADO','2021-11-21','descripcion 6',1,2,12,1),(15,'COMPLETADO','2021-11-21','descripcion 7',1,3,12,1),(16,'COMPLETADO','2021-11-21','descripcion 7',1,3,12,1),(17,'PENDIENTE','2021-11-21','de nuevo',1,3,12,1),(18,'COMPLETADO','2021-11-21','de nuevo otra vez',1,3,12,1),(19,'COMPLETADO','2021-11-21','',1,2,12,1),(20,'COMPLETADO','2021-11-24','una desc 6',1,1,13,1),(21,'COMPLETADO','2021-11-29','por un mes',1,4,1,5),(22,'COMPLETADO','2021-11-30','una desc 6',1,1,13,1),(23,'COMPLETADO','2021-12-02','descripcion 7',1,3,12,2),(24,'COMPLETADO','2021-12-02','descripcion 7',1,4,12,2),(25,'COMPLETADO','2021-12-02','descripcion 7',1,8,12,2);
 /*!40000 ALTER TABLE `beneficio_x_alumno` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -161,7 +161,7 @@ CREATE TABLE `beneficio_x_tipo_grupo` (
   KEY `fk_BENEFICIO_X_TIPO_GRUPO_TIPO_GRUPO1_idx` (`tipo_grupo_id`),
   CONSTRAINT `fk_BENEFICIO_X_TIPO_GRUPO_BENEFICIO1` FOREIGN KEY (`beneficio_id`) REFERENCES `beneficio` (`id`),
   CONSTRAINT `fk_BENEFICIO_X_TIPO_GRUPO_TIPO_GRUPO1` FOREIGN KEY (`tipo_grupo_id`) REFERENCES `tipo_grupo` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -170,7 +170,7 @@ CREATE TABLE `beneficio_x_tipo_grupo` (
 
 LOCK TABLES `beneficio_x_tipo_grupo` WRITE;
 /*!40000 ALTER TABLE `beneficio_x_tipo_grupo` DISABLE KEYS */;
-INSERT INTO `beneficio_x_tipo_grupo` VALUES (1,'ACTIVO',1,2),(2,'ACTIVO',1,4),(3,'ACTIVO',2,4),(4,'ACTIVO',3,4),(5,'INACTIVO',1,1),(6,'ACTIVO',1,4),(7,'INACTIVO',1,4);
+INSERT INTO `beneficio_x_tipo_grupo` VALUES (1,'ACTIVO',1,2),(2,'ACTIVO',1,4),(3,'ACTIVO',2,4),(4,'ACTIVO',3,4),(5,'INACTIVO',1,1),(6,'ACTIVO',1,4),(7,'INACTIVO',1,4),(8,'ACTIVO',3,4);
 /*!40000 ALTER TABLE `beneficio_x_tipo_grupo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -383,7 +383,7 @@ CREATE TABLE `invitacion` (
   KEY `fk_INVITACION_GRUPO_UNIVERSITARIO1_idx` (`grupo_universitario_id`),
   CONSTRAINT `fk_INVITACION_EVENTO1` FOREIGN KEY (`evento_id`) REFERENCES `evento` (`id`),
   CONSTRAINT `fk_INVITACION_GRUPO_UNIVERSITARIO1` FOREIGN KEY (`grupo_universitario_id`) REFERENCES `grupo_universitario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -392,7 +392,7 @@ CREATE TABLE `invitacion` (
 
 LOCK TABLES `invitacion` WRITE;
 /*!40000 ALTER TABLE `invitacion` DISABLE KEYS */;
-INSERT INTO `invitacion` VALUES (4,'2021-11-16','2020-01-01','CUMPLIDO','Tipo presencial',2,1),(5,'2021-11-16','2020-01-01','CUMPLIDO','Tipo presencial',2,3),(6,'2021-11-16','2020-01-01','CUMPLIDO','Tipo presencial',3,4),(7,'2021-11-16','2020-01-01','CUMPLIDO','Tipo presencial',4,1),(8,'2021-11-16','2021-01-01','CUMPLIDO','Tipo presencial',5,3),(9,'2021-11-25','2021-11-26','PENDIENTE','NInguna obersfasg',11,3),(10,'2021-11-30','2021-11-30','PENDIENTE','obsrrvacion',6,5);
+INSERT INTO `invitacion` VALUES (4,'2021-11-16','2020-01-01','CUMPLIDO','Tipo presencial',2,1),(5,'2021-11-16','2020-01-01','CUMPLIDO','Tipo presencial',2,3),(6,'2021-11-16','2020-01-01','CUMPLIDO','Tipo presencial',3,4),(7,'2021-11-16','2020-01-01','CUMPLIDO','Tipo presencial',4,1),(8,'2021-11-16','2021-01-01','CUMPLIDO','Tipo presencial',5,3),(9,'2021-11-25','2021-11-26','PENDIENTE','NInguna obersfasg',11,3),(10,'2021-11-30','2021-11-30','PENDIENTE','obsrrvacion',6,5),(11,'2021-12-03','2021-12-12','PENDIENTE','bzdxfvc',7,5),(12,'2021-12-03','2021-12-09','PENDIENTE','tess',11,6);
 /*!40000 ALTER TABLE `invitacion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -412,7 +412,7 @@ CREATE TABLE `opcion_x_tipo` (
   KEY `fk_OPCION_X_TIPO_TIPO_USUARIO1_idx` (`tipo_usuario_id`),
   CONSTRAINT `fk_OPCION_X_TIPO_OPCIONES1` FOREIGN KEY (`opciones_id`) REFERENCES `opciones` (`id`),
   CONSTRAINT `fk_OPCION_X_TIPO_TIPO_USUARIO1` FOREIGN KEY (`tipo_usuario_id`) REFERENCES `tipo_usuario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -421,7 +421,7 @@ CREATE TABLE `opcion_x_tipo` (
 
 LOCK TABLES `opcion_x_tipo` WRITE;
 /*!40000 ALTER TABLE `opcion_x_tipo` DISABLE KEYS */;
-INSERT INTO `opcion_x_tipo` VALUES (1,1,1),(2,2,1),(3,3,1),(4,4,1),(5,5,1),(12,3,3),(13,4,3),(14,5,3),(18,1,6),(19,2,4),(20,1,5),(21,2,5),(22,1,7),(23,3,7),(24,4,7),(25,1,2),(26,2,2),(27,3,2),(28,4,2),(29,5,2);
+INSERT INTO `opcion_x_tipo` VALUES (1,1,1),(2,2,1),(3,3,1),(4,4,1),(5,5,1),(12,3,3),(13,4,3),(14,5,3),(18,1,6),(19,2,4),(20,1,5),(21,2,5),(22,1,7),(23,3,7),(24,4,7),(33,3,2),(34,4,2),(35,5,2);
 /*!40000 ALTER TABLE `opcion_x_tipo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -497,7 +497,7 @@ CREATE TABLE `participacion_alumno` (
   CONSTRAINT `fk_PARTICIPACION_ALUMNO_INVITACION1` FOREIGN KEY (`invitacion_id`) REFERENCES `invitacion` (`id`),
   CONSTRAINT `fk_PARTICIPACION_ALUMNO_SEMESTRE1` FOREIGN KEY (`semestre_id`) REFERENCES `semestre` (`id`),
   CONSTRAINT `fk_PARTICIPACION_ALUMNO_USUARIO1` FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -506,7 +506,7 @@ CREATE TABLE `participacion_alumno` (
 
 LOCK TABLES `participacion_alumno` WRITE;
 /*!40000 ALTER TABLE `participacion_alumno` DISABLE KEYS */;
-INSERT INTO `participacion_alumno` VALUES (4,'Presencial',6,1,1,4),(5,'Presencial',2,1,1,5),(7,' grupal',12,1,1,4),(10,' presencial luna',7,1,1,5),(11,' presencial a',4,1,1,6),(12,' presencial tipicos',7,1,2,8),(13,' grupal fes achs',8,1,1,4),(14,' actu 2021',8,1,1,7),(15,' grupal canto',5,1,1,6),(16,' fest ancahs grupal',3,1,1,5),(17,' tipicos',3,1,2,8),(25,' grupal',11,1,1,4),(29,'grupal 234',12,1,1,7),(31,'presencial',1,5,1,7),(32,'grupal',14,5,1,10);
+INSERT INTO `participacion_alumno` VALUES (4,'Presencial',6,1,1,4),(5,'Presencial',2,1,1,5),(10,' presencial luna',7,1,1,5),(11,' presencial a',4,1,1,6),(12,' presencial tipicos',7,1,2,8),(13,' grupal fes achs',8,1,1,4),(14,' actu 2021',8,1,1,7),(16,' fest ancahs grupal',3,1,1,5),(17,' tipicos',3,1,2,8),(25,' grupal',11,1,1,4),(29,'grupal 234',12,1,1,7),(31,'presencial',1,5,1,7),(33,'presencial',13,2,1,5),(34,'presencial luna',5,2,1,6),(36,'presencial',12,2,1,4);
 /*!40000 ALTER TABLE `participacion_alumno` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -606,7 +606,7 @@ CREATE TABLE `resolucion_x_beneficio` (
   PRIMARY KEY (`id`),
   KEY `fk_RESOLUCION_X_BENEFICIO_BENEFICIO_idx` (`beneficio_id`),
   CONSTRAINT `fk_RESOLUCION_X_BENEFICIO_BENEFICIO` FOREIGN KEY (`beneficio_id`) REFERENCES `beneficio` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -615,7 +615,7 @@ CREATE TABLE `resolucion_x_beneficio` (
 
 LOCK TABLES `resolucion_x_beneficio` WRITE;
 /*!40000 ALTER TABLE `resolucion_x_beneficio` DISABLE KEYS */;
-INSERT INTO `resolucion_x_beneficio` VALUES (1,' ','2021-11-20','COMPLETADO',16),(2,' RES_44','2021-11-21','COMPLETADO',17),(3,' RES_443','2021-12-05','COMPLETADO',18),(4,' RES_66','2021-11-25','COMPLETADO',20),(5,' RES_22 mo','2021-11-17','COMPLETADO',21),(6,' RES_55','2021-11-21','COMPLETADO',22),(7,' RES_1222','2021-11-21','COMPLETADO',23),(8,' RES_22','2021-11-21','COMPLETADO',24),(9,' RES_12345','2021-11-25','COMPLETADO',1),(10,' RES_778','2021-11-21','COMPLETADO',2),(11,' RES_58','2021-11-18','COMPLETADO',25),(12,' RES_66','2021-11-23','COMPLETADO',26),(13,' RES_33333','2021-11-24','PENDIENTE',3),(14,' RES_002','2021-11-17','COMPLETADO',28),(15,'RES_22','2021-11-18','PENDIENTE',29);
+INSERT INTO `resolucion_x_beneficio` VALUES (1,' ','2021-11-20','COMPLETADO',16),(2,' RES_44','2021-11-21','COMPLETADO',17),(3,' RES_443','2021-12-05','PENDIENTE',18),(4,' RES_66','2021-11-25','COMPLETADO',20),(5,' RES_22 mo','2021-11-17','COMPLETADO',21),(6,' RES_55','2021-11-21','COMPLETADO',22),(7,' RES_1222','2021-11-21','COMPLETADO',23),(8,' RES_22','2021-11-21','COMPLETADO',24),(9,' RES_12345','2021-11-25','COMPLETADO',1),(10,' RES_778','2021-11-21','COMPLETADO',2),(11,' RES_58','2021-11-18','COMPLETADO',25),(12,' RES_66','2021-11-23','COMPLETADO',26),(13,' RES_33333','2021-11-24','PENDIENTE',3),(14,' RES_002','2021-11-17','COMPLETADO',28),(15,'RES_22','2021-11-18','PENDIENTE',29),(16,'23rwvf','2021-12-17','PENDIENTE',10);
 /*!40000 ALTER TABLE `resolucion_x_beneficio` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -642,7 +642,7 @@ CREATE TABLE `semestre` (
 
 LOCK TABLES `semestre` WRITE;
 /*!40000 ALTER TABLE `semestre` DISABLE KEYS */;
-INSERT INTO `semestre` VALUES (1,'Sin Semestre','2000-01-01','2000-01-01','ACTIVO'),(2,'Semestre 2021','2021-01-01','2021-04-04','INACTIVO'),(3,'2022-I','2022-02-07','2022-05-22','INACTIVO');
+INSERT INTO `semestre` VALUES (1,'Sin Semestre','2000-01-01','2000-01-01','ACTIVO'),(2,'Semestre 2021','2021-01-01','2021-04-04','ACTIVO'),(3,'2022-I','2022-02-07','2022-05-22','INACTIVO');
 /*!40000 ALTER TABLE `semestre` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -721,7 +721,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1,'admin','$2y$10$uM4I8IjS0H00sERYYnRNC.2Fg40egvDbMrC.DRPGw7q0vAXvYQtM2','activo',1,0,''),(2,'ximena','123456','activo',6,0,''),(3,'claudia','12344322','activo',4,0,NULL),(4,'prueba','$2y$10$abtysFw/wF5cO3/7dMjcc.eyw7Kx0sXICXseo/GU4o8iYG3vG0c0K','activo',4,0,NULL),(5,'Maria','$2y$10$.DuQ4LWn8iGMRoDaa7xHG.GzisX.p2HYDJXc9WsgPLB1fFAFRKDuK','activo',7,0,NULL);
+INSERT INTO `usuario` VALUES (1,'admin','admin12','activo',1,0,''),(2,'ximena','$2y$10$Z6L2n.y6Y9YnRawDXXuNPuQ6JhfMfeZ0PU2AMkO6xbv69D1OFibva','activo',6,0,''),(3,'claudia','12344322','activo',4,0,NULL),(4,'prueba','$2y$10$abtysFw/wF5cO3/7dMjcc.eyw7Kx0sXICXseo/GU4o8iYG3vG0c0K','activo',4,0,NULL),(5,'Maria','$2y$10$.DuQ4LWn8iGMRoDaa7xHG.GzisX.p2HYDJXc9WsgPLB1fFAFRKDuK','activo',7,0,NULL);
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -787,6 +787,34 @@ SET character_set_client = @saved_cs_client;
 --
 -- Dumping routines for database 'app_unasam'
 --
+/*!50003 DROP FUNCTION IF EXISTS `func_EstadoInvitacion` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` FUNCTION `func_EstadoInvitacion`(idInv int, fechaHora text) RETURNS varchar(12) CHARSET utf8mb3
+    DETERMINISTIC
+begin
+if(select count(*) from participacion_alumno where invitacion_id=idInv)>0 then
+return 'CUMPLIDA';
+else
+if(timestampdiff(day,curdate(),date(fechaHora)))>0 then
+return 'VIGENTE';
+else
+return 'NO CUMPLIDA';
+END IF;
+END IF;
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP FUNCTION IF EXISTS `f_idSemestreInv` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -962,4 +990,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-11-30  0:18:19
+-- Dump completed on 2021-12-03  0:50:51
