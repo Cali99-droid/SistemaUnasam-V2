@@ -16,7 +16,8 @@
         </div>
         <div class="datos">
             <div class=" datos--general zoom">
-                <p class="info"><strong> </strong> </p>
+                <p class="info"><strong> NOTA: Las información que a continuación se visualiza, se puede manipular de acuerdo a las necesidades
+                    de la actividad del alumno en el el grupo </strong> </p>
 
             </div>
             <div class=" datos--general zoom">
@@ -103,7 +104,7 @@
                                     <td><?php echo $participacion->getEvento(); ?></td>
                                     <td><?php echo $participacion->tipo; ?></td>
 
-                                    <td><button onclick="quitarParticipacion(<?php echo $participacion->id ?>, <?php echo $integrante->idAlumnoGrupo; ?>)" class="boton-asignar"><i class="fas fa-plus-circle"></i> Quitar</button></td>
+                                    <td><button onclick="quitarParticipacion(<?php echo $participacion->id ?>, <?php echo $integrante->idAlumnoGrupo; ?>)" class="boton-asignar"><i class="fas fa-minus-circle"></i> Quitar</button></td>
 
                                 </tr>
                             <?php endforeach; ?>

@@ -910,7 +910,7 @@ function crearBoton() {
 
     const ic = document.createElement('I');
     ic.classList.add('fas');
-    ic.classList.add('fa-plus-line');
+    ic.classList.add('fa-minus-circle');
     boton.textContent = 'Quitar ';
     boton.appendChild(ic);
 
@@ -1775,6 +1775,51 @@ async function crearSemestre() {
     const fecha_final = document.querySelector('#fecha_final');
     const estado = document.querySelector('#estado');
     const id = document.querySelector('#idSemestre');
+
+    if (nombre.value.trim().length == 0) {
+        nombre.value = "";
+        nombre.focus();
+        Swal.fire({
+            icon: 'warning',
+            title: 'ADVERTENCIA !',
+            text: 'El nombre del semestre es obligatorio'
+        })
+        return;
+    }
+
+    if (fecha_inicio.value.trim().length == 0) {
+        fecha_inicio.value = "";
+        fecha_inicio.focus();
+        Swal.fire({
+            icon: 'warning',
+            title: 'ADVERTENCIA !',
+            text: 'La fecha de inicio es obligatorio'
+        })
+        return;
+    }
+
+    if (fecha_final.value.trim().length == 0) {
+        fecha_final.value = "";
+        fecha_final.focus();
+        Swal.fire({
+            icon: 'warning',
+            title: 'ADVERTENCIA !',
+            text: 'La fecha final es obligatorio'
+        })
+        return;
+    }
+
+    if (estado.value.trim().length == 0) {
+        estado.value = "";
+        estado.focus();
+        Swal.fire({
+            icon: 'warning',
+            title: 'ADVERTENCIA !',
+            text: 'Seleccione el estado'
+        })
+        return;
+    }
+
     const datos = new FormData();
     datos.append('nombre', nombre.value);
     datos.append('fecha_inicio', fecha_inicio.value);
