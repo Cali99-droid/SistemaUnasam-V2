@@ -29,7 +29,7 @@ class Router
 
         $auth = $_SESSION['login'] ?? null;
 
-        $currentUrl = $_SERVER['PATH_INFO'] ?? '/';
+        $currentUrl = getPath() ?? '/';
         $method = $_SERVER['REQUEST_METHOD'];
 
         if ($method === 'GET') {
@@ -39,17 +39,15 @@ class Router
         }
 
 
-        if (array_key_exists('PATH_INFO', $_SERVER)) {
-            if (validarPermisos($currentUrl)) {
-                // if (in_array($currentUrl, $rutas_protegidas) && !$auth) {
-                //     header('Location: /');
-                // }
-            } else {
-                header('Location: /inicio');
-            }
-        }
-
-
+        // if (array_key_exists('PATH_INFO', $_SERVER)) {
+        //     if (validarPermisos($currentUrl)) {
+        //         // if (in_array($currentUrl, $rutas_protegidas) && !$auth) {
+        //         //     header('Location: /');
+        //         // }
+        //     } else {
+        //         header('Location: /inicio');
+        //     }
+        // }
 
 
         if ($fn) {

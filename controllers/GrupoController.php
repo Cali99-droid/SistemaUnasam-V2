@@ -63,6 +63,8 @@ class GrupoController
 
     public static function grupo(Router $router)
     {
+
+
         $id = validarORedireccionar('/grupos');
         $grupo = Grupo::find($id);
         $escuelas = Integrante::consulta("SELECT * FROM escuela");

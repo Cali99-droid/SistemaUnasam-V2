@@ -13,6 +13,7 @@ class InicioController
 
     public static function index(Router $router)
     {
+
         isAuth();
         // $id =  $_SESSION['id'];
         // $user = Usuario::find($id);
