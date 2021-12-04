@@ -93,7 +93,7 @@ CREATE TABLE `beneficio` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(60) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -102,7 +102,7 @@ CREATE TABLE `beneficio` (
 
 LOCK TABLES `beneficio` WRITE;
 /*!40000 ALTER TABLE `beneficio` DISABLE KEYS */;
-INSERT INTO `beneficio` VALUES (1,'Beneficio 1 '),(2,'Beneficio 2'),(3,'  DESCUENTO CID'),(4,' Beneficio 3 '),(5,' Beneficio 4 '),(6,' Beneficio 6 '),(7,' Beneficio 7 '),(8,' Beneficio 8 '),(9,' Beneficio 9 '),(10,' Beneficio 10 '),(11,' Beneficio 11 '),(12,' Beneficio 12 '),(13,' Beneficio 13 '),(14,' Beneficio 14 '),(15,' Beneficio 15 '),(16,' Beneficio 17 '),(17,' Beneficio 18 '),(18,' Beneficio 19 '),(19,'  '),(20,' Beneficio 21 '),(21,' Beneficio 22 mo'),(22,' Beneficio 55'),(23,'  beneficio 333'),(24,' Beneficio 1 '),(25,' Beneficio 77 '),(26,' Beneficio 32 '),(27,' Beneficio nuevo '),(28,' Descuento de Matricula '),(29,'  1b'),(30,'  2b');
+INSERT INTO `beneficio` VALUES (1,'Beneficio 1 mod'),(2,'Beneficio 2'),(3,'  DESCUENTO CID'),(4,' Beneficio 3 '),(5,' Beneficio 4 '),(6,' Beneficio 6 '),(7,' Beneficio 7 '),(8,' Beneficio 8 '),(9,' Beneficio 9 '),(10,' Beneficio 10 '),(11,' Beneficio 11 '),(12,' Beneficio 12 '),(13,' Beneficio 13 '),(14,' Beneficio 14 '),(15,' Beneficio 15 '),(16,' Beneficio 17 '),(17,' Beneficio 18 '),(18,' Beneficio 19 '),(19,'  '),(20,' Beneficio 21 '),(21,' Beneficio 22 mo'),(22,' Beneficio 55'),(23,'  beneficio 333'),(24,' Beneficio 1 '),(25,' Beneficio 77 '),(26,' Beneficio 32 '),(27,' Beneficio nuevo '),(28,' Descuento de Matricula '),(29,'  1b'),(30,'  2b'),(31,'Beneficio arch'),(32,'Beneficio arch'),(33,'Beneficio nuevo arch'),(34,'Beneficio nuevo ac'),(35,'ben 111'),(36,'Beneficio tre MOD');
 /*!40000 ALTER TABLE `beneficio` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -214,7 +214,7 @@ CREATE TABLE `datos_usuario` (
   KEY `fk_DATOS_USUARIO_USUARIO1_idx` (`usuario_id`),
   CONSTRAINT `fk_DATOS_USUARIO_PERSONA1` FOREIGN KEY (`persona_id`) REFERENCES `persona` (`id`),
   CONSTRAINT `fk_DATOS_USUARIO_USUARIO1` FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -223,7 +223,7 @@ CREATE TABLE `datos_usuario` (
 
 LOCK TABLES `datos_usuario` WRITE;
 /*!40000 ALTER TABLE `datos_usuario` DISABLE KEYS */;
-INSERT INTO `datos_usuario` VALUES (1,1,1),(2,17,2),(3,18,3),(4,22,4),(5,23,5);
+INSERT INTO `datos_usuario` VALUES (1,1,1),(2,17,2),(3,18,3),(4,22,4),(5,23,5),(6,24,6);
 /*!40000 ALTER TABLE `datos_usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -279,7 +279,7 @@ CREATE TABLE `evento` (
 
 LOCK TABLES `evento` WRITE;
 /*!40000 ALTER TABLE `evento` DISABLE KEYS */;
-INSERT INTO `evento` VALUES (2,'Danza de Festividades Ancashinas','2020-01-01','2020-01-05',1),(3,'Concurso de Canto','2021-04-23','2021-04-25',2),(4,'Concurso de Actuación 2021','2021-05-13','2021-05-16',3),(5,'Concurso de Bailes Típicos','2021-06-01','2021-06-06',4),(6,'Concurso de Actuación','2021-06-15','2021-06-19',4),(7,'Evento 1','2021-11-16','2021-11-25',1),(8,'Evento uno','2021-11-16','2021-11-25',1),(9,'Evento 2 ','2021-11-16','2021-11-25',1),(10,'Evento 33333','2021-11-26','2021-11-28',1),(11,'Evento 4','2021-11-13','2021-11-27',3);
+INSERT INTO `evento` VALUES (2,'Danza de Festividades Ancashinas mod','2020-01-01','2020-01-05',1),(3,'Concurso de Canto','2021-04-23','2021-04-25',2),(4,'Concurso de Actuación 2021','2021-05-13','2021-05-16',3),(5,'Concurso de Bailes Típicos','2021-06-01','2021-06-06',4),(6,'Concurso de Actuación','2021-06-15','2021-06-19',4),(7,'Evento 1','2021-11-16','2021-11-25',1),(8,'Evento uno','2021-11-16','2021-11-25',1),(9,'Evento 2 ','2021-11-16','2021-11-25',1),(10,'Evento 33333','2021-11-26','2021-11-28',1),(11,'Evento 4','2021-11-13','2021-11-27',3);
 /*!40000 ALTER TABLE `evento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -412,7 +412,7 @@ CREATE TABLE `opcion_x_tipo` (
   KEY `fk_OPCION_X_TIPO_TIPO_USUARIO1_idx` (`tipo_usuario_id`),
   CONSTRAINT `fk_OPCION_X_TIPO_OPCIONES1` FOREIGN KEY (`opciones_id`) REFERENCES `opciones` (`id`),
   CONSTRAINT `fk_OPCION_X_TIPO_TIPO_USUARIO1` FOREIGN KEY (`tipo_usuario_id`) REFERENCES `tipo_usuario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -421,7 +421,7 @@ CREATE TABLE `opcion_x_tipo` (
 
 LOCK TABLES `opcion_x_tipo` WRITE;
 /*!40000 ALTER TABLE `opcion_x_tipo` DISABLE KEYS */;
-INSERT INTO `opcion_x_tipo` VALUES (1,1,1),(2,2,1),(3,3,1),(4,4,1),(5,5,1),(12,3,3),(13,4,3),(14,5,3),(18,1,6),(19,2,4),(20,1,5),(21,2,5),(22,1,7),(23,3,7),(24,4,7),(33,3,2),(34,4,2),(35,5,2);
+INSERT INTO `opcion_x_tipo` VALUES (1,1,1),(2,2,1),(3,3,1),(4,4,1),(5,5,1),(12,3,3),(13,4,3),(14,5,3),(18,1,6),(20,1,5),(21,2,5),(22,1,7),(23,3,7),(24,4,7),(33,3,2),(34,4,2),(35,5,2),(36,5,6),(37,2,4),(38,4,4);
 /*!40000 ALTER TABLE `opcion_x_tipo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -527,7 +527,7 @@ CREATE TABLE `persona` (
   `email` varchar(45) NOT NULL,
   `telefono` char(9) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -536,7 +536,7 @@ CREATE TABLE `persona` (
 
 LOCK TABLES `persona` WRITE;
 /*!40000 ALTER TABLE `persona` DISABLE KEYS */;
-INSERT INTO `persona` VALUES (1,'12345678','Carlos','Jhardel','Masculino','jr. direccion','jurbanom@unasam.edu.pe','963852741'),(2,'54876985','Andres Antonio','Lopez Gomez','MASCULINO','Intependencia jr. Recuay','andresLopez@unasam.edu.pe','98774585'),(3,'25458123','Joaquin','Camones Montañez','MASCULINO','Independencia av. centenario','joaquinc@unasam.edu.pe','95874598'),(4,'12548745','Adrian Aron','Shuan Montalvo','MASCULINO','Lima','aronshuan@unasam.edu.pe','95871285'),(5,'65876595','Luna Lucero','Trujillo Perez','FEMENINO','Jangas jr. alisos','trujilloperez@unasam.edu.pe','958732651'),(6,'45658795','Anneliz Dana','Lima Leon','FEMENINO','Independencia av. Universitaria','limadana@unasam.edu.pe','958784612'),(7,'12548765','Diana Katerine','Vega Perez','FEMENINO','Independencia av. Independencia','vegaperez@unasam.edu.pe','95812654'),(8,'12587965','Deysi Sofia','Cabello Rendon','FEMENINO','Yungay psj. Alonso','dcabellor@unasam.edu.pe','91254985'),(9,'32659887','Eli Sandra','Ardiles Torre','FEMENINO','Huacho','eardilest@unasam.edu.pe','958732654'),(10,'32655487','Angel','Molina Morales','MASCULINO','Lima','amolinam@unasam.edu.pe','943879852'),(11,'98653254','Mario Luis','Caceres Lopez','MASCULINO','Bolognesi','mcaceresl@unasam.edu.pe','943369852'),(12,'45987612','Luis Estefano','Lopez Torres','MASCULINO','Pomabamba','llopezt@unasam.edu.pe','98745623'),(13,'12456598','Esmeralda Eliza','Roque Lucero','FEMENINO','Independencia','eroquel@unasam.edu.pe','94875452'),(14,'12455689','Fiorella Esli','Mejia Limas','FEMENINO','Huaraz Soledad','fmegial@unasam.edu.pe','96587455'),(15,'48758956','Jorge Jose','Molina Jara','MASCULINO','Huaraz jr. Alonso','jmolinaj@unasam.edu.pe','9686865'),(16,'85746596','Julian Angel','Rosales Jara','MASCULINO','Yungay psj. Alonso','jrosalesj@unasam.edu.pe','95874585'),(17,'85957458','Ximena ','Coral','Femenino','dir 234','corellanor@unasam.edu.pe','963852444'),(18,'12344322','Claudia','briceño ','Femenino','dir','claudia@correo.com','963852744'),(19,'76565656','Jose','Lopez','Masculino','jr lodrrrrr','orellano428@gmail.com','9638527'),(20,'99887788','Jose','Lopez','Masculino','dir 234','orellano428@gmail.com','9638527'),(21,'78955455','Jose','Lopez','Masculino','duit','orellano428@correo.com','963852747'),(22,'77889999','Jose','Lopez','Masculino','duit','orellano428@gmail.com','963852777'),(23,'44556677','Maria','Coral','Femenino','duit','corellanor@unasam.edu.pe','963852747');
+INSERT INTO `persona` VALUES (1,'12345678','Carlos','Jhardel','Masculino','jr. direccion','jurbanom@unasam.edu.pe','963852741'),(2,'54876985','Andres Antonio','Lopez Gomez','MASCULINO','Intependencia jr. Recuay','andresLopez@unasam.edu.pe','98774585'),(3,'25458123','Joaquin','Camones Montañez','MASCULINO','Independencia av. centenario','joaquinc@unasam.edu.pe','95874598'),(4,'12548745','Adrian Aron','Shuan Montalvo','MASCULINO','Lima','aronshuan@unasam.edu.pe','95871285'),(5,'65876595','Luna Lucero','Trujillo Perez','FEMENINO','Jangas jr. alisos','trujilloperez@unasam.edu.pe','958732651'),(6,'45658795','Anneliz Dana','Lima Leon','FEMENINO','Independencia av. Universitaria','limadana@unasam.edu.pe','958784612'),(7,'12548765','Diana Katerine','Vega Perez','FEMENINO','Independencia av. Independencia','vegaperez@unasam.edu.pe','95812654'),(8,'12587965','Deysi Sofia','Cabello Rendon','FEMENINO','Yungay psj. Alonso','dcabellor@unasam.edu.pe','91254985'),(9,'32659887','Eli Sandra','Ardiles Torre','FEMENINO','Huacho','eardilest@unasam.edu.pe','958732654'),(10,'32655487','Angel','Molina Morales','MASCULINO','Lima','amolinam@unasam.edu.pe','943879852'),(11,'98653254','Mario Luis','Caceres Lopez','MASCULINO','Bolognesi','mcaceresl@unasam.edu.pe','943369852'),(12,'45987612','Luis Estefano','Lopez Torres','MASCULINO','Pomabamba','llopezt@unasam.edu.pe','98745623'),(13,'12456598','Esmeralda Eliza','Roque Lucero','FEMENINO','Independencia','eroquel@unasam.edu.pe','94875452'),(14,'12455689','Fiorella Esli','Mejia Limas','FEMENINO','Huaraz Soledad','fmegial@unasam.edu.pe','96587455'),(15,'48758956','Jorge Jose','Molina Jara','MASCULINO','Huaraz jr. Alonso','jmolinaj@unasam.edu.pe','9686865'),(16,'85746596','Julian Angel','Rosales Jara','MASCULINO','Yungay psj. Alonso','jrosalesj@unasam.edu.pe','95874585'),(17,'85957458','Ximena ','Coral','Femenino','dir 234','corellanor@unasam.edu.pe','963852444'),(18,'12344322','Claudia','briceño ','Femenino','dir','corellanor@unasam.edu.pe','963852744'),(19,'76565656','Jose','Lopez','Masculino','jr lodrrrrr','orellano428@gmail.com','9638527'),(20,'99887788','Jose','Lopez','Masculino','dir 234','orellano428@gmail.com','9638527'),(21,'78955455','Jose','Lopez','Masculino','duit','orellano428@correo.com','963852747'),(22,'77889999','Jose','Lopez','Masculino','duit','orellano428@gmail.com','963852777'),(23,'44556677','Maria','Coral','Femenino','duit','corellanor@unasam.edu.pe','963852747'),(24,'88888888','Juan','Jhardel','Masculino','dir 234','orellano428@gmail.com','963852747');
 /*!40000 ALTER TABLE `persona` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -602,11 +602,12 @@ CREATE TABLE `resolucion_x_beneficio` (
   `numero_resolucion` varchar(45) DEFAULT NULL,
   `fecha_emision` date DEFAULT NULL,
   `estado` varchar(45) DEFAULT NULL,
+  `doc` varchar(200) DEFAULT NULL,
   `beneficio_id` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_RESOLUCION_X_BENEFICIO_BENEFICIO_idx` (`beneficio_id`),
   CONSTRAINT `fk_RESOLUCION_X_BENEFICIO_BENEFICIO` FOREIGN KEY (`beneficio_id`) REFERENCES `beneficio` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -615,7 +616,7 @@ CREATE TABLE `resolucion_x_beneficio` (
 
 LOCK TABLES `resolucion_x_beneficio` WRITE;
 /*!40000 ALTER TABLE `resolucion_x_beneficio` DISABLE KEYS */;
-INSERT INTO `resolucion_x_beneficio` VALUES (1,' ','2021-11-20','COMPLETADO',16),(2,' RES_44','2021-11-21','COMPLETADO',17),(3,' RES_443','2021-12-05','PENDIENTE',18),(4,' RES_66','2021-11-25','COMPLETADO',20),(5,' RES_22 mo','2021-11-17','COMPLETADO',21),(6,' RES_55','2021-11-21','COMPLETADO',22),(7,' RES_1222','2021-11-21','COMPLETADO',23),(8,' RES_22','2021-11-21','COMPLETADO',24),(9,' RES_12345','2021-11-25','COMPLETADO',1),(10,' RES_778','2021-11-21','COMPLETADO',2),(11,' RES_58','2021-11-18','COMPLETADO',25),(12,' RES_66','2021-11-23','COMPLETADO',26),(13,' RES_33333','2021-11-24','PENDIENTE',3),(14,' RES_002','2021-11-17','COMPLETADO',28),(15,'RES_22','2021-11-18','PENDIENTE',29),(16,'23rwvf','2021-12-17','PENDIENTE',10);
+INSERT INTO `resolucion_x_beneficio` VALUES (1,' ','2021-11-20','COMPLETADO',NULL,16),(2,' RES_44','2021-11-21','COMPLETADO',NULL,17),(3,' RES_443','2021-12-05','PENDIENTE',NULL,18),(4,' RES_66','2021-11-25','COMPLETADO',NULL,20),(5,' RES_22 mo','2021-11-17','COMPLETADO',NULL,21),(6,' RES_55','2021-11-21','COMPLETADO',NULL,22),(7,' RES_1222','2021-11-21','COMPLETADO',NULL,23),(8,' RES_22','2021-11-21','COMPLETADO',NULL,24),(9,' RES_12345','2021-11-25','COMPLETADO','c907baf99d9c0d707c4690bd16aad81c.pdf',1),(10,' RES_778','2021-11-21','COMPLETADO',NULL,2),(11,' RES_58','2021-11-18','COMPLETADO',NULL,25),(12,' RES_66','2021-11-23','COMPLETADO',NULL,26),(13,' RES_33333','2021-11-24','PENDIENTE',NULL,3),(14,' RES_002','2021-11-17','COMPLETADO',NULL,28),(15,'RES_22','2021-11-18','PENDIENTE',NULL,29),(16,'23rwvf','2021-12-17','PENDIENTE',NULL,10),(17,'RES_22','2021-12-23','COMPLETADO','',31),(18,'RES_22','2021-12-24','COMPLETADO','6de48dd135d7fcfd60cb191c1c8fc1b7.pdf',32),(19,'RES_','2021-12-24','COMPLETADO','b53ac4031ad04ae71cc309dd1598c816.pdf',33),(20,'RES_22','2021-12-12','COMPLETADO','d66c3a93e1bea88364b314b2c6bf3ef6.pdf',34),(21,'RES_22','2021-12-15','COMPLETADO','34390b2f8848f6b039a7e45fa0aa6166.pdf',35),(22,'RES_22','2021-12-25','COMPLETADO','b9fe1afa1c15399f92a60448be5e8f0c.pdf',36),(23,'RES_22','2021-12-23','COMPLETADO','2ee6a196f6579d18ab2375f50b2354b4.pdf',4),(24,'RES_22 nuevo','2021-12-11','PENDIENTE','f2a590ba2c0205e44093fed57340fdb5.pdf',5);
 /*!40000 ALTER TABLE `resolucion_x_beneficio` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -712,7 +713,7 @@ CREATE TABLE `usuario` (
   PRIMARY KEY (`id`),
   KEY `fk_USUARIO_TIPO_USUARIO1_idx` (`tipo_usuario_id`),
   CONSTRAINT `fk_USUARIO_TIPO_USUARIO1` FOREIGN KEY (`tipo_usuario_id`) REFERENCES `tipo_usuario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -721,7 +722,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1,'admin','admin12','activo',1,0,''),(2,'ximena','$2y$10$Z6L2n.y6Y9YnRawDXXuNPuQ6JhfMfeZ0PU2AMkO6xbv69D1OFibva','activo',6,0,''),(3,'claudia','12344322','activo',4,0,NULL),(4,'prueba','$2y$10$abtysFw/wF5cO3/7dMjcc.eyw7Kx0sXICXseo/GU4o8iYG3vG0c0K','activo',4,0,NULL),(5,'Maria','$2y$10$.DuQ4LWn8iGMRoDaa7xHG.GzisX.p2HYDJXc9WsgPLB1fFAFRKDuK','activo',7,0,NULL);
+INSERT INTO `usuario` VALUES (1,'admin','$2y$10$M3Wv.OaKkEJevUZvQ1pU3OMMI08NWMj70xbQLwHgE2k2fv6gVzfm2','activo',1,0,''),(2,'ximena','$2y$10$Z6L2n.y6Y9YnRawDXXuNPuQ6JhfMfeZ0PU2AMkO6xbv69D1OFibva','activo',6,0,'61aa3abc2d46d'),(3,'claudia','12344322','activo',4,0,NULL),(4,'prueba','$2y$10$abtysFw/wF5cO3/7dMjcc.eyw7Kx0sXICXseo/GU4o8iYG3vG0c0K','activo',4,0,NULL),(5,'Maria','$2y$10$.DuQ4LWn8iGMRoDaa7xHG.GzisX.p2HYDJXc9WsgPLB1fFAFRKDuK','activo',7,0,NULL),(6,'juan','$2y$10$wE8yaKGwcPEX8pFDLEtkmuAPnERArOxiiyc4gLLdY7c0m6fd9R0Ku','activo',4,0,NULL);
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -990,4 +991,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-12-03  0:50:51
+-- Dump completed on 2021-12-03 21:14:26
