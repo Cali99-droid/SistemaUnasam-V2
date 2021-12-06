@@ -65,6 +65,27 @@ function eventListeners() {
     }
 
 
+    //busca ev
+    const buscaEv = document.getElementById('buscarEv');
+    if (buscaEv != null) {
+        buscaEv.addEventListener('keyup', buscarEv);
+    }
+
+    const buscaUser = document.getElementById('buscar-user');
+    if (buscaUser != null) {
+        buscaUser.addEventListener('keyup', buscarRegistro);
+    }
+
+    const buscaRol = document.getElementById('buscar-rol');
+    if (buscaRol != null) {
+        buscaRol.addEventListener('keyup', buscarRegistro);
+    }
+
+    const buscaSemestre = document.getElementById('buscar-semestre');
+    if (buscaSemestre != null) {
+        buscaSemestre.addEventListener('keyup', buscarRegistro);
+    }
+
 
 
 
@@ -232,7 +253,7 @@ async function actualizarBeneficio(id) {
     try {
 
         //Peticion hacia la api
-        const url = 'http://localhost:3000/beneficios/getBeneficio';
+        const url = 'https://organizaciones.jymsystemsoft.com/beneficios/getBeneficio';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -363,7 +384,7 @@ async function actualizarUsuario(dni, modal_usu, boton_agregar_usu, close_usu) {
     try {
 
         //Peticion hacia la api
-        const url = 'http://localhost:3000/get-user';
+        const url = 'https://organizaciones.jymsystemsoft.com/get-user';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: dat
@@ -469,7 +490,7 @@ async function confirmarBeneficio() {
     datos.append('estado', estado.value);
     try {
         //Peticion hacia la api
-        const url = 'http://localhost:3000/integrante/setBeneficio';
+        const url = 'https://organizaciones.jymsystemsoft.com/integrante/setBeneficio';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -519,7 +540,7 @@ async function actualizarEstadoBeneficio(id) {
     datos.append('id', id);
     try {
         //Peticion hacia la api
-        const url = 'http://localhost:3000/integrante/updBeneficioEst';
+        const url = 'https://organizaciones.jymsystemsoft.com/integrante/updBeneficioEst';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -585,7 +606,7 @@ async function asignarBeneficioGrupo() {
 
     try {
         //Peticion hacia la api
-        const url = 'http://localhost:3000/beneficios/asignar';
+        const url = 'https://organizaciones.jymsystemsoft.com/beneficios/asignar';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -645,7 +666,7 @@ async function asignarInvitacionGrupo() {
     datos.append('fecha_hora', fechaHoraInvitacion.value);
     try {
         //Peticion hacia la api
-        const url = 'http://localhost:3000//eventos/invitar-grupo';
+        const url = 'https://organizaciones.jymsystemsoft.com/eventos/invitar-grupo';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -707,7 +728,7 @@ async function crearOrganizador() {
     datos.append('contacto', contacto.value)
     try {
         //Peticion hacia la api
-        const url = 'http://localhost:3000/crear-org';
+        const url = 'https://organizaciones.jymsystemsoft.com/crear-org';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -795,7 +816,7 @@ async function crearEvento() {
 
     try {
         //Peticion hacia la api
-        const url = 'http://localhost:3000/crear-evento';
+        const url = 'https://organizaciones.jymsystemsoft.com/crear-evento';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -864,7 +885,7 @@ async function confirmarAsistencia() {
 
     try {
         //Peticion hacia la api
-        const url = 'http://localhost:3000/integrante/setAsistencia';
+        const url = 'https://organizaciones.jymsystemsoft.com/integrante/setAsistencia';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -939,7 +960,7 @@ async function mostrarParticipaciones(idAlumnoGrupo) {
     datos.append('idAlumnoGrupo', idAlumnoGrupo);
     try {
         //Peticion hacia la api
-        const url = 'http://localhost:3000/integrante/getParticipaciones';
+        const url = 'https://organizaciones.jymsystemsoft.com/integrante/getParticipaciones';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -984,7 +1005,7 @@ async function quitarParticipacion(id, idAlumno) {
     datos.append('id', id);
     try {
         //Peticion hacia la api
-        const url = 'http://localhost:3000/integrante/deleteAsistencia';
+        const url = 'https://organizaciones.jymsystemsoft.com/integrante/deleteAsistencia';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -1017,7 +1038,7 @@ async function mostrarBeneficios(idAlumnoGrupo) {
     datos.append('idAlumnoGrupo', idAlumnoGrupo);
     try {
         //Peticion hacia la api
-        const url = 'http://localhost:3000/integrante/getBeneficio';
+        const url = 'https://organizaciones.jymsystemsoft.com/integrante/getBeneficio';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -1103,7 +1124,7 @@ async function crearTipof() {
 
     try {
         //Peticion hacia la api
-        const url = 'http://localhost:3000/api/tipos';
+        const url = 'https://organizaciones.jymsystemsoft.com/api/tipos';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -1138,7 +1159,7 @@ async function crearTipof() {
 
 async function cargarTipos() {
     try {
-        const url = 'http://localhost:3000/api/tipos'
+        const url = 'https://organizaciones.jymsystemsoft.com/api/tipos'
         const resultado = await fetch(url);
         const tipos = await resultado.json();
         mostrarComboTipos(tipos);
@@ -1169,7 +1190,7 @@ async function getIntegrante(id) {
     datos.append('id', id);
     try {
         //Peticion hacia la api
-        const url = 'http://localhost:3000/api/getIntegrante';
+        const url = 'https://organizaciones.jymsystemsoft.com/api/getIntegrante';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -1226,7 +1247,7 @@ async function setIntegrante() {
     datos.append('nombre', nombre_tipo);
     try {
         //Peticion hacia la api
-        const url = 'http://localhost:3000/api/tipos';
+        const url = 'https://organizaciones.jymsystemsoft.com/api/tipos';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -1268,7 +1289,7 @@ async function buscarAlumno(dni) {
     datos.append('dni', dni);
     try {
         //Peticion hacia la api
-        const url = 'http://localhost:3000/api/alumno';
+        const url = 'https://organizaciones.jymsystemsoft.com/api/alumno';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -1281,7 +1302,7 @@ async function buscarAlumno(dni) {
             $(document).ready(function () {
 
                 $('#dni').val(resultado['dni']);
-                $('#nombre').val(resultado['nombre']);
+                $('#nombre').val(resultado['nombre'] + ' ' + resultado['apellido']);
                 $('#idCondicionEconomica').val(resultado['idCondicionEconomica']);
                 $('#descripcion').val(resultado['descripcion']);
                 $('#estado').val(resultado['estado']);
@@ -1339,7 +1360,7 @@ async function crearBeneficio() {
 
     try {
         //Peticion hacia la api
-        const url = 'http://localhost:3000/beneficios/crear';
+        const url = 'https://organizaciones.jymsystemsoft.com/beneficios/crear';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -1406,13 +1427,13 @@ async function guardarIntegrante() {
 
     try {
         //Peticion hacia la api
-        const url = 'http://localhost:3000/api/crearAlumno';
+        const url = 'https://organizaciones.jymsystemsoft.com/api/crearAlumno';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
         })
         const resultado = await respuesta.json();
-        console.log(resultado);
+        // console.log(resultado);
 
         if (resultado) {
             if (cod.value == 1) {
@@ -1465,7 +1486,7 @@ async function actualizarRol(id) {
     try {
 
         //Peticion hacia la api
-        const url = 'http://localhost:3000/get-rol';
+        const url = 'https://organizaciones.jymsystemsoft.com/get-rol';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -1536,7 +1557,7 @@ async function crearRol() {
 
     try {
         //Peticion hacia la api
-        const url = 'http://localhost:3000/crear-rol';
+        const url = 'https://organizaciones.jymsystemsoft.com/crear-rol';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -1712,7 +1733,7 @@ async function crearUser() {
 
     try {
         //Peticion hacia la api
-        const url = 'http://localhost:3000/crear-user';
+        const url = 'https://organizaciones.jymsystemsoft.com/crear-user';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -1828,7 +1849,7 @@ async function crearSemestre() {
     datos.append('id', id.value);
     try {
         //Peticion hacia la api
-        const url = 'http://localhost:3000/semestres';
+        const url = 'https://organizaciones.jymsystemsoft.com/semestres';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -1868,9 +1889,110 @@ async function crearSemestre() {
 }
 
 
+//sin api
+async function crearIntegrante() {
+    const dni = document.querySelector('#dni_s');
+    const nombre = document.querySelector('#nombre_s');
+    const apellido = document.querySelector('#apellido_s');//
+    const genero = document.querySelector('#genero_s');//
+    const direccion = document.querySelector('#direccion_s');//
+    const email = document.querySelector('#email_s');//
+    const telefono = document.querySelector('#telefono_s');//
+    const codigo = document.querySelector('#codigo_alumno_s');//
+    const escuela = document.querySelector('#idEscuela_s');// nombre_procedencia
+    const procedencia = document.querySelector('#nombre_procedencia_s');//
+    const idCondicionEconomica = document.querySelector('#idCondicionEconomica_s');
+    const descripcion = document.querySelector('#descripcion_s');
+    const estado = document.querySelector('#estado_s');
+    const condicionSocioeconomica = document.querySelector('#idCondicionEconomica_s'); //
+    //const cod = document.querySelector('#cod_s');
+    const idgrupo = document.querySelector('#idgrupo');
+    const idPersona = document.querySelector('#idPersona_s');// idPersona
+
+    const datos = new FormData();
+    datos.append('dni', dni.value);
+    datos.append('nombre', nombre.value);//
+    datos.append('apellido', apellido.value);//
+    datos.append('genero', genero.value);//
+    datos.append('direccion', direccion.value);//
+    datos.append('email', email.value);//
+    datos.append('telefono', telefono.value);//
+    datos.append('codigo', codigo.value);//
+    datos.append('idEscuela', escuela.value);//
+    datos.append('nombre_procedencia', procedencia.value);//
+    datos.append('idCondicionEconomica', idCondicionEconomica.value);
+    datos.append('condicionSocioeconomica', condicionSocioeconomica.value);//
+    datos.append('descripcion', descripcion.value);
+    datos.append('estado', estado.value);
+    datos.append('idgrupo_universitario', idgrupo.value);
+    //datos.append('cod', cod.value); //
+    datos.append('idPersona', idPersona.value);
+
+    try {
+        //Peticion hacia la api
+        const url = 'https://organizaciones.jymsystemsoft.com/integrante/crearIntegrante';
+        const respuesta = await fetch(url, {
+            method: 'POST',
+            body: datos
+        })
+        const resultado = await respuesta.json();
+
+        if (resultado) {
+            if (cod.value == 1) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'MUY BIEN !',
+                    text: 'Integrante Asignado Correctamente',
+                }).then(() => {
 
 
+                })
+            } else {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'MUY BIEN !',
+                    text: 'Integrante Actualizado Correctamente',
+                }).then(() => {
+                    numero.value = '';
+                    fecha_emision.value = '';
+                    estado.value = '';
+                    nombre.value = '';
 
+
+                })
+            }
+        } else {
+            Swal.fire({
+                icon: 'info',
+                title: 'AVISO!',
+                text: 'EL Alumno Ya Pertenece al Grupo !',
+            })
+        }
+    } catch (error) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error...',
+            text: 'Hubo un error al guardar el alumno!',
+
+        })
+    }
+}
+
+function buscarEv() {
+
+    $(document).ready(function () {
+        $(".busqueda-ev").keyup(function () {
+            _this = this;
+            // Show only matching TR, hide rest of them
+            $.each($("#mytable-ev tbody tr"), function () {
+                if ($(this).text().toLowerCase().indexOf($(_this).val().toLowerCase()) === -1)
+                    $(this).hide();
+                else
+                    $(this).show();
+            });
+        });
+    });
+}
 
 
 

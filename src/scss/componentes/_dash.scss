@@ -32,16 +32,19 @@
   }
 
   .contenido-dash {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
+    @include m.tablet {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
     .dash {
-      margin-bottom: 2rem;
-      height: 50rem;
-      padding: 3rem;
-      background-color: #fff;
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      @include m.tablet {
+        margin-bottom: 2rem;
+        height: 50rem;
+        padding: 3rem;
+        background-color: #fff;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      }
     }
   }
 }

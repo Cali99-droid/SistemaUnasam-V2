@@ -8,10 +8,10 @@
     <div class="acciones-grupo">
         <div class="buscar">
             <i class="fas fa-search"></i>
-            <input type="text" placeholder="Buscar">
+            <input type="text" placeholder="Buscar" class="busqueda" id="buscar-user">
         </div>
 
-        <div class="nuevo-grupo">
+        <div class="nuevo-grupo__mod">
             <button type="button" class="btn-asignar" id="boton-agregar-usuario" onclick="modal('modal-agregar', 'boton-agregar-usuario', 'close')">
                 <i class="fas fa-plus-circle"></i> Agregar Usuario</button>
         </div>
@@ -19,7 +19,7 @@
 
     <div class="contenedor-tabla tab-beneficio">
 
-        <table>
+        <table id="mytable">
             <thead>
                 <tr>
                     <th>Nombre</th>
@@ -31,25 +31,28 @@
                 </tr>
 
             </thead>
+            <tbody>
+                <?php foreach ($users as $user) :  ?>
+                    <tr>
+                        <td><?php echo $user->nombre . ' ' . $user->apellido ?></td>
+                        <td><?php echo $user->usuario ?></td>
+                        <td><?php echo $user->dni ?></td>
+                        <td><label for="estado<?php echo $user->idUsuario ?>">Activo </label><input id="estado<?php echo $user->idUsuario ?>" name="estado<?php echo $user->idUsuario ?>" type="checkbox" <?php echo $user->estado == 'activo' ? 'checked' : '' ?> value="activo"> </td>
 
-            <?php foreach ($users as $user) :  ?>
-                <tr>
-                    <td><?php echo $user->nombre . ' ' . $user->apellido ?></td>
-                    <td><?php echo $user->usuario ?></td>
-                    <td><?php echo $user->dni ?></td>
-                    <td><label for="estado<?php echo $user->idUsuario ?>">Activo </label><input id="estado<?php echo $user->idUsuario ?>" name="estado<?php echo $user->idUsuario ?>" type="checkbox" <?php echo $user->estado == 'activo' ? 'checked' : '' ?> value="activo"> </td>
+                        <td>
+                            <button type="button" class="btn-asignar" onclick="actualizarUsuario(<?php echo $user->dni; ?>, 'modal-agregar', 'boton-actualizar-tipo', 'close')">
+                                <i class=" fas fa-pencil-alt"></i> Editar</button>
 
-                    <td>
-                        <button type="button" class="btn-asignar" onclick="actualizarUsuario(<?php echo $user->dni; ?>, 'modal-agregar', 'boton-actualizar-tipo', 'close')">
-                            <i class=" fas fa-pencil-alt"></i> Editar</button>
+                            <input type="hidden" name="id" value="<?php echo $user->idUsuario; ?>">
+                            <button type="button" class="btn-asignar">
+                                <i class="fas fa-trash"></i> Borrar</button>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
 
-                        <input type="hidden" name="id" value="<?php echo $user->idUsuario; ?>">
-                        <button type="button" class="btn-asignar">
-                            <i class="fas fa-trash"></i> Borrar</button>
-                    </td>
-                </tr>
 
-            <?php endforeach; ?>
+
 
         </table>
 

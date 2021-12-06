@@ -9,7 +9,7 @@
             <input type="text" placeholder="Buscar" id="buscarTipo" class="busqueda">
         </div>
 
-        <div class="nuevo-grupo">
+        <div class="nuevo-grupo__mod">
             <button type="button" class="btn-asignar" id="boton-agregar-tipo" onclick="modal( 'modal-tipo', 'boton-agregar-tipo', 'close-tipo', 'nuevo tipo')">
                 <i class="fas fa-plus-circle"></i> Agregar Tipos</button>
         </div>

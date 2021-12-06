@@ -5,7 +5,7 @@ namespace Model;
 class Invitacion extends ActiveRecord
 {
     //base datos
-    protected static $tabla = 'INVITACION';
+    protected static $tabla = 'invitacion';
     protected static $columnasDB = ['id', 'fecha_registro', 'fecha_hora', 'estado', 'observacion', 'evento_id', 'grupo_universitario_id'];
 
     public $id;

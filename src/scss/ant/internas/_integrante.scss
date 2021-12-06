@@ -1,9 +1,17 @@
 .datos-integrante {
   display: grid;
   gap: 1rem;
-  grid-template-columns: 28rem 35rem 48rem;
+  grid-template-columns: repeat(1, 1fr);
   align-items: center;
   margin-top: 2.5rem;
+  @include tablet {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 28rem 35rem 48rem;
+    align-items: center;
+    margin-top: 2.5rem;
+  }
+
   .zoom {
     padding: 20px;
     background-color: #00b490;

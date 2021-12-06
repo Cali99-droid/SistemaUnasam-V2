@@ -6,10 +6,10 @@
     <div class="acciones-grupo">
         <div class="buscar">
             <i class="fas fa-search"></i>
-            <input type="text" placeholder="Buscar">
+            <input type="text" placeholder="Buscar" class="busqueda" id="buscar-semestre">
         </div>
 
-        <div class="nuevo-grupo">
+        <div class="nuevo-grupo__mod">
             <button type="button" class="btn-asignar" id="boton-agregar-semestre" onclick="modal('modal-agregar-semestre', 'boton-agregar-semestre', 'close')">
                 <i class=" fas fa-plus-circle"></i> Agregar Semestre</button>
         </div>
@@ -17,37 +17,42 @@
 
     <div class="contenedor-tabla tab-beneficio">
 
-        <table>
-            <tr>
-                <th>Nombre</th>
-                <th>Fecha de inicio</th>
-                <th>Fecha Final</th>
-                <th>Estado</th>
-                <th>Acciones</th>
-            </tr>
-
-            <?php foreach ($semestres as $semestre) :  ?>
+        <table id="mytable">
+            <thead>
                 <tr>
-                    <td><?php echo $semestre->nombre; ?></td>
-                    <td><?php echo $semestre->fecha_inicio ?></td>
-                    <td><?php echo $semestre->fecha_fin; ?></td>
-                    <td><?php echo $semestre->estado; ?></td>
-                    <td>
-
-
-                        <button type="button" class="btn-asignar" onclick="actualizarSemestre(<?php echo $semestre->id; ?>,'<?php echo $semestre->nombre; ?>', '<?php echo $semestre->fecha_inicio; ?>', '<?php echo $semestre->fecha_fin; ?>', '<?php echo $semestre->estado; ?>')">
-                            <i class=" fas fa-pencil-alt"></i> Editar</button>
-
-
-                        <input type="hidden" name="id" value="<?php echo $semestre->id; ?>">
-                        <button type="button" class="btn-asignar">
-                            <i class="fas fa-trash"></i> Borrar</button>
-
-
-
-                    </td>
+                    <th>Nombre</th>
+                    <th>Fecha de inicio</th>
+                    <th>Fecha Final</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
                 </tr>
-            <?php endforeach; ?>
+            </thead>
+
+            <tbody>
+                <?php foreach ($semestres as $semestre) :  ?>
+                    <tr>
+                        <td><?php echo $semestre->nombre; ?></td>
+                        <td><?php echo $semestre->fecha_inicio ?></td>
+                        <td><?php echo $semestre->fecha_fin; ?></td>
+                        <td><?php echo $semestre->estado; ?></td>
+                        <td>
+
+
+                            <button type="button" class="btn-asignar" onclick="actualizarSemestre(<?php echo $semestre->id; ?>,'<?php echo $semestre->nombre; ?>', '<?php echo $semestre->fecha_inicio; ?>', '<?php echo $semestre->fecha_fin; ?>', '<?php echo $semestre->estado; ?>')">
+                                <i class=" fas fa-pencil-alt"></i> Editar</button>
+
+
+                            <input type="hidden" name="id" value="<?php echo $semestre->id; ?>">
+                            <button type="button" class="btn-asignar">
+                                <i class="fas fa-trash"></i> Borrar</button>
+
+
+
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+
+            </tbody>
 
         </table>
 

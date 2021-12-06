@@ -9,7 +9,7 @@
             <input type="text" placeholder="Buscar" id="buscarBene" class="busqueda">
         </div>
 
-        <div class="nuevo-grupo">
+        <div class="nuevo-grupo__mod">
             <button type="button" class="boton-grupo" id="boton-agregar-beneficio" onclick="modal('modal-agregar-bene', 'boton-agregar-beneficio', 'close')">
                 <i class="fas fa-plus-circle"></i> Agregar Beneficio
             </button>

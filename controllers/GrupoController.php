@@ -53,11 +53,11 @@ class GrupoController
             //guarda en la base de datos
             $resultado = $grupo->crear();
         }
-
+        $escuelas = Grupo::consulta('SELECT * FROM escuela');
         $grupos = Grupo::all();
         $tipos = TipoGrupo::all();
         $grupo = new Grupo();
-        $router->render('grupo/index', ['grupos' => $grupos, 'grupo' => $grupo, 'tipos' => $tipos]);
+        $router->render('grupo/index', ['grupos' => $grupos, 'grupo' => $grupo, 'tipos' => $tipos, '$escuelas' => $escuelas]);
     }
 
 
@@ -230,5 +230,13 @@ class GrupoController
         $bena->actEstado();
         $resultado = $bena->guardar();
         echo json_encode($bena);
+    }
+
+
+    public static function crearIntegrante()
+    {
+        $alumno = new Integrante($_POST);
+        $resultado =   $alumno->asignarGrupoS();
+        echo json_encode($resultado);
     }
 }

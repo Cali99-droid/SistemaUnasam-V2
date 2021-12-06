@@ -59,6 +59,13 @@ class Integrante extends ActiveRecord
     {
         $query = "CALL p_ingresar_alumno_grupo('" . $this->codigo . "'," . $this->idPersona . ", '" . $descripcion . "',curdate(), '" . $estado . "'," . $idgrupo . ");";
         $resultado = self::consulta($query);
-        return $query;
+        return $resultado;
+    }
+
+    public function asignarGrupoS()
+    {
+        $query = "CALL insert_alumno_grupoAPI('" . $this->dni . "','" . $this->nombre . "', '" . $this->apellido . "', '" . $this->genero . "','" . $this->direccion . "','" . $this->email . "','" . $this->telefono .  "','" . $this->codigo .  "','" .  $this->idEscuela . "','" . $this->nombre_procedencia  . "','" . $this->estado . "','" . $this->idCondicionEconomica . "','" . $this->descripcion . "','" . $this->idgrupo_universitario . "');";
+        $resultado = self::consulta($query);
+        return $resultado;
     }
 }

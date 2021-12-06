@@ -27,10 +27,12 @@
 
         <div class=" nuevo-grupo botones-grupo">
 
-
+            <button class="btn-asignar" onclick="modal('modal-integrante-noapi', 'boton-agregar-integrante', 'close-integrante')">
+                <i class="fas fa-user-plus"></i> Nuevo Integrante
+            </button>
 
             <button type="submit" class="btn-asignar" id=" boton-agregar-integrante" onclick="modal('modal-integrante', 'boton-agregar-integrante', 'close-integrante')">
-                <i class="fas fa-user-plus"></i> Nuevo Integrante
+                <i class="fas fa-user-plus"></i> Nuevo Integrante API
             </button>
 
             <button class="btn-asignar" type="submit" id=" boton-agregar-grupo" onclick="modal('modal-grupo', 'boton-agregar-grupo', 'close-grupo')"">
@@ -87,23 +89,17 @@
 </div>
 </div>
 
-
 <!--ventana modal-->
 <div class="modal-agregar " id="modal-grupo">
     <div class="contenido-modal-grupo ">
         <div class="encabezado-modal">
             <h2>Editar Grupo</h2>
             <span class="close close-grupo">&times;</span>
-
         </div>
         <form class="formulario-grupo" method="POST" enctype="multipart/form-data">
-
             <?php include 'formulario.php'; ?>
-
             <input type="hidden" id="idgrupo" name="grupo[id]" value="<?php echo $grupo->id ?>">
-
             <button type="submit">Aceptar</button>
-
 
         </form>
 
@@ -120,8 +116,23 @@
 
         </div>
         <form method="POST" class="formulario-grupo">
-
             <?php include_once __DIR__ . "/../templates/modal/modIntegrante.php" ?>
+        </form>
+    </div>
+
+</div>
+
+<div class="modal-agregar" id="modal-integrante-noapi">
+
+    <div class="contenido-modal-grupo modal-usuarios">
+        <div class="encabezado-modal">
+            <h2 id="titulo_integrante">Nuevo Integrante</h2>
+            <span class=" close close-integrante">&times;</span>
+
+        </div>
+        <form method="POST" class="formulario-grupo">
+
+            <?php include_once 'form-api.php' ?>
 
 
 

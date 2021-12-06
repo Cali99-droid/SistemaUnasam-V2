@@ -10,7 +10,7 @@
             <input type="text" placeholder="Buscar">
         </div>
 
-        <div class="nuevo-grupo">
+        <div class="nuevo-grupo__mod">
             <button type="button" class="boton-grupo" id="boton-agregar-grupo" onclick="modal('modal-grupo', 'boton-agregar-grupo', 'close-grupo')">
                 <i class="fas fa-plus-circle"></i> Agregar Grupo </button>
         </div>

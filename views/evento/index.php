@@ -6,10 +6,10 @@
     <div class="acciones-grupo">
         <div class="buscar">
             <i class="fas fa-search"></i>
-            <input type="text" placeholder="Buscar">
+            <input type="text" id="buscarEv" placeholder="Buscar" class="busqueda-ev">
         </div>
 
-        <div class="nuevo-grupo">
+        <div class="nuevo-grupo__mod">
             <a href="/nuevo-evento" class="btn-asignar" id="boton-agregar-evento">
                 <i class="fas fa-plus-circle"></i> Agregar Evento
             </a>
@@ -18,7 +18,7 @@
 
     <div class="contenedor-tabla tab-beneficio">
 
-        <table>
+        <table id="mytable-ev">
             <thead>
                 <tr>
                     <th>Evento</th>

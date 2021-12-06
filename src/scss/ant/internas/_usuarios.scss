@@ -28,8 +28,12 @@
       }
 
       .contenedor-usuario {
-        @include grid(3, 1rem);
+        @include grid(1, 1rem);
         margin-top: 1rem;
+        @include tablet {
+          @include grid(3, 1rem);
+          margin-top: 1rem;
+        }
 
         .columna-usuario {
           display: flex;

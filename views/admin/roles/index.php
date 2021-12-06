@@ -9,17 +9,17 @@
     <div class="acciones-grupo">
         <div class="buscar">
             <i class="fas fa-search"></i>
-            <input type="text" placeholder="Buscar">
+            <input type="text" placeholder="Buscar" id="buscar-rol" class="busqueda">
         </div>
 
-        <div class="nuevo-grupo">
+        <div class="nuevo-grupo__mod">
             <button class="btn-asignar" onclick=" modal('modal-agregar-rol', 'boton-agregar-beneficio', 'close-rol');"><i class="fas fa-plus-circle"></i> Nuevo Rol</button>
         </div>
     </div>
 
     <div class="contenedor-tabla tab-beneficio">
 
-        <table>
+        <table id="mytable">
             <thead>
                 <tr>
                     <th>ID</th>
