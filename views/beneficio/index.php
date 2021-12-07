@@ -39,7 +39,7 @@
                             <input type="hidden" name="id" value="<?php echo $beneficio->id; ?>">
                             <button type="button" class="btn-asignar">
                                 <i class="fas fa-trash"></i> Borrar</button>
-                            <a href="docs/<?php echo $beneficio->getDoc() == '#' ? '#' : $beneficio->getDoc() ?>">Ver Resolución</a>
+                            <a href="docs/<?php echo $beneficio->getDoc() == '#' ? 'noExiste' : $beneficio->getDoc() ?>" target="_blank">Ver Resolución</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

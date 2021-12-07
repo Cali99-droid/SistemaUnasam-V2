@@ -33,11 +33,15 @@ class EventoController
     public static function crear()
     {
         $evento = new Evento($_POST);
-        if ($_POST['id'] === '') {
-            $resultado = $evento->crear();
-            $resultado = $resultado['resultado'];
+        if ($evento->validarNombre()) {
+            $resultado = false;
         } else {
-            $resultado = $evento->guardar();
+            if ($_POST['id'] === '') {
+                $resultado = $evento->crear();
+                $resultado = $resultado['resultado'];
+            } else {
+                $resultado = $evento->guardar();
+            }
         }
 
         echo json_encode($resultado);
@@ -64,8 +68,20 @@ class EventoController
 
     public static function invitar()
     {
-        $invitacion = new Invitacion($_POST);
-        $resultado = $invitacion->guardar();
+        $evento = Evento::find($_POST['evento_id']);
+        if ($evento->validarInvitacion($_POST['fecha_hora'])) {
+            $invitacion = new Invitacion($_POST);
+            $resultado = $invitacion->guardar();
+        } else {
+            $resultado['resultado'] = false;
+        }
+
         echo  json_encode($resultado);
+    }
+
+    public static function getOrgs()
+    {
+        $organizadores = Organizador::all();
+        echo  json_encode($organizadores);
     }
 }

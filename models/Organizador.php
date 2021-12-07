@@ -5,7 +5,7 @@ namespace Model;
 class Organizador extends ActiveRecord
 {
     //base datos
-    protected static $tabla = 'ORGANIZADOR';
+    protected static $tabla = 'organizador';
     protected static $columnasDB = ['id', 'nombre', 'contacto'];
 
     public $id;
@@ -36,6 +36,4 @@ class Organizador extends ActiveRecord
 
         return $resultado;
     }
-   
- 
 }

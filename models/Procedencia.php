@@ -5,19 +5,18 @@ namespace Model;
 class Procedencia extends ActiveRecord
 {
     //base datos
-    protected static $tabla = 'PROCEDENCIA';
+    protected static $tabla = 'procedencia';
     protected static $columnasDB = ['id', 'nombre'];
 
     public $id;
     public $nombre;
-    
+
 
 
     public function __construct($args = [])
     {
         $this->id = $args['id'] ?? null;
         $this->fecha_registro = $args['nombre'] ?? '';
-        
     }
 
 
@@ -36,6 +35,4 @@ class Procedencia extends ActiveRecord
 
         return $resultado;
     }*/
-   
- 
 }

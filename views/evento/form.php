@@ -19,7 +19,7 @@
                         <?php endforeach; ?>
                     </select>
 
-                    <button type="button" onclick="modal('modal-org', 'boton-agregar-integrante', 'close-org')"> <i class="fas fa-plus-circle"> </i> Nuevo Organizador</button>
+                    <button type="button" onclick="modalS('modal-org', 'boton-agregar-integrante', 'close-org')"> <i class="fas fa-plus-circle"> </i> Nuevo Organizador</button>
 
 
                 </div>

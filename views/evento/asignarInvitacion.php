@@ -1,5 +1,5 @@
-<label for="fechaHoraInvitacion">Fecha y Hora:</label>
-<input type="datetime-local" name="fechaHoraInvitacion" id="fechaHoraInvitacion">
+<label for="fechaHoraInvitacion">Fecha:</label>
+<input type="date" name="fechaHoraInvitacion" id="fechaHoraInvitacion" min="<?php echo date('Y-m-d', strtotime('+0 day')); ?>">
 
 <label for="Observacion">Observacion:</label>
 <textarea name="Observacion" id="Observacion" cols="30" rows="10"></textarea>

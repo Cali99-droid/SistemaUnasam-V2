@@ -25,7 +25,7 @@ class Router
         session_start();
 
         // Arreglo de rutas protegidas...
-        $rutas_protegidas = ['/inicio', '/perfil', '/grupos', '/grupo', '/integrante/getParticipaciones',         '/integrante', '/integrante/setAsistencia', '/integrante/deleteAsistencia', '/integrante/setBeneficio',   '/integrante/getBeneficio', '/integrante/updBeneficioEst', '/api/getIntegrante', '/api/setTntegrante',    '/beneficios', '/beneficios/getBeneficio', '/beneficios', '/beneficios/asignar', '/beneficios/crear',     '/eventos', '/eventos', '/nuevo-evento', '/actualizar-evento', '/crear-evento', '/crear-org', '/eventos/invitar-grupo', '/reporte', '/tipos', '/usuarios', 'admin/usuarios', '/roles', '/crear-rol', '/get-rol',  '/crear-user', '/get-user', '/semestres', '/api/tipos', '/api/alumno', '/api/crearAlumno'];
+        $rutas_protegidas = ['/inicio', '/perfil', '/grupos', '/grupo', '/integrante/getParticipaciones',         '/integrante', '/integrante/setAsistencia', '/integrante/deleteAsistencia', '/integrante/setBeneficio',   '/integrante/getBeneficio', '/integrante/updBeneficioEst', '/api/getIntegrante', '/api/setTntegrante',    '/beneficios', '/beneficios/getBeneficio', '/beneficios', '/beneficios/asignar', '/beneficios/crear',     '/eventos', '/eventos', '/nuevo-evento', '/actualizar-evento', '/crear-evento', '/crear-org', '/eventos/invitar-grupo', '/evento/orgs',  '/reporte', '/tipos', '/usuarios', 'admin/usuarios', '/roles', '/crear-rol', '/get-rol',  '/crear-user', '/get-user', '/semestres', '/api/tipos', '/api/alumno', '/api/crearAlumno', '/docs/noExiste'];
 
         $auth = $_SESSION['login'] ?? null;
 
@@ -39,22 +39,22 @@ class Router
         }
 
 
-        // if (array_key_exists('PATH_INFO', $_SERVER)) {
-        //     if (validarPermisos($currentUrl)) {
-        //         // if (in_array($currentUrl, $rutas_protegidas) && !$auth) {
-        //         //     header('Location: /');
-        //         // }
-        //     } else {
-        //         header('Location: /inicio');
-        //     }
-        // }
+
+        if (validarPermisos($currentUrl)) {
+            if (in_array($currentUrl, $rutas_protegidas) && !$auth) {
+                header('Location: /');
+            }
+        } else {
+            header('Location: /inicio');
+        }
+
 
 
         if ($fn) {
             // Call user fn va a llamar una función cuando no sabemos cual sera
             call_user_func($fn, $this); // This es para pasar argumentos
         } else {
-            echo "Página No Encontrada o Ruta no válida";
+            $this->renderLog('error/404', []);
         }
     }
 

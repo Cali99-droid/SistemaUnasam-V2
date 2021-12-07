@@ -27,7 +27,7 @@
 
         <div class=" nuevo-grupo botones-grupo">
 
-            <button class="btn-asignar" onclick="modal('modal-integrante-noapi', 'boton-agregar-integrante', 'close-integrante')">
+            <button class="btn-asignar" onclick="modal('modal-integrante-noapi', 'boton-agregar-integrante', 'close-integrante-s')">
                 <i class="fas fa-user-plus"></i> Nuevo Integrante
             </button>
 
@@ -127,7 +127,7 @@
     <div class="contenido-modal-grupo modal-usuarios">
         <div class="encabezado-modal">
             <h2 id="titulo_integrante">Nuevo Integrante</h2>
-            <span class=" close close-integrante">&times;</span>
+            <span class=" close close-integrante-s">&times;</span>
 
         </div>
         <form method="POST" class="formulario-grupo">

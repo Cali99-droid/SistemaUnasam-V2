@@ -29,32 +29,38 @@ class GrupoController
 
         // debuguear(substr($_SERVER['PATH_INFO'], 1));
         // validarPermisos(1);
-
+        $grupos = Grupo::all();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $grupo = new Grupo($_POST['grupo']);
 
-            /**Generar nombre unico */
-            $nombreImagen = md5(uniqid(rand(), true)) . ".jpg";
+            if (isset($_POST['codB'])) {
+                $grupos = Grupo::buscarGrupo($_POST['valor']);
+            } else {
+                $grupo = new Grupo($_POST['grupo']);
+
+                /**Generar nombre unico */
+                $nombreImagen = md5(uniqid(rand(), true)) . ".jpg";
 
 
-            /**Setear imagen */
-            if ($_FILES['grupo']['tmp_name']['imagen']) {
-                $image = Image::make($_FILES['grupo']['tmp_name']['imagen'])->fit(800, 600);
-                $grupo->setImagen($nombreImagen);
+                /**Setear imagen */
+                if ($_FILES['grupo']['tmp_name']['imagen']) {
+                    $image = Image::make($_FILES['grupo']['tmp_name']['imagen'])->fit(800, 600);
+                    $grupo->setImagen($nombreImagen);
+                }
+
+                /**Subida de Imagenes */
+                //crear carpeta
+                if (!is_dir(CARPETA_IMAGENES)) {
+                    mkdir(CARPETA_IMAGENES);
+                }
+                //guarda la imagen en el servidor
+                $image->save(CARPETA_IMAGENES . $nombreImagen);
+                //guarda en la base de datos
+                $resultado = $grupo->crear();
+                header('Location: /grupos');
             }
-
-            /**Subida de Imagenes */
-            //crear carpeta
-            if (!is_dir(CARPETA_IMAGENES)) {
-                mkdir(CARPETA_IMAGENES);
-            }
-            //guarda la imagen en el servidor
-            $image->save(CARPETA_IMAGENES . $nombreImagen);
-            //guarda en la base de datos
-            $resultado = $grupo->crear();
         }
         $escuelas = Grupo::consulta('SELECT * FROM escuela');
-        $grupos = Grupo::all();
+
         $tipos = TipoGrupo::all();
         $grupo = new Grupo();
         $router->render('grupo/index', ['grupos' => $grupos, 'grupo' => $grupo, 'tipos' => $tipos, '$escuelas' => $escuelas]);

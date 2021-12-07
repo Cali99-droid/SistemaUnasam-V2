@@ -14,7 +14,9 @@
     cursor: pointer;
   }
 }
-
+.btn_mod {
+  display: inline-block;
+}
 /*** esto pertenece a el formulario de roles 'roles/form.php' ****/
 .privilegios {
   div {

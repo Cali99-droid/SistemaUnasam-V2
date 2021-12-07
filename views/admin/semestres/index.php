@@ -34,7 +34,7 @@
                         <td><?php echo $semestre->nombre; ?></td>
                         <td><?php echo $semestre->fecha_inicio ?></td>
                         <td><?php echo $semestre->fecha_fin; ?></td>
-                        <td><?php echo $semestre->estado; ?></td>
+                        <td><?php echo $semestre->getEstadoSemestre(); ?></td>
                         <td>
 
 

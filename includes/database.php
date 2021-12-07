@@ -7,3 +7,10 @@ if (!$db) {
     echo "error de depuración: " . mysqli_connect_error();
     exit;
 }
+
+/**
+ * $db = mysqli_connect('127.0.0.1', 'jymsystemsoft_jymsoft', 'sdkj384SK34sn', 'jymsystemsoft_app_unasam');
+ * $db->set_charset("utf8");
+ * 
+ * 
+ */

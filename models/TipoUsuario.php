@@ -5,7 +5,7 @@ namespace Model;
 class TipoUsuario extends ActiveRecord
 {
     //base datos
-    protected static $tabla = 'TIPO_USUARIO';
+    protected static $tabla = 'tipo_usuario';
     protected static $columnasDB = ['id', 'nombre'];
 
     public $id;

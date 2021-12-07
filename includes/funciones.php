@@ -78,13 +78,13 @@ function validarPermisos($permiso)
 {
 
     //rutas como permisos
-    $libre = ['/inicio', '/perfil', '/reporte', '/', '/logout', '/olvide', '/recuperar'];
+    $libre = ['/inicio', '/perfil', '/reporte', '/', '/logout', '/olvide', '/recuperar', '/docs/noExiste'];
 
     $permisosGrupo = ['/grupos', '/grupo', '/integrante/getParticipaciones',  '/integrante', '/integrante/setAsistencia', '/integrante/deleteAsistencia', '/integrante/setBeneficio',   '/integrante/getBeneficio', '/integrante/updBeneficioEst', '/api/getIntegrante', '/api/setTntegrante'];
 
     $permisosBeneficio = ['/beneficios', '/beneficios/getBeneficio', '/beneficios', '/beneficios/asignar', '/beneficios/crear'];
 
-    $permisosEvento = ['/eventos', '/eventos', '/nuevo-evento', '/actualizar-evento', '/crear-evento', '/crear-org', '/eventos/invitar-grupo'];
+    $permisosEvento = ['/eventos', '/eventos', '/nuevo-evento', '/actualizar-evento', '/crear-evento', '/crear-org', '/eventos/invitar-grupo', '/evento/orgs'];
 
     $permisosAdmin = ['/tipos', '/usuarios', 'admin/usuarios', '/roles', '/crear-rol', '/get-rol',  '/crear-user', '/get-user', '/semestres', '/api/tipos', '/api/alumno', '/api/crearAlumno'];
 
@@ -96,7 +96,7 @@ function validarPermisos($permiso)
     $id = $_SESSION['id'];
     $user = DatosUser::where('idUsuario', $id);
 
-    $permisos = Opcion_x_tipo::getPermisos2($user->idTipoUsu)->fetch_all();
+    $permisos = Opcion_x_tipo::getPermisos($user->idTipoUsu);
     // $opcion = Opciones::where('nombre', $permiso);
     $bandera = false;
 
@@ -104,7 +104,7 @@ function validarPermisos($permiso)
 
         foreach ($permisos as $permiso) {
 
-            if ($permiso[0] == 1) {
+            if ($permiso->opciones_id == 1) {
                 $bandera = true;
             }
         }
@@ -113,7 +113,7 @@ function validarPermisos($permiso)
     if (in_array($permiso, $permisosEvento)) {
         foreach ($permisos as $permiso) {
 
-            if ($permiso[0] == 2) {
+            if ($permiso->opciones_id  == 2) {
                 $bandera = true;
             }
         }
@@ -122,7 +122,7 @@ function validarPermisos($permiso)
     if (in_array($permiso, $permisosBeneficio)) {
         foreach ($permisos as $permiso) {
 
-            if ($permiso[0] == 4) {
+            if ($permiso->opciones_id  == 4) {
                 $bandera = true;
             }
         }
@@ -130,7 +130,7 @@ function validarPermisos($permiso)
     if (in_array($permiso, $permisosAdmin)) {
         foreach ($permisos as $permiso) {
 
-            if ($permiso[0] == 5) {
+            if ($permiso->opciones_id  == 5) {
                 $bandera = true;
             }
         }

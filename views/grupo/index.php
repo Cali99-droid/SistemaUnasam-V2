@@ -6,8 +6,13 @@
 
     <div class="acciones-grupo">
         <div class="buscar">
-            <i class="fas fa-search"></i>
-            <input type="text" placeholder="Buscar">
+            <form method="POST">
+                <i class="fas fa-search"></i>
+                <input type="text" name="valor" placeholder="Ingrese el nombre del grupo">
+                <input type="hidden" value="2" id="codB" name="codB">
+                <button type="submit" class="btn-asignar ">Buscar</button>
+            </form>
+
         </div>
 
         <div class="nuevo-grupo__mod">

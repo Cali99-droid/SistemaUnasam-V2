@@ -8,7 +8,7 @@
 <div class="contenedor-al ">
     <div class="columna-al">
         <label for="dni">DNI</label>
-        <input type="text" name="integrante[dni]" id="dni_s">
+        <input type="text" name="integrante[dni]" id="dni_s" maxlength="8">
 
         <label for="nombre">Nombre</label>
         <input type="text" name="integrante[nombre]" id="nombre_s">
@@ -34,7 +34,7 @@
         <input type="email" name="integrante[email]" id="email_s">
 
         <label for="telefono">Teléfono</label>
-        <input type="number" name="integrante[telefono]" id="telefono_s" placeholder="Ingrese teléfono">
+        <input type="text" name="integrante[telefono]" maxlength="9" id="telefono_s" placeholder="Ingrese teléfono">
 
         <label for="codigo_alumno">Código</label>
         <input type="text" name="integrante[codigo_alumno]" id="codigo_alumno_s">
@@ -87,3 +87,13 @@
 
 
 </div>
+
+<script>
+    $('#dni_s').bind('keyup paste', function() {
+        this.value = this.value.replace(/[^0-9]/g, '');
+    });
+
+    $('#telefono_s').bind('keyup paste', function() {
+        this.value = this.value.replace(/[^0-9]/g, '');
+    });
+</script>

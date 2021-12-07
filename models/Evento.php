@@ -5,8 +5,8 @@ namespace Model;
 class Evento extends ActiveRecord
 {
     //base datos
-    protected static $tabla = 'EVENTO';
-    protected static $columnasDB = ['id', 'nombre','fecha_inicio', 'fecha_fin', 'organizador_id'];
+    protected static $tabla = 'evento';
+    protected static $columnasDB = ['id', 'nombre', 'fecha_inicio', 'fecha_fin', 'organizador_id'];
 
     public $id;
     public $nombre;
@@ -40,6 +40,29 @@ class Evento extends ActiveRecord
 
         return $resultado;
     }
-   
- 
+
+    public function validarInvitacion($fecha)
+    {
+
+        if ($fecha >= $this->fecha_inicio && $fecha <= $this->fecha_fin) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function validarNombre()
+    {
+        $nombreE = $this->nombre;
+        $ev = Evento::where('nombre', $nombreE);
+        if ($ev) {
+            if ($ev->id == $this->id) {
+                return false;
+            } else {
+                return true;
+            }
+        } else {
+            return false;
+        }
+    }
 }

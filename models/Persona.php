@@ -5,8 +5,8 @@ namespace Model;
 class Persona extends ActiveRecord
 {
     //base datos
-    protected static $tabla = 'PERSONA';
-    protected static $columnasDB = ['id', 'dni','nombre', 'apellido', 'genero', 'direccion','email', 'telefono'];
+    protected static $tabla = 'persona';
+    protected static $columnasDB = ['id', 'dni', 'nombre', 'apellido', 'genero', 'direccion', 'email', 'telefono'];
 
     public $id;
     public $dni;
@@ -46,6 +46,4 @@ class Persona extends ActiveRecord
 
         return $resultado;
     }
-   
- 
 }

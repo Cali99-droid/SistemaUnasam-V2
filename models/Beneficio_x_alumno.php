@@ -5,7 +5,7 @@ namespace Model;
 class Beneficio_x_alumno extends ActiveRecord
 {
     //base datos
-    protected static $tabla = 'BENEFICIO_X_ALUMNO';
+    protected static $tabla = 'beneficio_x_alumno';
     protected static $columnasDB = ['id', 'estado', 'fecha_efectiva', 'descripcion', 'semestre_id', 'beneficio_x_tipo_grupo_id', 'alumno_x_grupo_id', 'usuario_id'];
 
     public $id;

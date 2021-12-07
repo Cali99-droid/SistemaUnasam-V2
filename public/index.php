@@ -11,6 +11,7 @@ use Controllers\BeneficioController;
 use Controllers\EventoController;
 use Controllers\InicioController;
 use Controllers\ReporteController;
+use Controllers\PaginasController;
 
 $router = new Router();
 
@@ -66,6 +67,7 @@ $router->get('/actualizar-evento', [EventoController::class, 'v_actualizar']);
 $router->post('/crear-evento', [EventoController::class, 'crear']);
 $router->post('/crear-org', [EventoController::class, 'crearOrg']);
 $router->post('/eventos/invitar-grupo', [EventoController::class, 'invitar']);
+$router->get('/evento/orgs', [EventoController::class, 'getOrgs']);/*Nuevo*/
 //Reportes
 $router->get('/reporte', [ReporteController::class, 'index']);
 $router->post('/reporte', [ReporteController::class, 'index']);
@@ -89,5 +91,9 @@ $router->post('/api/tipos', [APIController::class, 'guardarTipo']);
 $router->get('/api/tipos', [APIController::class, 'getTipos']);
 $router->post('/api/alumno',  [APIController::class, 'getAlumno']);
 $router->post('/api/crearAlumno',  [APIController::class, 'setAlumno']);
+
+
+//no validos
+$router->get('/docs/noExiste', [PaginasController::class, 'noExiste']);
 // Comprueba y valida las rutas, que existan y les asigna las funciones del Controlador
 $router->comprobarRutas();

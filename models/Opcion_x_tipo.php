@@ -5,7 +5,7 @@ namespace Model;
 class Opcion_x_tipo extends ActiveRecord
 {
     //base datos
-    protected static $tabla = 'OPCION_X_TIPO';
+    protected static $tabla = 'opcion_x_tipo'; //OPCION_X_TIPO
     protected static $columnasDB = ['id', 'opciones_id', 'tipo_usuario_id'];
 
     public $id;
@@ -39,7 +39,7 @@ class Opcion_x_tipo extends ActiveRecord
 
     public static function getPermisos2($id)
     {
-        $permisos = Opcion_x_tipo::consulta('SELECT opciones_id FROM opcion_x_tipo o WHERE tipo_usuario_id = '.$id);
+        $permisos = Opcion_x_tipo::consulta('SELECT opciones_id FROM opcion_x_tipo o WHERE tipo_usuario_id = ' . $id);
 
         return $permisos;
     }

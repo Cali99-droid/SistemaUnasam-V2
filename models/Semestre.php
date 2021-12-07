@@ -46,4 +46,26 @@ class Semestre extends ActiveRecord
         $resultado = self::consulta($query)->fetch_assoc();
         return $resultado['valor'];
     }
+
+    public  function getEstadoSemestre()
+    {
+        $query = "SELECT func_estadoSemestre(" . $this->id . ") valor;";
+        $resultado = self::consulta($query)->fetch_assoc();
+        return $resultado['valor'];
+    }
+
+    public function validarNombre()
+    {
+        $nombreS = $this->nombre;
+        $sem = Semestre::where('nombre', $nombreS);
+        if ($sem) {
+            if ($sem->id == $this->id) {
+                return false;
+            } else {
+                return true;
+            }
+        } else {
+            return false;
+        }
+    }
 }

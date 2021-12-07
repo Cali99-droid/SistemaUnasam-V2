@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 });
-//cas
+
 
 function navegacion() {
     const contenedor = document.querySelector('.contenedor-barra');
@@ -672,7 +672,7 @@ async function asignarInvitacionGrupo() {
             body: datos
         })
         const resultado = await respuesta.json();
-        console.log(resultado);
+
 
         if (resultado.resultado) {
 
@@ -692,7 +692,7 @@ async function asignarInvitacionGrupo() {
             Swal.fire({
                 icon: 'error',
                 title: 'ERROR !',
-                text: 'Error al tratar invitar !',
+                text: 'La invitación no está en el rango de fechas del evento!',
 
             })
         }
@@ -746,7 +746,7 @@ async function crearOrganizador() {
             }).then(() => {
                 nombre.value = '';
                 contacto.value = '';
-
+                cargarOrg();
             })
 
 
@@ -766,10 +766,27 @@ async function crearOrganizador() {
 
         })
     }
-
-
+}
+async function cargarOrg() {
+    try {
+        const url = 'https://organizaciones.jymsystemsoft.com/evento/orgs'
+        const resultado = await fetch(url);
+        const orgs = await resultado.json();
+        mostrarComboOrg(orgs);
+    } catch (error) {
+        console.log(error);
+    }
 }
 
+function mostrarComboOrg(orgs) {
+    const combo = document.querySelector('#idorganizador');
+    const ult = orgs[orgs.length - 1];
+    const { id, nombre } = ult;
+    const item = document.createElement('OPTION');
+    item.value = id;
+    item.textContent = nombre;
+    combo.appendChild(item);
+}
 async function crearEvento() {
     const nombre = document.getElementById('nombre_evento');
     const fecha_inicio = document.getElementById('fecha_inicio');
@@ -842,7 +859,7 @@ async function crearEvento() {
             Swal.fire({
                 icon: 'error',
                 title: 'ERROR !',
-                text: 'Error al crear un evento!',
+                text: 'Ya existe el nombre del evento!',
 
             })
         }
@@ -1123,7 +1140,7 @@ async function crearTipof() {
     datos.append('id', id.value);
 
     try {
-        //Peticion hacia la api
+        //Peticion hacia la api https://organizaciones.jymsystemsoft.com
         const url = 'https://organizaciones.jymsystemsoft.com/api/tipos';
         const respuesta = await fetch(url, {
             method: 'POST',
@@ -1140,8 +1157,12 @@ async function crearTipof() {
                 nombre_tipo.value = '';
                 id.value = '';
                 cargarTipos();
-
-
+            })
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error...',
+                text: 'Ya existe el nombre del el tipo!',
 
             })
         }
@@ -1189,7 +1210,7 @@ async function getIntegrante(id) {
     const datos = new FormData();
     datos.append('id', id);
     try {
-        //Peticion hacia la api
+        //Peticion hacia la api 
         const url = 'https://organizaciones.jymsystemsoft.com/api/getIntegrante';
         const respuesta = await fetch(url, {
             method: 'POST',
@@ -1201,7 +1222,7 @@ async function getIntegrante(id) {
         $(document).ready(function () {
 
             $('#dni').val(resultado['dni']);
-            $('#nombre').val(resultado['nombre']);
+            $('#nombre').val(resultado['nombre'] + ' ' + resultado['apellido']);
             $('#apellido').val(resultado['apellido']);
             $('#direccion').val(resultado['direccion']);
             $('#email').val(resultado['email']);
@@ -1214,6 +1235,7 @@ async function getIntegrante(id) {
             $('#descripcion').val(resultado['descripcion']);
             $('#idPersona').val(resultado['idPersona']);
 
+            $('#cod').val(2);
             var recepcionaDatos = resultado['genero'];
             if (recepcionaDatos === 'Masculino') {
                 $("#genero option[value='Masculino'").attr("selected", true);
@@ -1227,6 +1249,8 @@ async function getIntegrante(id) {
                 $("#estado option[value='inactivo'").attr("selected", true);
             }
 
+            $('#cont_buscar').hide();
+            $('#titulo_integrante').text('Editar Integrante');
 
         });
 
@@ -1396,6 +1420,13 @@ async function crearBeneficio() {
 
                 })
             }
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error...',
+                text: 'El nombre del Beneficio ya existe!',
+
+            })
         }
     } catch (error) {
         Swal.fire({
@@ -1433,7 +1464,7 @@ async function guardarIntegrante() {
             body: datos
         })
         const resultado = await respuesta.json();
-        // console.log(resultado);
+        console.log(resultado);
 
         if (resultado) {
             if (cod.value == 1) {
@@ -1470,7 +1501,7 @@ async function guardarIntegrante() {
         Swal.fire({
             icon: 'error',
             title: 'Error...',
-            text: 'Hubo un error al guardar el Beneficio!',
+            text: 'Hubo un error al guardar el integrante!',
 
         })
     }
@@ -1574,14 +1605,21 @@ async function crearRol() {
                 text: 'Rol Creado Correctamente',
             })
 
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error...',
+                text: 'Ya existe el nombre del Rol!',
+
+            })
         }
     } catch (error) {
-        // Swal.fire({
-        //     icon: 'error',
-        //     title: 'Error...',
-        //     text: 'Hubo un error al guardar el Beneficio!',
+        Swal.fire({
+            icon: 'error',
+            title: 'Error...',
+            text: 'Hubo un error al guardar el Rol!',
 
-        // })
+        })
     }
 
 
@@ -1874,7 +1912,7 @@ async function crearSemestre() {
             Swal.fire({
                 icon: 'error',
                 title: 'ERORR ',
-                text: 'El semestre no fue registrado!',
+                text: 'Ya existe el nombre del semestre !',
             })
         }
     } catch (error) {

@@ -30,10 +30,25 @@ class Beneficio extends ActiveRecord
     {
         $id = $this->id;
         $res = Resolucion_x_beneficio::where('beneficio_id', $id);
-        if ($res) {
+        if (isset($res->doc)) {
             return $res->doc;
         } else {
             return '#';
+        }
+    }
+
+    public function validarNombre()
+    {
+        $nombreB = $this->nombre;
+        $ben = Beneficio::where('nombre', $nombreB);
+        if ($ben) {
+            if ($ben->id == $this->id) {
+                return false;
+            } else {
+                return true;
+            }
+        } else {
+            return false;
         }
     }
 }

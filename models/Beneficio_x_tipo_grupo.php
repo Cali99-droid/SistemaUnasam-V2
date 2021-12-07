@@ -5,7 +5,7 @@ namespace Model;
 class Beneficio_x_tipo_grupo extends ActiveRecord
 {
     //base datos
-    protected static $tabla = 'BENEFICIO_X_TIPO_GRUPO';
+    protected static $tabla = 'beneficio_x_tipo_grupo'; //BENEFICIO_X_TIPO_GRUPO
     protected static $columnasDB = ['id', 'estado', 'beneficio_id', 'tipo_grupo_id'];
 
     public $id;

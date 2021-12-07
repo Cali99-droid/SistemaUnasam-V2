@@ -19,11 +19,16 @@ class APIController
     {
         $id = $_POST['id'];
         $tipo = new TipoGrupo($_POST);
-        if ($id) {
-            $resultado = $tipo->actualizar();
+
+        if ($tipo->validarNombre()) {
+            $resultado = false;
         } else {
-            $resultado = $tipo->crear();
-            $resultado =  $resultado['resultado'];
+            if ($id) {
+                $resultado = $tipo->actualizar();
+            } else {
+                $resultado = $tipo->crear();
+                $resultado =  $resultado['resultado'];
+            }
         }
 
 
@@ -42,33 +47,50 @@ class APIController
     public static  function setAlumno()
     {
 
-        /*** Primero se debe buscar en la bd local
-         *   si no existe se buscar en la API
-         *   Si el alumno no existe en la bd local
-         *   se deberá crear ese alumno y asignar los nuevos datos de este
-         *   en caso exista se deberá solo asignar el dni al grupo
-         */
-
-        $dni = $_POST['dni'];
-        $idgrupo = $_POST['idgrupo'];
-        $descripcion = $_POST['descripcion'];
-        $estado = $_POST['estado'];
-        $alumno = Integrante::where('dni', $dni);
-        $query = 'SELECT * FROM alumno_x_grupo WHERE grupo_universitario_id = ' . $idgrupo . ' AND alumno_id = ' . $alumno->idAlumno;
-        $res = AlumnoGrupo::consulta($query);
-        $respuesta = $res->fetch_assoc();
-
-        //validar existencia
-        if (!is_null($respuesta)) {
-            $resultado = false;
-        } else {
-            //ejecutar proce
-
-            $res = $alumno->asignarGrupo($descripcion, $estado, $idgrupo);
-            if ($res) {
+        if ($_POST['cod'] == 2) {
+            $dni = $_POST['dni'];
+            $idgrupo = $_POST['idgrupo'];
+            $descripcion = $_POST['descripcion'];
+            $idCondicionEconomica = $_POST['idCondicionEconomica'];
+            $estado = $_POST['estado'];
+            $alumno = Integrante::where('dni', $dni);
+            $res = $alumno->updateGrupo($descripcion, $estado, $idgrupo, $idCondicionEconomica);
+            if ($res->valor == 1) {
                 $resultado = true;
             }
+        } else {
+            /*** Primero se debe buscar en la bd local
+             *   si no existe se buscar en la API
+             *   Si el alumno no existe en la bd local
+             *   se deberá crear ese alumno y asignar los nuevos datos de este
+             *   en caso exista se deberá solo asignar el dni al grupo
+             */
+
+            $dni = $_POST['dni'];
+            $idgrupo = $_POST['idgrupo'];
+            $descripcion = $_POST['descripcion'];
+            $idCondicionEconomica = $_POST['idCondicionEconomica'];
+            $estado = $_POST['estado'];
+            $alumno = Integrante::where('dni', $dni);
+            //validar que no se repita en el grupo
+            $query = 'SELECT * FROM alumno_x_grupo WHERE grupo_universitario_id = ' . $idgrupo . ' AND alumno_id = ' . $alumno->idAlumno;
+            $res = AlumnoGrupo::consulta($query);
+            $respuesta = $res->fetch_assoc();
+
+            //validar existencia
+            if (!is_null($respuesta)) {
+                $resultado = false;
+            } else {
+                //ejecutar proce
+
+                $res = $alumno->asignarGrupo($descripcion, $estado, $idgrupo, $idCondicionEconomica);
+                if ($res) {
+                    $resultado = true;
+                }
+            }
         }
+
+
         echo json_encode($resultado);
     }
 }

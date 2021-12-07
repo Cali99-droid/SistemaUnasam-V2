@@ -55,17 +55,24 @@ class Integrante extends ActiveRecord
     }
 
 
-    public function asignarGrupo($descripcion, $estado, $idgrupo)
-    {
-        $query = "CALL p_ingresar_alumno_grupo('" . $this->codigo . "'," . $this->idPersona . ", '" . $descripcion . "',curdate(), '" . $estado . "'," . $idgrupo . ");";
+    public function asignarGrupo($descripcion, $estado, $idgrupo, $idCondicionEconomica)
+    { //TODO
+        $query = "CALL p_ingresar_alumno_grupo('" . $this->codigo . "'," . $this->idPersona . ", '" . $descripcion . "',curdate(), '" . $estado . "'," . $idCondicionEconomica . "," . $idgrupo . ");";
         $resultado = self::consulta($query);
         return $resultado;
     }
 
     public function asignarGrupoS()
     {
-        $query = "CALL insert_alumno_grupoAPI('" . $this->dni . "','" . $this->nombre . "', '" . $this->apellido . "', '" . $this->genero . "','" . $this->direccion . "','" . $this->email . "','" . $this->telefono .  "','" . $this->codigo .  "','" .  $this->idEscuela . "','" . $this->nombre_procedencia  . "','" . $this->estado . "','" . $this->idCondicionEconomica . "','" . $this->descripcion . "','" . $this->idgrupo_universitario . "');";
+        $query = "CALL insert_alumno_grupo('" . $this->dni . "','" . $this->nombre . "', '" . $this->apellido . "', '" . $this->genero . "','" . $this->direccion . "','" . $this->email . "','" . $this->telefono .  "','" . $this->codigo .  "','" .  $this->idEscuela . "','" . $this->nombre_procedencia  . "','" . $this->estado . "','" . $this->idCondicionEconomica . "','" . $this->descripcion . "','" . $this->idgrupo_universitario . "');";
         $resultado = self::consulta($query);
+        return $resultado;
+    }
+
+    public function updateGrupo($descripcion, $estado, $idgrupo, $idCondicionEconomica)
+    { //TODO
+        $query = "CALL p_update_alumno_grupo('" . $this->codigo . "'," . $this->idPersona . ", '" . $descripcion . "',curdate(), '" . $estado . "'," . $idCondicionEconomica . ", " . $idgrupo . ");";
+        $resultado = self::consulta($query)->fetch_object();
         return $resultado;
     }
 }

@@ -5,7 +5,7 @@ namespace Model;
 class TipoGrupo extends ActiveRecord
 {
     //base datos
-    protected static $tabla = 'TIPO_GRUPO';
+    protected static $tabla = 'tipo_grupo';
     protected static $columnasDB = ['id', 'nombre'];
 
     public $id;
@@ -34,5 +34,21 @@ class TipoGrupo extends ActiveRecord
         }
 
         return $resultado;
+    }
+
+
+    public function validarNombre()
+    {
+        $nombreT = $this->nombre;
+        $tip = TipoGrupo::where('nombre', $nombreT);
+        if ($tip) {
+            if ($tip->id == $this->id) {
+                return false;
+            } else {
+                return true;
+            }
+        } else {
+            return false;
+        }
     }
 }

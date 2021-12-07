@@ -5,7 +5,7 @@ namespace Model;
 class Grupo extends ActiveRecord
 {
     //base datos
-    protected static $tabla = 'GRUPO_UNIVERSITARIO';
+    protected static $tabla = 'grupo_universitario'; //GRUPO_UNIVERSITARIO
     protected static $columnasDB = ['id', 'nombre', 'fecha_creacion', 'resolucion_creacion', 'imagen', 'tipo_grupo_id'];
 
     public $id;
@@ -68,5 +68,13 @@ class Grupo extends ActiveRecord
         $integrantes = Integrante::where_all('idgrupo_universitario', $this->id);
 
         return $integrantes;
+    }
+
+
+    public static function buscarGrupo($valor)
+    {
+        $query = 'SELECT * FROM grupo_universitario  WHERE nombre LIKE "%' . $valor . '%"';
+        $grupos = self::consultarSQL($query);
+        return $grupos;
     }
 }

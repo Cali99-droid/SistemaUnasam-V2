@@ -5,7 +5,7 @@ namespace Model;
 class Rol extends ActiveRecord
 {
     //base datos
-    protected static $tabla = 'TIPO_USUARIO';
+    protected static $tabla = 'tipo_usuario';
     protected static $columnasDB = ['id', 'nombre'];
 
     public $id;
@@ -32,5 +32,20 @@ class Rol extends ActiveRecord
         $query = 'SELECT * FROM  opciones  ';
         $resultado = self::consulta($query);
         return $resultado;
+    }
+
+    public function validarNombre()
+    {
+        $nombreR = $this->nombre;
+        $rol = Rol::where('nombre', $nombreR);
+        if ($rol) {
+            if ($rol->id == $this->id) {
+                return false;
+            } else {
+                return true;
+            }
+        } else {
+            return false;
+        }
     }
 }

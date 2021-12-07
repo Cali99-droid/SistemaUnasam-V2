@@ -37,7 +37,7 @@ class Resolucion_x_beneficio extends ActiveRecord
     public function setDoc($doc)
     {
 
-        if (!is_null($this->id)) {
+        if ($this->id != '') {
             //comprobar si existe el archivo
             $this->borrarDoc();
         }

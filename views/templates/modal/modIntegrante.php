@@ -1,6 +1,6 @@
 <div class="buscar" id="cont_buscar">
     <label for="buscar" id="lbBuscar">Buscar</label>
-    <input type="number" name="buscar" id="buscar" placeholder="Buscar por DNI" |>
+    <input type="text" maxlength="8" name="buscar" id="buscar" placeholder="Buscar por DNI" |>
     <button type="button" id="btnBuscarDNI" name="btnBuscarDNI" onclick="buscarAlumno($('#buscar').val())">Buscar</button>
 </div>
 
@@ -41,3 +41,9 @@
     </div>
 
 </div>
+
+<script>
+    $('#buscar').bind('keyup paste', function() {
+        this.value = this.value.replace(/[^0-9]/g, '');
+    });
+</script>
