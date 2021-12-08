@@ -84,7 +84,7 @@ function validarPermisos($permiso)
 
     $permisosBeneficio = ['/beneficios', '/beneficios/getBeneficio', '/beneficios', '/beneficios/asignar', '/beneficios/crear', '/beneficiosTipo', '/tipoBeneficios/eliminar'];
 
-    $permisosEvento = ['/eventos', '/eventos', '/nuevo-evento', '/actualizar-evento', '/crear-evento', '/crear-org', '/eventos/invitar-grupo', '/evento/orgs', '/evento-invitacion'];
+    $permisosEvento = ['/eventos', '/eventos', '/nuevo-evento', '/actualizar-evento', '/crear-evento', '/crear-org', '/eventos/invitar-grupo', '/evento/orgs', '/evento-invitacion', '/invitacion-eliminar'];
 
     $permisosAdmin = ['/tipos', '/usuarios', 'admin/usuarios', '/roles', '/crear-rol', '/get-rol',  '/crear-user', '/get-user', '/semestres', '/api/tipos', '/api/alumno', '/api/crearAlumno'];
 

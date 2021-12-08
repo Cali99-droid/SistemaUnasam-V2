@@ -35,8 +35,8 @@
                         <td><?php echo $invitacion->observacion; ?></td>
                         <td><?php echo $invitacion->estado; ?></td>
                         <td>
-                            <a class="btn-asignar"> <i class=" fas fa-pencil-alt"></i> Editar</a>
-                            <button type="button" class="btn-asignar">
+                            <a class="btn-asignar" onclick="actualizarInvitacion('<?php echo $invitacion->fecha_hora; ?>', '<?php echo $invitacion->getGrupo()->id; ?>','<?php echo $invitacion->observacion; ?>',<?php echo $invitacion->getEvento()->id; ?>,'<?php echo $invitacion->id; ?>')"> <i class=" fas fa-pencil-alt"></i> Editar</a>
+                            <button type="button" class="btn-asignar" onclick="borrarInv(<?php echo $invitacion->id; ?>)">
                                 <i class="fas fa-trash"></i> Borrar</button>
                         </td>
                     </tr>
@@ -45,6 +45,28 @@
         </table>
 
     </div>
+
+
+</div>
+
+
+<div class="modal-agregar" id="modal_invitar">
+
+    <div class="contenido-modal-grupo  contenedor-grupos modal-eventos">
+        <div class="encabezado-modal">
+            <h2 id="titulo_integrante">Invitar a:<span id="nombreEvento"></span></h2>
+            <span class=" close inv">&times;</span>
+
+        </div>
+        <div>
+            <form class="formulario-grupo">
+
+                <?php include 'asignarInvitacion.php'; ?>
+            </form>
+        </div>
+
+    </div>
+
 
 
 </div>

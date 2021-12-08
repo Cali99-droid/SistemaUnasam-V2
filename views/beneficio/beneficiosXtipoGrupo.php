@@ -35,7 +35,7 @@
                             <button type="button" class="btn-asignar" onclick="actualizarBenTipo(<?php echo $beneficio->idTipoGrupo; ?>,<?php echo $beneficio->idbeneficio; ?>,'<?php echo $beneficio->estado; ?>', <?php echo $beneficio->id; ?> )">
                                 <i class=" fas fa-pencil-alt"></i> Editar</button>
                             <input type="hidden" name="id" value="">
-                            <button type="button" class="btn-asignar" onclick=" borrar(<?php echo $beneficio->id; ?>)">
+                            <button type="button" class="btn-asignar" onclick="borrar(<?php echo $beneficio->id; ?>)">
                                 <i class="fas fa-trash"></i> Borrar</button>
 
                         </td>

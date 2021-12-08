@@ -15,5 +15,5 @@
 
 
 
-
+<input type="hidden" id="idInvitacion">
 <button class="btn-asignar" onclick="asignarInvitacionGrupo()" type="button">Invitar</button>

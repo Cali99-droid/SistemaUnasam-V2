@@ -57,8 +57,22 @@ class Invitacion extends ActiveRecord
     public function validarInvitacion()
     {
         $query = "SELECT * FROM invitacion WHERE evento_id =  " . $this->evento_id . " AND grupo_universitario_id = " . $this->grupo_universitario_id;
-        $invitacion = self::consultarSQL($query);
+        $invitacion = self::SQL_primer($query);
         if ($invitacion) {
+            if ($invitacion->id == $this->id) {
+                return false;
+            } else {
+                return true;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    public function validarEdicion()
+    {
+        $participacion = ParticipacionAlumno::where('invitacion_id',  $this->id);
+        if ($participacion) {
             return true;
         } else {
             return false;

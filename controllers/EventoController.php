@@ -68,12 +68,24 @@ class EventoController
 
     public static function invitar()
     {
+        $resultado['upt'] = false;
+        $resultado['code'] = false;
+        $resultado['resultado'] = false;
+        $resultado['upd'] = false;
         $evento = Evento::find($_POST['evento_id']);
         $invitacion = new Invitacion($_POST);
         if (!$invitacion->validarInvitacion()) {
             if ($evento->validarInvitacion($_POST['fecha_hora'])) {
-
-                $resultado = $invitacion->guardar();
+                if ($invitacion->id == '') {
+                    $resultado = $invitacion->crear();
+                } else {
+                    //verificar si la invitacion ya esta en la tabla participacion alumno
+                    if (!$invitacion->validarEdicion()) {
+                        $resultado['upt'] = $invitacion->guardar();
+                    } else {
+                        $resultado['upd']  = true;
+                    }
+                }
             } else {
                 $resultado['resultado'] = false;
             }
@@ -94,6 +106,25 @@ class EventoController
     public static function verInvitacion(Router $router)
     {
         $invitaciones = Invitacion::all();
-        $router->render('evento/invitaciones', ['invitaciones' => $invitaciones]);
+        $grupos = Grupo::all();
+        $router->render('evento/invitaciones', [
+            'invitaciones' => $invitaciones,
+            'grupos' => $grupos
+
+        ]);
+    }
+
+
+    public static function eliminarInvitacion()
+    {
+        $id = $_POST['id'];
+        $invitacion = Invitacion::find($id);
+        if (!$invitacion->validarEdicion()) {
+            $resultado = $invitacion->eliminar();
+        } else {
+            $resultado = false;
+        }
+
+        echo json_encode($resultado);
     }
 }

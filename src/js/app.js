@@ -668,20 +668,23 @@ async function asignarInvitacionGrupo() {
     const idGrupo = document.getElementById('idGrupo');
     const fechaHoraInvitacion = document.getElementById('fechaHoraInvitacion');
     const Observacion = document.getElementById('Observacion');
-
+    const id = document.getElementById('idInvitacion');
     datos = new FormData();
     datos.append('evento_id', idevento.value);
     datos.append('grupo_universitario_id', idGrupo.value);
     datos.append('observacion', Observacion.value);
     datos.append('fecha_hora', fechaHoraInvitacion.value);
+    datos.append('id', id.value);
     try {
-        //Peticion hacia la api
+        //Peticion hacia la api https://organizaciones.jymsystemsoft.com/
         const url = 'http://appunasam.devor/eventos/invitar-grupo';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
         })
         const resultado = await respuesta.json();
+        console.log(resultado);
+
         if (resultado.code) {
             Swal.fire({
                 icon: 'info',
@@ -691,6 +694,27 @@ async function asignarInvitacionGrupo() {
             })
             return;
         }
+        if (resultado.upt) {
+            Swal.fire({
+                icon: 'success',
+                title: 'ACTUALIZADO ',
+                text: 'Invitacion actualizada correctamente',
+
+            })
+            return;
+        }
+
+        if (resultado.upd) {
+            Swal.fire({
+                icon: 'info',
+                title: 'Mensaje...',
+                text: 'No puede editar una invitacion con participaciones!',
+            })
+
+            return;
+        }
+
+
 
         if (resultado.resultado) {
 
@@ -2125,11 +2149,80 @@ async function eliminarBeneficioTipo(id) {
 
 
 
+function actualizarInvitacion(fecha, idGrupo, obser, idevento, id) {
+
+    modal('modal_invitar', 'boton-actualizar-tipo', 'inv');
+    $('#titulo_integrante').text('Editar invitacion');
+    $("#fechaHoraInvitacion").val(fecha);
+    $("#Observacion").val(obser);
+    $("#idGrupo").val(idGrupo);
+    $("#idInvitacion").val(id);
+    $("#idevento").val(idevento);
+
+}
 
 
 
 
+async function borrarInv(id) {
+    Swal.fire({
+        title: 'Esta seguro de eliminar?',
+        text: "No podra revertir los cambios!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, Borrar!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            eliminarInvitacion(id);
+        }
+    })
+}
 
+async function eliminarInvitacion(id) {
+    const datos = new FormData();
+    datos.append('id', id);
+
+    try {
+        //Peticion hacia la api
+        const url = 'http://appunasam.devor/invitacion-eliminar';
+        const respuesta = await fetch(url, {
+            method: 'POST',
+            body: datos
+        })
+        const resultado = await respuesta.json();
+
+        if (resultado) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Muy bien...',
+                text: 'Se Eliminó !',
+
+            }).then(() => {
+                window.location.reload();
+            })
+
+
+        } else {
+            Swal.fire({
+                icon: 'info',
+                title: 'Mensaje...',
+                text: 'La invitacion ya fue asignada y no puede eliminarse!',
+
+            })
+        }
+
+    } catch (error) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error...',
+            text: 'Hubo un error al eliminar la la invitacion!',
+
+        })
+    }
+
+}
 
 
 

@@ -141,27 +141,7 @@
 
 </div>
 
-<div class="modal-agregar" id="modal-evento">
 
-    <div class="contenido-modal-grupo  contenv fedor-grupos modal-eventos">
-        <div class="encabezado-modal">
-            <h2 id="titulo_integrante">Asignar Evento</h2>
-            <span class=" close close-evento">&times;</span>
-
-        </div>
-        <form method="POST" class="formulario-evento">
-
-            <?php include 'includes/templates/modales/buscarEvento.php'; ?>
-        </form>
-    </div>
-
-    <div>
-        <form action="">
-
-        </form>
-    </div>
-
-</div>
 <?php include_once __DIR__ . "/../templates/modal/nuevoTipo.php" ?>
 <script>
     $(document).ready(function() {

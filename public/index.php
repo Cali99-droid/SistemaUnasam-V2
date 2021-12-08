@@ -71,6 +71,7 @@ $router->post('/crear-org', [EventoController::class, 'crearOrg']);
 $router->post('/eventos/invitar-grupo', [EventoController::class, 'invitar']);
 $router->get('/evento/orgs', [EventoController::class, 'getOrgs']);
 $router->get('/evento-invitacion', [EventoController::class, 'verInvitacion']);
+$router->post('/invitacion-eliminar', [EventoController::class, 'eliminarInvitacion']);
 //Reportes
 $router->get('/reporte', [ReporteController::class, 'index']);
 $router->post('/reporte', [ReporteController::class, 'index']);
