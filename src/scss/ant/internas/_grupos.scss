@@ -41,6 +41,17 @@
       i {
         color: $azul;
       }
+
+      button {
+        width: 90%;
+        margin: 0 1rem;
+        margin-top: 1rem;
+        @include tablet {
+          width: 20%;
+          margin: 0 1rem;
+          margin-top: 1rem;
+        }
+      }
     }
 
     .nuevo-grupo {
@@ -134,7 +145,7 @@
   @include grid(1, 3rem);
   width: 95%;
   margin: 0 auto;
-
+  justify-items: center;
   @include tablet {
     @include grid(4, 1rem);
 

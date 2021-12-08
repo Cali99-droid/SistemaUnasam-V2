@@ -4,14 +4,22 @@
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   gap: 1rem;
-  width: 78%;
+  width: 100%;
+  div {
+    width: 80%;
+  }
   @include m.tablet {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
+    width: 100%;
   }
   .columna-al {
     display: flex;
     flex-direction: column;
+  }
+
+  .esc-sel {
+    width: 21rem;
   }
 }

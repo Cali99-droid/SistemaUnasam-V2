@@ -534,6 +534,7 @@ async function confirmarBeneficio() {
 }
 
 async function actualizarEstadoBeneficio(id) {
+
     const idAlumnoGrupo = document.getElementById("idAlumnoGrupo");
     const boton = document.getElementById('boton-activar' + id);
     datos = new FormData();
@@ -546,17 +547,20 @@ async function actualizarEstadoBeneficio(id) {
             body: datos
         })
         const resultado = await respuesta.json();
-        console.log(resultado);
+        //  console.log(resultado);
 
         if (resultado) {
+
             if (boton.classList.contains('label')) {
                 boton.classList.remove('label')
                 boton.classList.add('label-ok');
                 boton.textContent = 'COMPLETADO';
+                console.log(boton.classList);
             } else {
                 boton.classList.remove('label-ok');
                 boton.classList.add('label');
                 boton.textContent = 'PENDIENTE';
+                console.log(boton.classList);
             }
             Swal.fire({
                 icon: 'success',

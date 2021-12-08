@@ -171,7 +171,7 @@
 
                             </tr>
                         </thead>
-                        <tbody id="cuerpo-asig">
+                        <tbody>
 
                             <?php foreach ($beneficioAsignados as $bena) : ?>
 
