@@ -147,6 +147,9 @@
     $(document).ready(function() {
         $('#option').select2();
 
+
+        $('#mytable').stacktable();
+
     });
 
     const men = document.querySelector('#men');

@@ -8,10 +8,6 @@
 </label>
 <input type="password" class="form-control" id="passwordNuevo" name="npass" />
 
-<label for="passworRepeat">
-    Repita Contraseña
-</label>
-<input type="password" class="form-control" id="passworRepeat" name="rpass" />
 
 
 

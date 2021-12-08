@@ -10,10 +10,11 @@
         </div>
 
         <div class="nuevo-grupo__mod">
-            <button type="button" class="boton-grupo" id="boton-agregar-beneficio" onclick="modal('modal-agregar-bene', 'boton-agregar-beneficio', 'close')">
+            <a type="button" class="btn-asignar" id="boton-agregar-beneficio" onclick="modal('modal-agregar-bene', 'boton-agregar-beneficio', 'close')">
                 <i class="fas fa-plus-circle"></i> Agregar Beneficio
-            </button>
-            <a href="/beneficiosTipo">Ver Beneficios por tipo</a>
+            </a>
+
+            <a href="/beneficiosTipo" class="btn-asignar"><i class="fas fa-tasks"></i> Gestion Asignaciones</a>
         </div>
 
     </div>
@@ -105,5 +106,6 @@
     $(document).ready(function() {
         $('#idTipoGrupo').select2();
 
+        $('#mytable').stacktable();
     });
 </script>

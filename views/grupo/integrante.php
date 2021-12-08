@@ -41,7 +41,7 @@
 
                 <div class="contenedor-tabla contenedor-tabla__perfil">
 
-                    <table>
+                    <table class="table_res">
                         <thead>
                             <tr>
                                 <th>Evento</th>
@@ -86,7 +86,7 @@
 
                 <div class="contenedor-tabla contenedor-tabla__perfil">
 
-                    <table>
+                    <table class="table_res">
                         <thead>
                             <tr>
 
@@ -122,7 +122,7 @@
 
                 <div class="contenedor-tabla contenedor-tabla__perfil">
 
-                    <table>
+                    <table class="table_res">
                         <thead>
                             <tr>
                                 <th>Beneficio</th>
@@ -161,7 +161,7 @@
 
                 <div class="contenedor-tabla contenedor-tabla__perfil">
 
-                    <table>
+                    <table class="table_res">
                         <thead>
                             <tr>
                                 <th>Nombre</th>

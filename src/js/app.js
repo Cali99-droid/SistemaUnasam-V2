@@ -510,7 +510,7 @@ async function confirmarBeneficio() {
                 close.click();
                 document.getElementById("ben").click();
                 mostrarBeneficios(idAlumnoGrupo.value);
-
+                window.location.reload();
             })
 
 
@@ -2229,9 +2229,18 @@ async function eliminarInvitacion(id) {
 if (document.getElementById("participaciones")) {
     document.getElementById("participaciones").click();
 }
+if (document.getElementById('mytable')) {
+    $('#mytable').stacktable();
+}
 
 
+if (document.getElementById('mytable-ev')) {
+    $('#mytable-ev').stacktable();
+}
 
+if (document.querySelectorAll('table_res')) {
+    $('.table_res').stacktable();
+}
 
 
 

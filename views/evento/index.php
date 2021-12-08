@@ -13,10 +13,11 @@
             <a href="/nuevo-evento" class="btn-asignar" id="boton-agregar-evento">
                 <i class="fas fa-plus-circle"></i> Agregar Evento
             </a>
+            <a href="/evento-invitacion" class="btn-asignar" id="boton-agregar-evento">
+                <i class="fas fa-plus-circle"></i> Ver Invitaciones
+            </a>
         </div>
-        <a href="/evento-invitacion" class="btn-asignar" id="boton-agregar-evento">
-            <i class="fas fa-plus-circle"></i> Ver Invitaciones
-        </a>
+
     </div>
 
     <div class="contenedor-tabla tab-beneficio">

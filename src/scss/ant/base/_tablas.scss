@@ -1,10 +1,16 @@
 .contenedor-tabla {
-  overflow: auto;
+  overflow-x: scroll;
   width: 99.2%;
   height: 40rem;
-  display: flex;
-  flex-direction: column;
+
   padding-top: 3rem;
+  @include tablet {
+    overflow-x: auto;
+    width: 99.2%;
+    height: 40rem;
+    overflow-x: auto;
+    padding-top: 3rem;
+  }
 
   table {
     border-collapse: collapse;

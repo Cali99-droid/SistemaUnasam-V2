@@ -12,11 +12,6 @@
                             Nueva Contraseña
                         </label>
                         <input type="password" id="passwordNuevo" name="pass" class="login-text" />
-
-                        <label for="passworRepeat">
-                            Repita Contraseña
-                        </label>
-                        <input type="password" id="passworRepeat" name="rpass" class="login-text" />
                         <button type="submit" class="boton-acceder">
                             Aceptar
                         </button>
