@@ -89,11 +89,11 @@
 </div>
 
 <script>
-    $('#dni_s').bind('keyup paste', function() {
-        this.value = this.value.replace(/[^0-9]/g, '');
-    });
-
-    $('#telefono_s').bind('keyup paste', function() {
-        this.value = this.value.replace(/[^0-9]/g, '');
-    });
+    $(document).ready(function(){
+			$('#dni_s').on('input', function () {
+			this.value = this.value.replace(/[^0-9]/g,'');
+			});
+			$('#telefono_s').on('input', function () {
+			this.value = this.value.replace(/[^0-9]/g,'');
+			})});
 </script>
