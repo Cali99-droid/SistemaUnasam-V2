@@ -55,10 +55,12 @@ $router->post('/api/setTntegrante', [GrupoController::class, 'setIntegrante']);
 
 //beneficios
 $router->get('/beneficios', [BeneficioController::class, 'index']);
+$router->get('/beneficiosTipo', [BeneficioController::class, 'verBeneficiosTipo']);
 $router->post('/beneficios/getBeneficio', [BeneficioController::class, 'getBeneficio']);
 $router->post('/beneficios', [BeneficioController::class, 'index']);
 $router->post('/beneficios/asignar', [BeneficioController::class, 'asignarBeneficio']);
 $router->post('/beneficios/crear', [BeneficioController::class, 'crear']);
+$router->post('/tipoBeneficios/eliminar', [BeneficioController::class, 'eliminarBenTipo']);
 //Eventos
 $router->get('/eventos', [EventoController::class, 'index']);
 $router->post('/eventos', [EventoController::class, 'index']);
@@ -67,7 +69,8 @@ $router->get('/actualizar-evento', [EventoController::class, 'v_actualizar']);
 $router->post('/crear-evento', [EventoController::class, 'crear']);
 $router->post('/crear-org', [EventoController::class, 'crearOrg']);
 $router->post('/eventos/invitar-grupo', [EventoController::class, 'invitar']);
-$router->get('/evento/orgs', [EventoController::class, 'getOrgs']);/*Nuevo*/
+$router->get('/evento/orgs', [EventoController::class, 'getOrgs']);
+$router->get('/evento-invitacion', [EventoController::class, 'verInvitacion']);
 //Reportes
 $router->get('/reporte', [ReporteController::class, 'index']);
 $router->post('/reporte', [ReporteController::class, 'index']);

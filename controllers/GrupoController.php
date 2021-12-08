@@ -37,7 +37,7 @@ class GrupoController
             } else {
                 $grupo = new Grupo($_POST['grupo']);
 
-                /**Generar nombre unico */
+                /** Generar nombre unico */
                 $nombreImagen = md5(uniqid(rand(), true)) . ".jpg";
 
 
@@ -125,13 +125,13 @@ class GrupoController
         $query = "SELECT * FROM vista_estudiantes WHERE dni = " . $dni . " AND " . "idgrupo_universitario = " . $idgrupo;
         $integrante = Integrante::SQL_primer($query);
 
-        if (is_null($integrante)) {
+        if (is_null($integrante) || $integrante->estado == 'inactivo') {
             header('Location: /grupos');
         }
         $grupo = Grupo::find($idgrupo);
         $invitaciones = Invitacion::where_all('grupo_universitario_id', $idgrupo);
         $participaciones = ParticipacionAlumno::where_all('alumno_x_grupo_id', $integrante->idAlumnoGrupo);
-        $beneficios = Beneficio_x_tipo_grupo::where_all('tipo_grupo_id', $grupo->tipo_grupo_id);
+        $beneficios = Beneficio_x_tipo_grupo::validarEstado($grupo->tipo_grupo_id, 'ACTIVO'); //derecjos'tipo_grupo_id', )
         $beneficioAsignados = Beneficio_x_alumno::where_all('alumno_x_grupo_id',  $integrante->idAlumnoGrupo);
 
         $router->render('grupo/integrante', [

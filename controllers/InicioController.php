@@ -3,8 +3,6 @@
 namespace Controllers;
 
 use Model\Dash;
-use Model\Usuario;
-use Model\Opcion_x_tipo;
 use MVC\Router;
 
 

@@ -15,7 +15,8 @@ class Invitacion extends ActiveRecord
     public $observacion;
     public $evento_id;
     public $grupo_universitario_id;
-
+    public $evento;
+    public $grupo;
 
     public function __construct($args = [])
     {
@@ -31,16 +32,36 @@ class Invitacion extends ActiveRecord
 
     public function getEvento()
     {
-        $evento = Evento::find($this->evento_id);
+        $id = $this->evento_id;
+        $evento = Evento::find($id);
+        $this->evento = $evento->nombre;
         return $evento;
+    }
+
+    public function getGrupo()
+    {
+        $id = $this->grupo_universitario_id;
+        $grupo = Grupo::find($id);
+        $this->grupo = $grupo->nombre;
+        return $grupo;
     }
 
     public function getEstado()
     {
 
-
         $query = "SELECT func_EstadoInvitacion(" . $this->id . ", " . $this->fecha_hora . ") estado";
         $estado = self::consulta($query)->fetch_object();
         return $estado->estado;
+    }
+
+    public function validarInvitacion()
+    {
+        $query = "SELECT * FROM invitacion WHERE evento_id =  " . $this->evento_id . " AND grupo_universitario_id = " . $this->grupo_universitario_id;
+        $invitacion = self::consultarSQL($query);
+        if ($invitacion) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

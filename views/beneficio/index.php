@@ -13,7 +13,9 @@
             <button type="button" class="boton-grupo" id="boton-agregar-beneficio" onclick="modal('modal-agregar-bene', 'boton-agregar-beneficio', 'close')">
                 <i class="fas fa-plus-circle"></i> Agregar Beneficio
             </button>
+            <a href="/beneficiosTipo">Ver Beneficios por tipo</a>
         </div>
+
     </div>
 
     <div class="contenedor-tabla tab-beneficio">

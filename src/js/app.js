@@ -252,8 +252,8 @@ async function actualizarBeneficio(id) {
 
     try {
 
-        //Peticion hacia la api
-        const url = 'https://organizaciones.jymsystemsoft.com/beneficios/getBeneficio';
+        //Peticion hacia la api http://appunasam.devor/
+        const url = 'http://appunasam.devor/beneficios/getBeneficio';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -384,7 +384,7 @@ async function actualizarUsuario(dni, modal_usu, boton_agregar_usu, close_usu) {
     try {
 
         //Peticion hacia la api
-        const url = 'https://organizaciones.jymsystemsoft.com/get-user';
+        const url = 'http://appunasam.devor/get-user';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: dat
@@ -490,7 +490,7 @@ async function confirmarBeneficio() {
     datos.append('estado', estado.value);
     try {
         //Peticion hacia la api
-        const url = 'https://organizaciones.jymsystemsoft.com/integrante/setBeneficio';
+        const url = 'http://appunasam.devor/integrante/setBeneficio';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -540,7 +540,7 @@ async function actualizarEstadoBeneficio(id) {
     datos.append('id', id);
     try {
         //Peticion hacia la api
-        const url = 'https://organizaciones.jymsystemsoft.com/integrante/updBeneficioEst';
+        const url = 'http://appunasam.devor/integrante/updBeneficioEst';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -598,29 +598,39 @@ async function asignarBeneficioGrupo() {
     var idbeneficio = document.getElementById('idbeneficio').value;
     var idTipoGrupo = document.getElementById('idTipoGrupo').value;
     var estado = document.getElementById('estadoGrupo').value;
+    var id = document.getElementById('idBeneTipo').value;
     // var param = { "idbeneficio": idbeneficio, "idTipoGrupo": idTipoGrupo, "estado": estado, "cod": 3 }
     const datos = new FormData();
     datos.append("beneficio_id", idbeneficio);
     datos.append("tipo_grupo_id", idTipoGrupo);
     datos.append("estado", estado);
+    datos.append("id", id);
 
     try {
         //Peticion hacia la api
-        const url = 'https://organizaciones.jymsystemsoft.com/beneficios/asignar';
+        const url = 'http://appunasam.devor/beneficios/asignar';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
         })
         const resultado = await respuesta.json();
 
+        console.log(resultado);
 
-        if (resultado.resultado) {
+        if (resultado) {
             Swal.fire({
                 icon: 'success',
                 title: 'MUY BIEN !',
                 text: 'Beneficio Asignado Correctamente',
             }).then(() => {
 
+
+            })
+        } else {
+            Swal.fire({
+                icon: 'info',
+                title: 'Mensaje...',
+                text: 'El Beneficio ya esta asignado!',
 
             })
         }
@@ -666,13 +676,21 @@ async function asignarInvitacionGrupo() {
     datos.append('fecha_hora', fechaHoraInvitacion.value);
     try {
         //Peticion hacia la api
-        const url = 'https://organizaciones.jymsystemsoft.com/eventos/invitar-grupo';
+        const url = 'http://appunasam.devor/eventos/invitar-grupo';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
         })
         const resultado = await respuesta.json();
+        if (resultado.code) {
+            Swal.fire({
+                icon: 'info',
+                title: 'MENSAJE ',
+                text: 'La invitacion ya esta asignada',
 
+            })
+            return;
+        }
 
         if (resultado.resultado) {
 
@@ -728,7 +746,7 @@ async function crearOrganizador() {
     datos.append('contacto', contacto.value)
     try {
         //Peticion hacia la api
-        const url = 'https://organizaciones.jymsystemsoft.com/crear-org';
+        const url = 'http://appunasam.devor/crear-org';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -769,7 +787,7 @@ async function crearOrganizador() {
 }
 async function cargarOrg() {
     try {
-        const url = 'https://organizaciones.jymsystemsoft.com/evento/orgs'
+        const url = 'http://appunasam.devor/evento/orgs'
         const resultado = await fetch(url);
         const orgs = await resultado.json();
         mostrarComboOrg(orgs);
@@ -833,7 +851,7 @@ async function crearEvento() {
 
     try {
         //Peticion hacia la api
-        const url = 'https://organizaciones.jymsystemsoft.com/crear-evento';
+        const url = 'http://appunasam.devor/crear-evento';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -902,7 +920,7 @@ async function confirmarAsistencia() {
 
     try {
         //Peticion hacia la api
-        const url = 'https://organizaciones.jymsystemsoft.com/integrante/setAsistencia';
+        const url = 'http://appunasam.devor/integrante/setAsistencia';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -949,9 +967,9 @@ function crearBoton() {
     const ic = document.createElement('I');
     ic.classList.add('fas');
     ic.classList.add('fa-minus-circle');
-    boton.textContent = 'Quitar ';
-    boton.appendChild(ic);
 
+    boton.appendChild(ic);
+    boton.textContent = 'Quitar ';
     return boton;
 
 }
@@ -977,7 +995,7 @@ async function mostrarParticipaciones(idAlumnoGrupo) {
     datos.append('idAlumnoGrupo', idAlumnoGrupo);
     try {
         //Peticion hacia la api
-        const url = 'https://organizaciones.jymsystemsoft.com/integrante/getParticipaciones';
+        const url = 'http://appunasam.devor/integrante/getParticipaciones';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -1022,7 +1040,7 @@ async function quitarParticipacion(id, idAlumno) {
     datos.append('id', id);
     try {
         //Peticion hacia la api
-        const url = 'https://organizaciones.jymsystemsoft.com/integrante/deleteAsistencia';
+        const url = 'http://appunasam.devor/integrante/deleteAsistencia';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -1055,7 +1073,7 @@ async function mostrarBeneficios(idAlumnoGrupo) {
     datos.append('idAlumnoGrupo', idAlumnoGrupo);
     try {
         //Peticion hacia la api
-        const url = 'https://organizaciones.jymsystemsoft.com/integrante/getBeneficio';
+        const url = 'http://appunasam.devor/integrante/getBeneficio';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -1141,7 +1159,7 @@ async function crearTipof() {
 
     try {
         //Peticion hacia la api https://organizaciones.jymsystemsoft.com
-        const url = 'https://organizaciones.jymsystemsoft.com/api/tipos';
+        const url = 'http://appunasam.devor/api/tipos';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -1180,7 +1198,7 @@ async function crearTipof() {
 
 async function cargarTipos() {
     try {
-        const url = 'https://organizaciones.jymsystemsoft.com/api/tipos'
+        const url = 'http://appunasam.devor/api/tipos'
         const resultado = await fetch(url);
         const tipos = await resultado.json();
         mostrarComboTipos(tipos);
@@ -1211,7 +1229,7 @@ async function getIntegrante(id) {
     datos.append('id', id);
     try {
         //Peticion hacia la api 
-        const url = 'https://organizaciones.jymsystemsoft.com/api/getIntegrante';
+        const url = 'http://appunasam.devor/api/getIntegrante';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -1271,7 +1289,7 @@ async function setIntegrante() {
     datos.append('nombre', nombre_tipo);
     try {
         //Peticion hacia la api
-        const url = 'https://organizaciones.jymsystemsoft.com/api/tipos';
+        const url = 'http://appunasam.devor/api/tipos';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -1313,7 +1331,7 @@ async function buscarAlumno(dni) {
     datos.append('dni', dni);
     try {
         //Peticion hacia la api
-        const url = 'https://organizaciones.jymsystemsoft.com/api/alumno';
+        const url = 'http://appunasam.devor/api/alumno';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -1384,7 +1402,7 @@ async function crearBeneficio() {
 
     try {
         //Peticion hacia la api
-        const url = 'https://organizaciones.jymsystemsoft.com/beneficios/crear';
+        const url = 'http://appunasam.devor/beneficios/crear';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -1458,7 +1476,7 @@ async function guardarIntegrante() {
 
     try {
         //Peticion hacia la api
-        const url = 'https://organizaciones.jymsystemsoft.com/api/crearAlumno';
+        const url = 'http://appunasam.devor/api/crearAlumno';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -1517,7 +1535,7 @@ async function actualizarRol(id) {
     try {
 
         //Peticion hacia la api
-        const url = 'https://organizaciones.jymsystemsoft.com/get-rol';
+        const url = 'http://appunasam.devor/get-rol';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -1588,7 +1606,7 @@ async function crearRol() {
 
     try {
         //Peticion hacia la api
-        const url = 'https://organizaciones.jymsystemsoft.com/crear-rol';
+        const url = 'http://appunasam.devor/crear-rol';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -1771,7 +1789,7 @@ async function crearUser() {
 
     try {
         //Peticion hacia la api
-        const url = 'https://organizaciones.jymsystemsoft.com/crear-user';
+        const url = 'http://appunasam.devor/crear-user';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -1887,7 +1905,7 @@ async function crearSemestre() {
     datos.append('id', id.value);
     try {
         //Peticion hacia la api
-        const url = 'https://organizaciones.jymsystemsoft.com/semestres';
+        const url = 'http://appunasam.devor/semestres';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -1968,7 +1986,7 @@ async function crearIntegrante() {
 
     try {
         //Peticion hacia la api
-        const url = 'https://organizaciones.jymsystemsoft.com/integrante/crearIntegrante';
+        const url = 'http://appunasam.devor/integrante/crearIntegrante';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -2031,6 +2049,85 @@ function buscarEv() {
         });
     });
 }
+
+
+
+function actualizarBenTipo(tipoGrupo, beneficio, estado, id) {
+
+    modal('modal-asignar-editar', 'boton-actualizar-tipo', 'asig-edit');
+    $("#idbeneficio").val(beneficio);
+    $("#idTipoGrupo").val(tipoGrupo);
+    $("#estado").val(estado);
+    $("#idBeneTipo").val(id);
+
+}
+
+
+async function borrar(id) {
+    Swal.fire({
+        title: 'Esta seguro de eliminar?',
+        text: "No podra revertir los cambios!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, Borrar!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            eliminarBeneficioTipo(id);
+        }
+    })
+}
+
+async function eliminarBeneficioTipo(id) {
+    const datos = new FormData();
+    datos.append('id', id);
+    console.log(id);
+    try {
+        //Peticion hacia la api
+        const url = 'http://appunasam.devor/tipoBeneficios/eliminar';
+        const respuesta = await fetch(url, {
+            method: 'POST',
+            body: datos
+        })
+        const resultado = await respuesta.json();
+
+        if (resultado) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Muy bien...',
+                text: 'Se Eliminó !',
+
+            }).then(() => {
+                window.location.reload();
+            })
+
+
+        } else {
+            Swal.fire({
+                icon: 'info',
+                title: 'Mensaje...',
+                text: 'El beneficio ya fue asignado y no puede eliminarse!',
+
+            })
+        }
+
+    } catch (error) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error...',
+            text: 'Hubo un error al eliminar la el Beneficio!',
+
+        })
+    }
+
+}
+
+
+
+
+
+
 
 
 

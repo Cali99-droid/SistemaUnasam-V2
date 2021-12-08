@@ -4,6 +4,7 @@ namespace Controllers;
 
 use Model\Beneficio;
 use Model\Beneficio_x_tipo_grupo;
+use Model\Datos_ben_x_tipoGp;
 use Model\Resolucion_x_beneficio;
 use Model\TipoGrupo;
 use MVC\Router;
@@ -83,8 +84,24 @@ class BeneficioController
 
     public static function asignarBeneficio()
     {
+        $id = $_POST['id'];
         $beneficioAsignado = new Beneficio_x_tipo_grupo($_POST);
-        $resultado = $beneficioAsignado->guardar();
+        if ($beneficioAsignado->validarExistencia()) {
+            $resultado = false;
+        } else {
+            if ($id == '') {
+                $resultado =   $beneficioAsignado->crear();
+                $resultado = $resultado['resultado'];
+            } else {
+                //verificar si ya esta en la tabla beneficio x alumno
+                if (!$beneficioAsignado->validarAsignacion()) {
+                    $resultado =  $beneficioAsignado->guardar();
+                } else {
+                    $resultado = false;
+                }
+            }
+        }
+
         echo json_encode($resultado);
     }
 
@@ -94,5 +111,33 @@ class BeneficioController
         $beneficio = Beneficio::find($id);
         $resultado = $beneficio->getResolucion()->fetch_assoc();
         echo  json_encode($resultado);
+    }
+
+
+    public static function verBeneficiosTipo(Router $router)
+    {
+        $beneficios = Beneficio::all();
+        $tipos = TipoGrupo::all();
+        $beneficiosTipo = Datos_ben_x_tipoGp::all();
+        $router->render('beneficio/beneficiosXtipoGrupo', [
+            'beneficiosTipo' => $beneficiosTipo,
+            'beneficios' => $beneficios,
+            'tipos' => $tipos
+
+        ]);
+    }
+
+
+    public static function eliminarBenTipo()
+    {
+        $id = $_POST['id'];
+        $beneficiosTipo = Beneficio_x_tipo_grupo::find($id);
+        if (!$beneficiosTipo->validarAsignacion()) {
+            $resultado =  $beneficiosTipo->eliminar();
+        } else {
+            $resultado = false;
+        }
+
+        echo json_encode($resultado);
     }
 }

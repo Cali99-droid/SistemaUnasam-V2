@@ -69,12 +69,18 @@ class EventoController
     public static function invitar()
     {
         $evento = Evento::find($_POST['evento_id']);
-        if ($evento->validarInvitacion($_POST['fecha_hora'])) {
-            $invitacion = new Invitacion($_POST);
-            $resultado = $invitacion->guardar();
+        $invitacion = new Invitacion($_POST);
+        if (!$invitacion->validarInvitacion()) {
+            if ($evento->validarInvitacion($_POST['fecha_hora'])) {
+
+                $resultado = $invitacion->guardar();
+            } else {
+                $resultado['resultado'] = false;
+            }
         } else {
-            $resultado['resultado'] = false;
+            $resultado['code'] = true;
         }
+
 
         echo  json_encode($resultado);
     }
@@ -83,5 +89,11 @@ class EventoController
     {
         $organizadores = Organizador::all();
         echo  json_encode($organizadores);
+    }
+
+    public static function verInvitacion(Router $router)
+    {
+        $invitaciones = Invitacion::all();
+        $router->render('evento/invitaciones', ['invitaciones' => $invitaciones]);
     }
 }
