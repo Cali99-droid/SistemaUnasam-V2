@@ -16,7 +16,7 @@
             </select>
 
             <label for="doc">Archivo</label>
-            <input type="file" name="doc" id="doc">
+            <input type="file" name="doc" id="doc" accept="application/pdf">
 
         </div>
 
