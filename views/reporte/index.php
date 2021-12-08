@@ -46,10 +46,10 @@
     </div>
 
     <div class="grupo">
-        <a href="reportes/reporte4.php" target="_blank">
+        <a href="reportes/reporte5.php" target="_blank">
         <img src="https://www.aerocivil.gov.co/atencion/participacion/PublishingImages/nuestro-equipo-de-trabajo/equipo-trabajo%20copia.png" alt="Avatar" class="grupo-imagen">
             <div class="container">
-                <h4>Reporte 5</h4>
+                <h4>Reporte de Alumnos que no pertenecen a ningún grupo</h4>
             </div>
         </a>
     </div>
