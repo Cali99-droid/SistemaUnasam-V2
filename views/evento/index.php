@@ -14,7 +14,7 @@
                 <i class="fas fa-plus-circle"></i> Agregar Evento
             </a>
             <a href="/evento-invitacion" class="btn-asignar" id="boton-agregar-evento">
-                <i class="fas fa-plus-circle"></i> Ver Invitaciones
+                <i class="fas fa-eye"></i> Ver Invitaciones
             </a>
         </div>
 

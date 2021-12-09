@@ -25,7 +25,7 @@
             <thead>
                 <tr>
                     <th>Nombre</th>
-
+                    <th>Resolución</th>
                     <th>Acciones</th>
 
                 </tr>
@@ -34,7 +34,7 @@
                 <?php foreach ($beneficios as $beneficio) : ?>
                     <tr>
                         <td><?php echo $beneficio->nombre; ?></td>
-
+                        <td> <a class="btn-asignar" href="docs/<?php echo $beneficio->getDoc() == '#' ? 'noExiste' : $beneficio->getDoc() ?>" target="_blank"><i class=" fas fa-eye"></i> Ver Resolución</a></td>
                         <td>
                             <button class="btn-asignar" onclick="modalAsignar(<?php echo $beneficio->id; ?>, '<?php echo $beneficio->nombre; ?>','modal-asignar-grupo', 'boton-agregar-beneficio', 'asig')"><i class="fas fa-plus-circle"></i> Asignar</button>
                             <button type="button" class="btn-asignar" onclick="actualizarBeneficio(<?php echo $beneficio->id; ?>)">
@@ -42,8 +42,9 @@
                             <input type="hidden" name="id" value="<?php echo $beneficio->id; ?>">
                             <button type="button" class="btn-asignar">
                                 <i class="fas fa-trash"></i> Borrar</button>
-                            <a href="docs/<?php echo $beneficio->getDoc() == '#' ? 'noExiste' : $beneficio->getDoc() ?>" target="_blank">Ver Resolución</a>
+
                         </td>
+
                     </tr>
                 <?php endforeach; ?>
 

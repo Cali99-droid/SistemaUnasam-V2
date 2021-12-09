@@ -1,5 +1,6 @@
 <div class="contenedor-grupos">
-    <div class="titulo-grupos">
+    <div class="titulo-grupos con_accion">
+        <a href="/eventos" class="btn-asignar"><i class="fas fa-arrow-circle-left"></i> Volver</a>
         <h2 class="no-margin">Gestión de Invitaciones</h2>
     </div>
 
@@ -8,6 +9,9 @@
             <i class="fas fa-search"></i>
             <input type="text" id="buscarEv" placeholder="Buscar" class="busqueda-ev">
         </div>
+
+
+
 
 
     </div>

@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     eventListeners();
     botonGrupo();
-
+    toggleB();
 
 });
 
@@ -43,6 +43,7 @@ function mostrarAdmin() {
 }
 
 function eventListeners() {
+
     const mobileMenu = document.querySelector('.openbtn');
     mobileMenu.addEventListener('click', navegacion);
     // const btn = document.querySelector('#btn_modal');
@@ -507,9 +508,9 @@ async function confirmarBeneficio() {
 
             }).then(() => {
 
-                close.click();
-                document.getElementById("ben").click();
-                mostrarBeneficios(idAlumnoGrupo.value);
+                // close.click();
+                // document.getElementById("ben").click();
+                //  mostrarBeneficios(idAlumnoGrupo.value);
                 window.location.reload();
             })
 
@@ -533,10 +534,22 @@ async function confirmarBeneficio() {
 
 }
 
-async function actualizarEstadoBeneficio(id) {
+function toggleB() {
+    //const id = document.querySelector('#idBene');
 
-    const idAlumnoGrupo = document.getElementById("idAlumnoGrupo");
-    const boton = document.getElementById('boton-activar' + id);
+    const botones = document.querySelectorAll('.btn-toggle');
+    botones.forEach(boton => {
+        boton.onclick = function () {
+            actualizarEstadoBeneficio(boton, this.id);
+        };
+
+    })
+}
+async function actualizarEstadoBeneficio(boton, id) {
+
+    //console.log(id);
+    //  const boton = document.getElementById('boton-activar' + id);
+    // const boton = document.querySelector(`[data-id-ben="${id}"]`);
     datos = new FormData();
     datos.append('id', id);
     try {
@@ -547,7 +560,7 @@ async function actualizarEstadoBeneficio(id) {
             body: datos
         })
         const resultado = await respuesta.json();
-        //  console.log(resultado);
+        // console.log(resultado);
 
         if (resultado) {
 
@@ -555,12 +568,12 @@ async function actualizarEstadoBeneficio(id) {
                 boton.classList.remove('label')
                 boton.classList.add('label-ok');
                 boton.textContent = 'COMPLETADO';
-                console.log(boton.classList);
+                //  console.log(boton.classList);
             } else {
                 boton.classList.remove('label-ok');
                 boton.classList.add('label');
                 boton.textContent = 'PENDIENTE';
-                console.log(boton.classList);
+
             }
             Swal.fire({
                 icon: 'success',

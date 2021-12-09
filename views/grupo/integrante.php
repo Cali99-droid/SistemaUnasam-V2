@@ -1,6 +1,10 @@
 <?php
 ?>
 <div class="contenedor-grupos">
+    <div class="con_accion">
+
+        <a href="/grupo?id=<?php echo $grupo->id ?>" class="btn-asignar"><i class="fas fa-arrow-circle-left"></i> Volver</a>
+    </div>
 
     <div class="datos-integrante">
         <div class="datos datos--ava">
@@ -20,9 +24,7 @@
                         de la actividad del alumno en el el grupo </strong> </p>
 
             </div>
-            <div class=" datos--general zoom">
-                <p class="info"><strong> </strong> </p>
-            </div>
+
         </div>
 
     </div>
@@ -161,7 +163,7 @@
 
                 <div class="contenedor-tabla contenedor-tabla__perfil">
 
-                    <table class="table_res">
+                    <table id="mytable">
                         <thead>
                             <tr>
                                 <th>Nombre</th>
@@ -181,7 +183,10 @@
                                     <td><?php echo $bena->descripcion; ?></td>
                                     <td><?php echo $bena->fecha_efectiva; ?></td>
 
-                                    <td><button id="boton-activar<?php echo  $bena->id ?>" onclick="actualizarEstadoBeneficio(<?php echo  $bena->id ?>)" class="<?php echo  $bena->estado == 'COMPLETADO' ? 'label-ok ' : 'label' ?>"><?php echo $bena->estado; ?></button></td>
+                                    <td>
+                                        <input type="hidden" id="idBene" value="<?php echo  $bena->id ?>">
+                                        <button id="<?php echo  $bena->id ?>" class="<?php echo  $bena->estado == 'COMPLETADO' ? 'label-ok' : 'label' ?> btn-toggle bt<?php echo  $bena->id ?>"><?php echo $bena->estado; ?></button>
+                                    </td>
 
 
                                 </tr>

@@ -10,8 +10,8 @@
         </div>
 
         <div class="nuevo-grupo__mod">
-            <button type="button" class="btn-asignar" id="boton-agregar-semestre" onclick="modal('modal-agregar-semestre', 'boton-agregar-semestre', 'close')">
-                <i class=" fas fa-plus-circle"></i> Agregar Semestre</button>
+            <a type="button" class="btn-asignar" id="boton-agregar-semestre" onclick="modal('modal-agregar-semestre', 'boton-agregar-semestre', 'close')">
+                <i class=" fas fa-plus-circle"></i> Agregar Semestre</a>
         </div>
     </div>
 

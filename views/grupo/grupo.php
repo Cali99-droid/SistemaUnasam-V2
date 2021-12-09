@@ -72,7 +72,7 @@
                                     <i class="fas fa-trash"></i> Borrar</button>
 
 
-                                <a class="btn-asignar" href="/integrante?dni=<?php echo $integrante->dni . '&id=' . $grupo->id; ?>"><i class="fas fa-eye"></i> Ver Mas...</a>
+                                <a class="btn-asignar" href="/integrante?dni=<?php echo $integrante->dni . '&id=' . $grupo->id; ?>"><i class="fas fa-eye"></i> Ver Mas</a>
 
                             </form>
 
