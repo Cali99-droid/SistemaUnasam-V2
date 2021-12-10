@@ -41,6 +41,7 @@
                     <a href="/beneficios" title="Beneficios"><i class='bx bx-medal'></i>Beneficios</a>
                     <a href="/eventos" title="Eventos"><i class='bx bxs-calendar'></i>Eventos</a>
                     <a href="/reporte" title="Reportes"><i class="bx bxs-file"></i>Reportes</a>
+                    <a href="/desercion" title="Deserción"><i class="fas fa-user-graduate"></i>Deserción</a>
                     <div class="item">
                         <a href="javascript:void(0)" class="administrador" onclick="mostrarAdmin()"><i class="fas fa-user-tie" title="Administrador"></i>Administrador</a>
                         <div class="sub-item " id="sub-item">

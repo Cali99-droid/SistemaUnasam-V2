@@ -14,6 +14,7 @@
             <div class="dash" id="piechart4"></div>
             <div class="dash" id="piechart5"></div>
             <div class="dash" id="piechart6"></div>
+            <div class="dash" id="piechart7"></div>
         </div>
     </div>
 
@@ -42,6 +43,9 @@
     google.charts.load('current', {
         'packages': ['line']
     });
+    google.charts.load('current', {
+        'packages': ['line']
+    });
 
     google.charts.setOnLoadCallback(dibujaBeneficiosPen);
     google.charts.setOnLoadCallback(dibujaEstadoBeneficios);
@@ -50,7 +54,7 @@
     google.charts.setOnLoadCallback(drawStuff);
     google.charts.setOnLoadCallback(drawChart);
     google.charts.setOnLoadCallback(dibujaTendencia);
-
+    google.charts.setOnLoadCallback(dibujaTendenciaEstado);
     function drawChart() {
 
         var data = google.visualization.arrayToDataTable([
@@ -260,4 +264,40 @@
     }
 
     /* FIN*/
+    
+    /* TENDENCIA DE REPORTES POR SEMESTRE */
+    function dibujaTendenciaEstado() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'MESES');
+        <?php while ($fila = $escuelas->fetch_assoc()) {
+        ?>
+            data.addColumn('number',
+                <?php
+                echo " '" . $fila["nombre"] . "'";
+                ?>);
+        <?php
+        } ?>
+        <?php echo $muestraDash; ?>
+
+        var options = {
+            chart: {
+                title: 'Tendencia de Cantidad de Regulares por Grupo',
+                subtitle: 'cantidad de estudiantes'
+            },
+            width: 1000,
+            heigth: 1000,
+            axes: {
+                x: {
+                    0: {
+                        side: 'bot'
+                    }
+                }
+            }
+        };
+        var chart7 = new google.charts.Line(document.getElementById('piechart7'));
+        chart7.draw(data, google.charts.Line.convertOptions(options));
+
+    }
+
+    /* FIN */
 </script>

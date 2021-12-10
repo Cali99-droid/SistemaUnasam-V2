@@ -78,7 +78,7 @@ function validarPermisos($permiso)
 {
 
     //rutas como permisos
-    $libre = ['/inicio', '/perfil', '/reporte', '/', '/logout', '/olvide', '/recuperar', '/docs/noExiste'];
+    $libre = ['/inicio', '/perfil', '/reporte', '/', '/logout', '/olvide', '/recuperar','/desercion' ,'/docs/noExiste'];
 
     $permisosGrupo = ['/grupos', '/grupo', '/integrante/getParticipaciones',  '/integrante', '/integrante/setAsistencia', '/integrante/deleteAsistencia', '/integrante/setBeneficio',   '/integrante/getBeneficio', '/integrante/updBeneficioEst', '/api/getIntegrante', '/api/setTntegrante', '/rendimiento', '/rendimiento/eliminar'];
 

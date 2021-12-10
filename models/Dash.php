@@ -8,8 +8,8 @@ class Dash extends ActiveRecord
     public static function getCantidadParticipantes()
     {
         $query = "SELECT nombre, count(ag.id) cantidad
-        from grupo_universitario gu inner join alumno_x_grupo ag
-        on ag.grupo_universitario_id=gu.id group by gu.id;";
+        FROM grupo_universitario gu inner join alumno_x_grupo ag
+        on ag.grupo_universitario_id=gu.id group by gu.id";
         $resultado = self::$db->query($query);
         return $resultado;
     }
@@ -47,13 +47,13 @@ class Dash extends ActiveRecord
     public static function getEsc()
     {
         $query = "SELECT e.nombre nombre_escuela,date_format(fecha_Hora,'%Y-%m') Inicio,count(*) Tendencia
-from alumno a
-inner join escuela e on e.id=a.escuela_id
-inner join facultad f on f.id=e.facultad_id
-inner join alumno_x_grupo ag on ag.alumno_id=a.id
-inner join participacion_alumno pa on pa.alumno_x_grupo_id=ag.id
-inner join invitacion i on i.id=pa.invitacion_id
-group by e.id;";
+            from alumno a
+            inner join escuela e on e.id=a.escuela_id
+            inner join facultad f on f.id=e.facultad_id
+            inner join alumno_x_grupo ag on ag.alumno_id=a.id
+            inner join participacion_alumno pa on pa.alumno_x_grupo_id=ag.id
+            inner join invitacion i on i.id=pa.invitacion_id
+            group by e.id;";
         $resultado = self::$db->query($query);
         return $resultado;
     }
@@ -113,13 +113,13 @@ group by e.id;";
     {
 
         $query = "SELECT e.nombre ,date_format(fecha_Hora,'%Y-%m') Inicio,count(*) Tendencia
-  from alumno a 
- inner join escuela e on e.id=a.Escuela_id
- inner join facultad f on f.id=e.Facultad_id
- inner join alumno_x_grupo ag on ag.Alumno_id=a.id
- inner join participacion_alumno pa on pa.alumno_x_grupo_id=ag.id
- inner join invitacion i on i.id=pa.invitacion_id
- group by Inicio,e.nombre having Inicio='" . $fecha . "' and e.nombre='" . $escuela . "'  order by Inicio";
+            from alumno a 
+            inner join escuela e on e.id=a.Escuela_id
+            inner join facultad f on f.id=e.Facultad_id
+            inner join alumno_x_grupo ag on ag.Alumno_id=a.id
+            inner join participacion_alumno pa on pa.alumno_x_grupo_id=ag.id
+            inner join invitacion i on i.id=pa.invitacion_id
+            group by Inicio,e.nombre having Inicio='" . $fecha . "' and e.nombre='" . $escuela . "'  order by Inicio";
         $resultado = self::$db->query($query);
         if ($resultado->num_rows > 0)
             while ($fila = $resultado->fetch_assoc()) {
