@@ -46,6 +46,9 @@ $router->post('/integrante/deleteAsistencia', [GrupoController::class, 'deleteAs
 $router->post('/integrante/setBeneficio', [GrupoController::class, 'setBeneficio']);
 $router->post('/integrante/getBeneficio', [GrupoController::class, 'getBeneficio']);
 $router->post('/integrante/updBeneficioEst', [GrupoController::class, 'updBeneficioEst']);
+$router->get('/rendimiento', [GrupoController::class, 'rendimiento']);
+$router->post('/rendimiento', [GrupoController::class, 'setRendimiento']);
+$router->post('/rendimiento/eliminar', [GrupoController::class, 'delRendimiento']);
 //crear en caso no haya api
 $router->post('/integrante/crearIntegrante', [GrupoController::class, 'crearIntegrante']);
 

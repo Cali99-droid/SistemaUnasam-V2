@@ -9,11 +9,6 @@
             <i class="fas fa-search"></i>
             <input type="text" id="buscarEv" placeholder="Buscar" class="busqueda-ev">
         </div>
-
-
-
-
-
     </div>
 
     <div class="contenedor-tabla tab-beneficio">

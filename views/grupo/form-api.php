@@ -7,7 +7,7 @@
 -->
 <div class="contenedor-al ">
     <div class="columna-al">
-        <div class="form-item">
+        <div>
             <label for="dni">DNI</label>
             <input type="text" name="integrante[dni]" id="dni_s" maxlength="8">
         </div>

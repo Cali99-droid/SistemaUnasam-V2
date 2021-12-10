@@ -66,7 +66,7 @@ class Beneficio_x_alumno extends ActiveRecord
 
     public function existe()
     {
-        $query = 'SELECT * FROM beneficio_x_alumno WHERE alumno_x_grupo_id = ' . $this->alumno_x_grupo_id . ' AND beneficio_x_tipo_grupo_id = ' . $this->beneficio_x_tipo_grupo_id;
+        $query = "SELECT * FROM beneficio_x_alumno WHERE alumno_x_grupo_id = " . $this->alumno_x_grupo_id . " AND beneficio_x_tipo_grupo_id = " . $this->beneficio_x_tipo_grupo_id;
         $bena = self::SQL_primer($query);
         if ($bena) {
             return true;

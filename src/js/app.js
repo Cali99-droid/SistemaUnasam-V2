@@ -2242,6 +2242,135 @@ async function eliminarInvitacion(id) {
 }
 
 
+async function agregarRend() {
+    const semestre = document.getElementById('semestre');
+    const estado = document.getElementById('estado');
+    const alumno = document.getElementById('idAlumno');
+    const id = document.getElementById('idRendimiento');
+    const datos = new FormData();
+    datos.append('id', id.value);
+    datos.append('semestre_id', semestre.value);
+    datos.append('alumno_id', alumno.value);
+    datos.append('estado', estado.value);
+
+    try {
+        //Peticion hacia la api
+        const url = 'http://appunasam.devor/rendimiento';
+        const respuesta = await fetch(url, {
+            method: 'POST',
+            body: datos
+        })
+        const resultado = await respuesta.json();
+        console.log(resultado);
+        if (resultado.existe) {
+            Swal.fire({
+                icon: 'info',
+                title: 'Mensaje...',
+                text: 'EL Semestre ya tiene un estado!',
+
+            })
+            return;
+        }
+        if (resultado) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Muy bien !',
+                text: 'Registrado Correctamente  !',
+
+            })
+
+
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error...',
+                text: 'No se pudo crear!',
+
+            })
+        }
+
+    } catch (error) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error...',
+            text: 'Hubo un error al crear!',
+
+        })
+    }
+}
+
+function actualizarRend(semes, estado, id) {
+
+    modal('modal_rend', 'boton-agregar-integrante', 'close-rend')
+    $('#semestre').val(semes);
+    $("#estado").val(estado);
+    // $("#Observacion").val(obser);
+    $("#idRendimiento").val(id);
+    // $("#idInvitacion").val(id);
+    // $("#idevento").val(idevento);
+
+}
+
+async function eliminarRend(id) {
+    datos = new FormData();
+    datos.append('id', id);
+
+    try {
+        //Peticion hacia la api
+        const url = 'http://appunasam.devor/rendimiento/eliminar';
+        const respuesta = await fetch(url, {
+            method: 'POST',
+            body: datos
+        })
+        const resultado = await respuesta.json();
+        console.log(resultado);
+
+
+        if (resultado) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Muy bien...',
+                text: 'Se Eliminó !',
+
+            }).then(() => {
+                window.location.reload();
+            })
+
+
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error...',
+                text: 'No se pudo eliminar!',
+
+            })
+        }
+
+    } catch (error) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error...',
+            text: 'Hubo un error al eliminar!',
+
+        })
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 if (document.getElementById("participaciones")) {
     document.getElementById("participaciones").click();

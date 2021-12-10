@@ -4,6 +4,7 @@
     <div class="con_accion">
 
         <a href="/grupo?id=<?php echo $grupo->id ?>" class="btn-asignar"><i class="fas fa-arrow-circle-left"></i> Volver</a>
+
     </div>
 
     <div class="datos-integrante">
@@ -13,18 +14,23 @@
 
         <div class="datos datos--text">
             <span class="datos__nombre"><?php echo $integrante->nombre . " " . $integrante->apellido ?></span>
-            <p>DNI: <?php echo $integrante->dni ?></p>
+
             <p><?php echo $integrante->codigo ?> </p>
             <p><?php echo $grupo->nombre ?></p>
 
         </div>
         <div class="datos">
             <div class=" datos--general zoom">
+
                 <p class="info"><strong> NOTA: Las información que a continuación se visualiza, se puede manipular de acuerdo a las necesidades
                         de la actividad del alumno en el el grupo </strong> </p>
 
+
             </div>
 
+        </div>
+        <div class="rendimiento">
+            <a href="/rendimiento?id=<?php echo  $integrante->idAlumno ?>" class="btn-asignar"><i class="fas fa-eye"></i> Ver Rendimiento</a>
         </div>
 
     </div>

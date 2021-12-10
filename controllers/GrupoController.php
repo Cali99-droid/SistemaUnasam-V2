@@ -16,8 +16,7 @@ use Model\ParticipacionAlumno;
 use Model\Semestre;
 use Model\DatosUser;
 use Model\Opcion_x_tipo;
-
-
+use Model\Rendimiento_academico;
 
 class GrupoController
 {
@@ -243,6 +242,53 @@ class GrupoController
     {
         $alumno = new Integrante($_POST);
         $resultado =   $alumno->asignarGrupoS();
+        echo json_encode($resultado);
+    }
+
+
+    public static function rendimiento(Router $router)
+    {
+        $id = validarORedireccionar('/grupos');
+        $alumno = Integrante::where('idAlumno', $id);
+
+        if ($alumno) {
+            $rendimientos = Rendimiento_academico::where_all('alumno_id', $alumno->idAlumno);
+            // debuguear($rendimientos);
+        } else {
+            echo 'no existe el alumno';
+        }
+        $semestres = Semestre::all();
+        $router->render('grupo/rendimiento', [
+            'rendimientos' => $rendimientos,
+            'alumno' => $alumno,
+            'semestres' => $semestres
+        ]);
+    }
+
+
+    public static function setRendimiento()
+    {
+        $resultado['existe'] = false;
+        $rend = new Rendimiento_academico($_POST);
+        if (!$rend->existeSemestre()) {
+            if ($rend->id == '') {
+                $resultado = $rend->crear();
+                $resultado = $resultado['resultado'];
+            } else {
+                $resultado = $rend->actualizar();
+            }
+        } else {
+            $resultado['existe'] = true;
+        }
+
+        echo json_encode($resultado);
+    }
+
+    public static function delRendimiento()
+    {
+        // $id = $_POST['id'];
+        $rend = new Rendimiento_academico($_POST);
+        $resultado = $rend->eliminar();
         echo json_encode($resultado);
     }
 }
