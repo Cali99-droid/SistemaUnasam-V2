@@ -3,7 +3,7 @@
         <h3 class="no-margin">Análisis Gráfico</h3>
     </div>
     <div class="contenido-dashboard">
-
+  
 
 
         <div class="contenido-dash">
@@ -15,6 +15,7 @@
             <div class="dash" id="piechart5"></div>
             <div class="dash" id="piechart6"></div>
             <div class="dash" id="piechart7"></div>
+            <div class="dash" id="piechart8"></div>
         </div>
     </div>
 
@@ -46,6 +47,9 @@
     google.charts.load('current', {
         'packages': ['line']
     });
+    google.charts.load('current', {
+        'packages': ['line']
+    });
 
     google.charts.setOnLoadCallback(dibujaBeneficiosPen);
     google.charts.setOnLoadCallback(dibujaEstadoBeneficios);
@@ -54,7 +58,8 @@
     google.charts.setOnLoadCallback(drawStuff);
     google.charts.setOnLoadCallback(drawChart);
     google.charts.setOnLoadCallback(dibujaTendencia);
-    google.charts.setOnLoadCallback(dibujaTendenciaEstado);
+    google.charts.setOnLoadCallback(dibujaTendenciaRegulares);
+    google.charts.setOnLoadCallback(dibujaTendenciaIrregulares);
     function drawChart() {
 
         var data = google.visualization.arrayToDataTable([
@@ -265,11 +270,11 @@
 
     /* FIN*/
     
-    /* TENDENCIA DE REPORTES POR SEMESTRE */
-    function dibujaTendenciaEstado() {
+    /* TENDENCIA DE REPORTES POR SEMESTRE DE ALUMNOS REGULARES */
+    function dibujaTendenciaRegulares() {
         var data = new google.visualization.DataTable();
-        data.addColumn('string', 'MESES');
-        <?php while ($fila = $escuelas->fetch_assoc()) {
+        data.addColumn('string', 'Tipo Grupos');
+        <?php while ($fila = $getSemestre->fetch_assoc()) {
         ?>
             data.addColumn('number',
                 <?php
@@ -277,7 +282,7 @@
                 ?>);
         <?php
         } ?>
-        <?php echo $muestraDash; ?>
+           <?php echo $tendenciaRegulares; ?>
 
         var options = {
             chart: {
@@ -295,6 +300,41 @@
             }
         };
         var chart7 = new google.charts.Line(document.getElementById('piechart7'));
+        chart7.draw(data, google.charts.Line.convertOptions(options));
+
+    }
+
+    /* FIN */
+    /* TENDENCIA DE REPORTES POR SEMESTRE DE ALUMNOS IRREGULARES */
+    function dibujaTendenciaIrregulares() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Tipos Grupos');
+        <?php while ($fila = $getSemestre2->fetch_assoc()) {
+        ?>
+            data.addColumn('number',
+                <?php
+                echo " '" . $fila["nombre"] . "'";
+                ?>);
+        <?php
+        } ?>
+            <?php echo $tendenciaIrregulares; ?>
+
+        var options = {
+            chart: {
+                title: 'Tendencia de Cantidad de Irregulares por Grupo',
+                subtitle: 'cantidad de estudiantes'
+            },
+            width: 1000,
+            heigth: 1000,
+            axes: {
+                x: {
+                    0: {
+                        side: 'bot'
+                    }
+                }
+            }
+        };
+        var chart7 = new google.charts.Line(document.getElementById('piechart8'));
         chart7.draw(data, google.charts.Line.convertOptions(options));
 
     }

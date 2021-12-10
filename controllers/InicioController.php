@@ -25,6 +25,10 @@ class InicioController
         $beneficiosPendientes = Dash::getBeneficiosPendientes();
         $escuelas   = Dash::getEscuelas();
         $muestraDash   = Dash::muestraDash();
+        $getSemestre = Dash::getSemestre();
+        $getSemestre2 = Dash::getSemestre();
+        $tendenciaRegulares=Dash::tendenciaRegulares('regular');
+        $tendenciaIrregulares=Dash::tendenciaRegulares('irregular');
         $router->render(
             'inicio/index',
             [
@@ -35,8 +39,11 @@ class InicioController
                 'estadoBeneficios' => $estadoBeneficios,
                 'beneficiosPendientes' => $beneficiosPendientes,
                 'escuelas' => $escuelas,
-                'muestraDash' => $muestraDash
-
+                'muestraDash' => $muestraDash,
+                'getSemestre'=>$getSemestre,
+                'getSemestre2'=>$getSemestre2,
+                'tendenciaRegulares'=>$tendenciaRegulares,
+                'tendenciaIrregulares'=>$tendenciaIrregulares
             ]
         );
     }
