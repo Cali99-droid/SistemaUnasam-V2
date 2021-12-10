@@ -31,9 +31,9 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($beneficios as $beneficio) : ?>
+                <?php foreach ($descripcion as $beneficio) : ?>
                     <tr>
-                        <td><?php echo $beneficio->nombre; ?></td>
+                        <td><?php echo $beneficio->descripcion; ?></td>
                         <td>
                            <!-- <button class="btn-asignar" onclick="modalAsignar(<?php echo $beneficio->id; ?>, '<?php echo $beneficio->nombre; ?>','modal-asignar-grupo', 'boton-agregar-beneficio', 'asig')"><i class="fas fa-plus-circle"></i> Asignar</button>
                 -->

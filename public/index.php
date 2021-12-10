@@ -81,6 +81,7 @@ $router->get('/reporte', [ReporteController::class, 'index']);
 $router->post('/reporte', [ReporteController::class, 'index']);
 //Desercion
 $router->get('/desercion', [DesercionController::class, 'index']);
+$router->post('/desercion', [DesercionController::class, 'setDesercion']);
 //admin
 $router->get('/tipos', [AdminController::class, 'tipos']);
 $router->get('/usuarios', [AdminController::class, 'users']);

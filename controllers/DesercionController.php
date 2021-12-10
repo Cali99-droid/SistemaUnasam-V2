@@ -7,19 +7,40 @@ use Model\Beneficio_x_tipo_grupo;
 use Model\Datos_ben_x_tipoGp;
 use Model\Resolucion_x_beneficio;
 use Model\TipoGrupo;
+use Model\Desercion;
 use MVC\Router;
-
 class DesercionController
 {
     public static function index(Router $router)
     {
-        $beneficios = Beneficio::all();
-        $tipos = TipoGrupo::all();
+        $descripcion = Desercion::all();
+        //$tipos = TipoGrupo::all();
         $router->render('desercion/index', [
-            'beneficios' => $beneficios,
-            'tipos' => $tipos
+            'descripcion' => $descripcion
+            //'tipos' => $tipos
         ]);
     }
+
+    public static function setDesercion()
+    {
+        $id = $_POST['id'];
+        $desercion = new Desercion($_POST);
+
+       /* if ($desercion->validarNombre()) {
+            $resultado = false;
+        } else {
+            if ($id) {
+                $resultado = $desercion->actualizar();
+            } else {
+                $resultado = $desercion->crear();
+                $resultado =  $resultado['resultado'];
+            }
+        }*/
+        $resultado = $desercion->crear();
+                $resultado =  $resultado['resultado'];
+        echo json_encode($resultado);
+    }
+
 
     public static function crear()
     {

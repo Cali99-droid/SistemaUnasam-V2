@@ -1986,6 +1986,69 @@ async function crearSemestre() {
 }
 
 
+async function crearItemDesercion() {
+    
+    const nombre = document.querySelector('#nombre');
+    const id = document.querySelector('#idSemestre');
+
+    if (nombre.value.trim().length == 0) {
+        nombre.value = "";
+        nombre.focus();
+        Swal.fire({
+            icon: 'warning',
+            title: 'ADVERTENCIA !',
+            text: 'El nombre del semestre es obligatorio'
+        })
+        return;
+    }
+
+    
+
+    const datos = new FormData();
+    datos.append('nombre', nombre.value);
+    datos.append('id', id.value);
+    try {
+        //Peticion hacia la api
+        const url = 'http://localhost:3000/desercion';
+        const respuesta = await fetch(url, {
+            method: 'POST',
+            body: datos
+        })
+        const resultado = await respuesta.json();
+        console.log(resultado);
+        alert(resultado);
+        if (resultado) {
+            Swal.fire({
+                icon: 'success',
+                title: 'MUY BIEN ',
+                text: 'El indicador fue registrado correctamente!',
+            }).then(() => {
+                $('#nombre').val('');
+                $('#fecha_inicio').val('');
+                $('#fecha_final').val('');
+                $('#idSemestre').val('');
+
+
+            })
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'ERORR ',
+                text: 'Ya existe el nombre del indicador !',
+            })
+        }
+    } catch (error) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error...',
+            text: 'Hubo un error al guardar el indicador!',
+
+        })
+    }
+
+}
+
+
 //sin api
 async function crearIntegrante() {
     const dni = document.querySelector('#dni_s');

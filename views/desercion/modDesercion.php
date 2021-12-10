@@ -1,8 +1,8 @@
 
         <form method="POST" class="formulario-grupo">
 
-            <label for="nombre">Nombre del Semestre</label>
-            <input type="text" name="semestre[nombre]" id="nombre">
+            <label for="nombre">Causa de la desercion</label>
+            <input type="text" name="desercion[nombre]" id="nombre" placeholder="Ingrese causa de deserción">
 
            <!-- <label for="fecha_inicio">Fecha inicio</label>
             <input type="date" name="semestre[fecha_inicio]" id="fecha_inicio">
@@ -18,7 +18,7 @@
             </select>
 -->
             <input id="idSemestre" type="hidden" value="">
-            <button type="button" onclick="crearSemestre()">Aceptar</button>
+            <button type="button" onclick="crearItemDesercion()">Aceptar</button>
 
         </form>
 
