@@ -26,21 +26,28 @@ class DesercionController
         $id = $_POST['id'];
         $desercion = new Desercion($_POST);
 
-       /* if ($desercion->validarNombre()) {
+       if ($desercion->validarNombre()) {
             $resultado = false;
         } else {
-            if ($id) {
-                $resultado = $desercion->actualizar();
-            } else {
+            if ($id ==='') {
                 $resultado = $desercion->crear();
                 $resultado =  $resultado['resultado'];
+            } else {
+                $resultado = $desercion->actualizar();
             }
-        }*/
-        $resultado = $desercion->crear();
-                $resultado =  $resultado['resultado'];
+        }
         echo json_encode($resultado);
     }
-
+    public static function actualizarDesercion(Router $router)
+    {
+        $id = validarORedireccionar($_GET['id']);
+        $desercion =  Desercion::find($id);
+        //$organizadores = Organizador::all();
+        $router->render('desercion/desercion-actualizar', [
+            //'organizadores' => $organizadores
+            'desercion' => $desercion
+        ]);
+    }
 
     public static function crear()
     {
@@ -102,7 +109,16 @@ class DesercionController
         echo json_encode($resultado);
     }
 
+    public static function desercion_eliminar()
+    {
+        $id = $_POST['id'];
+        $desercion = Desercion::find($id);
+        
+            $resultado =  $desercion->eliminar();
+        
 
+        echo json_encode($resultado);
+    }
     public static function asignarBeneficio()
     {
         $id = $_POST['id'];

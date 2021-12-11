@@ -82,14 +82,14 @@
 
             <div class="buscar" id="bus_user">
                 <label for="buscar_user">Buscar</label>
-                <input type="text" name="buscar_user" id="buscar_user" placeholder="Buscar por DNI">
+                <input type="text" name="buscar_user" id="buscar_user" placeholder="Buscar por DNI" maxlength="8">
                 <button class="btn-asignar" type="button" id="btnBuscauser" name="btnBuscauser" onclick="buscarUsuario($('#buscar_user').val())">Buscar</button>
             </div>
 
             <div class="contenedor-usuario">
                 <div class="columna-usuario">
                     <label for="dni">DNI</label>
-                    <input type="text" name="dni" id="dni">
+                    <input type="text" name="dni" id="dni" maxlength="8" autocomplete="off">
                     <label for="nombre">Nombre</label>
                     <input type="text" name="nombre" id="nombre">
 
@@ -112,7 +112,7 @@
                     <input type="email" name="email" id="email">
 
                     <label for="telefono">Teléfono</label>
-                    <input type="number" name="telefono" id="telefono" placeholder="Ingrese teléfono">
+                    <input type="text" name="telefono" id="telefono" placeholder="Ingrese teléfono" maxlength="9">
                     <label for="usuario" nombre-usu>Nombre de Usuario</label>
                     <input type="text" name="usuario" id="usuario" placeholder="Ingrese nombre de Usuario">
                 </div>
@@ -149,3 +149,26 @@
 
 
         </form>
+
+        <script>
+            $(document).ready(function() {
+                $('#buscar_user').on('input', function() {
+                    this.value = this.value.replace(/[^0-9]/g, '');
+                });
+                $('#dni').on('input', function() {
+                    this.value = this.value.replace(/[^0-9]/g, '');
+                });
+                $('#telefono').on('input', function() {
+                    this.value = this.value.replace(/[^0-9]/g, '');
+                });
+                $('#nombre').keypress(function (e) {
+                var tecla = document.all ? tecla = e.keyCode : tecla = e.which;
+                return !((tecla > 47 && tecla < 58) || tecla == 46);
+                });
+                $('#apellido').keypress(function (e) {
+                var tecla = document.all ? tecla = e.keyCode : tecla = e.which;
+                return !((tecla > 47 && tecla < 58) || tecla == 46);
+                });
+
+            });
+        </script>

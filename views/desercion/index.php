@@ -10,7 +10,7 @@
         </div>
 
         <div class="nuevo-grupo__mod">
-            <a type="button" class="btn-asignar" id="boton-agregar-beneficio" onclick="modal('modal-agregar-bene', 'boton-agregar-beneficio', 'close')">
+            <a type="button" class="btn-asignar" id="boton-agregar-beneficio" onclick="modal('modal-agregar-desercion', 'boton-agregar-beneficio', 'close')">
                 <i class="fas fa-plus-circle"></i> Agregar Ítem
             </a>
 
@@ -37,10 +37,10 @@
                         <td>
                            <!-- <button class="btn-asignar" onclick="modalAsignar(<?php echo $beneficio->id; ?>, '<?php echo $beneficio->nombre; ?>','modal-asignar-grupo', 'boton-agregar-beneficio', 'asig')"><i class="fas fa-plus-circle"></i> Asignar</button>
                 -->
-                           <button type="button" class="btn-asignar" onclick="actualizarBeneficio(<?php echo $beneficio->id; ?>)">
+                           <button type="button" class="btn-asignar" onclick="actualizarDesercionA(<?php echo $beneficio->id; ?>,'<?php echo $beneficio->descripcion; ?>')">
                                 <i class=" fas fa-pencil-alt"></i> Editar</button>
                             <input type="hidden" name="id" value="<?php echo $beneficio->id; ?>">
-                            <button type="button" class="btn-asignar">
+                            <button type="button" class="btn-asignar"  onclick="eliminarDesercion(<?php echo $beneficio->id; ?>)">
                                 <i class="fas fa-trash"></i> Borrar</button>
 
                         </td>
@@ -63,16 +63,16 @@
 
 </div>
 </div>
-<div class="modal-agregar" id="modal-agregar-bene">
+<div class="modal-agregar" id="modal-agregar-desercion">
 
 
     <div class="modal-beneficio contenido-modal-grupo ">
         <div class="encabezado-modal">
-            <h2>Nueva Deserción</h2>
+            <h2 id="TituloCabeceraModal">Nueva Deserción</h2>
             <span class="close">&times;</span>
 
         </div>
-        <form method="POST" class="formulario-beneficio" enctype="multipart/form-data">
+        <form method="POST" class="formulario-grupo">
 
             <?php include_once "modDesercion.php"; ?>
 
