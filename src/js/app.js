@@ -2005,7 +2005,7 @@ async function crearItemDesercion() {
     
 
     const datos = new FormData();
-    datos.append('nombre', nombre.value);
+    datos.append('descripcion', nombre.value);
     datos.append('id', id.value);
     try {
         //Peticion hacia la api
@@ -2024,8 +2024,6 @@ async function crearItemDesercion() {
                 text: 'El indicador fue registrado correctamente!',
             }).then(() => {
                 $('#nombre').val('');
-                $('#fecha_inicio').val('');
-                $('#fecha_final').val('');
                 $('#idSemestre').val('');
 
 
@@ -2033,7 +2031,7 @@ async function crearItemDesercion() {
         } else {
             Swal.fire({
                 icon: 'error',
-                title: 'ERORR ',
+                title: 'ERORR! ',
                 text: 'Ya existe el nombre del indicador !',
             })
         }
