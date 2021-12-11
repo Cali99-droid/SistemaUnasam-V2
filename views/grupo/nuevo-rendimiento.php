@@ -8,7 +8,7 @@
 <label for="estado">Estado</label>
 <select name="estado" id="estado">
     <option value="regular">REGULAR</option>
-    <option value="irregualar">IRREGULAR</option>
+    <option value="irregular">IRREGULAR</option>
 </select>
 <input type="hidden" id="idAlumno" value="<?php echo $alumno->idAlumno ?>">
 <input type="hidden" id="idRendimiento" value="">
