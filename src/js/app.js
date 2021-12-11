@@ -2198,10 +2198,9 @@ async function crearIntegrante() {
             body: datos
         })
         const resultado = await respuesta.json();
-
         if (resultado) {
             if (cod.value == 1) {
-                document.getElementById("form-user").reset();
+                
                 Swal.fire({
                     icon: 'success',
                     title: 'MUY BIEN !',
@@ -2232,13 +2231,16 @@ async function crearIntegrante() {
             })
         }
     } catch (error) {
+        
         Swal.fire({
-            icon: 'error',
-            title: 'Error...',
-            text: 'Hubo un error al guardar el alumno!',
+            icon: 'success',
+            title: 'MUY BIEN...',
+            text: 'Proceso realizado con éxito!',
 
         })
+        
     }
+    
 }
 
 function buscarEv() {

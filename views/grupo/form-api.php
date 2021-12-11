@@ -111,7 +111,7 @@
         <div>
             <input type="hidden" name="cod" value="2" id="valor">
             <input type="hidden" name="integrante[idPersona]" value='' id="idPersona_s">
-            <button type="reset" onclick="crearIntegrante()">Aceptar</button>
+            <button type="button" onclick="crearIntegrante()">Aceptar</button>
         </div>
 
     </div>

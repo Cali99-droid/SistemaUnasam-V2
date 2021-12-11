@@ -130,7 +130,7 @@
             <span class=" close close-integrante-s">&times;</span>
 
         </div>
-        <form method="POST" class="formulario-grupo">
+        <form method="POST" class="formulario-grupo" id="formulario-grupo-s">
 
             <?php include_once 'form-api.php' ?>
 
