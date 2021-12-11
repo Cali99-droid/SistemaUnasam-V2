@@ -140,4 +140,18 @@ class BeneficioController
 
         echo json_encode($resultado);
     }
+    /******* Inicio *******/
+    public static function eliminarBeneficio()
+    {
+        $id = $_POST['id'];
+        $beneficio = Beneficio::find($id);
+        if (!$beneficio->validarEdicion()) {
+            $resultado = $beneficio->eliminar();
+        } else {
+            $resultado = false;
+        }
+
+        echo json_encode($resultado);
+    }
+    /******* Fin*******/
 }

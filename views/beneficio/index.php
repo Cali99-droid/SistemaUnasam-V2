@@ -40,9 +40,8 @@
                             <button type="button" class="btn-asignar" onclick="actualizarBeneficio(<?php echo $beneficio->id; ?>)">
                                 <i class=" fas fa-pencil-alt"></i> Editar</button>
                             <input type="hidden" name="id" value="<?php echo $beneficio->id; ?>">
-                            <button type="button" class="btn-asignar">
+                            <button type="button" class="btn-asignar"  onclick="borrarBen(<?php echo $beneficio->id; ?>)">
                                 <i class="fas fa-trash"></i> Borrar</button>
-
                         </td>
 
                     </tr>
