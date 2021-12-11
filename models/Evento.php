@@ -65,4 +65,14 @@ class Evento extends ActiveRecord
             return false;
         }
     }
+
+    public function estaAsignado()
+    {
+        $inv = Invitacion::where('evento_id', $this->id);
+        if (isset($inv)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

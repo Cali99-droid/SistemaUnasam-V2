@@ -93,4 +93,17 @@ class APIController
 
         echo json_encode($resultado);
     }
+
+
+    public static function eliminarTipo()
+    {
+        $tipo = new TipoGrupo($_POST);
+        if (!$tipo->estaAsignado()) {
+            $resultado = $tipo->eliminar();
+        } else {
+            $resultado = false;
+        }
+
+        echo json_encode($resultado);
+    }
 }

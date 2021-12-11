@@ -68,4 +68,9 @@ class Semestre extends ActiveRecord
             return false;
         }
     }
+
+
+    public function existenDosActivos()
+    {
+    }
 }

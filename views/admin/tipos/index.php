@@ -41,7 +41,7 @@
 
 
                                 <input type="hidden" name="id" value="<?php echo $tipo->id; ?>">
-                                <button type="button" class="btn-asignar">
+                                <button type="button" class="btn-asignar" onclick="preguntar(borrarTipo,<?php echo $tipo->id; ?>)">
                                     <i class="fas fa-trash"></i> Borrar</button>
 
 

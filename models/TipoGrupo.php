@@ -51,4 +51,16 @@ class TipoGrupo extends ActiveRecord
             return false;
         }
     }
+
+
+    public function estaAsignado()
+    {
+
+        $grupo = Grupo::where('tipo_grupo_id', $this->id);
+        if (isset($grupo)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

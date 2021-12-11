@@ -51,4 +51,15 @@ class Beneficio extends ActiveRecord
             return false;
         }
     }
+
+
+    public function estaAsignado()
+    {
+        $ben = Beneficio_x_tipo_grupo::where('beneficio_id', $this->id);
+        if (isset($ben)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

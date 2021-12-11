@@ -51,12 +51,8 @@
 
 
                             <input type="hidden" name="id" value="<?php echo $evento->id; ?>">
-                            <button type="button" class="btn-asignar">
+                            <button type="button" class="btn-asignar" onclick="preguntar(borrarEvento,<?php echo $evento->id; ?>)">
                                 <i class="fas fa-trash"></i> Borrar</button>
-
-
-
-
                         </td>
                     </tr>
                 <?php endforeach; ?>

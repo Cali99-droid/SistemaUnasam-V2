@@ -977,9 +977,11 @@ async function confirmarAsistencia() {
 
             }).then(() => {
 
-                close.click();
-                document.getElementById("participaciones").click();
-                mostrarParticipaciones(idAlumnoGrupo.value);
+                // close.click();
+                // document.getElementById("participaciones").click();
+                // mostrarParticipaciones(idAlumnoGrupo.value);
+
+                window.location.reload();
 
             })
 
@@ -2541,7 +2543,7 @@ async function eliminarBeneficio(id) {
 
     try {
         //Peticion hacia la api
-        const url = 'http://localhost:3000/beneficios-eliminar';
+        const url = 'http://appunasam.devor/beneficios-eliminar';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -2640,6 +2642,192 @@ async function borrarIntegrante(id) {
         })
     }
 }
+
+
+async function borrarEvento(id) {
+    datos = new FormData();
+    datos.append('id', id);
+
+    try {
+        //Peticion hacia la api
+        const url = 'http://appunasam.devor/eventos-eliminar';
+        const respuesta = await fetch(url, {
+            method: 'POST',
+            body: datos
+        })
+        const resultado = await respuesta.json();
+
+        console.log(resultado);
+
+        if (resultado) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Muy bien...',
+                text: 'Se Eliminó !',
+
+            }).then(() => {
+                window.location.reload();
+            })
+
+
+        } else {
+            Swal.fire({
+                icon: 'info',
+                title: 'Mensaje !',
+                text: 'Existen invitaciones al evento y no puede eliminarse',
+
+            })
+        }
+
+    } catch (error) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error...',
+            text: 'Hubo un error al eliminar!',
+
+        })
+    }
+}
+
+async function borrarTipo(id) {
+    datos = new FormData();
+    datos.append('id', id);
+
+    try {
+        //Peticion hacia la api
+        const url = 'http://appunasam.devor/api/tipos-eliminar';
+        const respuesta = await fetch(url, {
+            method: 'POST',
+            body: datos
+        })
+        const resultado = await respuesta.json();
+
+        console.log(resultado);
+
+        if (resultado) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Muy bien...',
+                text: 'Se Eliminó !',
+
+            }).then(() => {
+                window.location.reload();
+            })
+
+
+        } else {
+            Swal.fire({
+                icon: 'info',
+                title: 'Mensaje !',
+                text: 'Existen grupos de este tipo y no puede eliminarse',
+
+            })
+        }
+
+    } catch (error) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error...',
+            text: 'Hubo un error al eliminar!',
+
+        })
+    }
+}
+
+
+async function borrarUser(id) {
+    datos = new FormData();
+    datos.append('id', id);
+
+    try {
+        //Peticion hacia la api
+        const url = 'http://appunasam.devor/usuarios-eliminar';
+        const respuesta = await fetch(url, {
+            method: 'POST',
+            body: datos
+        })
+        const resultado = await respuesta.json();
+
+        console.log(resultado);
+
+        if (resultado) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Muy bien...',
+                text: 'Se Eliminó !',
+
+            }).then(() => {
+                window.location.reload();
+            })
+
+
+        } else {
+            Swal.fire({
+                icon: 'info',
+                title: 'Mensaje !',
+                text: 'El usuario tiene acciones realizadas y no puede eliminarse',
+
+            })
+        }
+
+    } catch (error) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error...',
+            text: 'Hubo un error al eliminar!',
+
+        })
+    }
+}
+
+
+async function borrarSemestre(id) {
+    datos = new FormData();
+    datos.append('id', id);
+
+    try {
+        //Peticion hacia la api
+        const url = 'http://appunasam.devor/semestres-eliminar';
+        const respuesta = await fetch(url, {
+            method: 'POST',
+            body: datos
+        })
+        const resultado = await respuesta.json();
+
+        console.log(resultado);
+
+        if (resultado) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Muy bien...',
+                text: 'Se Eliminó !',
+
+            }).then(() => {
+                window.location.reload();
+            })
+
+
+        } else {
+            Swal.fire({
+                icon: 'info',
+                title: 'Mensaje !',
+                text: 'El semestre tiene datos y no puede eliminarse',
+
+            })
+        }
+
+    } catch (error) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error...',
+            text: 'Hubo un error al eliminar!',
+
+        })
+    }
+}
+
+
+
 
 
 

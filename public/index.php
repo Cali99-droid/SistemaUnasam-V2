@@ -70,6 +70,7 @@ $router->post('/beneficios-eliminar', [BeneficioController::class, 'eliminarBene
 //Eventos
 $router->get('/eventos', [EventoController::class, 'index']);
 $router->post('/eventos', [EventoController::class, 'index']);
+$router->post('/eventos-eliminar', [EventoController::class, 'eliminarEvento']);
 $router->get('/nuevo-evento', [EventoController::class, 'v_crear']);
 $router->get('/actualizar-evento', [EventoController::class, 'v_actualizar']);
 $router->post('/crear-evento', [EventoController::class, 'crear']);
@@ -89,7 +90,7 @@ $router->post('/desercion-eliminar', [DesercionController::class, 'desercion_eli
 //admin
 $router->get('/tipos', [AdminController::class, 'tipos']);
 $router->get('/usuarios', [AdminController::class, 'users']);
-
+$router->post('/usuarios-eliminar', [AdminController::class, 'eliminarUser']);
 $router->post('admin/usuarios', [AdminController::class, 'index']);
 $router->get('/roles', [AdminController::class, 'roles']);
 $router->post('/crear-rol', [AdminController::class, 'crearRol']);
@@ -99,8 +100,10 @@ $router->post('/get-user', [AdminController::class, 'getUser']);
 //admin:semestres
 $router->get('/semestres', [AdminController::class, 'semestres']);
 $router->post('/semestres', [AdminController::class, 'setSemestre']);
+$router->post('/semestres-eliminar', [AdminController::class, 'eliminarSemestre']);
 //API
 $router->post('/api/tipos', [APIController::class, 'guardarTipo']);
+$router->post('/api/tipos-eliminar', [APIController::class, 'eliminarTipo']);
 $router->get('/api/tipos', [APIController::class, 'getTipos']);
 $router->post('/api/alumno',  [APIController::class, 'getAlumno']);
 $router->post('/api/crearAlumno',  [APIController::class, 'setAlumno']);

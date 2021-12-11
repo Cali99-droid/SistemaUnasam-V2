@@ -40,10 +40,8 @@
 
                             <button type="button" class="btn-asignar" onclick="actualizarSemestre(<?php echo $semestre->id; ?>,'<?php echo $semestre->nombre; ?>', '<?php echo $semestre->fecha_inicio; ?>', '<?php echo $semestre->fecha_fin; ?>', '<?php echo $semestre->estado; ?>')">
                                 <i class=" fas fa-pencil-alt"></i> Editar</button>
-
-
                             <input type="hidden" name="id" value="<?php echo $semestre->id; ?>">
-                            <button type="button" class="btn-asignar">
+                            <button type="button" class="btn-asignar" onclick="preguntar(borrarSemestre,<?php echo $semestre->id; ?>)">
                                 <i class="fas fa-trash"></i> Borrar</button>
 
 

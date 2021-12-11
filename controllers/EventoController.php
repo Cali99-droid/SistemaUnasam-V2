@@ -127,4 +127,19 @@ class EventoController
 
         echo json_encode($resultado);
     }
+
+
+    public static function eliminarEvento()
+    {
+
+        $id = $_POST['id'];
+        $evento = new Evento($_POST);
+        if (!$evento->estaAsignado()) {
+            $resultado = $evento->eliminar();
+        } else {
+            $resultado = false;
+        }
+
+        echo json_encode($resultado);
+    }
 }

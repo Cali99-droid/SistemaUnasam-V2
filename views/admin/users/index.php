@@ -12,8 +12,8 @@
         </div>
 
         <div class="nuevo-grupo__mod">
-            <button type="button" class="btn-asignar" id="boton-agregar-usuario" onclick="modal('modal-agregar', 'boton-agregar-usuario', 'close')">
-                <i class="fas fa-plus-circle"></i> Agregar Usuario</button>
+            <a type="button" class="btn-asignar" id="boton-agregar-usuario" onclick="modal('modal-agregar', 'boton-agregar-usuario', 'close')">
+                <i class="fas fa-plus-circle"></i> Agregar Usuario</a>
         </div>
     </div>
 
@@ -37,14 +37,13 @@
                         <td><?php echo $user->nombre . ' ' . $user->apellido ?></td>
                         <td><?php echo $user->usuario ?></td>
                         <td><?php echo $user->dni ?></td>
-                        <td><label for="estado<?php echo $user->idUsuario ?>">Activo </label><input id="estado<?php echo $user->idUsuario ?>" name="estado<?php echo $user->idUsuario ?>" type="checkbox" <?php echo $user->estado == 'activo' ? 'checked' : '' ?> value="activo"> </td>
-
+                        <td> <?php echo $user->estado ?></td>
                         <td>
                             <button type="button" class="btn-asignar" onclick="actualizarUsuario(<?php echo $user->dni; ?>, 'modal-agregar', 'boton-actualizar-tipo', 'close')">
                                 <i class=" fas fa-pencil-alt"></i> Editar</button>
 
                             <input type="hidden" name="id" value="<?php echo $user->idUsuario; ?>">
-                            <button type="button" class="btn-asignar">
+                            <button type="button" class="btn-asignar" onclick="preguntar(borrarUser,<?php echo $user->idUsuario; ?>)">
                                 <i class="fas fa-trash"></i> Borrar</button>
                         </td>
                     </tr>
@@ -161,13 +160,13 @@
                 $('#telefono').on('input', function() {
                     this.value = this.value.replace(/[^0-9]/g, '');
                 });
-                $('#nombre').keypress(function (e) {
-                var tecla = document.all ? tecla = e.keyCode : tecla = e.which;
-                return !((tecla > 47 && tecla < 58) || tecla == 46);
+                $('#nombre').keypress(function(e) {
+                    var tecla = document.all ? tecla = e.keyCode : tecla = e.which;
+                    return !((tecla > 47 && tecla < 58) || tecla == 46);
                 });
-                $('#apellido').keypress(function (e) {
-                var tecla = document.all ? tecla = e.keyCode : tecla = e.which;
-                return !((tecla > 47 && tecla < 58) || tecla == 46);
+                $('#apellido').keypress(function(e) {
+                    var tecla = document.all ? tecla = e.keyCode : tecla = e.which;
+                    return !((tecla > 47 && tecla < 58) || tecla == 46);
                 });
 
             });

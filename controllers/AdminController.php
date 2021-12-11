@@ -2,8 +2,12 @@
 
 namespace Controllers;
 
+use Model\Beneficio_x_alumno;
 use Model\DatosUser;
+use Model\DatosUsuario;
 use Model\Opcion_x_tipo;
+use Model\ParticipacionAlumno;
+use Model\Rendimiento_academico;
 use Model\Semestre;
 use Model\TipoGrupo;
 use Model\Usuario;
@@ -129,6 +133,7 @@ class AdminController
         if ($semestre->validarNombre()) {
             $resultado = false;
         } else {
+
             if ($id) {
                 $resultado = $semestre->actualizar();
             } else {
@@ -138,5 +143,44 @@ class AdminController
         }
 
         echo json_encode($resultado);
+    }
+
+
+    public static function eliminarUser()
+    {
+
+        $user = new Usuario($_POST);
+        $dat = DatosUser::where('idUsuario', $_POST['id']);
+        $datos = DatosUsuario::find($dat->idDatosUsu);
+        $part = ParticipacionAlumno::where('usuario_id', $user->id);
+        $ben = Beneficio_x_alumno::where('usuario_id', $user->id);
+        if (isset($part) || isset($ben)) {
+            $resultado = false;
+        } else {
+            //  $resultado = true;
+            $datos->eliminar();
+            $resultado = $user->eliminar();
+        }
+
+
+        echo  json_encode($resultado);
+    }
+
+    public static function eliminarSemestre()
+    {
+        $semestre = new Semestre($_POST);
+        //rednimiento, bene por alumno, participacion,
+        $rend = Rendimiento_academico::where('semestre_id', $semestre->id);
+        $ben = Beneficio_x_alumno::where('semestre_id', $semestre->id);
+        $part = ParticipacionAlumno::where('semestre_id', $semestre->id);
+        if (isset($ben) || isset($rend) || isset($part)) {
+            $resultado = false;
+        } else {
+            //  $resultado = true;
+
+            $resultado = $semestre->eliminar();
+        }
+
+        echo  json_encode($resultado);
     }
 }

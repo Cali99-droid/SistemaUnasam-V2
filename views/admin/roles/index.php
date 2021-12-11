@@ -13,7 +13,7 @@
         </div>
 
         <div class="nuevo-grupo__mod">
-            <button class="btn-asignar" onclick=" modal('modal-agregar-rol', 'boton-agregar-beneficio', 'close-rol');"><i class="fas fa-plus-circle"></i> Nuevo Rol</button>
+            <a class="btn-asignar" onclick=" modal('modal-agregar-rol', 'boton-agregar-beneficio', 'close-rol');"><i class="fas fa-plus-circle"></i> Nuevo Rol</a>
         </div>
     </div>
 

@@ -32,7 +32,7 @@ class BeneficioController
 
             if ($_POST['cod'] == 2) {
                 //actualizando
-                $doc = $_FILES["doc"];
+                $doc = $_FILES["doc"] ?? '';
                 $nombreDoc = md5(uniqid(rand(), true)) . ".pdf";
 
                 $beneficio = new Beneficio($_POST['beneficio']);
@@ -45,8 +45,11 @@ class BeneficioController
                 }
 
                 $ress->beneficio_id = $beneficio->id;
-                $ress->setDoc($nombreDoc);
-                move_uploaded_file($doc["tmp_name"], CARPETA_DOCS . $nombreDoc);
+                if ($doc != '') {
+                    $ress->setDoc($nombreDoc);
+                    move_uploaded_file($doc["tmp_name"], CARPETA_DOCS . $nombreDoc);
+                }
+
 
                 if ($ress->id == '') {
                     $resultado = $ress->crear();
@@ -55,7 +58,8 @@ class BeneficioController
                 }
             } else {
                 //creando
-                $doc = $_FILES["doc"];
+
+                $doc = $_FILES["doc"] ?? '';
                 $beneficio = new Beneficio($_POST['beneficio']);
                 $res = $beneficio->crear();
                 $id = $res['id'];
@@ -65,8 +69,11 @@ class BeneficioController
                 $nombreDoc = md5(uniqid(rand(), true)) . ".pdf";
 
                 //set archivo
-                $resolucion->setDoc($nombreDoc);
-                move_uploaded_file($doc["tmp_name"], CARPETA_DOCS . $nombreDoc);
+                if ($doc != '') {
+                    $resolucion->setDoc($nombreDoc);
+                    move_uploaded_file($doc["tmp_name"], CARPETA_DOCS . $nombreDoc);
+                }
+
 
 
 
@@ -145,7 +152,12 @@ class BeneficioController
     {
         $id = $_POST['id'];
         $beneficio = Beneficio::find($id);
-        if (!$beneficio->validarEdicion()) {
+        if (!$beneficio->estaAsignado()) {
+            $resolucion = Resolucion_x_beneficio::where('beneficio_id',  $beneficio->id);
+            if ($resolucion) {
+                $resolucion->eliminar();
+            }
+
             $resultado = $beneficio->eliminar();
         } else {
             $resultado = false;
