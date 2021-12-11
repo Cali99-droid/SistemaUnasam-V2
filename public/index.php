@@ -42,6 +42,7 @@ $router->post('/grupo', [GrupoController::class, 'grupo']);
 
 $router->post('/integrante/getParticipaciones', [GrupoController::class, 'getParticipaciones']);
 $router->get('/integrante', [GrupoController::class, 'integrante']);
+$router->post('/integrante-eliminar', [GrupoController::class, 'eliminarIntegrante']);
 $router->post('/integrante/setAsistencia', [GrupoController::class, 'setAsistencia']);
 $router->post('/integrante/deleteAsistencia', [GrupoController::class, 'deleteAsistencia']);
 $router->post('/integrante/setBeneficio', [GrupoController::class, 'setBeneficio']);

@@ -68,7 +68,7 @@
                                 <button type="button" class="btn-asignar" onclick="getIntegrante(<?php echo $integrante->idPersona ?>)">
                                     <i class=" fas fa-pencil-alt"></i> Editar</button>
 
-                                <button type="button" class="btn-asignar">
+                                <button type="button" class="btn-asignar" onclick="preguntar(borrarIntegrante,<?php echo $integrante->idAlumnoGrupo; ?>)">
                                     <i class="fas fa-trash"></i> Borrar</button>
 
 

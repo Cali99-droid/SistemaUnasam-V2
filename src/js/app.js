@@ -253,8 +253,8 @@ async function actualizarBeneficio(id) {
 
     try {
 
-        //Peticion hacia la api http://localhost:3000/
-        const url = 'http://localhost:3000/beneficios/getBeneficio';
+        //Peticion hacia la api http://appunasam.devor/
+        const url = 'http://appunasam.devor/beneficios/getBeneficio';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -385,7 +385,7 @@ async function actualizarUsuario(dni, modal_usu, boton_agregar_usu, close_usu) {
     try {
 
         //Peticion hacia la api
-        const url = 'http://localhost:3000/get-user';
+        const url = 'http://appunasam.devor/get-user';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: dat
@@ -491,7 +491,7 @@ async function confirmarBeneficio() {
     datos.append('estado', estado.value);
     try {
         //Peticion hacia la api
-        const url = 'http://localhost:3000/integrante/setBeneficio';
+        const url = 'http://appunasam.devor/integrante/setBeneficio';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -554,7 +554,7 @@ async function actualizarEstadoBeneficio(boton, id) {
     datos.append('id', id);
     try {
         //Peticion hacia la api
-        const url = 'http://localhost:3000/integrante/updBeneficioEst';
+        const url = 'http://appunasam.devor/integrante/updBeneficioEst';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -625,7 +625,7 @@ async function asignarBeneficioGrupo() {
 
     try {
         //Peticion hacia la api
-        const url = 'http://localhost:3000/beneficios/asignar';
+        const url = 'http://appunasam.devor/beneficios/asignar';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -694,7 +694,7 @@ async function asignarInvitacionGrupo() {
     datos.append('id', id.value);
     try {
         //Peticion hacia la api https://organizaciones.jymsystemsoft.com/
-        const url = 'http://localhost:3000/eventos/invitar-grupo';
+        const url = 'http://appunasam.devor/eventos/invitar-grupo';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -787,7 +787,7 @@ async function crearOrganizador() {
     datos.append('contacto', contacto.value)
     try {
         //Peticion hacia la api
-        const url = 'http://localhost:3000/crear-org';
+        const url = 'http://appunasam.devor/crear-org';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -828,7 +828,7 @@ async function crearOrganizador() {
 }
 async function cargarOrg() {
     try {
-        const url = 'http://localhost:3000/evento/orgs'
+        const url = 'http://appunasam.devor/evento/orgs'
         const resultado = await fetch(url);
         const orgs = await resultado.json();
         mostrarComboOrg(orgs);
@@ -892,7 +892,7 @@ async function crearEvento() {
 
     try {
         //Peticion hacia la api
-        const url = 'http://localhost:3000/crear-evento';
+        const url = 'http://appunasam.devor/crear-evento';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -961,7 +961,7 @@ async function confirmarAsistencia() {
 
     try {
         //Peticion hacia la api
-        const url = 'http://localhost:3000/integrante/setAsistencia';
+        const url = 'http://appunasam.devor/integrante/setAsistencia';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -1036,7 +1036,7 @@ async function mostrarParticipaciones(idAlumnoGrupo) {
     datos.append('idAlumnoGrupo', idAlumnoGrupo);
     try {
         //Peticion hacia la api
-        const url = 'http://localhost:3000/integrante/getParticipaciones';
+        const url = 'http://appunasam.devor/integrante/getParticipaciones';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -1081,7 +1081,7 @@ async function quitarParticipacion(id, idAlumno) {
     datos.append('id', id);
     try {
         //Peticion hacia la api
-        const url = 'http://localhost:3000/integrante/deleteAsistencia';
+        const url = 'http://appunasam.devor/integrante/deleteAsistencia';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -1114,7 +1114,7 @@ async function mostrarBeneficios(idAlumnoGrupo) {
     datos.append('idAlumnoGrupo', idAlumnoGrupo);
     try {
         //Peticion hacia la api
-        const url = 'http://localhost:3000/integrante/getBeneficio';
+        const url = 'http://appunasam.devor/integrante/getBeneficio';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -1200,7 +1200,7 @@ async function crearTipof() {
 
     try {
         //Peticion hacia la api https://organizaciones.jymsystemsoft.com
-        const url = 'http://localhost:3000/api/tipos';
+        const url = 'http://appunasam.devor/api/tipos';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -1239,7 +1239,7 @@ async function crearTipof() {
 
 async function cargarTipos() {
     try {
-        const url = 'http://localhost:3000/api/tipos'
+        const url = 'http://appunasam.devor/api/tipos'
         const resultado = await fetch(url);
         const tipos = await resultado.json();
         mostrarComboTipos(tipos);
@@ -1270,7 +1270,7 @@ async function getIntegrante(id) {
     datos.append('id', id);
     try {
         //Peticion hacia la api 
-        const url = 'http://localhost:3000/api/getIntegrante';
+        const url = 'http://appunasam.devor/api/getIntegrante';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -1330,7 +1330,7 @@ async function setIntegrante() {
     datos.append('nombre', nombre_tipo);
     try {
         //Peticion hacia la api
-        const url = 'http://localhost:3000/api/tipos';
+        const url = 'http://appunasam.devor/api/tipos';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -1372,7 +1372,7 @@ async function buscarAlumno(dni) {
     datos.append('dni', dni);
     try {
         //Peticion hacia la api
-        const url = 'http://localhost:3000/api/alumno';
+        const url = 'http://appunasam.devor/api/alumno';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -1443,7 +1443,7 @@ async function crearBeneficio() {
 
     try {
         //Peticion hacia la api
-        const url = 'http://localhost:3000/beneficios/crear';
+        const url = 'http://appunasam.devor/beneficios/crear';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -1517,7 +1517,7 @@ async function guardarIntegrante() {
 
     try {
         //Peticion hacia la api
-        const url = 'http://localhost:3000/api/crearAlumno';
+        const url = 'http://appunasam.devor/api/crearAlumno';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -1576,7 +1576,7 @@ async function actualizarRol(id) {
     try {
 
         //Peticion hacia la api
-        const url = 'http://localhost:3000/get-rol';
+        const url = 'http://appunasam.devor/get-rol';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -1647,7 +1647,7 @@ async function crearRol() {
 
     try {
         //Peticion hacia la api
-        const url = 'http://localhost:3000/crear-rol';
+        const url = 'http://appunasam.devor/crear-rol';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -1830,7 +1830,7 @@ async function crearUser() {
 
     try {
         //Peticion hacia la api
-        const url = 'http://localhost:3000/crear-user';
+        const url = 'http://appunasam.devor/crear-user';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -1946,7 +1946,7 @@ async function crearSemestre() {
     datos.append('id', id.value);
     try {
         //Peticion hacia la api
-        const url = 'http://localhost:3000/semestres';
+        const url = 'http://appunasam.devor/semestres';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -1987,7 +1987,7 @@ async function crearSemestre() {
 
 
 async function crearItemDesercion() {
-    
+
     const nombre = document.querySelector('#nombre');
     const id = document.querySelector('#idDesercion');
 
@@ -2002,14 +2002,14 @@ async function crearItemDesercion() {
         return;
     }
 
-    
+
 
     const datos = new FormData();
     datos.append('descripcion', nombre.value);
     datos.append('id', id.value);
     try {
         //Peticion hacia la api
-        const url = 'http://localhost:3000/desercion';
+        const url = 'http://appunasam.devor/desercion';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -2059,7 +2059,7 @@ async function eliminarDesercion(id) {
     console.log(id);
     try {
         //Peticion hacia la api
-        const url = 'http://localhost:3000/desercion-eliminar';
+        const url = 'http://appunasam.devor/desercion-eliminar';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -2100,8 +2100,8 @@ async function actualizarDesercion(id) {
 
     try {
 
-        //Peticion hacia la api http://localhost:3000/
-        const url = 'http://localhost:3000/beneficios/desercion-actualizar';
+        //Peticion hacia la api http://appunasam.devor/
+        const url = 'http://appunasam.devor/beneficios/desercion-actualizar';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -2190,7 +2190,7 @@ async function crearIntegrante() {
 
     try {
         //Peticion hacia la api
-        const url = 'http://localhost:3000/integrante/crearIntegrante';
+        const url = 'http://appunasam.devor/integrante/crearIntegrante';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -2289,7 +2289,7 @@ async function eliminarBeneficioTipo(id) {
     console.log(id);
     try {
         //Peticion hacia la api
-        const url = 'http://localhost:3000/tipoBeneficios/eliminar';
+        const url = 'http://appunasam.devor/tipoBeneficios/eliminar';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -2366,7 +2366,7 @@ async function eliminarInvitacion(id) {
 
     try {
         //Peticion hacia la api
-        const url = 'http://localhost:3000/invitacion-eliminar';
+        const url = 'http://appunasam.devor/invitacion-eliminar';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -2418,7 +2418,7 @@ async function agregarRend() {
 
     try {
         //Peticion hacia la api
-        const url = 'http://localhost:3000/rendimiento';
+        const url = 'http://appunasam.devor/rendimiento';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -2480,7 +2480,7 @@ async function eliminarRend(id) {
 
     try {
         //Peticion hacia la api
-        const url = 'http://localhost:3000/rendimiento/eliminar';
+        const url = 'http://appunasam.devor/rendimiento/eliminar';
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -2519,8 +2519,66 @@ async function eliminarRend(id) {
     }
 }
 
+//DELETE's
+const preguntar = function (callback, id) {
+    Swal.fire({
+        title: 'Esta seguro de eliminar?',
+        text: "No podra revertir los cambios!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, Borrar!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            callback(id);
+        }
+    })
+}
+
+async function borrarIntegrante(id) {
+    datos = new FormData();
+    datos.append('id', id);
+
+    try {
+        //Peticion hacia la api
+        const url = 'http://appunasam.devor/integrante-eliminar';
+        const respuesta = await fetch(url, {
+            method: 'POST',
+            body: datos
+        })
+        const resultado = await respuesta.json();
 
 
+        if (resultado) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Muy bien...',
+                text: 'Se Eliminó !',
+
+            }).then(() => {
+                window.location.reload();
+            })
+
+
+        } else {
+            Swal.fire({
+                icon: 'info',
+                title: 'Mensaje !',
+                text: 'El estudiante tiene participaciones o beneficios asignados, no puede eliminarse',
+
+            })
+        }
+
+    } catch (error) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error...',
+            text: 'Hubo un error al eliminar!',
+
+        })
+    }
+}
 
 
 

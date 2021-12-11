@@ -6,6 +6,7 @@ use Model\Grupo;
 use Model\TipoGrupo;
 use MVC\Router;
 use Intervention\Image\ImageManagerStatic as Image;
+use Model\AlumnoGrupo;
 use Model\Beneficio;
 use Model\Beneficio_x_alumno;
 use Model\Beneficio_x_tipo_grupo;
@@ -290,5 +291,21 @@ class GrupoController
         $rend = new Rendimiento_academico($_POST);
         $resultado = $rend->eliminar();
         echo json_encode($resultado);
+    }
+
+    public static function eliminarIntegrante()
+    {
+
+        $id = $_POST['id'];
+        $al = new AlumnoGrupo($_POST);
+        $participacion = ParticipacionAlumno::where('alumno_x_grupo_id', $id);
+        $beneficioAsignados = Beneficio_x_alumno::where('alumno_x_grupo_id', $id);
+        if (isset($participacion) || isset($beneficioAsignados)) {
+            $res = false;
+        } else {
+            $res = true;
+            $al->eliminar();
+        }
+        echo json_encode($res);
     }
 }
