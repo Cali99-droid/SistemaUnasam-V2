@@ -66,6 +66,7 @@ $router->post('/beneficios', [BeneficioController::class, 'index']);
 $router->post('/beneficios/asignar', [BeneficioController::class, 'asignarBeneficio']);
 $router->post('/beneficios/crear', [BeneficioController::class, 'crear']);
 $router->post('/tipoBeneficios/eliminar', [BeneficioController::class, 'eliminarBenTipo']);
+$router->post('/beneficios-eliminar', [BeneficioController::class, 'eliminarBeneficio']);
 //Eventos
 $router->get('/eventos', [EventoController::class, 'index']);
 $router->post('/eventos', [EventoController::class, 'index']);

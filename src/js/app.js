@@ -2518,6 +2518,67 @@ async function eliminarRend(id) {
         })
     }
 }
+/*************Inicio*********/
+async function borrarBen(id) {
+    Swal.fire({
+        title: 'Esta seguro de eliminar?',
+        text: "No podra revertir los cambios!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, Borrar!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            eliminarBeneficio(id);
+        }
+    })
+}
+
+async function eliminarBeneficio(id) {
+    const datos = new FormData();
+    datos.append('id', id);
+
+    try {
+        //Peticion hacia la api
+        const url = 'http://localhost:3000/beneficios-eliminar';
+        const respuesta = await fetch(url, {
+            method: 'POST',
+            body: datos
+        })
+        const resultado = await respuesta.json();
+
+        if (resultado) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Muy bien...',
+                text: 'Se Eliminó !',
+
+            }).then(() => {
+                window.location.reload();
+            })
+
+
+        } else {
+            Swal.fire({
+                icon: 'info',
+                title: 'Mensaje...',
+                text: 'El beneficio ya fue asignada y no puede eliminarse!',
+
+            })
+        }
+
+    } catch (error) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error...',
+            text: 'Hubo un error al eliminar la la invitacion!',
+
+        })
+    }
+
+}
+/************FIN**************/
 
 //DELETE's
 const preguntar = function (callback, id) {
