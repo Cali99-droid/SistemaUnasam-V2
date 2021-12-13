@@ -38,6 +38,7 @@ class BeneficioController
                 $beneficio = new Beneficio($_POST['beneficio']);
                 $beneficio->guardar();
                 $resolucion = new Resolucion_x_beneficio($_POST['resolucion_x_beneficio']);
+
                 if ($resolucion->id) {
                     $ress = Resolucion_x_beneficio::find($resolucion->id);
                 } else {
@@ -45,6 +46,11 @@ class BeneficioController
                 }
 
                 $ress->beneficio_id = $beneficio->id;
+                if ($doc == '') {
+                    $ress->estado = 'PENDIENTE';
+                } else {
+                    $ress->estado = 'COMPLETADO';
+                }
                 if ($doc != '') {
                     $ress->setDoc($nombreDoc);
                     move_uploaded_file($doc["tmp_name"], CARPETA_DOCS . $nombreDoc);
@@ -67,7 +73,11 @@ class BeneficioController
                 $resolucion->beneficio_id = $id;
 
                 $nombreDoc = md5(uniqid(rand(), true)) . ".pdf";
-
+                if ($doc == '') {
+                    $resolucion->estado = 'PENDIENTE';
+                } else {
+                    $resolucion->estado = 'COMPLETADO';
+                }
                 //set archivo
                 if ($doc != '') {
                     $resolucion->setDoc($nombreDoc);
@@ -96,6 +106,7 @@ class BeneficioController
         if ($beneficioAsignado->validarExistencia()) {
             $resultado = false;
         } else {
+
             if ($id == '') {
                 $resultado =   $beneficioAsignado->crear();
                 $resultado = $resultado['resultado'];
