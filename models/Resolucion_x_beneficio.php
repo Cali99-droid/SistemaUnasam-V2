@@ -50,9 +50,11 @@ class Resolucion_x_beneficio extends ActiveRecord
     //eliminar imagen
     public function borrarDoc()
     {
-        $existeArchivo = file_exists(CARPETA_DOCS . $this->doc);
-        if ($existeArchivo) {
-            unlink(CARPETA_DOCS . $this->doc);
+        if ($this->doc != '') {
+            $existeArchivo = file_exists(CARPETA_DOCS . $this->doc);
+            if ($existeArchivo) {
+                unlink(CARPETA_DOCS . $this->doc);
+            }
         }
     }
 }

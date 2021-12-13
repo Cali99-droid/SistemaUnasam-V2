@@ -8,13 +8,13 @@
 
             <label for="fecha_emision">Fecha de Emisión</label>
             <input type="date" name="resolucion_x_beneficio[fecha_emision]" class="form-control" id="fecha_emision">
-
+            <!--
             <label for="resolucion_x_beneficio[estado]">Estado</label>
             <select name="resolucion_x_beneficio[estado]" id="estado">
                 <option value="COMPLETADO">COMPLETADO</option>
                 <option value="PENDIENTE">PENDIENTE</option>
             </select>
-
+-->
             <label for="doc">Archivo</label>
             <input type="file" name="doc" id="doc" accept="application/pdf">
 
