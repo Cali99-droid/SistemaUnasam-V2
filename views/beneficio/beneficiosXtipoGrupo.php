@@ -1,5 +1,6 @@
 <div class="contenedor-grupos">
-    <div class="titulo-grupos">
+    <div class="titulo-grupos con_accion">
+        <a href="/beneficios" class="btn-asignar"><i class="fas fa-arrow-circle-left"></i> Volver</a>
         <h2 class="no-margin">Gestion de Beneficios por tipo de grupo</h2>
     </div>
 
