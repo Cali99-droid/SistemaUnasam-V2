@@ -29,12 +29,12 @@
 
         
             <div class="container">
-                <h4>Reporte 3 IPA</h4>
+                <h4>Reporte de tendecia de estudiantes por Escuelas</h4>
             </div>
         </a>
 
     </div>
-
+<!--
     <div class="grupo">
     <a href="reportes/reporte4.php" target="_blank">
     <img src="https://media.istockphoto.com/vectors/isometric-business-to-business-marketing-b2b-solution-business-two-vector-id1271016756?k=20&m=1271016756&s=170667a&w=0&h=EikHJiay-J1NDSVHm-0zgEELq-7jCzDSMl1x4oEkd20=" alt="Avatar" class="grupo-imagen">
@@ -43,7 +43,7 @@
                 <h4> Reporte de  </h4>
             </div>
         </a>
-    </div>
+    </div> -->
 
     <div class="grupo">
         <a href="reportes/reporte5.php" target="_blank">

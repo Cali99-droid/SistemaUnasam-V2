@@ -50,9 +50,9 @@ function Header()
      //$this->SetDrawColor(115,25,52);
     
      
-     $this->Cell(80,10,'FACULTAD',0,0,'C',1);
-     $this->Cell(80,10,'ESCUELA',0,0,'C',1);
-     $this->Cell(30,10,'Cantidad',0,1,'C',1);
+     $this->Cell(80,10,utf8_decode('FACULTAD'),0,0,'C',1);
+     $this->Cell(80,10,utf8_decode('ESCUELA'),0,0,'C',1);
+     $this->Cell(30,10,utf8_decode('Cantidad'),0,1,'C',1);
  
 
     //para la linea
