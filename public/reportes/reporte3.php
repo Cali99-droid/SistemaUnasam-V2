@@ -109,9 +109,9 @@ $cont=1;
             }
             //cargado de datos
             
-            $pdf->Cell(80,10,utf8_decode($empleados['facultad']),1,0,'J',1);
-            $pdf->Cell(80,10,utf8_decode($empleados['escuela']),1,0,'C',1);
-            $pdf->Cell(30,10,utf8_decode($empleados['cantidad']),1,1,'C',1);
+            $pdf->Cell(80,10,($empleados['facultad']),1,0,'J',1);
+            $pdf->Cell(80,10,($empleados['escuela']),1,0,'C',1);
+            $pdf->Cell(30,10,($empleados['cantidad']),1,1,'C',1);
             
       }
 $pdf->Output();

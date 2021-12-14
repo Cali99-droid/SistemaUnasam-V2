@@ -109,8 +109,8 @@ $cont=1;
             //cargado de datos
             
             $pdf->Cell(30,10,$empleados['codigo_alumno'],1,0,'J',1);
-            $pdf->Cell(100,10,utf8_decode($empleados['ALUMNO']),1,0,'C',1);
-            $pdf->Cell(50,10,utf8_decode($empleados['nombre_escuela']),1,1,'C',1);
+            $pdf->Cell(100,10,($empleados['ALUMNO']),1,0,'C',1);
+            $pdf->Cell(50,10,($empleados['nombre_escuela']),1,1,'C',1);
             
       }
 $pdf->Output();

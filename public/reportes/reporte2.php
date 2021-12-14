@@ -113,10 +113,10 @@ $cont=1;
             }
             //cargado de datos
             
-            $pdf->Cell(100,10,utf8_decode($grupo['grupo']),1,0,'C',1);
+            $pdf->Cell(100,10,($grupo['grupo']),1,0,'C',1);
         
             
-            $pdf->Cell(30,10,utf8_decode($grupo['tendencia']),1,1,'C',1);
+            $pdf->Cell(30,10,($grupo['tendencia']),1,1,'C',1);
             
       }
 $pdf->Output();

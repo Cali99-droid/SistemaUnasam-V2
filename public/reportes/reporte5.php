@@ -51,7 +51,7 @@ function Header()
     //$this->SetDrawColor(115,25,52);
     
     $this->Cell(80,10,'DATOS',0,0,'C',1);
-    $this->Cell(80,10,'CÓDIGO',0,0,'C',1);
+    $this->Cell(80,10,utf8_decode('CÓDIGO'),0,0,'C',1);
     $this->Cell(30,10,'ESCUELA',0,1,'C',1);
 
     //para la linea
@@ -109,9 +109,9 @@ $cont=1;
                  $cont=1;
             }
             //cargado de datos
-            $pdf->Cell(80,10,utf8_decode($empleados['datos']),1,0,'J',1);
-            $pdf->Cell(80,10,utf8_decode($empleados['codigo']),1,0,'C',1);
-            $pdf->Cell(30,10,utf8_decode($empleados['nombre']),1,1,'C',1);
+            $pdf->Cell(80,10,($empleados['datos']),1,0,'J',1);
+            $pdf->Cell(80,10,($empleados['codigo']),1,0,'C',1);
+            $pdf->Cell(30,10,($empleados['nombre']),1,1,'C',1);
             
       }
 $pdf->Output();
