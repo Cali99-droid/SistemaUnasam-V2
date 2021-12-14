@@ -34,8 +34,18 @@
                 <?php foreach ($beneficios as $beneficio) : ?>
                     <tr>
                         <td><?php echo $beneficio->nombre; ?></td>
-                        <td> <a class="btn-asignar" href="docs/<?php echo $beneficio->getDoc() == '#' ? 'noExiste' : $beneficio->getDoc() ?>" target="_blank"><i class=" fas fa-eye"></i> Ver Resolución</a></td>
-                        <?php ?>
+                        <!--<td> <a class="btn-asignar" href="docs/<?php echo $beneficio->getDoc() == '#' ? 'noExiste' : $beneficio->getDoc() ?>" target="_blank"><i class=" fas fa-eye"></i> Ver Resolución</a></td>  -->
+                        <?php 
+                            if($beneficio->getDoc() == '#'){
+                                ?>
+                                <td> <a class="btn-asignar"  disabled ='true'><i class="fas fa-eye-slash"></i> Sin archivo</a></td>
+                            <?php
+                            }else{
+                            ?>
+                                <td> <a class="btn-asignar" href="docs/<?php echo $beneficio->getDoc() == '#' ? 'noExiste' : $beneficio->getDoc() ?>" target="_blank"><i class=" fas fa-eye"></i> Ver Resolución</a></td>
+                                <?php
+                            }
+                        ?>
                         <td>
                             <button class="btn-asignar" onclick="modalAsignar(<?php echo $beneficio->id; ?>, '<?php echo $beneficio->nombre; ?>','modal-asignar-grupo', 'boton-agregar-beneficio', 'asig')"><i class="fas fa-plus-circle"></i> Asignar</button>
                             <button type="button" class="btn-asignar" onclick="actualizarBeneficio(<?php echo $beneficio->id; ?>)">
