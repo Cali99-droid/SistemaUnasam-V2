@@ -5,6 +5,9 @@
     <button type="button" id="btnBuscarDNI" name="btnBuscarDNI" onclick="BuscarIntegrante($('#buscar').val())">Buscar</button>
 </div>
 -->
+
+<!--  MODAL PAA REGISTRAR NUEVO INTEGRANTE -->
+
 <div class="contenedor-al ">
     <div class="columna-al">
         <div>
@@ -34,6 +37,8 @@
         <div>
             <label for="direccion">Dirección</label>
             <input type="text" name="integrante[direccion]" id="direccion_s">
+            <!-- HIIDEN PARA CAPTURAR EL ID DEL GRUPO -->
+            <input type="hidden" id="idGrupo" value="<?php echo $grupo->id; ?>">
         </div>
 
 
@@ -131,6 +136,12 @@
 
             this.value = this.value.replace(/[^0-9]/g, '');
 
+        });
+
+        $('#dni_s').keyup('input',function () {
+            if (this.value.length == 8) {
+                jsBuscar();   
+            }
         });
 
 

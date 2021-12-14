@@ -75,4 +75,11 @@ class Integrante extends ActiveRecord
         $resultado = self::consulta($query)->fetch_object();
         return $resultado;
     }
+
+    //Función provisional
+    public  function getAlumnoGrupo($dni,$idGrupo)
+    {
+        $alumno = self::SQL("SELECT count(*) valor FROM vista_estudiantes where dni='".$dni."' and idgrupo_universitario='".$idGrupo."'");
+        echo json_encode($alumno);
+    }
 }

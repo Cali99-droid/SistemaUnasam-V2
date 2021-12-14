@@ -189,6 +189,7 @@ function BuscarIntegrante(dni) {
             alert(r);
             datos = jQuery.parseJSON(r); // vas a castear el array json uno a uno
 
+            
             $('#dni').val(datos['dni']);
             $('#nombre').val(datos['nombre']);
             $('#apellido').val(datos['apellido']);
@@ -1278,10 +1279,14 @@ async function getIntegrante(id) {
             body: datos
         })
         const resultado = await respuesta.json();
+        //console.log(resultado);
+        
         modal('modal-integrante', 'btn', 'close-integrante');
-        //console.log(resultado['estado']);
+        //console.log('fewfwefew');
+        
         $(document).ready(function () {
-
+            //console.log(resultado['idCondicionEconomica']);
+            
             $('#dni').val(resultado['dni']);
             $('#nombre').val(resultado['nombre'] + ' ' + resultado['apellido']);
             $('#apellido').val(resultado['apellido']);
@@ -1293,7 +1298,7 @@ async function getIntegrante(id) {
             $('#nombre_procedencia').val(resultado['nombre_procedencia']);
             $('#estado').val(resultado['estado']);
             $('#idCondicionEconomica').val(resultado['idCondicionEconomica']);
-            $('#descripcion_s').val(resultado['descripcion']);
+            $('#descripcion').val(resultado['descripcion']);
             $('#idPersona').val(resultado['idPersona']);
 
             $('#cod').val(2);
@@ -1410,6 +1415,71 @@ async function buscarAlumno(dni) {
         })
     }
 }
+
+function jsBuscar(){
+    buscar=$("#dni_s").prop("value")
+    encontradoResultado=false;
+    //realizamos el recorrido solo por las celdas que contienen el código, que es la primera
+    $("#mytable tr").find('td:eq(0)').each(function () {
+   
+          codigo = $(this).html();
+           if(codigo==buscar){
+                trDelResultado=$(this).parent();
+                nombre=trDelResultado.find("td:eq(1)").html();
+                encontradoResultado= true;
+           }
+           
+    })
+    //si no se encontro resultado mostramos que no existe.
+    if(encontradoResultado){
+        Swal.fire({
+            icon: 'warning',
+            title: 'AVISO ...!',
+            text: 'El alumno ya está en el grupo'
+        });
+           return ;
+    }
+}
+       // Fin
+
+// No usado
+async function buscarAlumno2(dni,idGrupo) {
+    
+
+    const datos = new FormData();
+    datos.append('dni', dni);
+    datos.append('idGrupo', idGrupo);
+    try {
+        //Peticion hacia la api
+        const url = 'http://localhost:3000/integrante/getAlumnoGrupo';
+        const respuesta = await fetch(url, {
+            method: 'POST',
+            body: datos
+        })
+
+
+        const resultado = await respuesta.json();
+        console.log(resultado['valor']);
+        return;
+        if (resultado != 0) { // No existe
+            Swal.fire({
+                icon: 'info',
+                title: 'Aviso!',
+                text: 'EL DNI YA EXISTE',
+            });
+            
+            
+        }
+    } catch (error) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error...',
+            text: 'Hubo un error !',
+
+        })
+    }
+}
+
 async function crearBeneficio() {
 
     const numero = document.querySelector('#numero');
@@ -1498,6 +1568,8 @@ async function crearBeneficio() {
         })
     }
 }
+
+
 
 async function guardarIntegrante() {
 
