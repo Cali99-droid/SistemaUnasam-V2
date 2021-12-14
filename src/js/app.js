@@ -1430,15 +1430,16 @@ function jsBuscar(){
            }
            
     })
+    return encontradoResultado;
     //si no se encontro resultado mostramos que no existe.
-    if(encontradoResultado){
+    /*if(encontradoResultado){
         Swal.fire({
             icon: 'warning',
             title: 'AVISO ...!',
             text: 'El alumno ya está en el grupo'
         });
            return ;
-    }
+    }*/
 }
        // Fin
 

@@ -16,11 +16,11 @@
         </div>
         <div>
             <label for="nombre">Nombre</label>
-            <input type="text" name="integrante[nombre]" id="nombre_s">
+            <input type="text" name="integrante[nombre]" class="devuelveDNIValidado" id="nombre_s">
         </div>
         <div>
             <label for="apellido">Apellido</label>
-            <input type="text" name="integrante[apellido]" id="apellido_s">
+            <input type="text" name="integrante[apellido]" class="devuelveDNIValidado" id="apellido_s">
         </div>
 
 
@@ -36,7 +36,7 @@
 
         <div>
             <label for="direccion">Dirección</label>
-            <input type="text" name="integrante[direccion]" id="direccion_s">
+            <input type="text" name="integrante[direccion]" class="devuelveDNIValidado" id="direccion_s">
             <!-- HIIDEN PARA CAPTURAR EL ID DEL GRUPO -->
             <input type="hidden" id="idGrupo" value="<?php echo $grupo->id; ?>">
         </div>
@@ -48,17 +48,17 @@
     <div class="columna-al">
         <div>
             <label for="email">Email</label>
-            <input type="email" name="integrante[email]" id="email_s">
+            <input type="email" name="integrante[email]" class="devuelveDNIValidado" id="email_s">
         </div>
 
         <div>
             <label for="telefono">Teléfono</label>
-            <input type="text" name="integrante[telefono]" maxlength="9" id="telefono_s" placeholder="Ingrese teléfono">
+            <input type="text" name="integrante[telefono]" maxlength="9" class="devuelveDNIValidado" id="telefono_s" placeholder="Ingrese teléfono">
         </div>
 
         <div>
             <label for="codigo_alumno">Código</label>
-            <input type="text" name="integrante[codigo_alumno]" id="codigo_alumno_s">
+            <input type="text" name="integrante[codigo_alumno]" class="devuelveDNIValidado" id="codigo_alumno_s">
         </div>
 
         <div>
@@ -75,7 +75,7 @@
 
         <div>
             <label for="nombre_procedencia">Procedencia</label>
-            <input type="text" name="integrante[nombre_procedencia]" id="nombre_procedencia_s">
+            <input type="text" name="integrante[nombre_procedencia]" class="devuelveDNIValidado" id="nombre_procedencia_s">
 
         </div>
 
@@ -111,7 +111,7 @@
         <div>
 
             <label for="descripcion">Descripción</label>
-            <textarea name="integrante[descripcion]" id="descripcion_s" cols="30" rows="4"></textarea>
+            <textarea name="integrante[descripcion]" class="devuelveDNIValidado" id="descripcion_s" cols="30" rows="4"></textarea>
         </div>
         <div>
             <input type="hidden" name="cod" value="2" id="valor">
@@ -140,10 +140,31 @@
 
         $('#dni_s').keyup('input',function () {
             if (this.value.length == 8) {
-                jsBuscar();   
+                //jsBuscar();
+                if(jsBuscar()==true){
+                    Mensaje();
+                }   
+            }
+        });
+        // Clase que devuelve al DNI en caso este esté repetido en un mismo grupo
+        $('.devuelveDNIValidado').keyup('input',function () {
+            if(jsBuscar()==true){
+                //document.getElementById("miInput").focus();
+                //$("#dni_s").focus();
+                $('#dni_s').select();
+                Mensaje();
+                
             }
         });
 
 
+
+        function Mensaje(){
+            Swal.fire({
+                        icon: 'warning',
+                        title: 'AVISO ...!',
+                        text: 'El alumno ya está en el grupo, corrija el Nº de DNI'
+                    });
+        }
     })
 </script>
