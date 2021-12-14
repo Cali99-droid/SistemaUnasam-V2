@@ -1279,11 +1279,11 @@ async function getIntegrante(id) {
             body: datos
         })
         const resultado = await respuesta.json();
-        //console.log(resultado);
         
         modal('modal-integrante', 'btn', 'close-integrante');
         //console.log('fewfwefew');
-        
+        //console.log(resultado);
+        //return;
         $(document).ready(function () {
             //console.log(resultado['idCondicionEconomica']);
             
