@@ -34,7 +34,7 @@ class LoginController
             $alertas = Usuario::getAlertas();
         }
 
-        $router->renderLog('auth/login', ['alertas' => $alertas]);
+        $router->renderLog('auth/index', ['alertas' => $alertas]);
     }
 
     public static function logout(Router $router)
