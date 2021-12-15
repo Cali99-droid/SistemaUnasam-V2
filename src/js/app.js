@@ -2272,46 +2272,19 @@ async function crearIntegrante() {
         })
         const resultado = await respuesta.json();
         if (resultado) {
-            if (cod.value == 1) {
-
-                Swal.fire({
-                    icon: 'success',
-                    title: 'MUY BIEN !',
-                    text: 'Integrante Asignado Correctamente',
-                }).then(() => {
-
-
-                })
-            } else {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'MUY BIEN !',
-                    text: 'Integrante Actualizado Correctamente',
-                }).then(() => {
-                    numero.value = '';
-                    fecha_emision.value = '';
-                    estado.value = '';
-                    nombre.value = '';
-
-
-                })
-            }
-        } else {
             Swal.fire({
-                icon: 'info',
-                title: 'AVISO!',
-                text: 'EL Alumno Ya Pertenece al Grupo !',
-            })
+                icon: 'success',
+                title: 'MUY BIEN !',
+                text: 'Integrante Asignado Correctamente',
+            });
         }
     } catch (error) {
 
         Swal.fire({
-            icon: 'success',
-            title: 'MUY BIEN...',
-            text: 'Proceso realizado con éxito!',
-
+            icon: 'error',
+            title: 'ERROR...',
+            text: 'Ocurrió un error!',
         })
-
     }
 
 }
