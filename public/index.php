@@ -51,6 +51,10 @@ $router->post('/integrante/updBeneficioEst', [GrupoController::class, 'updBenefi
 $router->get('/rendimiento', [GrupoController::class, 'rendimiento']);
 $router->post('/rendimiento', [GrupoController::class, 'setRendimiento']);
 $router->post('/rendimiento/eliminar', [GrupoController::class, 'delRendimiento']);
+// Desercion Alumno
+$router->get('/desercionAlumno', [GrupoController::class, 'desercionALumno']);
+$router->post('/desercionAlumno', [GrupoController::class, 'setRendimiento']);
+$router->post('/desercionAlumno/eliminar', [GrupoController::class, 'delRendimiento']);
 //crear en caso no haya api
 $router->post('/integrante/crearIntegrante', [GrupoController::class, 'crearIntegrante']);
 

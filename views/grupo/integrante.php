@@ -31,6 +31,7 @@
         </div>
         <div class="rendimiento">
             <a href="/rendimiento?id=<?php echo  $integrante->idAlumno ?>" class="btn-asignar"><i class="fas fa-eye"></i> Ver Rendimiento</a>
+            <a href="/desercionAlumno?id=<?php echo  $integrante->idAlumno ?>" class="btn-asignar"><i class="fas fa-eye"></i> Ver Deserción</a>
         </div>
 
     </div>

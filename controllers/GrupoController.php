@@ -18,6 +18,7 @@ use Model\Semestre;
 use Model\DatosUser;
 use Model\Opcion_x_tipo;
 use Model\Rendimiento_academico;
+use Model\desercion_alumno;
 
 class GrupoController
 {
@@ -307,5 +308,24 @@ class GrupoController
             $al->eliminar();
         }
         echo json_encode($res);
+    }
+    // Inicio
+    public static function desercionALumno(Router $router)
+    {
+        $id = validarORedireccionar('/grupos');
+        $alumno = Integrante::where('idAlumno', $id);
+
+        if ($alumno) {
+            $desercionA = desercion_alumno::where_all('alumno_id', $alumno->idAlumno);
+            // debuguear($rendimientos);
+        } else {
+            echo 'no existe el alumno';
+        }
+        $semestres = Semestre::all();
+        $router->render('grupo/desercionAlumno', [
+            'desercionA' => $desercionA,
+            'alumno' => $alumno,
+            'semestres' => $semestres
+        ]);
     }
 }
