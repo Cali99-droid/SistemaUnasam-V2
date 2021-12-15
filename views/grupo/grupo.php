@@ -71,9 +71,22 @@
                                 <button type="button" class="btn-asignar" onclick="preguntar(borrarIntegrante,<?php echo $integrante->idAlumnoGrupo; ?>)">
                                     <i class="fas fa-trash"></i> Borrar</button>
 
+                                <?php
+                                    if ($integrante->estado == 'activo') {
+                                        ?>       
+                                     <a class="btn-asignar" href="/integrante?dni=<?php echo $integrante->dni . '&id=' . $grupo->id; ?>"><i class="fas fa-eye"></i> Ver Mas</a>
+                                
+                                 <?php   
+                                    } else { ?>
+                                        
+                                        <a class="btn-asignar label" href=""><i class="fas fa-eye-slash"></i> Sin Vista previa</a>
 
-                                <a class="btn-asignar" href="/integrante?dni=<?php echo $integrante->dni . '&id=' . $grupo->id; ?>"><i class="fas fa-eye"></i> Ver Mas</a>
 
+                                   <?php }
+                                    
+                                ?>
+                               <!-- <a class="btn-asignar" href="/integrante?dni=<?php //echo $integrante->dni . '&id=' . $grupo->id; ?>"><i class="fas fa-eye"></i> Ver Mas</a>
+                                -->
                             </form>
 
                         </td>
