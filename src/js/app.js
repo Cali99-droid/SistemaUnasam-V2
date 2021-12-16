@@ -2121,6 +2121,68 @@ async function crearItemDesercion() {
 
 }
 
+async function Crear_desercion_alumno() {
+
+    
+    const fecha = document.querySelector('#fecha');
+    const alumno_id = document.querySelector('#idAlumno');
+    const desercion_id = document.querySelector('#idCausaDesercion');
+/*
+    if (nombre.value.trim().length == 0) {
+        nombre.value = "";
+        nombre.focus();
+        Swal.fire({
+            icon: 'warning',
+            title: 'ADVERTENCIA !',
+            text: 'El nombre del semestre es obligatorio'
+        })
+        return;
+    }*/
+
+    const datos = new FormData();
+    datos.append('fecha', fecha.value);
+    datos.append('alumno_id', alumno_id.value);
+    datos.append('desercion_id', desercion_id.value);
+    try {
+        //Peticion hacia la api
+        const url = 'http://localhost:3000/desercionAlumno';
+        const respuesta = await fetch(url, {
+            method: 'POST',
+            body: datos
+        })
+        const resultado = await respuesta.json();
+        console.log(resultado);
+        return;
+        alert(resultado);
+        if (resultado) {
+            Swal.fire({
+                icon: 'success',
+                title: 'MUY BIEN ',
+                text: 'El indicador fue registrado correctamente!',
+            }).then(() => {
+                $('#nombre').val('');
+                $('#idDesercion').val('');
+
+
+            })
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'ERORR! ',
+                text: 'Ya existe el nombre del indicador !',
+            })
+        }
+    } catch (error) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error...',
+            text: 'Hubo un error al guardar el indicador!',
+
+        })
+    }
+
+}
+
 function actualizarDesercionA(id, nombre) {
     modal('modal-agregar-desercion', 'boton', 'close');
     $('#TituloCabeceraModal').text('Editar Deserción');

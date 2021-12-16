@@ -34,6 +34,26 @@ class desercion_alumno extends ActiveRecord
         $resultado = self::consulta($query)->fetch_assoc();
         return $resultado['descripcion'];
     }
+
+    public function validarRepeticion()
+    {
+        $query = "select if(count(desercion_id)>0,'existe','no existe') resultado from desercion_alumno where fecha=curdate() and alumno_id=1 and desercion_id=2;";
+        $resultado = self::consulta($query)->fetch_assoc();
+        return $resultado['descripcion'];
+
+        /*
+        $nombreS = $this->descripcion;
+        $sem = Desercion::where('descripcion', $nombreS);
+        if ($sem) {
+            if ($sem->id == $this->id) {
+                return false;
+            } else {
+                return true;
+            }
+        } else {
+            return false;
+        }
+    }
     
     
 }

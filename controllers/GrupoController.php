@@ -19,6 +19,7 @@ use Model\DatosUser;
 use Model\Opcion_x_tipo;
 use Model\Rendimiento_academico;
 use Model\desercion_alumno;
+use Model\Desercion; 
 
 class GrupoController
 {
@@ -322,10 +323,30 @@ class GrupoController
             echo 'no existe el alumno';
         }
         $semestres = Semestre::all();
+        $desercion = Desercion::all();
         $router->render('grupo/desercionAlumno', [
             'desercionA' => $desercionA,
             'alumno' => $alumno,
-            'semestres' => $semestres
+            'semestres' => $semestres,
+            'desercion'=> $desercion
         ]);
+    }
+
+    public static function setDesercionAlumno()
+    {
+        /*$id = $_POST['id'];
+        $desercion_alumno = new desercion_alumno($_POST);
+
+       if ($desercion_alumno->validarRepeticion()) {
+            $resultado = false;
+        } else {
+            if ($id ==='') {
+                $resultado = $desercion_alumno->crear();
+                $resultado =  $resultado['resultado'];
+            } else {
+                $resultado = $desercion_alumno->actualizar();
+            }
+        }*/
+        echo json_encode($_POST);
     }
 }

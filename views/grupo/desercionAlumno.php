@@ -64,7 +64,7 @@
         <div>
             <form class="formulario-grupo">
 
-                <?php include 'nuevo-rendimiento.php'; ?>
+                <?php include 'nueva_desercion_alumno.php'; ?>
             </form>
         </div>
 

@@ -53,7 +53,7 @@ $router->post('/rendimiento', [GrupoController::class, 'setRendimiento']);
 $router->post('/rendimiento/eliminar', [GrupoController::class, 'delRendimiento']);
 // Desercion Alumno
 $router->get('/desercionAlumno', [GrupoController::class, 'desercionALumno']);
-$router->post('/desercionAlumno', [GrupoController::class, 'setRendimiento']);
+$router->post('/desercionAlumno', [GrupoController::class, 'setDesercionAlumno']);
 $router->post('/desercionAlumno/eliminar', [GrupoController::class, 'delRendimiento']);
 //crear en caso no haya api
 $router->post('/integrante/crearIntegrante', [GrupoController::class, 'crearIntegrante']);
@@ -89,7 +89,7 @@ $router->post('/reporte', [ReporteController::class, 'index']);
 //Desercion
 $router->get('/desercion', [DesercionController::class, 'index']);
 $router->post('/desercion', [DesercionController::class, 'setDesercion']); //desercion-eliminar
-$router->post('/desercion', [DesercionController::class, 'setDesercion']);
+$router->post('/desercion', [DesercionController::class, 'setDesercion']); //POSIBLE NO FUNCIONAMIENTO
 $router->post('/desercion-eliminar', [DesercionController::class, 'desercion_eliminar']); //AGREGADO RECIENTEMENTE
 //admin
 $router->get('/tipos', [AdminController::class, 'tipos']);
