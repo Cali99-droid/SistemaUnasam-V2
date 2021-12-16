@@ -21,5 +21,5 @@
 </select>
     -->
 <input type="hidden" id="idAlumno" value="<?php echo $alumno->idAlumno ?>">
-<input type="hidden" id="idRendimiento" value="">
+<input type="hidden" id="id_desercion_alumno" value="">
 <button onclick="Crear_desercion_alumno()" type="button" class="btn-asignar">Agregar</button>

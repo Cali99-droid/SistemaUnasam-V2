@@ -334,11 +334,11 @@ class GrupoController
 
     public static function setDesercionAlumno()
     {
-        /*$id = $_POST['id'];
+        $id = $_POST['id'];
         $desercion_alumno = new desercion_alumno($_POST);
 
-       if ($desercion_alumno->validarRepeticion()) {
-            $resultado = false;
+       if ($desercion_alumno->validarRepeticion() == 'existe') {
+            $resultado=false;
         } else {
             if ($id ==='') {
                 $resultado = $desercion_alumno->crear();
@@ -346,7 +346,18 @@ class GrupoController
             } else {
                 $resultado = $desercion_alumno->actualizar();
             }
-        }*/
-        echo json_encode($_POST);
+        }
+        echo json_encode($resultado);
+    }
+
+    public static function desercion_alumno_eliminar()
+    {
+        $id = $_POST['id'];
+        $desercion = desercion_alumno::find($id);
+        
+        $resultado =  $desercion->eliminar();
+        
+
+        echo json_encode($resultado);
     }
 }

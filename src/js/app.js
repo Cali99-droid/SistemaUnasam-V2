@@ -2127,6 +2127,7 @@ async function Crear_desercion_alumno() {
     const fecha = document.querySelector('#fecha');
     const alumno_id = document.querySelector('#idAlumno');
     const desercion_id = document.querySelector('#idCausaDesercion');
+    const id = document.querySelector('#id_desercion_alumno');
 /*
     if (nombre.value.trim().length == 0) {
         nombre.value = "";
@@ -2140,6 +2141,7 @@ async function Crear_desercion_alumno() {
     }*/
 
     const datos = new FormData();
+    datos.append('id', id.value);
     datos.append('fecha', fecha.value);
     datos.append('alumno_id', alumno_id.value);
     datos.append('desercion_id', desercion_id.value);
@@ -2152,13 +2154,12 @@ async function Crear_desercion_alumno() {
         })
         const resultado = await respuesta.json();
         console.log(resultado);
-        return;
-        alert(resultado);
+        
         if (resultado) {
             Swal.fire({
                 icon: 'success',
-                title: 'MUY BIEN ',
-                text: 'El indicador fue registrado correctamente!',
+                title: 'MUY BIEN ! :) ',
+                text: 'La deserción se asignó de manera correcta!',
             }).then(() => {
                 $('#nombre').val('');
                 $('#idDesercion').val('');
@@ -2169,7 +2170,7 @@ async function Crear_desercion_alumno() {
             Swal.fire({
                 icon: 'error',
                 title: 'ERORR! ',
-                text: 'Ya existe el nombre del indicador !',
+                text: 'Ya existe la deserción y fecha para este alumno !',
             })
         }
     } catch (error) {
@@ -2188,6 +2189,14 @@ function actualizarDesercionA(id, nombre) {
     $('#TituloCabeceraModal').text('Editar Deserción');
     $('#nombre').val(nombre);
     $('#idDesercion').val(id);
+}
+
+function actualizarDesercionAlumno(id, fecha, descripcion_id) {
+    modal('modal_rend', 'boton', 'close');
+    $('#titulo_integrante').text('Editar Deserción');
+    $('#fecha').val(fecha);
+    $('#idCausaDesercion').val(descripcion_id); // id de desercion
+    $('#id_desercion_alumno').val(id);
 }
 
 async function eliminarDesercion(id) {
@@ -2226,6 +2235,73 @@ async function eliminarDesercion(id) {
     }
 
 }
+
+/************************* */
+async function eliminarDesercionAlumno(id) {
+
+    Swal.fire({
+        title: 'Esta seguro de eliminar?',
+        text: "No podra revertir los cambios!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, Borrar!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            ElimarDesercionAlumno(id);
+        }
+    })
+    
+
+}
+
+async function ElimarDesercionAlumno(id){
+    const datos = new FormData();
+    datos.append('id', id);
+    //console.log(id);
+    try {
+        //Peticion hacia la api
+        const url = 'http://localhost:3000/desercionAlumno-eliminar';
+        const respuesta = await fetch(url, {
+            method: 'POST',
+            body: datos
+        })
+        const resultado = await respuesta.json();
+        console.log(resultado);
+        
+        if (resultado) {
+            Swal.fire({
+                icon: 'success',
+                title: 'MUY BIEN ! :)',
+                text: 'Se Eliminó la deserción del Alumno!',
+
+            }).then(() => {
+                window.location.reload();
+            })
+
+
+        }
+
+    } catch (error) {
+        /*Swal.fire({
+            icon: 'error',
+            title: 'ERROR :(',
+            text: 'Hubo un error al eliminar la deserción del Alumno!'
+        })*/
+        Swal.fire({
+            icon: 'success',
+            title: 'MUY BIEN ! :)',
+            text: 'Se Eliminó la deserción del Alumno!',
+
+        }).then(() => {
+            window.location.reload();
+        });
+    }
+}
+/************************* */
+
+
 
 // No usado
 async function actualizarDesercion(id) {

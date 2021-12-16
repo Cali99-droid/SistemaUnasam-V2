@@ -38,8 +38,8 @@
                         <td><?php echo $desercionA->getSemestre(); ?></td>
 
                         <td>
-                        <!--<a class="btn-asignar" onclick="actualizarRend('<?php// echo $desercionA->getSemestre()->id; ?>', '<?php //echo $desercionA->estado; ?>', <?php //echo $desercionA->id; ?>)"> <i class=" fas fa-pencil-alt"></i> Editar</a>-->
-                            <button onclick="eliminarRend(<?php echo $desercionA->id_desercion_alumno; ?>)" type="button" class="btn-asignar" onclick="">
+                        <button class="btn-asignar" onclick="actualizarDesercionAlumno('<?php echo $desercionA->id; ?>', '<?php echo $desercionA->fecha; ?>', '<?php echo $desercionA->alumno_id; ?>')"> <i class=" fas fa-pencil-alt"></i> Editar</button>    
+                        <button onclick="eliminarDesercionAlumno(<?php echo $desercionA->id; ?>)" type="button" class="btn-asignar">
                                 <i class="fas fa-trash"></i> Borrar</button>
                         </td>
                     </tr>

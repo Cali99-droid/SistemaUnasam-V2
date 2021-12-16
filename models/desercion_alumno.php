@@ -37,9 +37,9 @@ class desercion_alumno extends ActiveRecord
 
     public function validarRepeticion()
     {
-        $query = "select if(count(desercion_id)>0,'existe','no existe') resultado from desercion_alumno where fecha=curdate() and alumno_id=1 and desercion_id=2;";
+        $query = "SELECT if(count(desercion_id)>0,'existe','no existe') resultado from desercion_alumno where fecha= '".$this->fecha."' and alumno_id=".$this->alumno_id." and desercion_id=".$this->desercion_id.";";
         $resultado = self::consulta($query)->fetch_assoc();
-        return $resultado['descripcion'];
+        return $resultado['resultado'];
 
         /*
         $nombreS = $this->descripcion;
@@ -52,7 +52,7 @@ class desercion_alumno extends ActiveRecord
             }
         } else {
             return false;
-        }
+        }*/
     }
     
     
