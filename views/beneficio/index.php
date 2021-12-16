@@ -38,7 +38,7 @@
                         <?php 
                             if(($beneficio->getDoc() == '#') || ($beneficio->getDoc() == '') ){
                                 ?>
-                                <td> <a class="btn-asignar"  disabled ='true'><i class="fas fa-eye-slash"></i> Sin archivo</a></td>
+                                <td> <a class="btn-asignar label"  disabled ='true'><i class="fas fa-eye-slash"></i> Sin archivo</a></td>
                             <?php
                             }else{
                             ?>

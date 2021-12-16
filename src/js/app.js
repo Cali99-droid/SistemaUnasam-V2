@@ -2091,7 +2091,7 @@ async function crearItemDesercion() {
         })
         const resultado = await respuesta.json();
         console.log(resultado);
-        alert(resultado);
+       // alert(resultado);
         if (resultado) {
             Swal.fire({
                 icon: 'success',
