@@ -1,9 +1,11 @@
 .datos-integrante {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(1, 1fr);
-  align-items: center;
-  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  // display: grid;
+  // gap: 1rem;
+  // grid-template-columns: repeat(1, 1fr);
+  // align-items: center;
+  // margin-top: 1rem;
   @include tablet {
     margin: 0 auto;
     display: grid;

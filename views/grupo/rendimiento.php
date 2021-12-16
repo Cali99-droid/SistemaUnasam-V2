@@ -41,9 +41,12 @@
                         <td><?php echo $rendimiento->estado; ?></td>
 
                         <td>
-                            <a class="btn-asignar" onclick="actualizarRend('<?php echo $rendimiento->getSemestre()->id; ?>', '<?php echo $rendimiento->estado; ?>', <?php echo $rendimiento->id; ?>)"> <i class=" fas fa-pencil-alt"></i> Editar</a>
-                            <button onclick="eliminarRend(<?php echo $rendimiento->id; ?>)" type="button" class="btn-asignar" onclick="">
-                                <i class="fas fa-trash"></i> Borrar</button>
+                            <div class="form-tabla">
+                                <a class="btn-asignar" onclick="actualizarRend('<?php echo $rendimiento->getSemestre()->id; ?>', '<?php echo $rendimiento->estado; ?>', <?php echo $rendimiento->id; ?>)"> <i class=" fas fa-pencil-alt"></i> Editar</a>
+                                <button onclick="eliminarRend(<?php echo $rendimiento->id; ?>)" type="button" class="btn-asignar" onclick="">
+                                    <i class="fas fa-trash"></i> Borrar</button>
+                            </div>
+
                         </td>
                     </tr>
                 <?php endforeach; ?>

@@ -63,7 +63,7 @@
                         <td><?php echo $integrante->codigo; ?></td>
                         <td><span class="<?php echo $integrante->estado == 'activo' ? 'label-ok' : 'label' ?>"><?php echo $integrante->estado; ?></span></td>
                         <td>
-                            <form method="POST">
+                            <form method="POST" class="form-tabla">
 
                                 <button type="button" class="btn-asignar" onclick="getIntegrante(<?php echo $integrante->idPersona ?>)">
                                     <i class=" fas fa-pencil-alt"></i> Editar</button>
@@ -72,20 +72,21 @@
                                     <i class="fas fa-trash"></i> Borrar</button>
 
                                 <?php
-                                    if ($integrante->estado == 'activo') {
-                                        ?>       
-                                     <a class="btn-asignar" href="/integrante?dni=<?php echo $integrante->dni . '&id=' . $grupo->id; ?>"><i class="fas fa-eye"></i> Ver Mas</a>
-                                
-                                 <?php   
-                                    } else { ?>
-                                        
-                                        <a class="btn-asignar label" href=""><i class="fas fa-eye-slash"></i> Sin Vista previa</a>
-
-
-                                   <?php }
-                                    
+                                if ($integrante->estado == 'activo') {
                                 ?>
-                               <!-- <a class="btn-asignar" href="/integrante?dni=<?php //echo $integrante->dni . '&id=' . $grupo->id; ?>"><i class="fas fa-eye"></i> Ver Mas</a>
+                                    <a class="btn-asignar" href="/integrante?dni=<?php echo $integrante->dni . '&id=' . $grupo->id; ?>"><i class="fas fa-eye"></i> Ver Mas</a>
+
+                                <?php
+                                } else { ?>
+
+                                    <a class="btn-asignar label" href=""><i class="fas fa-eye-slash"></i> Sin Vista previa</a>
+
+
+                                <?php }
+
+                                ?>
+                                <!-- <a class="btn-asignar" href="/integrante?dni=<?php //echo $integrante->dni . '&id=' . $grupo->id; 
+                                                                                    ?>"><i class="fas fa-eye"></i> Ver Mas</a>
                                 -->
                             </form>
 
