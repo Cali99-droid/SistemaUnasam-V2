@@ -72,12 +72,12 @@
             <span class="close">&times;</span>
 
         </div>
-        <form method="POST" class="formulario-grupo">
+        <div  class="formulario-grupo">
 
             <?php include_once "modDesercion.php"; ?>
 
 
-        </form>
+        </div>
 
     </div>
 </div>

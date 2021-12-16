@@ -18,7 +18,7 @@
             <img src="/../build/img/escudoUNASAM.png" alt="">
 
         </div>
-        <p>SISTEMA DE GESTIÓN DE ORGANIZACIONES</p>
+        <p>SISTEMA DE GESTIÓN DE ORGANIZACIONES ESTUDIANTILES</p>
     </div>
 
 </div>

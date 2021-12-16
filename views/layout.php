@@ -37,7 +37,7 @@
                 <div class="items">
 
                     <a href="/inicio" title="Inicio"><i class='bx bxs-home' style='color:#e1e1e1'></i>Inicio</a>
-                    <a href="/grupos" title="Grupos"><i class='bx bx-group'></i>Grupos</a>
+                    <a href="/grupos" title="Grupos"><i class='bx bx-group'></i>Organizaciones</a>
                     <a href="/beneficios" title="Beneficios"><i class='bx bx-medal'></i>Beneficios</a>
                     <a href="/eventos" title="Eventos"><i class='bx bxs-calendar'></i>Eventos</a>
                     <a href="/reporte" title="Reportes"><i class="bx bxs-file"></i>Reportes</a>
@@ -45,7 +45,7 @@
                     <div class="item">
                         <a href="javascript:void(0)" class="administrador" onclick="mostrarAdmin()"><i class="fas fa-user-tie" title="Administrador"></i>Administrador</a>
                         <div class="sub-item " id="sub-item">
-                            <a href="/tipos">Tipos de Grupos</a>
+                            <a href="/tipos">Tipos de Organización</a>
                             <a href="/usuarios">Usuarios</a>
                             <a href="/roles">Roles</a>
                             <a href="/semestres">Semestres</a>

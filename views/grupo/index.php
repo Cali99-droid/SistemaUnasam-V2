@@ -1,7 +1,7 @@
 <div class="contenedor-grupos">
 
     <div class="titulo-grupos">
-        <h2 class="no-margin">Gestión de Grupos</h2>
+        <h2 class="no-margin">Gestión de Organizaciones Estudiantiles</h2>
     </div>
 
     <div class="acciones-grupo">
