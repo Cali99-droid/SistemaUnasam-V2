@@ -8,7 +8,7 @@
         <div class="buscar">
             <form method="POST">
                 <i class="fas fa-search"></i>
-                <input type="text" name="valor" placeholder="Ingrese el nombre del grupo">
+                <input type="text" name="valor" placeholder="Ingrese el nombre de la organización estudiantil">
                 <input type="hidden" value="2" id="codB" name="codB">
                 <button type="submit" class="btn-asignar ">Buscar</button>
             </form>
@@ -17,7 +17,7 @@
 
         <div class="nuevo-grupo__mod">
             <a type="button" class="btn-asignar" id="boton-agregar-grupo" onclick="modal('modal-grupo', 'boton-agregar-grupo', 'close-grupo')">
-                <i class="fas fa-plus-circle"></i> Agregar Grupo </a>
+                <i class="fas fa-plus-circle"></i> Nueva Organización </a>
         </div>
     </div>
 
