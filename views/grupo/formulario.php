@@ -33,5 +33,5 @@
 
 <div>
     <label for="imagen">Imagen de Grupo</label>
-    <input type="file" name="grupo[imagen]" accept='image/png,.jpeg,.jpg,image/gif'>>
+    <input type="file" name="grupo[imagen]" accept='image/png,.jpeg,.jpg,image/gif'>
 </div>
