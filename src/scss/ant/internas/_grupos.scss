@@ -208,17 +208,33 @@
   background-color: rgba(0, 0, 0, 0.8); /* Black w/ opacity */
 
   .contenido-modal-grupo {
+    width: 90%;
     position: relative;
     background-color: #fefefe;
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 60%;
+    font-size: 1.2rem;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
     animation-name: animatetop;
     animation-duration: 0.4s;
+    @include tablet {
+      position: relative;
+      background-color: #fefefe;
+      margin: auto;
+      font-size: 1.6rem;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 60%;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+        0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      -webkit-animation-name: animatetop;
+      -webkit-animation-duration: 0.4s;
+      animation-name: animatetop;
+      animation-duration: 0.4s;
+    }
 
     .encabezado-modal {
       color: $azul;

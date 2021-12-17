@@ -39,7 +39,8 @@
                         <td><?php echo $evento->fecha_inicio; ?></td>
                         <td><?php echo  $evento->fecha_fin; ?></td>
                         <td>
-                            <button class="btn-asignar" onclick="invitarGrupo(
+                            <div class="form-tabla">
+                                <button class="btn-asignar" onclick="invitarGrupo(
                                 <?php echo $evento->id; ?>,
                                '<?php echo $evento->nombre; ?>',
                                'modal_invitar', 
@@ -47,12 +48,13 @@
                                 'inv')"> <i class="fas fa-user-plus"></i> Invitar</button>
 
 
-                            <a class="btn-asignar" href="/actualizar-evento?id=<?php echo $evento->id ?>"> <i class=" fas fa-pencil-alt"></i> Editar</a>
+                                <a class="btn-asignar" href="/actualizar-evento?id=<?php echo $evento->id ?>"> <i class=" fas fa-pencil-alt"></i> Editar</a>
 
 
-                            <input type="hidden" name="id" value="<?php echo $evento->id; ?>">
-                            <button type="button" class="btn-asignar" onclick="preguntar(borrarEvento,<?php echo $evento->id; ?>)">
-                                <i class="fas fa-trash"></i> Borrar</button>
+                                <input type="hidden" name="id" value="<?php echo $evento->id; ?>">
+                                <button type="button" class="btn-asignar" onclick="preguntar(borrarEvento,<?php echo $evento->id; ?>)">
+                                    <i class="fas fa-trash"></i> Borrar</button>
+                            </div>
                         </td>
                     </tr>
                 <?php endforeach; ?>

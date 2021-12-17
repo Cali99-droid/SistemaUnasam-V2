@@ -7,7 +7,7 @@
 
 /*Genericos*/
 :root {
-  --primario: #0024a8;
+  --primario: #2266b4;
   --secundario: #7f7481;
 }
 
@@ -93,7 +93,7 @@
   width: 100%;
 }
 .titulo--log button {
-  background-color: #ff8800;
+  background-color: #2266b4;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -106,7 +106,7 @@
 }
 
 .boton-acceder {
-  background-color: #ff8800;
+  background-color: #2266b4;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -174,7 +174,7 @@ span.psw {
   background-color: rgb(180, 180, 180);
   margin: 2% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
 
-  width: 40%; /* Could be more or less, depending on screen size */
+  width: 80%; /* Could be more or less, depending on screen size */
   height: 80%;
 }
 

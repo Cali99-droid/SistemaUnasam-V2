@@ -35,24 +35,27 @@
                     <tr>
                         <td><?php echo $beneficio->nombre; ?></td>
                         <!--<td> <a class="btn-asignar" href="docs/<?php echo $beneficio->getDoc() == '#' ? 'noExiste' : $beneficio->getDoc() ?>" target="_blank"><i class=" fas fa-eye"></i> Ver Resolución</a></td>  -->
-                        <?php 
-                            if(($beneficio->getDoc() == '#') || ($beneficio->getDoc() == '') ){
-                                ?>
-                                <td> <a class="btn-asignar label"  disabled ='true'><i class="fas fa-eye-slash"></i> Sin archivo</a></td>
-                            <?php
-                            }else{
-                            ?>
-                                <td> <a class="btn-asignar" href="docs/<?php echo $beneficio->getDoc() == '#' ? 'noExiste' : $beneficio->getDoc() ?>" target="_blank"><i class=" fas fa-eye"></i> Ver Resolución</a></td>
-                                <?php
-                            }
+                        <?php
+                        if (($beneficio->getDoc() == '#') || ($beneficio->getDoc() == '')) {
+                        ?>
+                            <td> <a class="btn-asignar label" disabled='true'><i class="fas fa-eye-slash"></i> Sin archivo</a></td>
+                        <?php
+                        } else {
+                        ?>
+                            <td> <a class="btn-asignar" href="docs/<?php echo $beneficio->getDoc() == '#' ? 'noExiste' : $beneficio->getDoc() ?>" target="_blank"><i class=" fas fa-eye"></i> Ver Resolución</a></td>
+                        <?php
+                        }
                         ?>
                         <td>
-                            <button class="btn-asignar" onclick="modalAsignar(<?php echo $beneficio->id; ?>, '<?php echo $beneficio->nombre; ?>','modal-asignar-grupo', 'boton-agregar-beneficio', 'asig')"><i class="fas fa-plus-circle"></i> Asignar</button>
-                            <button type="button" class="btn-asignar" onclick="actualizarBeneficio(<?php echo $beneficio->id; ?>)">
-                                <i class=" fas fa-pencil-alt"></i> Editar</button>
-                            <input type="hidden" name="id" value="<?php echo $beneficio->id; ?>">
-                            <button type="button" class="btn-asignar"  onclick="borrarBen(<?php echo $beneficio->id; ?>)">
-                                <i class="fas fa-trash"></i> Borrar</button>
+                            <div class="form-tabla">
+                                <button class="btn-asignar" onclick="modalAsignar(<?php echo $beneficio->id; ?>, '<?php echo $beneficio->nombre; ?>','modal-asignar-grupo', 'boton-agregar-beneficio', 'asig')"><i class="fas fa-plus-circle"></i> Asignar</button>
+                                <button type="button" class="btn-asignar" onclick="actualizarBeneficio(<?php echo $beneficio->id; ?>)">
+                                    <i class=" fas fa-pencil-alt"></i> Editar</button>
+                                <input type="hidden" name="id" value="<?php echo $beneficio->id; ?>">
+                                <button type="button" class="btn-asignar" onclick="borrarBen(<?php echo $beneficio->id; ?>)">
+                                    <i class="fas fa-trash"></i> Borrar</button>
+                            </div>
+
                         </td>
 
                     </tr>
