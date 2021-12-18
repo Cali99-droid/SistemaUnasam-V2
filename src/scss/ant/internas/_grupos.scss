@@ -1,5 +1,6 @@
 .contenedor-grupos {
   .titulo-grupos {
+    margin-bottom: 1rem;
     h2 {
       text-align: center;
       //padding-left: 2rem;
@@ -9,14 +10,19 @@
       margin-bottom: 1rem;
       color: $azul;
     }
+    p {
+      text-align: center;
+    }
   }
 
   .acciones-grupo {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     gap: 1rem;
-    width: 100%;
+    width: 95%;
+    margin: 0 auto;
     @include tablet {
       display: flex;
       flex-direction: row;
@@ -24,11 +30,12 @@
       align-items: center;
       gap: 0rem;
       width: 95%;
-      margin: 0 auto;
+      margin: 0 2rem 0 1rem;
     }
 
     .buscar {
       width: 104%;
+      margin-left: 2rem;
       input {
         height: 3.9rem;
         width: 28rem;
@@ -240,8 +247,14 @@
       color: $azul;
 
       h2 {
+        @include tablet {
+          font-size: 3rem;
+          margin: 0;
+          font-weight: $bold;
+        }
         margin: 0;
         font-weight: $bold;
+        font-size: 2rem;
       }
     }
   }

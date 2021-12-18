@@ -13,9 +13,9 @@
 
     <?php }
     } ?>
-    <div class="titulo-grup">
+    <div class="titulo-grupos">
         <h2 class="no-margin"><?php echo $grupo->nombre;  ?></h2>
-        <p><?php echo  $grupo->getTipoGrupo() . ' - ' . $grupo->fecha_creacion ?> </p>
+        <p class="no-margin"><?php echo  $grupo->getTipoGrupo() . ', ' . $grupo->fecha_creacion ?> </p>
 
     </div>
 

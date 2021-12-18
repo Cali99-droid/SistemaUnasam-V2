@@ -42,7 +42,7 @@
                         <?php
                         } else {
                         ?>
-                            <td> <a class="btn-asignar" href="docs/<?php echo $beneficio->getDoc() == '#' ? 'noExiste' : $beneficio->getDoc() ?>" target="_blank"><i class=" fas fa-eye"></i> Ver Resolución</a></td>
+                            <td> <a class="btn-asignar" href="docs/<?php echo $beneficio->getDoc() == '#' ? 'noExiste' : $beneficio->getDoc() ?>" target="_blank"><i class=" fas fa-eye"></i> Ver </a></td>
                         <?php
                         }
                         ?>

@@ -3,7 +3,7 @@
         <h3 class="no-margin">Análisis Gráfico</h3>
     </div>
     <div class="contenido-dashboard">
-  
+
 
 
         <div class="contenido-dash">
@@ -60,6 +60,7 @@
     google.charts.setOnLoadCallback(dibujaTendencia);
     google.charts.setOnLoadCallback(dibujaTendenciaRegulares);
     google.charts.setOnLoadCallback(dibujaTendenciaIrregulares);
+
     function drawChart() {
 
         var data = google.visualization.arrayToDataTable([
@@ -269,7 +270,7 @@
     }
 
     /* FIN*/
-    
+
     /* TENDENCIA DE REPORTES POR SEMESTRE DE ALUMNOS REGULARES */
     function dibujaTendenciaRegulares() {
         var data = new google.visualization.DataTable();
@@ -282,7 +283,7 @@
                 ?>);
         <?php
         } ?>
-           <?php echo $tendenciaRegulares; ?>
+        <?php echo $tendenciaRegulares; ?>
 
         var options = {
             chart: {
@@ -317,7 +318,7 @@
                 ?>);
         <?php
         } ?>
-            <?php echo $tendenciaIrregulares; ?>
+        <?php echo $tendenciaIrregulares; ?>
 
         var options = {
             chart: {
@@ -341,3 +342,5 @@
 
     /* FIN */
 </script>
+
+<!-- Poner bootstarap -->
