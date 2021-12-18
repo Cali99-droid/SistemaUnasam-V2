@@ -54,5 +54,14 @@
         </a>
     </div>
 
+    <div class="grupo">
+        <a href="reportes/reporte6.php" target="_blank">
+        <img src="https://www.aerocivil.gov.co/atencion/participacion/PublishingImages/nuestro-equipo-de-trabajo/equipo-trabajo%20copia.png" alt="Avatar" class="grupo-imagen">
+            <div class="container">
+                <h4>Reporte de Alumnos que tuvieron una deserción por facultades</h4>
+            </div>
+        </a>
+    </div>
+
 
 </div>
