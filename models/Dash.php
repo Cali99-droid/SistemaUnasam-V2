@@ -185,7 +185,7 @@ class Dash extends ActiveRecord
         inner join grupo_universitario gu on tg.id=gu.tipo_grupo_id
         inner join invitacion i on gu.id=i.grupo_universitario_id
         inner join participacion_alumno pa on pa.invitacion_id=i.id
-        inner join alumno_x_grupo ag on pa.alumno_x_grupo_id
+        inner join alumno_x_grupo ag on pa.alumno_x_grupo_id=ag.id
          inner join alumno a on ag.alumno_id=a.id 
          inner join rendimiento_academico ra on a.id=ra.alumno_id
         inner join semestre s on s.id=ra.semestre_id  
@@ -213,7 +213,7 @@ class Dash extends ActiveRecord
        inner join grupo_universitario gu on tg.id=gu.tipo_grupo_id
        inner join invitacion i on gu.id=i.grupo_universitario_id
        inner join participacion_alumno pa on pa.invitacion_id=i.id
-       inner join alumno_x_grupo ag on pa.alumno_x_grupo_id
+       inner join alumno_x_grupo ag on pa.alumno_x_grupo_id=ag.id
         inner join alumno a on ag.alumno_id=a.id 
         inner join rendimiento_academico ra on a.id=ra.alumno_id
        inner join semestre s on s.id=ra.semestre_id  
