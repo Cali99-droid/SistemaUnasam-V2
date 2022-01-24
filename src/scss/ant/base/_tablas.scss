@@ -2,16 +2,18 @@
   overflow-x: scroll;
   width: 99.2%;
   height: 40rem;
-  margin-top: 1.5rem;
-  padding-top: 3rem;
+
   @include tablet {
     overflow-x: auto;
     width: 99.2%;
     height: 40rem;
     overflow-x: auto;
     padding-top: 3rem;
+    margin: 0;
   }
-
+  h2 {
+    margin-left: 3rem;
+  }
   table {
     border-collapse: collapse;
     border-spacing: 0;

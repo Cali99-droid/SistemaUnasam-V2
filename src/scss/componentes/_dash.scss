@@ -2,14 +2,41 @@
 @use "base/mixins" as m;
 
 .titulo-ana {
+  background-color: v.$blanco;
+  margin: 2rem 0 2rem 0;
+  padding: 1.5rem;
+  border-radius: 1.5rem;
   h3 {
     font-weight: v.$bold;
+    color: #0c407c;
+    text-transform: uppercase;
+  }
+
+  .calls {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    a {
+      background-color: #08b388;
+      color: v.$blanco;
+      padding: 0.5rem;
+      border-radius: 1rem;
+      transition: transform 0.1s;
+      font-size: 1.4rem;
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
   }
 }
 .contenido-dashboard {
-  background-color: #e1e1e1;
+  scroll-behavior: smooth;
+  // background-color: #a6abbd;
+  border-radius: 1.5rem;
+  padding: 1rem;
   overflow: scroll;
-  height: 61rem;
+  height: 43rem;
   //scroll
   &::-webkit-scrollbar {
     width: 8px; /* Tamaño del scroll en vertical */
@@ -18,29 +45,27 @@
   }
 
   &::-webkit-scrollbar-thumb {
-    background: #ccc;
+    background: #0c407c;
     border-radius: 4px;
   }
 
   &::-webkit-scrollbar-thumb:hover {
-    background: #b3b3b3;
+    background: lighten($color: #0c407c, $amount: 8);
     box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
   }
 
   &::-webkit-scrollbar-thumb:active {
-    background-color: #999999;
+    background-color: lighten($color: #0c407c, $amount: 8);
   }
 
   .contenido-dash {
     @include m.tablet {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
     }
     .dash {
       @include m.tablet {
+        border-radius: 1rem;
         margin-bottom: 2rem;
-        height: 50rem;
+        height: 41rem;
         padding: 3rem;
         background-color: #fff;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);

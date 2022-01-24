@@ -19,7 +19,7 @@ use Model\DatosUser;
 use Model\Opcion_x_tipo;
 use Model\Rendimiento_academico;
 use Model\desercion_alumno;
-use Model\Desercion; 
+use Model\Desercion;
 
 class GrupoController
 {
@@ -31,6 +31,8 @@ class GrupoController
 
         // debuguear(substr($_SERVER['PATH_INFO'], 1));
         // validarPermisos(1);
+        // $nom = $_GET['nombre'];
+        // $grupos = Grupo::buscarGrupo($nom) ?? Grupo::all();
         $grupos = Grupo::all();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -65,7 +67,14 @@ class GrupoController
 
         $tipos = TipoGrupo::all();
         $grupo = new Grupo();
-        $router->render('grupo/index', ['grupos' => $grupos, 'grupo' => $grupo, 'tipos' => $tipos, '$escuelas' => $escuelas]);
+        $router->render('grupo/index', [
+            'grupos' => $grupos,
+            'grupo' => $grupo,
+            'tipos' => $tipos,
+            '$escuelas' => $escuelas,
+            'titulo' => 'Organizaciones'
+            // 'nom' => $nom
+        ]);
     }
 
 
@@ -328,7 +337,7 @@ class GrupoController
             'desercionA' => $desercionA,
             'alumno' => $alumno,
             'semestres' => $semestres,
-            'desercion'=> $desercion
+            'desercion' => $desercion
         ]);
     }
 
@@ -337,10 +346,10 @@ class GrupoController
         $id = $_POST['id'];
         $desercion_alumno = new desercion_alumno($_POST);
 
-       if ($desercion_alumno->validarRepeticion() == 'existe') {
-            $resultado=false;
+        if ($desercion_alumno->validarRepeticion() == 'existe') {
+            $resultado = false;
         } else {
-            if ($id ==='') {
+            if ($id === '') {
                 $resultado = $desercion_alumno->crear();
                 $resultado =  $resultado['resultado'];
             } else {
@@ -354,9 +363,9 @@ class GrupoController
     {
         $id = $_POST['id'];
         $desercion = desercion_alumno::find($id);
-        
+
         $resultado =  $desercion->eliminar();
-        
+
 
         echo json_encode($resultado);
     }

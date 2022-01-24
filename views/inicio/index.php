@@ -1,6 +1,17 @@
 <div class="contenedor-grupos">
     <div class="titulo-ana">
         <h3 class="no-margin">Análisis Gráfico</h3>
+        <div class="calls">
+            <a href="#piechart">Participantes</a>
+            <a href="#piechart1">Invitaciones </a>
+            <a href="#piechart2">TOP 5 escuelas</a>
+            <a href="#piechart3">Fechas</a>
+            <a href="#piechart4">Beneficios Cumplidos</a>
+            <a href="#piechart5">Beneficios pendientes</a>
+            <a href="#piechart6">Tendencia Participaciones</a>
+            <a href="#piechart7">Regulares</a>
+            <a href="#piechart8">Irregulares</a>
+        </div>
     </div>
     <div class="contenido-dashboard">
 

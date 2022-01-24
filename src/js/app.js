@@ -14,7 +14,7 @@ function navegacion() {
     const logo = document.querySelector('.contenido-cabecera');
     const admin = document.querySelector('.sub-item');
 
-    /*navegacion.classList.contains*/
+    /*navegacion.classList.contains #0c407c*/
 
     if (contenedor.classList.contains('ocultar')) {
         contenedor.classList.remove('ocultar');

@@ -1,16 +1,18 @@
 <div class="contenedor-grupos">
 
     <div class="titulo-grupos">
-        <h2 class="no-margin">Gestión de Organizaciones Estudiantiles</h2>
+        <h2 class="no-margin">Organizaciones Estudiantiles</h2>
+
     </div>
 
     <div class="acciones-grupo">
         <div class="buscar">
             <form method="POST">
-                <i class="fas fa-search"></i>
-                <input type="text" name="valor" placeholder="Ingrese el nombre de la organización estudiantil">
+
+                <input id="nom" type="text" name="valor" placeholder="Ingrese nombre " value="<?php //echo $nom 
+                                                                                                ?>">
                 <input type="hidden" value="2" id="codB" name="codB">
-                <button type="submit" class="btn-asignar ">Buscar</button>
+                <button type="submit" class="btn-asignar "> <i class="fas fa-search"></i> Buscar</button>
             </form>
 
         </div>
@@ -22,6 +24,15 @@
     </div>
 
     <div class="grupos">
+
+        <?php
+
+        if (count($grupos) === 0) {
+            echo "<h2>No hay grupos con este nombre</h2>";
+        }
+
+        ?>
+
 
         <div class="contenido-grupos">
 
@@ -73,4 +84,7 @@
     });
 </script>
 
+<?php
+//$script = "<script src='build/js/buscador.js'></script>";
+?>
 <?php include_once __DIR__ . "/../templates/modal/nuevoTipo.php" ?>
