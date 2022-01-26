@@ -1,6 +1,6 @@
 .seccion {
   margin-top: calc($separacion / 2);
-  margin-bottom:calc( $separacion / 2);
+  margin-bottom: calc($separacion / 2);
 }
 .contenido-centrado {
   max-width: 800px;
@@ -8,4 +8,11 @@
 
 .no-margin {
   margin: 0;
+}
+
+.cont-borde {
+  background-color: #fefefe;
+  padding: 1rem;
+  margin: 1rem auto;
+  border-radius: 1rem;
 }

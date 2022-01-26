@@ -9,9 +9,13 @@
 <!--
 <label for="semestre">Semestre</label>
 <select class="js-example-basic-single " id="semestre" name="idTipoGrupo">
-    <?php //foreach ($semestres as $semestre) : ?>
-        <option value="<?php //echo $semestre->id ?>"><?php //echo $semestre->nombre ?></option>
-    <?php// endforeach; ?>
+    <?php //foreach ($semestres as $semestre) : 
+    ?>
+        <option value="<?php //echo $semestre->id 
+                        ?>"><?php //echo $semestre->nombre 
+                            ?></option>
+    <?php // endforeach; 
+    ?>
 </select>
 
 <label for="estado">Estado</label>
@@ -20,6 +24,6 @@
     <option value="irregular">IRREGULAR</option>
 </select>
     -->
-<input type="hidden" id="idAlumno" value="<?php echo $alumno->idAlumno ?>">
+<input type="hidden" id="idAlumno" value="<?php echo $integrante->idAlumno ?>">
 <input type="hidden" id="id_desercion_alumno" value="">
 <button onclick="Crear_desercion_alumno()" type="button" class="btn-asignar">Agregar</button>

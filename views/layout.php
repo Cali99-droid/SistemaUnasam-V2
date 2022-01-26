@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UNASAM | <?php echo $titulo ?? '' ?></title>
+    <link rel="icon" href="http://sga.unasam.edu.pe/images/icons/icon.png">
     <link rel="stylesheet" href="../build/css/app.css">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
@@ -21,7 +22,7 @@
 <body>
 
     <div class="contenedor-todo">
-        <div class="contenedor-barra ocultar" id="cont-barra">
+        <div class="contenedor-barra ocultar " id="cont-barra">
             <nav class="navegacion ">
                 <div class="contenido-cabecera mostrar-logo">
 
@@ -34,26 +35,26 @@
                         <h3>UNASAM</h3>
                     </div>
                 </div>
-                <div class="items">
-
-                    <a href="/inicio" title="Inicio" class=' <?php echo ($titulo === 'Inicio') ? 'activo' : ''; ?>'>
-                        <i class='bx bxs-home' style='color:#e1e1e1'></i>Inicio
-                    </a>
-                    <a href="/grupos" title="Grupos" class=' <?php echo ($titulo === 'Organizaciones') ? 'activo' : ''; ?>'><i class='bx bx-group'></i>Organizaciones</a>
-                    <a href="/beneficios" title="Beneficios" class=' <?php echo ($titulo === 'Beneficios') ? 'activo' : ''; ?>'><i class='bx bx-medal'></i>Beneficios</a>
-                    <a href="/eventos" title="Eventos" class=' <?php echo ($titulo === 'Eventos') ? 'activo' : ''; ?>'><i class='bx bxs-calendar'></i>Eventos</a>
-                    <a href="/reporte" title="Reportes" class=' <?php echo ($titulo === 'Reportes') ? 'activo' : ''; ?>'><i class="bx bxs-file"></i>Reportes</a>
-                    <a href="/desercion" title="Deserción" class=' <?php echo ($titulo === 'Desercion') ? 'activo' : ''; ?>'><i class="fas fa-user-graduate"></i>Deserción</a>
-                    <div class="item">
-                        <a href="javascript:void(0)" class=' <?php echo ($titulo === 'Administrador') ? 'activo' : ''; ?>' class="administrador" onclick="mostrarAdmin()"><i class="fas fa-user-tie" title="Administrador"></i>Administrador</a>
-                        <div class="sub-item " id="sub-item">
-                            <a href="/tipos">Tipos de Organización</a>
-                            <a href="/usuarios">Usuarios</a>
-                            <a href="/roles">Roles</a>
-                            <a href="/semestres">Semestres</a>
+                <div class="items ">
+                    <nav>
+                        <a href="/inicio" title="Inicio" class=' <?php echo ($titulo === 'Inicio') ? 'activo' : ''; ?>'>
+                            <i class='bx bxs-home' style='color:#e1e1e1'></i>Inicio
+                        </a>
+                        <a href="/grupos" title="Grupos" class=' <?php echo ($titulo === 'Organizaciones') ? 'activo' : ''; ?>'><i class='bx bx-group'></i>Organizaciones</a>
+                        <a href="/beneficios" title="Beneficios" class=' <?php echo ($titulo === 'Beneficios') ? 'activo' : ''; ?>'><i class='bx bx-medal'></i>Beneficios</a>
+                        <a href="/eventos" title="Eventos" class=' <?php echo ($titulo === 'Eventos') ? 'activo' : ''; ?>'><i class='bx bxs-calendar'></i>Eventos</a>
+                        <a href="/reporte" title="Reportes" class=' <?php echo ($titulo === 'Reportes') ? 'activo' : ''; ?>'><i class="bx bxs-file"></i>Reportes</a>
+                        <a href="/desercion" title="Deserción" class=' <?php echo ($titulo === 'Desercion') ? 'activo' : ''; ?>'><i class="fas fa-user-graduate"></i>Deserción</a>
+                        <div class="item">
+                            <a href="javascript:void(0)" class=' <?php echo ($titulo === 'Administrador') ? 'activo' : ''; ?>' class="administrador" onclick="mostrarAdmin()"><i class="fas fa-user-tie" title="Administrador"></i>Administrador</a>
+                            <div class="sub-item " id="sub-item">
+                                <a href="/tipos">Tipos de Organización</a>
+                                <a href="/usuarios">Usuarios</a>
+                                <a href="/roles">Roles</a>
+                                <a href="/semestres">Semestres</a>
+                            </div>
                         </div>
-                    </div>
-
+                    </nav>
                 </div>
             </nav>
 

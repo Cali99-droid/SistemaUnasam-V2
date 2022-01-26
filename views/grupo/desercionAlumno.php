@@ -1,9 +1,5 @@
-<div class="contenedor-grupos">
-    <div class="titulo-grupos con_accion">
-        <a onclick="history.back ()" class="btn-asignar"><i class="fas fa-arrow-circle-left"></i> Volver</a>
-        <h2 class="no-margin">Desercion Alumno <br><span><?php echo $alumno->nombre . ' ' . $alumno->apellido ?></span></h2>
-
-    </div>
+<div class="contenedor-grupos cont-borde">
+    <h3 class="no-margin titulo-area"><i class="fas fa-exclamation-triangle"></i> Desercion</h3>
 
     <div class="acciones-grupo">
         <div class="buscar">
@@ -12,7 +8,7 @@
         </div>
         <div class=" nuevo-grupo__mod botones-grupo">
 
-            <a class="btn-asignar" onclick="modal('modal_rend', 'boton-agregar-integrante', 'close-rend')">
+            <a class="btn-asignar" onclick="modal('modal_des', 'boton-agregar-integrante', 'close_des')">
                 <i class="fas fa-plus"></i> Agregar Nuevo
             </a>
         </div>
@@ -38,8 +34,8 @@
                         <td><?php echo $desercionA->getSemestre(); ?></td>
 
                         <td>
-                        <button class="btn-asignar" onclick="actualizarDesercionAlumno('<?php echo $desercionA->id; ?>', '<?php echo $desercionA->fecha; ?>', '<?php echo $desercionA->alumno_id; ?>')"> <i class=" fas fa-pencil-alt"></i> Editar</button>    
-                        <button onclick="eliminarDesercionAlumno(<?php echo $desercionA->id; ?>)" type="button" class="btn-asignar">
+                            <button class="btn-asignar" onclick="actualizarDesercionAlumno('<?php echo $desercionA->id; ?>', '<?php echo $desercionA->fecha; ?>', '<?php echo $desercionA->desercion_id; ?>')"> <i class=" fas fa-pencil-alt"></i> Editar</button>
+                            <button onclick="eliminarDesercionAlumno(<?php echo $desercionA->id; ?>)" type="button" class="btn-asignar">
                                 <i class="fas fa-trash"></i> Borrar</button>
                         </td>
                     </tr>
@@ -53,12 +49,12 @@
 </div>
 
 <!-- Modal Agregar-->
-<div class="modal-agregar" id="modal_rend">
+<div class="modal-agregar" id="modal_des">
 
-    <div class="contenido-modal-grupo  contenedor-grupos modal-eventos">
+    <div class="contenido-modal-grupo  modal-eventos">
         <div class="encabezado-modal">
             <h2 id="titulo_integrante">Agregar </h2>
-            <span class="close close-rend">&times;</span>
+            <span class="close close_des">&times;</span>
 
         </div>
         <div>

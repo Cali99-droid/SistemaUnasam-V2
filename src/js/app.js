@@ -2192,7 +2192,8 @@ function actualizarDesercionA(id, nombre) {
 }
 
 function actualizarDesercionAlumno(id, fecha, descripcion_id) {
-    modal('modal_rend', 'boton', 'close');
+
+    modal('modal_des', 'boton', 'close_des');
     $('#titulo_integrante').text('Editar Deserción');
     $('#fecha').val(fecha);
     $('#idCausaDesercion').val(descripcion_id); // id de desercion

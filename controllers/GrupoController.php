@@ -145,15 +145,24 @@ class GrupoController
         $beneficios = Beneficio_x_tipo_grupo::validarEstado($grupo->tipo_grupo_id, 'ACTIVO'); //derecjos'tipo_grupo_id', )
         $beneficioAsignados = Beneficio_x_alumno::where_all('alumno_x_grupo_id',  $integrante->idAlumnoGrupo);
 
+        //rendimiento academico
+        $rendimientos = Rendimiento_academico::where_all('alumno_id', $integrante->idAlumno);
+        $semestres = Semestre::all();
+
+        //desercion 
+        $desercionA = desercion_alumno::where_all('alumno_id', $integrante->idAlumno);
+        $desercion = Desercion::all();
         $router->render('grupo/integrante', [
             'integrante' => $integrante,
             'grupo' => $grupo,
             'invitaciones' => $invitaciones,
             'participaciones' => $participaciones,
             'beneficios' => $beneficios,
-            'beneficioAsignados' => $beneficioAsignados
-
-
+            'beneficioAsignados' => $beneficioAsignados,
+            'rendimientos' => $rendimientos,
+            'semestres' => $semestres,
+            'desercionA' =>  $desercionA,
+            'desercion' => $desercion
         ]);
     }
 
@@ -257,7 +266,7 @@ class GrupoController
         echo json_encode($resultado);
     }
 
-
+    //no usado desde la version 2022
     public static function rendimiento(Router $router)
     {
         $id = validarORedireccionar('/grupos');
@@ -319,7 +328,7 @@ class GrupoController
         }
         echo json_encode($res);
     }
-    // Inicio
+    // no usado funcion ya optimizada
     public static function desercionALumno(Router $router)
     {
         $id = validarORedireccionar('/grupos');

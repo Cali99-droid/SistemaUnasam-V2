@@ -1,36 +1,36 @@
-/* Style tab links */
+/* Style  links */
 .tabs {
-  margin-top: 2rem;
+  margin-bottom: 6rem;
 }
-
-.tabs__grafico {
+.tabs .tabs__grafico {
   display: flex;
 }
 .tablink {
-  background-color: #414756;
+  background-color: #979799;
   color: white;
   float: left;
   border: none;
   outline: none;
   cursor: pointer;
-  padding: 14px 16px;
+  padding: 11px 13px;
   font-size: 17px;
   width: 25%;
 }
 
 .tablink:hover {
-  background-color: darken($color: #414756, $amount: 5);
+  background-color: darken($color: #7c7e85, $amount: 1);
 }
 
 /* Style the tab content (and add height:100% for full page content) */
 .tabcontent {
   color: $negro;
   display: none;
-  padding: 50px 20px;
-  height: 100%;
-  h3 {
-    font-weight: $bold;
-    margin: 0;
+
+  .contenedor-tabla {
+    font-size: 1.4rem;
+    table {
+      width: 100%;
+    }
   }
 }
 /*
