@@ -250,7 +250,7 @@
       font-size: 1.6rem;
       padding: 20px;
       border: 1px solid #888;
-      width: 60%;
+      width: 40%;
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
         0 6px 20px 0 rgba(0, 0, 0, 0.19);
       -webkit-animation-name: animatetop;
@@ -278,12 +278,17 @@
   .formulario-grupo {
     display: flex;
     flex-direction: column;
-
+    font-size: 1.4rem;
     input,
     select {
-      padding: 12px 20px;
+      padding: 1rem;
+      border: none;
+      background-color: $gris;
+      color: $negro;
     }
-
+    select {
+      border: 2px solid darken($color: $gris, $amount: 8);
+    }
     label {
       font-weight: $bold;
       margin: 8px 0;
@@ -291,9 +296,10 @@
 
     button {
       @include boton($azul, block);
-      padding: 1rem;
-      margin: 0;
-      margin-top: 2rem;
+
+      font-size: 1.5rem;
+      border-radius: 0.5rem;
+      margin-top: 1.5rem;
     }
 
     .contenido-tipos {
@@ -308,11 +314,6 @@
       select {
         width: 100%;
         margin-right: 4rem;
-      }
-
-      button {
-        width: 100%;
-        border-radius: 1.5rem;
       }
     }
   }

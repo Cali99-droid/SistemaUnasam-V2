@@ -13,7 +13,7 @@ crearGrup.addEventListener("click", mostrarForm);
 function buscarGrupo(e) {
   const inputGrupo = e.target.value;
   filtradas = findMatches(inputGrupo, grupos);
-  mostrarGrupos(true);
+  mostrarGrupos();
   //  console.log(filtradas);
 }
 

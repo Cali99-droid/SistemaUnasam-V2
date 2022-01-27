@@ -64,10 +64,11 @@ class GrupoController
             echo json_encode($respuesta);
             return;
         }
-
+        $grupo = new Grupo();
         $tipos = TipoGrupo::all();
         $router->render('grupo/index', [
             'tipos' => $tipos,
+            'grupo' => $grupo,
             'titulo' => 'Organizaciones'
 
         ]);

@@ -15,13 +15,8 @@
     </div>
     <div class="contenido-dashboard">
 
-
-
         <div class="contenido-dash">
-            <div>
-                <div class="dash" id="piechart"></div>
-            </div>
-
+            <div class="dash" id="piechart"></div>
             <div class="dash" id="piechart1"></div>
             <div class="dash" id="piechart2"></div>
             <div class="dash" id="piechart3"></div>
