@@ -23,22 +23,10 @@ use Model\Desercion;
 
 class GrupoController
 {
-
-
     public static function index(Router $router)
     {
         //session_start();
-
-        // debuguear(substr($_SERVER['PATH_INFO'], 1));
-        // validarPermisos(1);
-        // $nom = $_GET['nombre'];
-        // $grupos = Grupo::buscarGrupo($nom) ?? Grupo::all();
-        $grupos = Grupo::all();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-            // if (isset($_POST['codB'])) {
-            //     $grupos = Grupo::buscarGrupo($_POST['valor']);
-            // } else {}
             $grupo = new Grupo($_POST);
 
             /** Generar nombre unico */
@@ -57,8 +45,11 @@ class GrupoController
             }
             //guarda la imagen en el servidor
             $image->save(CARPETA_IMAGENES . $nombreImagen);
+
             //guarda en la base de datos
             $resultado = $grupo->crear();
+
+            // * Response API
             $grupoNuevo = Grupo::find($resultado['id']);
             $grupoNuevo->getCantidadIntegrantes();
             $grupoNuevo->getTipoGrupo();
@@ -73,17 +64,12 @@ class GrupoController
             echo json_encode($respuesta);
             return;
         }
-        $escuelas = Grupo::consulta('SELECT * FROM escuela');
 
         $tipos = TipoGrupo::all();
-        $grupo = new Grupo();
         $router->render('grupo/index', [
-            'grupos' => $grupos,
-            'grupo' => $grupo,
             'tipos' => $tipos,
-            '$escuelas' => $escuelas,
             'titulo' => 'Organizaciones'
-            // 'nom' => $nom
+
         ]);
     }
 
