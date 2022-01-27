@@ -37,6 +37,7 @@ $router->post('/perfil', [LoginController::class, 'perfil']);
 //Grupos
 $router->get('/grupos', [GrupoController::class, 'index']);
 $router->post('/grupos', [GrupoController::class, 'index']);
+$router->get('/api/grupos', [GrupoController::class, 'getGrupos']);
 $router->get('/grupo', [GrupoController::class, 'grupo']);
 $router->post('/grupo', [GrupoController::class, 'grupo']);
 
@@ -86,7 +87,8 @@ $router->post('/invitacion-eliminar', [EventoController::class, 'eliminarInvitac
 //Reportes
 $router->get('/reporte', [ReporteController::class, 'index']);
 $router->post('/reporte', [ReporteController::class, 'index']);
-//Desercion
+
+// !Desercion ALGUNOS NO SE USAN
 $router->get('/desercion', [DesercionController::class, 'index']);
 $router->post('/desercion', [DesercionController::class, 'setDesercion']); //desercion-eliminar
 $router->post('/desercion', [DesercionController::class, 'setDesercion']); //POSIBLE NO FUNCIONAMIENTO

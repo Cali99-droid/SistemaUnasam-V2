@@ -18,7 +18,10 @@
 
 
         <div class="contenido-dash">
-            <div class="dash" id="piechart"></div>
+            <div>
+                <div class="dash" id="piechart"></div>
+            </div>
+
             <div class="dash" id="piechart1"></div>
             <div class="dash" id="piechart2"></div>
             <div class="dash" id="piechart3"></div>
@@ -34,31 +37,31 @@
 </div>
 
 <script type="text/javascript">
-    google.charts.load('current', {
+    google.charts.load('visualization', {
         'packages': ['corechart']
     });
-    google.charts.load('current', {
+    google.charts.load('visualization', {
         'packages': ['bar']
     });
-    google.charts.load('current', {
+    google.charts.load('visualization', {
         'packages': ['bar']
     });
-    google.charts.load("current", {
+    google.charts.load("visualization", {
         packages: ["corechart"]
     });
-    google.charts.load("current", {
+    google.charts.load("visualization", {
         packages: ["corechart"]
     });
-    google.charts.load("current", {
+    google.charts.load("visualization", {
         packages: ["corechart"]
     });
-    google.charts.load('current', {
+    google.charts.load('visualization', {
         'packages': ['line']
     });
-    google.charts.load('current', {
+    google.charts.load('visualization', {
         'packages': ['line']
     });
-    google.charts.load('current', {
+    google.charts.load('visualization', {
         'packages': ['line']
     });
 
@@ -84,9 +87,8 @@
         ]);
 
         var options = {
-            width: 1000,
-            heigth: 1000,
-            title: 'Participantes por Grupo'
+
+            title: 'Participantes por Grupo '
         };
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
         chart.draw(data, options);
@@ -106,8 +108,7 @@
         ]);
 
         var options = {
-            width: 1000,
-            heigth: 1000,
+
             legend: {
                 position: 'none'
             },
@@ -147,8 +148,7 @@
 
         var options = {
             title: 'Chess opening moves',
-            width: 1000,
-            heigth: 1000,
+
             legend: {
                 position: 'none'
             },
@@ -186,8 +186,7 @@
         ]);
 
         var options = {
-            width: 1000,
-            heigth: 1000,
+
             legend: 'none',
             colors: ['#15A0C8'],
             pointSize: 30,
@@ -214,9 +213,8 @@
 
         var options = {
             title: 'Beneficios Cumplidos',
-            pieHole: 0.4,
-            width: 1000,
-            heigth: 1000,
+            pieHole: 0.4
+
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart4'));
@@ -237,9 +235,7 @@
 
         var options = {
             title: 'Beneficios Pendientes',
-            pieHole: 0.4,
-            width: 1000,
-            heigth: 1000,
+            pieHole: 0.4
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart5'));
@@ -265,8 +261,7 @@
                 title: 'Tendencia de participaciones por escuelas',
                 subtitle: 'cantidad de estudiantes'
             },
-            width: 1000,
-            heigth: 1000,
+
             axes: {
                 x: {
                     0: {
@@ -301,8 +296,7 @@
                 title: 'Tendencia de Cantidad de Regulares por Grupo',
                 subtitle: 'cantidad de estudiantes'
             },
-            width: 1000,
-            heigth: 1000,
+
             axes: {
                 x: {
                     0: {
@@ -336,8 +330,7 @@
                 title: 'Tendencia de Cantidad de Irregulares por Grupo',
                 subtitle: 'cantidad de estudiantes'
             },
-            width: 1000,
-            heigth: 1000,
+
             axes: {
                 x: {
                     0: {
@@ -350,6 +343,8 @@
         chart7.draw(data, google.charts.Line.convertOptions(options));
 
     }
+
+
 
     /* FIN */
 </script>

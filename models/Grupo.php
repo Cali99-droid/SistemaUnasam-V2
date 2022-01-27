@@ -14,7 +14,8 @@ class Grupo extends ActiveRecord
     public $resolucion_creacion;
     public $imagen;
     public $tipo_grupo_id;
-
+    public $cantidad_integrantes;
+    public $tipo;
     public function __construct($args = [])
     {
         $this->id = $args['id'] ?? null;
@@ -52,12 +53,14 @@ class Grupo extends ActiveRecord
     {
         $query = "SELECT count(*) cantidad FROM alumno_x_grupo where grupo_universitario_id = " . $this->id;
         $resultado = self::$db->query($query)->fetch_object();
+        $this->cantidad_integrantes = $resultado->cantidad;
         return $resultado->cantidad;
     }
 
     public function getTipoGrupo()
     {
         $tipo = TipoGrupo::find($this->tipo_grupo_id);
+        $this->tipo = $tipo;
         return $tipo->nombre;
     }
 

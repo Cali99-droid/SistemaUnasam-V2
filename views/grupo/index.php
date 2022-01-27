@@ -1,62 +1,20 @@
 <div class="contenedor-grupos">
-
     <div class="titulo-grupos">
         <h2 class="no-margin">Organizaciones Estudiantiles</h2>
-
     </div>
-
     <div class="acciones-grupo">
         <div class="buscar">
-            <form method="POST">
-
-                <input id="nom" type="text" name="valor" placeholder="Ingrese nombre " value="<?php //echo $nom 
-                                                                                                ?>">
-                <input type="hidden" value="2" id="codB" name="codB">
-                <button type="submit" class="btn-asignar "> <i class="fas fa-search"></i> Buscar</button>
-            </form>
-
+            <i class="fas fa-search"></i> <input id="nom" type="text" name="valor" placeholder="Buscar por Tipo o Nombre">
         </div>
-
         <div class="nuevo-grupo__mod">
-            <a type="button" class="btn-asignar" id="boton-agregar-grupo" onclick="modal('modal-grupo', 'boton-agregar-grupo', 'close-grupo')">
+            <a type="button" class="btn-asignar" id="boton-agregar-grupo">
                 <i class="fas fa-plus-circle"></i> Nueva Organización </a>
         </div>
     </div>
-
     <div class="grupos">
-
-        <?php
-
-        if (count($grupos) === 0) {
-            echo "<h2>No hay grupos con este nombre</h2>";
-        }
-
-        ?>
-
-
-        <div class="contenido-grupos">
-
-            <?php foreach ($grupos as $grup) : ?>
-
-                <div class="grupo">
-                    <a href="/grupo?id=<?php echo $grup->id ?>">
-                        <img src="/imagenes/<?php echo  $grup->imagen; ?>" alt="Imagen Grupo" class="grupo-imagen">
-                        <div class="container">
-                            <h4 class="no-margin"><?php echo $grup->nombre; ?></h4>
-                            <p><?php echo $grup->getTipoGrupo(); ?></p>
-                            <p>Nº Integrantes: <?php echo $grup->getCantidadIntegrantes();
-                                                ?></p>
-                        </div>
-
-                    </a>
-                </div>
-
-            <?php endforeach; ?>
+        <div class="contenido-grupos" id="contenedor-grupos">
         </div>
-        <!--Fin conteniodo grupos-->
-
     </div>
-
 </div>
 </div>
 </div>
@@ -66,25 +24,18 @@
         <div class="encabezado-modal">
             <h2>Nuevo Grupo</h2>
             <span class="close close-grupo">&times;</span>
-
         </div>
         <form class="formulario-grupo" method="POST" action="/grupos" enctype="multipart/form-data">
 
             <?php include 'formulario.php'; ?>
 
-            <button type="submit" id="crearGrupo">Aceptar</button>
+            <button id="crearGrupo" type="button" class="crearGrupo">Aceptar</button>
         </form>
     </div>
 </div>
-<script type="text/javascript">
-    $(document).ready(function() {
-        setTimeout(function() {
-            $(".alerta").fadeOut(1500);
-        }, 3000);
-    });
-</script>
+
 
 <?php
-//$script = "<script src='build/js/buscador.js'></script>";
+$script = "<script src='build/js/grupos.js'></script>";
 ?>
 <?php include_once __DIR__ . "/../templates/modal/nuevoTipo.php" ?>

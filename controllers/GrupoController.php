@@ -36,32 +36,42 @@ class GrupoController
         $grupos = Grupo::all();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-            if (isset($_POST['codB'])) {
-                $grupos = Grupo::buscarGrupo($_POST['valor']);
-            } else {
-                $grupo = new Grupo($_POST['grupo']);
+            // if (isset($_POST['codB'])) {
+            //     $grupos = Grupo::buscarGrupo($_POST['valor']);
+            // } else {}
+            $grupo = new Grupo($_POST);
 
-                /** Generar nombre unico */
-                $nombreImagen = md5(uniqid(rand(), true)) . ".jpg";
+            /** Generar nombre unico */
+            $nombreImagen = md5(uniqid(rand(), true)) . ".jpg";
 
-
-                /**Setear imagen */
-                if ($_FILES['grupo']['tmp_name']['imagen']) {
-                    $image = Image::make($_FILES['grupo']['tmp_name']['imagen'])->fit(800, 600);
-                    $grupo->setImagen($nombreImagen);
-                }
-
-                /**Subida de Imagenes */
-                //crear carpeta
-                if (!is_dir(CARPETA_IMAGENES)) {
-                    mkdir(CARPETA_IMAGENES);
-                }
-                //guarda la imagen en el servidor
-                $image->save(CARPETA_IMAGENES . $nombreImagen);
-                //guarda en la base de datos
-                $resultado = $grupo->crear();
-                header('Location: /grupos');
+            /**Setear imagen */
+            if ($_FILES['imagen']['tmp_name']) {
+                $image = Image::make($_FILES['imagen']['tmp_name'])->fit(800, 600);
+                $grupo->setImagen($nombreImagen);
             }
+
+            /**Subida de Imagenes */
+            //crear carpeta
+            if (!is_dir(CARPETA_IMAGENES)) {
+                mkdir(CARPETA_IMAGENES);
+            }
+            //guarda la imagen en el servidor
+            $image->save(CARPETA_IMAGENES . $nombreImagen);
+            //guarda en la base de datos
+            $resultado = $grupo->crear();
+            $grupoNuevo = Grupo::find($resultado['id']);
+            $grupoNuevo->getCantidadIntegrantes();
+            $grupoNuevo->getTipoGrupo();
+            $respuesta = [
+                'tipo' => 'exito',
+                'id' => $resultado['id'],
+                'mensaje' => 'Organización Creada Correctamente',
+                'tipo_grupo' => $grupoNuevo->tipo,
+                'cantidad_integrantes' => $grupoNuevo->cantidad_integrantes,
+                'imagen' => $grupoNuevo->imagen
+            ];
+            echo json_encode($respuesta);
+            return;
         }
         $escuelas = Grupo::consulta('SELECT * FROM escuela');
 
@@ -266,7 +276,9 @@ class GrupoController
         echo json_encode($resultado);
     }
 
-    //no usado desde la version 2022
+    /**
+     * !no usado desde la version 2022 
+     * */
     public static function rendimiento(Router $router)
     {
         $id = validarORedireccionar('/grupos');
@@ -377,5 +389,21 @@ class GrupoController
 
 
         echo json_encode($resultado);
+    }
+
+
+    // * API'S GRUPO */
+    public static function getGrupos()
+    {
+        $gruposTot = [];
+        $grupos = Grupo::all();
+        foreach ($grupos as $grupo) {
+            $grupo->getCantidadIntegrantes();
+            $grupo->getTipoGrupo();
+            $gruposTot[] = $grupo;
+        }
+
+
+        echo json_encode(['grupos' => $gruposTot]);
     }
 }
