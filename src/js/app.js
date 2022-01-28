@@ -84,10 +84,6 @@ function eventListeners() {
         ad.addEventListener('click', navegacion);*/
 }
 
-function llamar_modal() {
-  Swal.fire("Good job!", "You clicked the button!", "info");
-}
-
 function items() {
   const contenedor = document.querySelector(".contenedor-barra");
   const logo = document.querySelector(".contenido-cabecera");
@@ -142,21 +138,6 @@ function modalS(modal, boton, close) {
       modal.style.display = "none";
     }
   };
-}
-
-/**AJAX */
-
-function actualizarIntegrante(dni, modal_integrante, boton, close) {
-  modal(modal_integrante, boton, close);
-
-  BuscarIntegrante(dni);
-
-  $(document).ready(function () {
-    $("#cont_buscar").hide();
-
-    $("#titulo_integrante").text("Editar Integrante");
-    $("#valor").val("1");
-  });
 }
 
 async function actualizarTipo(id, nombre) {
@@ -689,162 +670,6 @@ async function crearEvento() {
   }
 }
 
-function asignarAsistencia(
-  idinvitacion,
-  idAlumnoGrupo,
-  modal_asis,
-  boton_agregar_usu,
-  close_usu
-) {
-  modalS(modal_asis, boton_agregar_usu, close_usu);
-
-  $(document).ready(function () {
-    $("#idinvitacion").val(idinvitacion);
-    $("#idAlumnoGrupo").val(idAlumnoGrupo);
-  });
-}
-// !implementado en integrante.js
-async function confirmarAsistencia() {
-  const close = document.getElementById("close-asis");
-  const idinvitacion = document.getElementById("idinvitacion");
-  const idAlumnoGrupo = document.getElementById("idAlumnoGrupo");
-  const tipo = document.getElementById("tipo");
-
-  datos = new FormData();
-  datos.append("invitacion_id", idinvitacion.value);
-  datos.append("alumno_x_grupo_id", idAlumnoGrupo.value);
-  datos.append("tipo", tipo.value);
-
-  try {
-    //Peticion hacia la api
-    const url = "http://appunasam.devor/integrante/setAsistencia";
-    const respuesta = await fetch(url, {
-      method: "POST",
-      body: datos,
-    });
-    const resultado = await respuesta.json();
-    console.log(resultado);
-    if (resultado.resultado) {
-      Swal.fire({
-        icon: "success",
-        title: "MUY BIEN !",
-        text: "Asistencia asignada correctamente!",
-      }).then(() => {
-        // close.click();
-        // document.getElementById("participaciones").click();
-        // mostrarParticipaciones(idAlumnoGrupo.value);
-
-        window.location.reload();
-      });
-    } else {
-      Swal.fire({
-        icon: "error",
-        title: "Error !",
-        text: "El Alumno ya participo en el evento!",
-      });
-    }
-  } catch (error) {
-    Swal.fire({
-      icon: "error",
-      title: "Error...",
-      text: "Hubo un error al guardar la asistencia!",
-    });
-  }
-}
-function crearBoton() {
-  const boton = document.createElement("BUTTON");
-  boton.classList.add("boton-asignar");
-
-  const ic = document.createElement("I");
-  ic.classList.add("fas");
-  ic.classList.add("fa-minus-circle");
-
-  boton.appendChild(ic);
-  boton.textContent = "Quitar ";
-  return boton;
-}
-function crearBotonEstado(text) {
-  const boton = document.createElement("BUTTON");
-
-  //const ic = document.createElement('I');
-  if (text === "COMPLETADO") {
-    boton.classList.add("label-ok");
-  } else {
-    boton.classList.add("label");
-  }
-  boton.textContent = text;
-  //  boton.appendChild(ic);
-
-  return boton;
-}
-async function mostrarParticipaciones(idAlumnoGrupo) {
-  const datos = new FormData();
-  datos.append("idAlumnoGrupo", idAlumnoGrupo);
-  try {
-    //Peticion hacia la api
-    const url = "http://appunasam.devor/integrante/getParticipaciones";
-    const respuesta = await fetch(url, {
-      method: "POST",
-      body: datos,
-    });
-    const ult = await respuesta.json();
-    const cuerpo = document.getElementById("cuerpo");
-    const fila = document.createElement("TR");
-    // const boton = document.getElementById('accion-boton');
-    for (let index = 0; index < 3; index++) {
-      const col = document.createElement("TD");
-      if (index === 2) {
-        col.appendChild(crearBoton());
-      } else {
-        if (index === 1) {
-          col.textContent = ult.tipo;
-        } else {
-          col.textContent = ult.nombreEvento;
-        }
-      }
-
-      fila.appendChild(col);
-    }
-    cuerpo.appendChild(fila);
-  } catch (error) {
-    Swal.fire({
-      icon: "error",
-      title: "Error...",
-      text: "Hubo un error al guardar el tipo!",
-    });
-  }
-}
-// !implementado en integrante.js
-async function quitarParticipacion(id, idAlumno) {
-  const datos = new FormData();
-  datos.append("id", id);
-  try {
-    //Peticion hacia la api
-    const url = "http://appunasam.devor/integrante/deleteAsistencia";
-    const respuesta = await fetch(url, {
-      method: "POST",
-      body: datos,
-    });
-    const resultado = await respuesta.json();
-
-    if (resultado) {
-      Swal.fire({
-        icon: "success",
-        title: "Eliminado",
-        text: "La participacion fue Eliminada correctamente!",
-      }).then(() => {
-        window.location.reload();
-      });
-    }
-  } catch (error) {
-    Swal.fire({
-      icon: "error",
-      title: "Error...",
-      text: "Hubo un error al eliminar!",
-    });
-  }
-}
-
 async function mostrarBeneficios(idAlumnoGrupo) {
   const datos = new FormData();
   datos.append("idAlumnoGrupo", idAlumnoGrupo);
@@ -1045,37 +870,7 @@ async function getIntegrante(id) {
     });
   }
 }
-//no usado
-async function setIntegrante() {
-  const nombre_tipo = document.querySelector("#nombre_tipo").value;
-  const datos = new FormData();
-  datos.append("nombre", nombre_tipo);
-  try {
-    //Peticion hacia la api
-    const url = "http://appunasam.devor/api/tipos";
-    const respuesta = await fetch(url, {
-      method: "POST",
-      body: datos,
-    });
-    const resultado = await respuesta.json();
 
-    if (resultado.resultado) {
-      Swal.fire({
-        icon: "success",
-        title: "Tipo Creado",
-        text: "El tipo fue creado correctamente!",
-      }).then(() => {
-        cargarTipos();
-      });
-    }
-  } catch (error) {
-    Swal.fire({
-      icon: "error",
-      title: "Error...",
-      text: "Hubo un error al guardar la cita!",
-    });
-  }
-}
 async function buscarAlumno(dni) {
   //validar DNI
   if (dni.length >= 9 || dni.length === 0) {
@@ -1113,66 +908,6 @@ async function buscarAlumno(dni) {
         icon: "info",
         title: "Aviso!",
         text: "No Existe El Alumno !",
-      });
-    }
-  } catch (error) {
-    Swal.fire({
-      icon: "error",
-      title: "Error...",
-      text: "Hubo un error !",
-    });
-  }
-}
-
-function jsBuscar() {
-  buscar = $("#dni_s").prop("value");
-  encontradoResultado = false;
-  //realizamos el recorrido solo por las celdas que contienen el código, que es la primera
-  $("#mytable tr")
-    .find("td:eq(0)")
-    .each(function () {
-      codigo = $(this).html();
-      if (codigo == buscar) {
-        trDelResultado = $(this).parent();
-        nombre = trDelResultado.find("td:eq(1)").html();
-        encontradoResultado = true;
-      }
-    });
-  return encontradoResultado;
-  //si no se encontro resultado mostramos que no existe.
-  /*if(encontradoResultado){
-        Swal.fire({
-            icon: 'warning',
-            title: 'AVISO ...!',
-            text: 'El alumno ya está en el grupo'
-        });
-           return ;
-    }*/
-}
-// Fin
-
-// No usado
-async function buscarAlumno2(dni, idGrupo) {
-  const datos = new FormData();
-  datos.append("dni", dni);
-  datos.append("idGrupo", idGrupo);
-  try {
-    //Peticion hacia la api
-    const url = "http://appunasam.devor/integrante/getAlumnoGrupo";
-    const respuesta = await fetch(url, {
-      method: "POST",
-      body: datos,
-    });
-
-    const resultado = await respuesta.json();
-    console.log(resultado["valor"]);
-    return;
-    if (resultado != 0) {
-      // No existe
-      Swal.fire({
-        icon: "info",
-        title: "Aviso!",
-        text: "EL DNI YA EXISTE",
       });
     }
   } catch (error) {
@@ -1915,50 +1650,6 @@ async function ElimarDesercionAlumno(id) {
   }
 }
 /************************* */
-
-// No usado
-async function actualizarDesercion(id) {
-  modal("modal-agregar-desercion", "boton-agregar-beneficio", "close");
-
-  const datos = new FormData();
-  datos.append("id", id);
-
-  try {
-    //Peticion hacia la api http://appunasam.devor/
-    const url = "http://appunasam.devor/beneficios/desercion-actualizar";
-    const respuesta = await fetch(url, {
-      method: "POST",
-      body: datos,
-    });
-    const resultado = await respuesta.json();
-
-    //console.log(resultado['estado']);
-    $(document).ready(function () {
-      alert(resultado);
-      return;
-      $("#numero").val(resultado["numero_resolucion"]);
-      $("#nombre").val(resultado["nombre"]);
-      $("#fecha_emision").val(resultado["fecha_emision"]);
-      $("#estado").val(resultado["estado"]);
-      $("#idresolucion_x_beneficio").val(resultado["idres"]);
-
-      $("#idBeneficio").val(resultado["id"]);
-      $("#cod").val(2);
-
-      if (resultado["estado"] === "activo") {
-        $("#estado option[value='activo'").attr("selected", true);
-      } else {
-        $("#estado option[value='inactivo'").attr("selected", true);
-      }
-    });
-  } catch (error) {
-    Swal.fire({
-      icon: "error",
-      title: "Error...",
-      text: "Hubo un error !",
-    });
-  }
-}
 
 //sin api
 async function crearIntegrante() {
