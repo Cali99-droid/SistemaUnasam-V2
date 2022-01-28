@@ -48,16 +48,6 @@
 
 
     </div>
-
-    <!-- inicio 
-    <div style="text-align:center" class="ir">
-        <span class="dot" onclick="currentSlide(1)">ir desempeño</span>
-        <span class="dot" onclick="currentSlide(2)"></span>
-        <span class="dot" onclick="currentSlide(3)"></span>
-    </div>      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="next" onclick="plusSlides(1)">&#10095;</a>
-    fin delatee-->
-
 </div>
 
 
@@ -72,10 +62,10 @@
         <div>
             <form class="formulario-grupo">
                 <label for="tipo">Tipo de participación</label>
-                <input type="text" name="tipo" id="tipo">
+                <input type="text" name="tipo" id="tipo-part">
                 <input type="hidden" value="" name="idinvitacion" id="idinvitacion">
                 <input type="hidden" value="<?php echo $integrante->idAlumnoGrupo; ?>" name="idAlumnoGrupo" id="idAlumnoGrupo">
-                <button type="reset" onclick="confirmarAsistencia()" class="btn-asignar">Aceptar</button>
+                <button type="reset" class="btn-asignar asignar-asis">Aceptar</button>
             </form>
 
         </div>
@@ -116,4 +106,4 @@
 
 </div>
 
-<?php $script = '<script src="../build/js/slides.js"></script>' ?>
+<?php $script = '<script src="../build/js/integrante.js"></script>' ?>

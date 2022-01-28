@@ -703,7 +703,7 @@ function asignarAsistencia(
     $("#idAlumnoGrupo").val(idAlumnoGrupo);
   });
 }
-
+// !implementado en integrante.js
 async function confirmarAsistencia() {
   const close = document.getElementById("close-asis");
   const idinvitacion = document.getElementById("idinvitacion");
@@ -814,7 +814,7 @@ async function mostrarParticipaciones(idAlumnoGrupo) {
     });
   }
 }
-
+// !implementado en integrante.js
 async function quitarParticipacion(id, idAlumno) {
   const datos = new FormData();
   datos.append("id", id);

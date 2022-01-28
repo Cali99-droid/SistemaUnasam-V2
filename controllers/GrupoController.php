@@ -7,7 +7,6 @@ use Model\TipoGrupo;
 use MVC\Router;
 use Intervention\Image\ImageManagerStatic as Image;
 use Model\AlumnoGrupo;
-use Model\Beneficio;
 use Model\Beneficio_x_alumno;
 use Model\Beneficio_x_tipo_grupo;
 use Model\CondicionEconomica;
@@ -15,8 +14,6 @@ use Model\Integrante;
 use Model\Invitacion;
 use Model\ParticipacionAlumno;
 use Model\Semestre;
-use Model\DatosUser;
-use Model\Opcion_x_tipo;
 use Model\Rendimiento_academico;
 use Model\desercion_alumno;
 use Model\Desercion;
@@ -163,36 +160,37 @@ class GrupoController
         ]);
     }
 
-    public static function getParticipaciones()
-    {
-        $idAlumnoGrupo = $_POST['idAlumnoGrupo'];
-        $participaciones = ParticipacionAlumno::where_all('alumno_x_grupo_id', $idAlumnoGrupo);
-        $participacion = end($participaciones);
-        $participacion->setEvento();
-        echo json_encode($participacion);
-    }
+
 
     public static function setAsistencia()
     {
         isAuth();
         $resultado = [];
-        $idinvitacion = $_POST['invitacion_id'];
+        $idInvitacion = $_POST['invitacion_id'];
         $participacionAlumno = new ParticipacionAlumno($_POST);
         if ($participacionAlumno->existe()) {
-            $resultado['resultado'] = false;
+            $respuesta = [
+                'tipo' => false,
+                'mensaje' => 'El Integrante ya participó en el evento'
+            ];
         } else {
             $participacionAlumno->usuario_id = $_SESSION['id'];
-            $idsemestre = Semestre::getIdSemestreActual($idinvitacion);
+            $idsemestre = Semestre::getIdSemestreActual($idInvitacion);
 
             if (is_null($idsemestre)) {
                 $participacionAlumno->semestre_id = '1';
             } else {
                 $participacionAlumno->semestre_id = $idsemestre;
             }
-            $resultado = $participacionAlumno->guardar();
+            $resultado = $participacionAlumno->crear();
+            $respuesta = [
+                'tipo' => true,
+                'id' => $resultado['id'],
+                'mensaje' => 'Asistencia Asignada'
+            ];
         }
 
-        echo json_encode($resultado);
+        echo json_encode($respuesta);
     }
 
     public static function getIntegrante()
@@ -379,7 +377,7 @@ class GrupoController
     }
 
 
-    // * API'S GRUPO */
+    // * -----------API'S GRUPO---------------- */
     public static function getGrupos()
     {
         $gruposTot = [];
@@ -392,5 +390,42 @@ class GrupoController
 
 
         echo json_encode(['grupos' => $gruposTot]);
+    }
+
+
+    public static function getParticipaciones()
+    {
+        // $idgrupo = validarORedireccionar('/grupos');
+        // $dni = validarORedireccionarDNI('/grupos');
+        $idAlumnoGrupo = $_GET['id'];
+        $idgrupo = $_GET['idGrupo'];
+        $grupo = Grupo::find($idgrupo);
+
+        $invitaciones = Invitacion::where_all('grupo_universitario_id', $idgrupo);
+
+        $beneficios = Beneficio_x_tipo_grupo::validarEstado($grupo->tipo_grupo_id, 'ACTIVO'); //derecjos'tipo_grupo_id', )
+        $beneficioAsignados = Beneficio_x_alumno::where_all('alumno_x_grupo_id',  $idAlumnoGrupo);
+
+
+        $participaciones = ParticipacionAlumno::where_all('alumno_x_grupo_id', $idAlumnoGrupo);
+
+        $partTot = [];
+
+        foreach ($participaciones as $participacion) {
+            $participacion->setEvento();
+            $partTot[] = $participacion;
+        }
+
+        foreach ($invitaciones as $invitacion) {
+            $invitacion->getEvento();
+            $invitacion->getEstado();
+            $invTot[] = $invitacion;
+        }
+
+        $datos['participaciones'] = $partTot;
+        $datos['invitaciones'] = $invTot;
+        $datos['beneficios'] = $beneficios;
+        $datos['beneficiosAsignados'] = $beneficioAsignados;
+        echo json_encode($datos);
     }
 }

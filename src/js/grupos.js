@@ -6,7 +6,7 @@ let filtradas = [];
 const busqueda = document.querySelector("#nom");
 busqueda.addEventListener("keyup", buscarGrupo);
 
-// * evento para crear grupo
+// * evento para mostrar un modal y crear grupo
 const crearGrup = document.querySelector("#boton-agregar-grupo");
 crearGrup.addEventListener("click", mostrarForm);
 

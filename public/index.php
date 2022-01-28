@@ -40,8 +40,10 @@ $router->post('/grupos', [GrupoController::class, 'index']);
 $router->get('/api/grupos', [GrupoController::class, 'getGrupos']);
 $router->get('/grupo', [GrupoController::class, 'grupo']);
 $router->post('/grupo', [GrupoController::class, 'grupo']);
-
-$router->post('/integrante/getParticipaciones', [GrupoController::class, 'getParticipaciones']);
+// Integrantes
+$router->get('/integrante/getParticipaciones', [GrupoController::class, 'getParticipaciones']);
+// ! att Consumido desde js //
+$router->get('/api/integrante/participaciones', [GrupoController::class, 'getParticipaciones']);
 $router->get('/integrante', [GrupoController::class, 'integrante']);
 $router->post('/integrante-eliminar', [GrupoController::class, 'eliminarIntegrante']);
 $router->post('/integrante/setAsistencia', [GrupoController::class, 'setAsistencia']);

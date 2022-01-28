@@ -21,29 +21,10 @@
                             <th>Observacion</th>
                             <th>Acciones</th>
                         </tr>
-                    </thead>
-                    <tbody>
-
-                        <?php foreach ($invitaciones as $invitacion) :  ?>
-
-                            <tr>
-                                <td><?php echo $invitacion->getEvento()->nombre; ?></td>
-                                <td><?php echo $invitacion->fecha_hora; ?></td>
+                    </thead> <!-- asignarAsistencia -->
+                    <tbody id="cuerpo-inv">
 
 
-                                <td><a class="<?php echo $invitacion->getEstado() == 'CUMPLIDA' ? 'label-ok' : 'label' ?>"><?php echo $invitacion->getEstado();  ?></a></td>
-
-                                <td><?php echo $invitacion->observacion; ?></td>
-
-                                <td><button id="asignar-asistencia" class="boton-asignar" onclick="asignarAsistencia('<?php echo $invitacion->id; ?>',
-                                '<?php echo $integrante->idAlumnoGrupo; ?>','modal-asistencia', 'btn', 'close-asis' )"><i class="fas fa-plus-circle"></i> Asignar Asistencia</button>
-                                    <button class="boton-asignar quitar oculto" id="quitar"><i class="fas fa-minus-circle"></i> Quitar</button>
-                                    <!--<button class="boton-asignar quitar oculto" id="quitar"><i class="fas fa-minus-circle"></i> Quitar</button>  -->
-
-                                </td>
-
-                            </tr>
-                        <?php endforeach; ?>
 
                     </tbody>
                 </table>
@@ -67,18 +48,24 @@
                             <th>Acciones</th>
                         </tr>
                     </thead>
-                    <tbody id="cuerpo">
-
-                        <?php foreach ($participaciones as $participacion) : ?>
+                    <tbody id="cuerpo-part">
+                        <!--
+                        <?php // foreach ($participaciones as $participacion) : 
+                        ?>
 
                             <tr>
-                                <td><?php echo $participacion->getEvento(); ?></td>
-                                <td><?php echo $participacion->tipo; ?></td>
+                                <td><?php // echo $participacion->getEvento(); 
+                                    ?></td>
+                                <td><?php //echo $participacion->tipo; 
+                                    ?></td>
 
-                                <td><button onclick="quitarParticipacion(<?php echo $participacion->id ?>, <?php echo $integrante->idAlumnoGrupo; ?>)" class="boton-asignar"><i class="fas fa-minus-circle"></i> Quitar</button></td>
-
-                            </tr>
-                        <?php endforeach; ?>
+                                <td><button onclick="quitarParticipacion(<?php //echo $participacion->id 
+                                                                            ?>, <?php //echo $integrante->idAlumnoGrupo; 
+                                                                                ?>)" class="boton-asignar"><i class="fas fa-minus-circle"></i> Quitar</button></td>
+                      
+                        </tr>  -->
+                        <?php //endforeach; 
+                        ?>
 
                     </tbody>
                 </table>
