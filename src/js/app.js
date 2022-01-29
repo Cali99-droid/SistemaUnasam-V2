@@ -2221,8 +2221,8 @@ async function borrarSemestre(id) {
   }
 }
 
-if (document.getElementById("participaciones")) {
-  document.getElementById("participaciones").click();
+if (document.getElementById("defaultOpen")) {
+  document.getElementById("defaultOpen").click();
 }
 if (document.getElementById("mytable")) {
   $("#mytable").stacktable();

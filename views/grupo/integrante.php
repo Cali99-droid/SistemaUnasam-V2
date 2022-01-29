@@ -3,13 +3,11 @@
 <div class="contenedor-grupos">
 
 
-    <div class="datos-integrante cont-borde">
+    <div class="datos-integrante cont-borde an-left ">
 
-        <div class="volver">
 
-        </div>
 
-        <div class="datos datos--text">
+        <div class="datos datos--text ">
             <div class="contenido_datos_integrante">
                 <p class="datos__nombre"></i> <?php echo $integrante->nombre . " " . $integrante->apellido ?></p>
                 <span class="etiq"> <?php echo $integrante->codigo ?> </span>
@@ -26,23 +24,23 @@
 
         <div class="rendimiento">
             <a onclick="history.back ()" class="btn-asignar"><i class='bx bx-group'></i> Ir a Grupo</a>
-            <button class="btn-slide btn-asignar" onclick="currentSlide(1)"><i class="fas fa-trophy"></i> Desempeño</a></button>
-            <button class="btn-slide btn-asignar" onclick="currentSlide(2)"><i class="fas fa-brain"></i> Rendimiento</a></button>
-            <button class="btn-slide btn-asignar" onclick="currentSlide(3)"><i class="fas fa-exclamation-triangle"></i> Deserción</a></button>
+            <button class="btn-slide btn-asignar" onclick="currentSlide(1)"><i class="fas fa-trophy"></i> Desempeño</button>
+            <button class="btn-slide btn-asignar" onclick="currentSlide(2)"><i class="fas fa-brain"></i> Rendimiento</button>
+            <button class="btn-slide btn-asignar" onclick="currentSlide(3)"><i class="fas fa-exclamation-triangle"></i> Deserción</button>
         </div>
 
     </div>
-    <div class="slideshow-container">
+    <div class="slideshow-container an-left">
 
-        <div class="mySlides fade">
+        <div class="mySlides an-left">
 
             <?php include_once 'desempenio.php'; ?>
         </div>
-        <div class="mySlides fade">
+        <div class="mySlides an-left">
 
             <?php include_once 'rendimiento.php'; ?>
         </div>
-        <div class="mySlides fade">
+        <div class="mySlides an-left">
             <?php include_once 'desercionAlumno.php'; ?>
         </div>
 
@@ -65,7 +63,7 @@
                 <input type="text" name="tipo" id="tipo-part">
                 <input type="hidden" value="" name="idinvitacion" id="idinvitacion">
                 <input type="hidden" value="<?php echo $integrante->idAlumnoGrupo; ?>" name="idAlumnoGrupo" id="idAlumnoGrupo">
-                <button type="reset" class="btn-asignar asignar-asis">Aceptar</button>
+                <button type="reset" id="btn-as" class="btn-asignar asignar-asis">Aceptar</button>
             </form>
 
         </div>

@@ -1,10 +1,10 @@
 <div class="contenedor-grupos">
     <div class="titulo-ana">
-        <h3 class="no-margin">Análisis Gráfico</h3>
+        <h3 class="no-margin"><i class="fas fa-chart-pie"></i> Análisis Gráfico</h3>
         <div class="calls">
-            <a href="#piechart">Participantes</a>
-            <a href="#piechart1">Invitaciones </a>
-            <a href="#piechart2">TOP 5 escuelas</a>
+            <a href="#piechart"><i class="fas fa-eye"></i> Participantes</a>
+            <a href="#piechart1"><i class="fas fa-eye"></i> Invitaciones </a>
+            <a href="#piechart2"><i class="fas fa-eye"></i> TOP 5 escuelas</a>
             <a href="#piechart3">Fechas</a>
             <a href="#piechart4">Beneficios Cumplidos</a>
             <a href="#piechart5">Beneficios pendientes</a>

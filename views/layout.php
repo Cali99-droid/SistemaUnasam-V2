@@ -39,7 +39,7 @@
                 <div class="items ">
                     <nav>
                         <a href="/inicio" title="Inicio" class=' <?php echo ($titulo === 'Inicio') ? 'activo' : ''; ?>'>
-                            <i class='bx bxs-home' style='color:#e1e1e1'></i>Inicio
+                            <i class='bx bxs-chart'></i>Análisis
                         </a>
                         <a href="/grupos" title="Grupos" class=' <?php echo ($titulo === 'Organizaciones') ? 'activo' : ''; ?>'><i class='bx bx-group'></i>Organizaciones</a>
                         <a href="/beneficios" title="Beneficios" class=' <?php echo ($titulo === 'Beneficios') ? 'activo' : ''; ?>'><i class='bx bx-medal'></i>Beneficios</a>

@@ -1,22 +1,10 @@
 <div class="contenedor-grupos">
-    <!-- <div class="alerta error">
-        <?php //echo isset($_GET['mensaje']) ? $_GET['mensaje'] : ''; 
-        ?> 
-    </div> -->
-    <?php
-    $resultado = $_GET['resultado'] ?? '';
-    if ($resultado) {
-        $mensaje = mostrarNotificacion(intval($resultado));
-        if ($mensaje) { ?>
-            <p class="" id="men"> <?php //echo s($mensaje); 
-                                    ?></p>
-    <?php }
-    } ?>
-    <div class="titulo-grupo cont-borde">
+
+    <div class="titulo-grupo cont-borde an-left">
         <h2 class="no-margin"><?php echo $grupo->nombre;  ?></h2>
         <p class="no-margin"><span><?php echo  $grupo->getTipoGrupo() ?></span> <span class="fecha-sp"><?php echo $grupo->fecha_creacion ?></span> </p>
     </div>
-    <div class="contenido-datos cont-borde">
+    <div class="contenido-datos cont-borde an-right">
 
         <div class="acciones-grupo">
             <div class="buscar">
@@ -60,7 +48,7 @@
                             <td><?php echo $integrante->dni; ?></td>
                             <td><?php echo $integrante->nombre . " " . $integrante->apellido; ?></td>
                             <td><?php echo $integrante->codigo; ?></td>
-                            <td><span class="<?php echo $integrante->estado == 'activo' ? 'label-ok' : 'label' ?>"><?php echo $integrante->estado; ?></span></td>
+                            <td><span class="label <?php echo $integrante->estado == 'activo' ? 'label-ok' : '' ?>"><?php echo strtoupper($integrante->estado); ?></span></td>
                             <td>
                                 <form method="POST" class="form-tabla">
 

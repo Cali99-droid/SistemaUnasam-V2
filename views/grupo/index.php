@@ -12,7 +12,8 @@
         </div>
     </div>
     <div class="grupos">
-        <div class="contenido-grupos" id="contenedor-grupos">
+        <div class="contenido-grupos fade" id="contenedor-grupos">
+            <!-- *Contenidos grupos -->
         </div>
     </div>
 </div>
