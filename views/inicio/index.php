@@ -76,14 +76,15 @@
             ['Facultad', 'Participaciones'],
             <?php
             while ($fila = $participantes->fetch_assoc()) {
-                echo "['" . $fila["nombre"] . "'," . $fila["cantidad"] . "],";
+                echo "['" . mb_strtoupper($fila["nombre"]) . "'," . $fila["cantidad"] . "],";
             }
             ?>
         ]);
 
         var options = {
 
-            title: 'Participantes por Grupo '
+            title: 'PARTICIPACIONES POR GRUPO ',
+            
         };
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
         chart.draw(data, options);
@@ -96,7 +97,7 @@
             ['Grupo', 'Cantidad de Invitaciones'],
             <?php
             while ($fila = $invitaciones->fetch_assoc()) {
-                echo "['" . $fila["nombre_grupo"] . "'," . $fila["CantidadInvitaciones"] . "],";
+                echo "['" .mb_strtoupper( $fila["nombre_grupo"] ). "'," . $fila["CantidadInvitaciones"] . "],";
             }
             ?>
 
@@ -135,7 +136,7 @@
             }],
             <?php
             while ($fila = $top->fetch_assoc()) {
-                echo "['" . $fila["nombre_escuela"] . "'," . $fila["cantidad"] . ",'random_color()'],";
+                echo "['" . mb_strtoupper($fila["nombre_escuela"]) . "'," . $fila["cantidad"] . ",'random_color()'],";
             }
             ?>
 
@@ -174,14 +175,15 @@
             ['X', 'Cantidad de Participaciones'],
             <?php
             while ($fila = $particionesFecha->fetch_assoc()) {
-                echo "['" . $fila["Inicio"] . "'," . $fila["Cantidad"] . "],";
+                echo "['" . mb_strtoupper($fila["Inicio"] ). "'," . $fila["Cantidad"] . "],";
             }
             ?>
 
         ]);
 
         var options = {
-
+           
+                title: 'CANTIDAD DE PARTICIPACIONES POR MESES',
             legend: 'none',
             colors: ['#15A0C8'],
             pointSize: 30,
@@ -200,7 +202,7 @@
             ['Beneficios', 'Catidad de Completados'],
             <?php
             while ($fila = $estadoBeneficios->fetch_assoc()) {
-                echo "['" . $fila["nombre"] . "'," . $fila["cantidad"] . "],";
+                echo "['" . mb_strtoupper($fila["nombre"] ). "'," . $fila["cantidad"] . "],";
             }
             ?>
 
@@ -222,7 +224,7 @@
             ['Beneficios', 'Catidad de Completados'],
             <?php
             while ($fila = $beneficiosPendientes->fetch_assoc()) {
-                echo "['" . $fila["nombre"] . "'," . $fila["cantidad"] . "],";
+                echo "['" .mb_strtoupper( $fila["nombre"]) . "'," . $fila["cantidad"] . "],";
             }
             ?>
 
@@ -245,7 +247,7 @@
         ?>
             data.addColumn('number',
                 <?php
-                echo " '" . $fila["nombre"] . "'";
+                echo " '" . mb_strtoupper($fila["nombre"]) . "'";
                 ?>);
         <?php
         } ?>
@@ -280,7 +282,7 @@
         ?>
             data.addColumn('number',
                 <?php
-                echo " '" . $fila["nombre"] . "'";
+                echo " '" . mb_strtoupper($fila["nombre"] ). "'";
                 ?>);
         <?php
         } ?>
@@ -314,7 +316,7 @@
         ?>
             data.addColumn('number',
                 <?php
-                echo " '" . $fila["nombre"] . "'";
+                echo " '" . mb_strtoupper($fila["nombre"]) . "'";
                 ?>);
         <?php
         } ?>

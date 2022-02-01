@@ -38,8 +38,8 @@ class Dash extends ActiveRecord
     public static function getParticipacionesPorFecha()
     {
         $query = "SELECT count(*) Cantidad ,concat(year(e.fecha_inicio),' ',
-        ELT(MONTH(e.fecha_inicio), 'ENERO', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'))Inicio
-        FROM evento e GROUP BY Inicio order by Inicio;";
+        ELT(MONTH(e.fecha_inicio), 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'))Inicio
+        FROM evento e GROUP BY Inicio order by e.fecha_inicio LIMIT 6;";
         $resultado = self::$db->query($query);
         return $resultado;
     }
@@ -224,11 +224,11 @@ class Dash extends ActiveRecord
        $mensaje = "data.addRows([";
        
            while ($fechass = $resultado2->fetch_assoc()) {
-           $mensaje .= "['" . $fechass['tipogrupo'] . "'";
+           $mensaje .= "['" . mb_strtoupper($fechass['tipogrupo']). "'";
             $resultado = self::$db->query($query1);
            
            while ($fila2 = $resultado->fetch_assoc()) {
-               $mensaje .= ", " . self::cantidad2($estado, $fila2['nombre'],$fechass['tipogrupo']);
+               $mensaje .= ", " . self::cantidad2($estado, mb_strtoupper($fila2['nombre']),mb_strtoupper($fechass['tipogrupo']));
            }
            $mensaje .= "],";
        }
