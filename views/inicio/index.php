@@ -2,15 +2,15 @@
     <div class="titulo-ana">
         <h3 class="no-margin"><i class="fas fa-chart-pie"></i> Análisis Gráfico</h3>
         <div class="calls">
-            <a href="#piechart"><i class="fas fa-eye"></i> Participantes</a>
-            <a href="#piechart1"><i class="fas fa-eye"></i> Invitaciones </a>
-            <a href="#piechart2"><i class="fas fa-eye"></i> TOP 5 escuelas</a>
-            <a href="#piechart3">Fechas</a>
-            <a href="#piechart4">Beneficios Cumplidos</a>
-            <a href="#piechart5">Beneficios pendientes</a>
-            <a href="#piechart6">Tendencia Participaciones</a>
-            <a href="#piechart7">Regulares</a>
-            <a href="#piechart8">Irregulares</a>
+            <a href="#piechart"> Participantes</a>
+            <a href="#piechart1"> Invitaciones </a>
+            <a href="#piechart2"> TOP 5 escuelas</a>
+            <a href="#piechart3"> Fechas</a>
+            <a href="#piechart4"> Beneficios Cumplidos</a>
+            <a href="#piechart5"> Beneficios pendientes</a>
+            <a href="#piechart6"> Tendencia Participaciones</a>
+            <a href="#piechart7"> Regulares</a>
+            <a href="#piechart8"> Irregulares</a>
         </div>
     </div>
     <div class="contenido-dashboard">
@@ -81,10 +81,25 @@
             ?>
         ]);
 
-        var options = {
+        //!Para diseño adaptable */
+        if (screen.width < 1024) {
+            var options = {
+                width: 400,
+                height: 400,
+                title: 'Participantes por Grupo '
+            };
+        } else
+        if (screen.width < 1280) {
+            var options = {
 
-            title: 'Participantes por Grupo '
-        };
+                title: 'Participantes por Grupo '
+            };
+        } else {
+            var options = {
+
+                title: 'Participantes por Grupo '
+            };
+        }
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
         chart.draw(data, options);
 

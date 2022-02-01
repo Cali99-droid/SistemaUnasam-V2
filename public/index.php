@@ -40,6 +40,7 @@ $router->post('/grupos', [GrupoController::class, 'index']);
 $router->get('/api/grupos', [GrupoController::class, 'getGrupos']);
 $router->get('/grupo', [GrupoController::class, 'grupo']);
 $router->post('/grupo', [GrupoController::class, 'grupo']);
+$router->post('/grupo/eliminar', [GrupoController::class, 'eliminarGrupo']);
 // Integrantes
 $router->get('/integrante/getParticipaciones', [GrupoController::class, 'getParticipaciones']);
 // ! att Consumido desde js //

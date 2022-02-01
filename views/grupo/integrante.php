@@ -89,13 +89,13 @@
                 <input type="text" name="descripcion" id="descripcion">
 
                 <label for="estado">Estado</label>
-                <select name="estado" id="estado">
+                <select name="estado" id="est-ben-asig">
                     <option value="COMPLETADO">COMPLETADO</option>
                     <option value="PENDIENTE">PENDIENTE</option>
                 </select>
                 <input type="hidden" id="idbeneficioXtipo">
 
-                <button id="btn_confirmarBen" type="reset" class="btn-asignar">Aceptar</button>
+                <button id="btn_confirmarBen" type="reset" class="btn-asignar btn_confirmarBen">Aceptar</button>
             </form>
         </div>
 

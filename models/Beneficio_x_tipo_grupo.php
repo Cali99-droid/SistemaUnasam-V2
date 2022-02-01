@@ -12,7 +12,7 @@ class Beneficio_x_tipo_grupo extends ActiveRecord
     public $estado;
     public $beneficio_id;
     public $tipo_grupo_id;
-
+    public $nombreBen;
 
     public function __construct($args = [])
     {
@@ -50,7 +50,7 @@ class Beneficio_x_tipo_grupo extends ActiveRecord
     {
         $id = $this->beneficio_id;
         $beneficio = Beneficio::find($id);
-
+        $this->nombreBen = $beneficio->nombre;
         return $beneficio->nombre;
     }
 

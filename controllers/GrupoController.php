@@ -7,6 +7,7 @@ use Model\TipoGrupo;
 use MVC\Router;
 use Intervention\Image\ImageManagerStatic as Image;
 use Model\AlumnoGrupo;
+use Model\Beneficio;
 use Model\Beneficio_x_alumno;
 use Model\Beneficio_x_tipo_grupo;
 use Model\CondicionEconomica;
@@ -121,7 +122,27 @@ class GrupoController
             echo ' no existe el grupo';
         }
     }
-
+    public static function eliminarGrupo()
+    {
+        $id = $_POST['id'];
+        $grupo = Grupo::find($id);
+        $cant = $grupo->getCantidadIntegrantes();
+        if ($cant > 0) {
+            $respuesta = [
+                'tipo' => false,
+                'mensaje' => 'La Organizacion Cuenta con Integrantes'
+            ];
+            echo json_encode($respuesta);
+            return;
+        }
+        $grupo->borrarImagen();
+        $grupo->eliminar();
+        $respuesta = [
+            'tipo' => true,
+            'mensaje' => 'Organización Eliminada Correctamente',
+        ];
+        echo json_encode($respuesta);
+    }
     public static function integrante(Router $router)
     {
         $idgrupo = validarORedireccionar('/grupos');
@@ -229,6 +250,8 @@ class GrupoController
         $beneficioAlumno->semestre_id = $id;
         $beneficioAlumno->usuario_id = $_SESSION['id'];
         $resultado = $beneficioAlumno->guardar();
+        $ben = Beneficio_x_alumno::find($resultado['id']);
+        $resultado['fecha'] = $ben->fecha_efectiva;
         // }
 
         echo json_encode($resultado);
@@ -403,7 +426,9 @@ class GrupoController
 
         $invitaciones = Invitacion::where_all('grupo_universitario_id', $idgrupo);
 
+        $benaTot = [];
         $beneficios = Beneficio_x_tipo_grupo::validarEstado($grupo->tipo_grupo_id, 'ACTIVO'); //derecjos'tipo_grupo_id', )
+        $benTot = [];
         $beneficioAsignados = Beneficio_x_alumno::where_all('alumno_x_grupo_id',  $idAlumnoGrupo);
 
 
@@ -422,10 +447,20 @@ class GrupoController
             $invTot[] = $invitacion;
         }
 
+        foreach ($beneficios as $beneficio) {
+            $beneficio->getNombreBeneficio();
+            $benTot[] = $beneficio;
+        }
+
+        foreach ($beneficioAsignados as $bena) {
+            $bena->getNombreBeneficio();
+            $benaTot[] = $bena;
+        }
+
         $datos['participaciones'] = $partTot;
         $datos['invitaciones'] = $invTot;
-        $datos['beneficios'] = $beneficios;
-        $datos['beneficiosAsignados'] = $beneficioAsignados;
+        $datos['beneficios'] = $benTot;
+        $datos['beneficiosAsignados'] = $benaTot;
         echo json_encode($datos);
     }
 }

@@ -2224,6 +2224,11 @@ async function borrarSemestre(id) {
 if (document.getElementById("defaultOpen")) {
   document.getElementById("defaultOpen").click();
 }
+
+if (document.getElementById("tablaDerechos")) {
+  $("#tablaDerechos").stacktable();
+}
+
 if (document.getElementById("mytable")) {
   $("#mytable").stacktable();
 }

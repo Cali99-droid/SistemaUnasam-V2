@@ -1,5 +1,5 @@
-<div class="login-container">
-    <div class="login-info-container">
+<div class="login-container ">
+    <div class="login-info-container an-left">
         <h1 class="title">BIENVENIDO</h1>
         <div class="social-login">
             <?php include_once __DIR__ . "/../templates/alertas.php" ?>
@@ -13,7 +13,7 @@
             <p>Olvidó su contraseña? <a href="/olvide"><span class="span">Click Aqui</span></a></p>
         </form>
     </div>
-    <div class="image-container">
+    <div class="image-container an-left">
         <div class="contenido_lado">
             <img src="/../build/img/escudoUNASAM.png" alt="">
 

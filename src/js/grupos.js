@@ -37,8 +37,6 @@ async function obtenerGrupos() {
 }
 
 function mostrarGrupos(rev = false) {
-  // console.log(grupos);
-
   if (rev) {
     grupos.reverse();
   }
@@ -56,6 +54,28 @@ function mostrarGrupos(rev = false) {
     const contenedorGrupo = document.createElement("DIV");
     contenedorGrupo.dataset.grupoId = grupo.id;
     contenedorGrupo.classList.add("grupo");
+
+    // const eliminar = document.createElement("BUTTON");
+    // eliminar.textContent = "eliminar";
+    // eliminar.classList.add("btn-eliminar");
+    // contenedorGrupo.appendChild(eliminar);
+
+    // * Div eliminar grupo
+    const divIc = document.createElement("DIV");
+    divIc.classList.add("divIc");
+    divIc.classList.add("an-right");
+    divIc.setAttribute("title", "Eliminar");
+    const ic = document.createElement("I");
+    ic.classList.add("far");
+    ic.classList.add("fa-trash-alt");
+
+    ic.classList.add("btn-eliminar");
+    divIc.appendChild(ic);
+    divIc.dataset.idGruo = grupo.id;
+    divIc.onclick = function () {
+      confirmarEliminarGrupo({ ...grupo });
+    };
+    contenedorGrupo.appendChild(divIc);
 
     // * enlace a grupo
     const enlaceGrupo = document.createElement("A");
@@ -89,6 +109,52 @@ function mostrarGrupos(rev = false) {
   });
 }
 
+function confirmarEliminarGrupo(grupo) {
+  Swal.fire({
+    title: "Eliminar Organización?",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonText: "Si",
+    cancelButtonText: `No`,
+  }).then((result) => {
+    /* Read more about isConfirmed, isDenied below */
+    if (result.isConfirmed) {
+      eliminarGrupo(grupo);
+    }
+  });
+}
+
+async function eliminarGrupo(grupo) {
+  const { id } = grupo;
+  const datos = new FormData();
+  datos.append("id", id);
+  try {
+    //Peticion hacia la api
+    const url = "http://appunasam.devor/grupo/eliminar";
+    const respuesta = await fetch(url, {
+      method: "POST",
+      body: datos,
+    });
+    const resultado = await respuesta.json();
+
+    if (resultado.tipo) {
+      Swal.fire("Eliminado!", resultado.mensaje, "success");
+
+      // * cargar de nuevo los grupos
+      obtenerGrupos();
+      mostrarGrupos();
+    } else {
+      Swal.fire("Mensaje!", resultado.mensaje, "info");
+    }
+  } catch (error) {
+    Swal.fire({
+      icon: "error",
+      title: "Error...",
+      text: "Hubo un error al eliminar!",
+    });
+  }
+}
+
 function limpiarGrupos() {
   const listadoGrupos = document.querySelector("#contenedor-grupos");
   while (listadoGrupos.firstChild) {
@@ -110,9 +176,11 @@ function mostrarForm(grupo = {}) {
   //     //  window.location.reload();
   //   }
   // };
-
+  const btn = document.querySelector("#crearGrupo");
+  btn.classList.add("crearGrupo");
   modal.addEventListener("click", function (e) {
     if (e.target.classList.contains("crearGrupo")) {
+      e.target.classList.remove("crearGrupo");
       const nombreGrupo = document.querySelector("#nombre-grupo").value.trim();
       const fecha_creacion = document.querySelector("#fecha_creacion").value;
       const resolucion = document.querySelector("#resolucion").value;
@@ -152,10 +220,15 @@ async function crearGrupo(grupo) {
       setTimeout(() => {
         modal.style.display = "none";
       }, 1000);
+      const tipo = {
+        nombre: String(resultado.tipo_grupo.nombre),
+      };
       const grupoObj = {
         id: String(resultado.id),
         nombre: grupo.nombre,
-        tipo: String(resultado.tipo_grupo.nombre),
+        tipo: {
+          nombre: String(resultado.tipo_grupo.nombre),
+        },
         cantidad_integrantes: String(resultado.cantidad_integrantes),
         imagen: String(resultado.imagen),
       };

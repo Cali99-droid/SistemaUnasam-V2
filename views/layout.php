@@ -76,7 +76,7 @@
                         <button onclick="mostrarPerfil()" id="boton-perfil" class="boton-perfil" type="button"><?php echo $_SESSION['username']; ?><i class='bx bxs-user-circle'></i></button>
                     </div>
 
-                    <div class="contenido-perfil" id="contenido-perfil">
+                    <div class="contenido-perfil" id="contenido-perfil" style="z-index: 2;">
                         <a href="/perfil"><button>Ver Perfil</button></a>
                         <a href="/logout"><button class="boton-salir">Salir</button></a>
                     </div>

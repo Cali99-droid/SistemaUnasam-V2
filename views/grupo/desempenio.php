@@ -78,27 +78,18 @@
         <div class="detalle">
             <div class="contenedor-tabla tabla_tab">
 
-                <table class="table_res">
+                <table class="table_res-der">
                     <thead>
                         <tr>
                             <th>Beneficio</th>
 
-                            <th>Estado</th>
+
                             <th>Acciones</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="cuerpo-der">
 
-                        <?php foreach ($beneficios as $beneficio) :  ?>
 
-                            <tr>
-                                <td><?php echo $beneficio->getNombreBeneficio(); ?></td>
-
-                                <td><a class="<?php echo $beneficio->estado == 'ACTIVO' ? 'label-ok' : 'label' ?>"><?php echo $beneficio->estado; ?></a></td>
-
-                                <td><button class="boton-asignar" onclick="asignarBeneficio(<?php echo $beneficio->id ?> , <?php echo $integrante->idAlumnoGrupo ?>)"> <i class="fas fa-plus-circle"></i> Asignar</button></td>
-                            </tr>
-                        <?php endforeach; ?>
 
                     </tbody>
                 </table>
@@ -117,7 +108,7 @@
 
             <div class="contenedor-tabla contenedor-tabla__perfil">
 
-                <table id="mytable">
+                <table class="table_res-benas" id="table_res-benas">
                     <thead>
                         <tr>
                             <th>Nombre</th>
@@ -127,24 +118,7 @@
 
                         </tr>
                     </thead>
-                    <tbody>
-
-                        <?php foreach ($beneficioAsignados as $bena) : ?>
-
-
-                            <tr>
-                                <td><?php echo $bena->getNombreBeneficio(); ?></td>
-                                <td><?php echo $bena->descripcion; ?></td>
-                                <td><?php echo $bena->fecha_efectiva; ?></td>
-
-                                <td>
-                                    <input type="hidden" id="idBene" value="<?php echo  $bena->id ?>">
-                                    <button id="<?php echo  $bena->id ?>" class="<?php echo  $bena->estado == 'COMPLETADO' ? 'label-ok' : 'label' ?> btn-toggle bt<?php echo  $bena->id ?>"><?php echo $bena->estado; ?></button>
-                                </td>
-
-
-                            </tr>
-                        <?php endforeach; ?>
+                    <tbody id="cuerpo-bene">
 
                     </tbody>
                 </table>
