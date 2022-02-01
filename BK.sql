@@ -33,6 +33,20 @@ CREATE TABLE `v_regirre` (
 );
 
 --
+-- Temporary table structure for view `vista_desercion_alumno`
+--
+DROP TABLE IF EXISTS `vista_desercion_alumno`;
+DROP VIEW IF EXISTS `vista_desercion_alumno`;
+CREATE TABLE `vista_desercion_alumno` (
+  `id_desercion_alumno` int(11),
+  `fecha` date,
+  `alumno_id` int(11),
+  `idDesercion` int(11),
+  `descripcion` varchar(100),
+  `semestre` varchar(45)
+);
+
+--
 -- Temporary table structure for view `vista_estudiantes`
 --
 DROP TABLE IF EXISTS `vista_estudiantes`;
@@ -217,7 +231,7 @@ CREATE TABLE `beneficio` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(60) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `beneficio`
@@ -263,8 +277,7 @@ INSERT INTO `beneficio` (`id`,`nombre`) VALUES
  (36,'Beneficio tre MOD'),
  (37,'Bene'),
  (38,'BEN'),
- (39,'B10'),
- (41,'DESCUENTO COMEDOR');
+ (39,'B10');
 /*!40000 ALTER TABLE `beneficio` ENABLE KEYS */;
 
 
@@ -355,7 +368,7 @@ CREATE TABLE `beneficio_x_tipo_grupo` (
   KEY `fk_BENEFICIO_X_TIPO_GRUPO_TIPO_GRUPO1_idx` (`tipo_grupo_id`),
   CONSTRAINT `fk_BENEFICIO_X_TIPO_GRUPO_BENEFICIO1` FOREIGN KEY (`beneficio_id`) REFERENCES `beneficio` (`id`),
   CONSTRAINT `fk_BENEFICIO_X_TIPO_GRUPO_TIPO_GRUPO1` FOREIGN KEY (`tipo_grupo_id`) REFERENCES `tipo_grupo` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `beneficio_x_tipo_grupo`
@@ -427,6 +440,34 @@ INSERT INTO `datos_usuario` (`id`,`persona_id`,`usuario_id`) VALUES
  (5,23,5),
  (6,24,6);
 /*!40000 ALTER TABLE `datos_usuario` ENABLE KEYS */;
+
+
+--
+-- Definition of table `desercion_alumno`
+--
+
+DROP TABLE IF EXISTS `desercion_alumno`;
+CREATE TABLE `desercion_alumno` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `fecha` date NOT NULL,
+  `alumno_id` int(11) NOT NULL,
+  `desercion_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `alumno_id` (`alumno_id`),
+  KEY `desercion_id` (`desercion_id`),
+  CONSTRAINT `desercion_alumno_ibfk_1` FOREIGN KEY (`alumno_id`) REFERENCES `alumno` (`id`),
+  CONSTRAINT `desercion_alumno_ibfk_2` FOREIGN KEY (`desercion_id`) REFERENCES `indices_de_desercion` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `desercion_alumno`
+--
+
+/*!40000 ALTER TABLE `desercion_alumno` DISABLE KEYS */;
+INSERT INTO `desercion_alumno` (`id`,`fecha`,`alumno_id`,`desercion_id`) VALUES 
+ (10,'2021-12-12',7,3),
+ (11,'2020-12-12',7,3);
+/*!40000 ALTER TABLE `desercion_alumno` ENABLE KEYS */;
 
 
 --
@@ -630,7 +671,7 @@ CREATE TABLE `indices_de_desercion` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `descripcion` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `indices_de_desercion`
@@ -638,11 +679,11 @@ CREATE TABLE `indices_de_desercion` (
 
 /*!40000 ALTER TABLE `indices_de_desercion` DISABLE KEYS */;
 INSERT INTO `indices_de_desercion` (`id`,`descripcion`) VALUES 
- (2,'Causa 2'),
  (3,'Causa 3'),
  (4,'Causa 4'),
  (5,'Cusa 5'),
- (6,'Item 4');
+ (6,'Item 4'),
+ (9,'Alcoholismo');
 /*!40000 ALTER TABLE `indices_de_desercion` ENABLE KEYS */;
 
 
@@ -664,7 +705,7 @@ CREATE TABLE `invitacion` (
   KEY `fk_INVITACION_GRUPO_UNIVERSITARIO1_idx` (`grupo_universitario_id`),
   CONSTRAINT `fk_INVITACION_EVENTO1` FOREIGN KEY (`evento_id`) REFERENCES `evento` (`id`),
   CONSTRAINT `fk_INVITACION_GRUPO_UNIVERSITARIO1` FOREIGN KEY (`grupo_universitario_id`) REFERENCES `grupo_universitario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `invitacion`
@@ -1003,7 +1044,7 @@ CREATE TABLE `resolucion_x_beneficio` (
   PRIMARY KEY (`id`),
   KEY `fk_RESOLUCION_X_BENEFICIO_BENEFICIO_idx` (`beneficio_id`),
   CONSTRAINT `fk_RESOLUCION_X_BENEFICIO_BENEFICIO` FOREIGN KEY (`beneficio_id`) REFERENCES `beneficio` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `resolucion_x_beneficio`
@@ -1037,8 +1078,7 @@ INSERT INTO `resolucion_x_beneficio` (`id`,`numero_resolucion`,`fecha_emision`,`
  (24,'RES_22 nuevo','2021-12-11','PENDIENTE','f2a590ba2c0205e44093fed57340fdb5.pdf',5),
  (25,'RES_44','2021-12-16','COMPLETADO','20a67818db304652e15f9b50017108d7.pdf',37),
  (26,'RES_77','2021-12-15','COMPLETADO','26e30e89bd4d9e004edb9ec826078826.pdf',38),
- (27,'RES_1100','2021-12-22','COMPLETADO','798cd45ec6ce00adc88ac6f079b1dbd4.pdf',39),
- (29,'RES56','2021-12-12','PENDIENTE','',41);
+ (27,'RES_1100','2021-12-22','COMPLETADO','798cd45ec6ce00adc88ac6f079b1dbd4.pdf',39);
 /*!40000 ALTER TABLE `resolucion_x_beneficio` ENABLE KEYS */;
 
 
@@ -1054,7 +1094,7 @@ CREATE TABLE `semestre` (
   `fecha_fin` date NOT NULL,
   `estado` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `semestre`
@@ -1063,9 +1103,9 @@ CREATE TABLE `semestre` (
 /*!40000 ALTER TABLE `semestre` DISABLE KEYS */;
 INSERT INTO `semestre` (`id`,`nombre`,`fecha_inicio`,`fecha_fin`,`estado`) VALUES 
  (1,'Sin Semestre','2000-01-01','2000-01-01','ACTIVO'),
- (2,'Semestre 2021','2021-07-01','2021-12-31','ACTIVO'),
- (3,'2022-I','2022-02-07','2022-05-22','INACTIVO'),
- (4,'Semestre 2028','2021-12-07','2021-12-23','ACTIVO');
+ (2,'Semestre 2021','2021-07-01','2021-12-10','INACTIVO'),
+ (3,'2022-I','2022-02-07','2022-05-22','ACTIVO'),
+ (4,'Semestre 2028','2021-12-07','2021-12-23','INACTIVO');
 /*!40000 ALTER TABLE `semestre` ENABLE KEYS */;
 
 
@@ -1223,6 +1263,31 @@ if(select id from semestre where id=idSemestre and curdate() between fecha_inici
 return 'ACTIVO';
 else
 return 'INACTIVO';
+end if;
+end $$
+/*!50003 SET SESSION SQL_MODE=@TEMP_SQL_MODE */  $$
+
+DELIMITER ;
+
+--
+-- Definition of function `func_semestre`
+--
+
+DROP FUNCTION IF EXISTS `func_semestre`;
+
+DELIMITER $$
+
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
+CREATE DEFINER=`CARLOS EMILIO`@`localhost` FUNCTION `func_semestre`(idDA int) RETURNS varchar(45) CHARSET utf8
+    DETERMINISTIC
+begin
+declare fechas varchar(45);
+set fechas= (select fecha from desercion_alumno where id=idDA);
+if length(fechas)>0 then
+return (select if(count(*)>0,nombre,'Sin Semestre') from semestre where fechas between fecha_inicio and fecha_fin limit 1);
+else
+-- Cambiar este
+return 'Sin semestre';
 end if;
 end $$
 /*!50003 SET SESSION SQL_MODE=@TEMP_SQL_MODE */  $$
@@ -1456,6 +1521,14 @@ DELIMITER ;
 DROP TABLE IF EXISTS `v_regirre`;
 DROP VIEW IF EXISTS `v_regirre`;
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_regirre` AS select `gu`.`nombre` AS `Grupo`,`r`.`estado` AS `estado`,`s`.`nombre` AS `semestre` from ((((`grupo_universitario` `gu` join `alumno_x_grupo` `ag` on((`gu`.`id` = `ag`.`grupo_universitario_id`))) join `alumno` `a` on((`a`.`id` = `ag`.`alumno_id`))) join `rendimiento_academico` `r` on((`r`.`alumno_id` = `a`.`id`))) join `semestre` `s` on((`s`.`id` = `r`.`semestre_id`))) group by `s`.`nombre`;
+
+--
+-- Definition of view `vista_desercion_alumno`
+--
+
+DROP TABLE IF EXISTS `vista_desercion_alumno`;
+DROP VIEW IF EXISTS `vista_desercion_alumno`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`CARLOS EMILIO`@`localhost` SQL SECURITY DEFINER VIEW `vista_desercion_alumno` AS select `da`.`id` AS `id_desercion_alumno`,`da`.`fecha` AS `fecha`,`da`.`alumno_id` AS `alumno_id`,`d`.`id` AS `idDesercion`,`d`.`descripcion` AS `descripcion`,`func_semestre`(`da`.`id`) AS `semestre` from (`desercion_alumno` `da` join `indices_de_desercion` `d` on((`d`.`id` = `da`.`desercion_id`)));
 
 --
 -- Definition of view `vista_estudiantes`
