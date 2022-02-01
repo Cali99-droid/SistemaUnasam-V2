@@ -92,7 +92,7 @@
             if (screen.width < 1280) {
                 var options = {
                 width: 500,
-                height: 500,
+                height: 600,
                 title: 'Participantes por Grupo '
                 }; 
             }
@@ -146,7 +146,7 @@
             if (screen.width < 1280) {
                 var options = {
                     width: 500,
-                    height: 500,
+                    height: 600,
                     legend: {
                         position: 'none'
                     },
@@ -240,7 +240,7 @@
             if (screen.width < 1280) {
                 var options = {
                     width: 500,
-                    height: 500,
+                    height: 600,
                     title: 'Chess opening moves',
 
                     legend: {
@@ -326,7 +326,7 @@
             if (screen.width < 1280) {
                 var options = {
                     width: 500,
-                    height: 500,
+                    height: 600,
                     title: 'CANTIDAD DE PARTICIPACIONES POR MESES',
                     legend: 'none',
                     colors: ['#15A0C8'],
@@ -382,7 +382,7 @@
             if (screen.width < 1280) {
                 var options = {
                     width: 500,
-                    height: 500,
+                    height: 600,
                     title: 'Beneficios Cumplidos',
                     pieHole: 0.4
 
@@ -428,7 +428,7 @@
             if (screen.width < 1280) {
                 var options = {
                     width: 500,
-                    height: 500,
+                    height: 600,
                     title: 'Beneficios Pendientes',
                     pieHole: 0.4
 
@@ -484,7 +484,7 @@
             if (screen.width < 1280) {
                 var options = {
                     width: 500,
-                    height: 500,
+                    height: 600,
                     chart: {
                         title: 'Tendencia de participaciones por escuelas',
                         subtitle: 'cantidad de estudiantes'
@@ -561,7 +561,7 @@
             if (screen.width < 1280) {
                 var options = {
                     width: 500,
-                    height: 500,
+                    height: 600,
                     chart: {
                         title: 'Tendencia de Cantidad de Regulares por Grupo',
                         subtitle: 'cantidad de estudiantes'
@@ -637,7 +637,7 @@
             if (screen.width < 1280) {
                 var options = {
                     width: 500,
-                    height: 500,
+                    height: 600,
                     chart: {
                         title: 'Tendencia de Cantidad de Irregulares por Grupo',
                         subtitle: 'cantidad de estudiantes'
