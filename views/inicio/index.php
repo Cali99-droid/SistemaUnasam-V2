@@ -89,6 +89,7 @@
             var options = {
                 width: 300,
                 height: 400,
+                titleTextStyle: {color: '#686868'},
                 title: 'Participantes por Grupo '
             };
         } else
@@ -96,11 +97,12 @@
             var options = {
                 width: 500,
                 height: 600,
+                titleTextStyle: {color: '#686868'},
                 title: 'Participantes por Grupo '
             };
         } else {
             var options = {
-
+                titleTextStyle: {color: '#686868'},
                 title: 'Participantes por Grupo '
             };
         }
@@ -313,6 +315,7 @@
                 height: 400,
                 title: 'CANTIDAD DE PARTICIPACIONES POR MESES',
                 legend: 'none',
+                titleTextStyle: {color: '#686868'},
                 colors: ['#15A0C8'],
                 pointSize: 30,
                 pointShape: {
@@ -327,6 +330,7 @@
                 height: 600,
                 title: 'CANTIDAD DE PARTICIPACIONES POR MESES',
                 legend: 'none',
+                titleTextStyle: {color: '#686868'},
                 colors: ['#15A0C8'],
                 pointSize: 30,
                 pointShape: {
@@ -339,6 +343,7 @@
 
                 title: 'CANTIDAD DE PARTICIPACIONES POR MESES',
                 legend: 'none',
+                titleTextStyle: {color: '#686868'},
                 colors: ['#15A0C8'],
                 pointSize: 30,
                 pointShape: {
@@ -371,6 +376,7 @@
                 width: 300,
                 height: 400,
                 title: 'Beneficios Cumplidos',
+                titleTextStyle: {color: '#686868'},
                 pieHole: 0.4
 
             };
@@ -380,12 +386,14 @@
                 width: 500,
                 height: 600,
                 title: 'Beneficios Cumplidos',
+                titleTextStyle: {color: '#686868'},
                 pieHole: 0.4
 
             };
         } else {
             var options = {
                 title: 'Beneficios Cumplidos',
+                titleTextStyle: {color: '#686868'},
                 pieHole: 0.4
 
             };
@@ -415,6 +423,7 @@
                 width: 300,
                 height: 400,
                 title: 'Beneficios Pendientes',
+                titleTextStyle: {color: '#686868'},
                 pieHole: 0.4
 
             };
@@ -424,12 +433,14 @@
                 width: 500,
                 height: 600,
                 title: 'Beneficios Pendientes',
+                titleTextStyle: {color: '#686868'},
                 pieHole: 0.4
 
             };
         } else {
             var options = {
                 title: 'Beneficios Pendientes',
+                titleTextStyle: {color: '#686868'},
                 pieHole: 0.4
 
             };
