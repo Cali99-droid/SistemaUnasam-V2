@@ -139,7 +139,7 @@ async function crearGrupo(grupo) {
   datos.append("imagen", grupo.imagen);
 
   try {
-    const url = "http://appunasam.devor/grupos";
+    const url = "http://localhost:3000/grupos";
     const respuesta = await fetch(url, {
       method: "POST",
       body: datos,
