@@ -81,11 +81,27 @@
             ?>
         ]);
 
-        var options = {
-
-            title: 'PARTICIPACIONES POR GRUPO ',
-            
-        };
+        if (screen.width < 1024) {
+            var options = {
+                width: 300,
+                height: 400,
+                title: 'Participantes por Grupo '
+                }; 
+        }
+            else 
+            if (screen.width < 1280) {
+                var options = {
+                width: 500,
+                height: 500,
+                title: 'Participantes por Grupo '
+                }; 
+            }
+            else {
+                var options = {
+                
+                title: 'Participantes por Grupo '
+                };
+            }
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
         chart.draw(data, options);
 
@@ -102,27 +118,77 @@
             ?>
 
         ]);
+        //
+        if (screen.width < 1024) {
+            var options = {
+                    width: 300,
+                    height: 400,
+                    legend: {
+                        position: 'none'
+                    },
+                    chart: {
+                        title: 'Invitaciones por Grupo',
+                        subtitle: 'Cantidad de Invitaciones'
+                    },
+                    axes: {
+                        x: {
+                            0: {
 
-        var options = {
+                            } // Top x-axis.
+                        }
+                    },
+                    bar: {
+                        groupWidth: "90%"
+                    }
+                    }; 
+        }
+            else 
+            if (screen.width < 1280) {
+                var options = {
+                    width: 500,
+                    height: 500,
+                    legend: {
+                        position: 'none'
+                    },
+                    chart: {
+                        title: 'Invitaciones por Grupo',
+                        subtitle: 'Cantidad de Invitaciones'
+                    },
+                    axes: {
+                        x: {
+                            0: {
 
-            legend: {
-                position: 'none'
-            },
-            chart: {
-                title: 'Invitaciones por Grupo',
-                subtitle: 'Cantidad de Invitaciones'
-            },
-            axes: {
-                x: {
-                    0: {
-
-                    } // Top x-axis.
-                }
-            },
-            bar: {
-                groupWidth: "90%"
+                            } // Top x-axis.
+                        }
+                    },
+                    bar: {
+                        groupWidth: "90%"
+                    }
+                    };
             }
-        };
+            else {
+                var options = {
+                    legend: {
+                        position: 'none'
+                    },
+                    chart: {
+                        title: 'Invitaciones por Grupo',
+                        subtitle: 'Cantidad de Invitaciones'
+                    },
+                    axes: {
+                        x: {
+                            0: {
+
+                            } // Top x-axis.
+                        }
+                    },
+                    bar: {
+                        groupWidth: "90%"
+                    }
+                    };
+            }
+        //
+        
 
         var chart2 = new google.charts.Bar(document.getElementById('piechart1'));
         // Convert the Classic options to Material options.
@@ -142,7 +208,64 @@
 
         ]);
 
-        var options = {
+        //
+        if (screen.width < 1024) {
+            var options = {
+                    width: 300,
+                    height: 400,
+                    title: 'Chess opening moves',
+
+                    legend: {
+                        position: 'none'
+                    },
+                    chart: {
+                        title: 'TOP 5 ESCUELAS',
+                        subtitle: 'Mayor de Participación por escuelas'
+                    },
+                    bars: 'horizontal', // Required for Material Bar Charts.
+                    axes: {
+                        x: {
+                            0: {
+                                side: 'top',
+                                label: 'Porcentaje'
+                            } // Top x-axis.
+                        }
+                    },
+                    bar: {
+                        groupWidth: "90%"
+                    }
+                };  
+        }
+            else 
+            if (screen.width < 1280) {
+                var options = {
+                    width: 500,
+                    height: 500,
+                    title: 'Chess opening moves',
+
+                    legend: {
+                        position: 'none'
+                    },
+                    chart: {
+                        title: 'TOP 5 ESCUELAS',
+                        subtitle: 'Mayor de Participación por escuelas'
+                    },
+                    bars: 'horizontal', // Required for Material Bar Charts.
+                    axes: {
+                        x: {
+                            0: {
+                                side: 'top',
+                                label: 'Porcentaje'
+                            } // Top x-axis.
+                        }
+                    },
+                    bar: {
+                        groupWidth: "90%"
+                    }
+                }; 
+            }
+            else {
+                var options = {
             title: 'Chess opening moves',
 
             legend: {
@@ -165,6 +288,9 @@
                 groupWidth: "90%"
             }
         };
+            }
+        //
+        
 
         var chart = new google.charts.Bar(document.getElementById('piechart2'));
         chart.draw(data, options);
@@ -181,17 +307,51 @@
 
         ]);
 
-        var options = {
-           
-                title: 'CANTIDAD DE PARTICIPACIONES POR MESES',
-            legend: 'none',
-            colors: ['#15A0C8'],
-            pointSize: 30,
-            pointShape: {
-                type: 'circle',
-                rotation: 180
+        //
+        if (screen.width < 1024) {
+            var options = {
+                    width: 300,
+                    height: 400,
+                    title: 'CANTIDAD DE PARTICIPACIONES POR MESES',
+                    legend: 'none',
+                    colors: ['#15A0C8'],
+                    pointSize: 30,
+                    pointShape: {
+                        type: 'circle',
+                        rotation: 180
+                    }
+                }; 
+        }
+            else 
+            if (screen.width < 1280) {
+                var options = {
+                    width: 500,
+                    height: 500,
+                    title: 'CANTIDAD DE PARTICIPACIONES POR MESES',
+                    legend: 'none',
+                    colors: ['#15A0C8'],
+                    pointSize: 30,
+                    pointShape: {
+                        type: 'circle',
+                        rotation: 180
+                    }
+                }; 
             }
-        };
+            else {
+                    var options = {
+            
+                    title: 'CANTIDAD DE PARTICIPACIONES POR MESES',
+                    legend: 'none',
+                    colors: ['#15A0C8'],
+                    pointSize: 30,
+                    pointShape: {
+                        type: 'circle',
+                        rotation: 180
+                    }
+                };
+            }
+        //
+        
 
         var chart = new google.visualization.AreaChart(document.getElementById('piechart3'));
         chart.draw(data, options);
@@ -208,11 +368,35 @@
 
         ]);
 
-        var options = {
-            title: 'Beneficios Cumplidos',
-            pieHole: 0.4
+        //
+        if (screen.width < 1024) {
+            var options = {
+                    width: 300,
+                    height: 400,
+                    title: 'Beneficios Cumplidos',
+                    pieHole: 0.4
 
-        };
+                };  
+        }
+            else 
+            if (screen.width < 1280) {
+                var options = {
+                    width: 500,
+                    height: 500,
+                    title: 'Beneficios Cumplidos',
+                    pieHole: 0.4
+
+                }; 
+            }
+            else {
+                var options = {
+                    title: 'Beneficios Cumplidos',
+                    pieHole: 0.4
+
+                };
+            }
+        //
+        
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart4'));
         chart.draw(data, options);
@@ -230,11 +414,35 @@
 
         ]);
 
-        var options = {
-            title: 'Beneficios Pendientes',
-            pieHole: 0.4
-        };
+        //
+        if (screen.width < 1024) {
+            var options = {
+                    width: 300,
+                    height: 400,
+                    title: 'Beneficios Pendientes',
+                    pieHole: 0.4
 
+                };  
+        }
+            else 
+            if (screen.width < 1280) {
+                var options = {
+                    width: 500,
+                    height: 500,
+                    title: 'Beneficios Pendientes',
+                    pieHole: 0.4
+
+                }; 
+            }
+            else {
+                var options = {
+                    title: 'Beneficios Pendientes',
+                    pieHole: 0.4
+
+                };
+            }
+        //
+        
         var chart = new google.visualization.PieChart(document.getElementById('piechart5'));
         chart.draw(data, options);
     }
@@ -253,20 +461,62 @@
         } ?>
         <?php echo $muestraDash; ?>
 
-        var options = {
-            chart: {
-                title: 'Tendencia de participaciones por escuelas',
-                subtitle: 'cantidad de estudiantes'
-            },
+        //
+        if (screen.width < 1024) {
+            var options = {
+                    width: 300,
+                    height: 400,
+                    chart: {
+                        title: 'Tendencia de participaciones por escuelas',
+                        subtitle: 'cantidad de estudiantes'
+                    },
 
-            axes: {
-                x: {
-                    0: {
-                        side: 'bot'
+                    axes: {
+                        x: {
+                            0: {
+                                side: 'bot'
+                            }
+                        }
                     }
-                }
+                }; 
+        }
+            else 
+            if (screen.width < 1280) {
+                var options = {
+                    width: 500,
+                    height: 500,
+                    chart: {
+                        title: 'Tendencia de participaciones por escuelas',
+                        subtitle: 'cantidad de estudiantes'
+                    },
+
+                    axes: {
+                        x: {
+                            0: {
+                                side: 'bot'
+                            }
+                        }
+                    }
+                }; 
             }
-        };
+            else {
+                var options = {
+                    chart: {
+                        title: 'Tendencia de participaciones por escuelas',
+                        subtitle: 'cantidad de estudiantes'
+                    },
+
+                    axes: {
+                        x: {
+                            0: {
+                                side: 'bot'
+                            }
+                        }
+                    }
+                };
+            }
+        //
+        
         var chart = new google.charts.Line(document.getElementById('piechart6'));
         chart.draw(data, google.charts.Line.convertOptions(options));
 
@@ -288,20 +538,62 @@
         } ?>
         <?php echo $tendenciaRegulares; ?>
 
-        var options = {
-            chart: {
-                title: 'Tendencia de Cantidad de Regulares por Grupo',
-                subtitle: 'cantidad de estudiantes'
-            },
+        //
+        if (screen.width < 1024) {
+            var options = {
+                    width: 300,
+                    height: 400,
+                    chart: {
+                        title: 'Tendencia de Cantidad de Regulares por Grupo',
+                        subtitle: 'cantidad de estudiantes'
+                    },
 
-            axes: {
-                x: {
-                    0: {
-                        side: 'bot'
+                    axes: {
+                        x: {
+                            0: {
+                                side: 'bot'
+                            }
+                        }
                     }
-                }
+                }; 
+        }
+            else 
+            if (screen.width < 1280) {
+                var options = {
+                    width: 500,
+                    height: 500,
+                    chart: {
+                        title: 'Tendencia de Cantidad de Regulares por Grupo',
+                        subtitle: 'cantidad de estudiantes'
+                    },
+
+                    axes: {
+                        x: {
+                            0: {
+                                side: 'bot'
+                            }
+                        }
+                    }
+                }; 
             }
-        };
+            else {
+                var options = {
+                    chart: {
+                        title: 'Tendencia de Cantidad de Regulares por Grupo',
+                        subtitle: 'cantidad de estudiantes'
+                    },
+
+                    axes: {
+                        x: {
+                            0: {
+                                side: 'bot'
+                            }
+                        }
+                    }
+                };
+            }
+        //
+        
         var chart7 = new google.charts.Line(document.getElementById('piechart7'));
         chart7.draw(data, google.charts.Line.convertOptions(options));
 
@@ -322,20 +614,62 @@
         } ?>
         <?php echo $tendenciaIrregulares; ?>
 
-        var options = {
-            chart: {
-                title: 'Tendencia de Cantidad de Irregulares por Grupo',
-                subtitle: 'cantidad de estudiantes'
-            },
+        //
+        if (screen.width < 1024) {
+            var options = {
+                    width: 300,
+                    height: 400,
+                    chart: {
+                        title: 'Tendencia de Cantidad de Irregulares por Grupo',
+                        subtitle: 'cantidad de estudiantes'
+                    },
 
-            axes: {
-                x: {
-                    0: {
-                        side: 'bot'
+                    axes: {
+                        x: {
+                            0: {
+                                side: 'bot'
+                            }
+                        }
                     }
-                }
+                }; 
+        }
+            else 
+            if (screen.width < 1280) {
+                var options = {
+                    width: 500,
+                    height: 500,
+                    chart: {
+                        title: 'Tendencia de Cantidad de Irregulares por Grupo',
+                        subtitle: 'cantidad de estudiantes'
+                    },
+
+                    axes: {
+                        x: {
+                            0: {
+                                side: 'bot'
+                            }
+                        }
+                    }
+                }; 
             }
-        };
+            else {
+                var options = {
+                    chart: {
+                        title: 'Tendencia de Cantidad de Irregulares por Grupo',
+                        subtitle: 'cantidad de estudiantes'
+                    },
+
+                    axes: {
+                        x: {
+                            0: {
+                                side: 'bot'
+                            }
+                        }
+                    }
+                };
+            }
+        //
+        
         var chart7 = new google.charts.Line(document.getElementById('piechart8'));
         chart7.draw(data, google.charts.Line.convertOptions(options));
 
