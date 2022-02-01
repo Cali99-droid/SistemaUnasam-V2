@@ -15,7 +15,7 @@ async function obtenerDatos() {
     //Peticion hacia la api
     const id = obtenerIntegrante();
     const idGrupo = obtenerGrupo();
-    const url = `http://appunasam.devor/integrante/getParticipaciones?id=${id}&idGrupo=${idGrupo}`;
+    const url = `http://localhost:3000/integrante/getParticipaciones?id=${id}&idGrupo=${idGrupo}`;
     const respuesta = await fetch(url);
     const resultado = await respuesta.json();
 
@@ -98,7 +98,7 @@ async function eliminarPart(part) {
   datos.append("id", id);
   try {
     //Peticion hacia la api
-    const url = "http://appunasam.devor/integrante/deleteAsistencia";
+    const url = "http://localhost:3000/integrante/deleteAsistencia";
     const respuesta = await fetch(url, {
       method: "POST",
       body: datos,
@@ -233,7 +233,7 @@ async function crearAsistencia(inv) {
 
   try {
     //Peticion hacia la api
-    const url = "http://appunasam.devor/integrante/setAsistencia";
+    const url = "http://localhost:3000/integrante/setAsistencia";
     const respuesta = await fetch(url, {
       method: "POST",
       body: datos,
