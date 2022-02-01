@@ -9,6 +9,7 @@ use Model\Resolucion_x_beneficio;
 use Model\TipoGrupo;
 use Model\Desercion;
 use MVC\Router;
+
 class DesercionController
 {
     public static function index(Router $router)
@@ -16,7 +17,8 @@ class DesercionController
         $descripcion = Desercion::all();
         //$tipos = TipoGrupo::all();
         $router->render('desercion/index', [
-            'descripcion' => $descripcion
+            'descripcion' => $descripcion,
+            'titulo' => 'Desercion'
             //'tipos' => $tipos
         ]);
     }
@@ -26,10 +28,10 @@ class DesercionController
         $id = $_POST['id'];
         $desercion = new Desercion($_POST);
 
-       if ($desercion->validarNombre()) {
+        if ($desercion->validarNombre()) {
             $resultado = false;
         } else {
-            if ($id ==='') {
+            if ($id === '') {
                 $resultado = $desercion->crear();
                 $resultado =  $resultado['resultado'];
             } else {
@@ -113,9 +115,9 @@ class DesercionController
     {
         $id = $_POST['id'];
         $desercion = Desercion::find($id);
-        
-            $resultado =  $desercion->eliminar();
-        
+
+        $resultado =  $desercion->eliminar();
+
 
         echo json_encode($resultado);
     }

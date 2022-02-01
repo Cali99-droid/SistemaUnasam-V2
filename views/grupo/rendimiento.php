@@ -1,13 +1,5 @@
-<?php //debuguear($rendimientos) 
-?>
-
-<div class="contenedor-grupos">
-    <div class="titulo-grupos con_accion">
-        <a onclick="history.back ()" class="btn-asignar"><i class="fas fa-arrow-circle-left"></i> Volver</a>
-        <h2 class="no-margin">Rendimiento Académico <br><span><?php echo $alumno->nombre . ' ' . $alumno->apellido ?></span></h2>
-
-    </div>
-
+<div class="rendimiento cont-borde ">
+    <h3 class="no-margin titulo-area"><i class="fas fa-brain"></i> Rendimiento Académico</h3>
     <div class="acciones-grupo">
         <div class="buscar">
             <i class="fas fa-search"></i>
@@ -20,7 +12,7 @@
             </a>
         </div>
     </div>
-    <div class="contenedor-tabla tab-beneficio">
+    <div class="contenedor-tabla">
 
         <table id="mytable-ev">
             <thead>
@@ -61,7 +53,7 @@
 
 <div class="modal-agregar" id="modal_rend">
 
-    <div class="contenido-modal-grupo  contenedor-grupos modal-eventos">
+    <div class="contenido-modal-grupo  modal-eventos">
         <div class="encabezado-modal">
             <h2 id="titulo_integrante">Agregar </h2>
             <span class="close close-rend">&times;</span>

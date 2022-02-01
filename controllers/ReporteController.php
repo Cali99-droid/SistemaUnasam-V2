@@ -9,6 +9,8 @@ class ReporteController
     public static function index(Router $router)
     {
         isAuth();
-        $router->render('reporte/index', []);
+        $router->render('reporte/index', [
+            'titulo' => 'Reportes'
+        ]);
     }
 }

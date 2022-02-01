@@ -1,11 +1,11 @@
 <label for="nombre">Nombre del grupo</label>
-<input type="text" name="grupo[nombre]" id="nombre-grupo" value="<?php echo $grupo->nombre;  ?>" required>
+<input type="text" name="grupo[nombre]" id="nombre-grupo" value="<?php echo $grupo->nombre ?? ''  ?>" required>
 
 <label for="fecha_creacion">Fecha de Creacion</label>
-<input type="date" name="grupo[fecha_creacion]" id="fecha_creacion" value="<?php echo $grupo->fecha_creacion;  ?>" required>
+<input type="date" name="grupo[fecha_creacion]" id="fecha_creacion" value="<?php echo $grupo->fecha_creacion ?? ''  ?>" required>
 
 <label for="resolucion_creacion">Resolucion</label>
-<input type="text" name="grupo[resolucion_creacion]" id="resolucion" value="<?php echo $grupo->resolucion_creacion;  ?>" required>
+<input type="text" name="grupo[resolucion_creacion]" id="resolucion" value="<?php echo $grupo->resolucion_creacion ?? ''  ?>" required>
 
 <div class="contenido-tipos">
     <div class="cont-tip">
@@ -33,5 +33,5 @@
 
 <div>
     <label for="imagen">Imagen de Grupo</label>
-    <input type="file" name="grupo[imagen]" accept='image/png,.jpeg,.jpg,image/gif'>
+    <input type="file" name="grupo[imagen]" id="imagen" accept='image/png,.jpeg,.jpg,image/gif'>
 </div>

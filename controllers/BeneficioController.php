@@ -17,7 +17,8 @@ class BeneficioController
         $tipos = TipoGrupo::all();
         $router->render('beneficio/index', [
             'beneficios' => $beneficios,
-            'tipos' => $tipos
+            'tipos' => $tipos,
+            'titulo' => 'Beneficios'
         ]);
     }
 

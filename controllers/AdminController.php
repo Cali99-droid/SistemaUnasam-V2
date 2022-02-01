@@ -20,7 +20,10 @@ class AdminController
     public static function tipos(Router $router)
     {
         $tipos = TipoGrupo::all();
-        $router->render('admin/tipos/index', ['tipos' => $tipos]);
+        $router->render('admin/tipos/index', [
+            'tipos' => $tipos,
+            'titulo' => 'Administrador'
+        ]);
     }
 
 

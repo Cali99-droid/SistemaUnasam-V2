@@ -10,6 +10,6 @@
     <option value="regular">REGULAR</option>
     <option value="irregular">IRREGULAR</option>
 </select>
-<input type="hidden" id="idAlumno" value="<?php echo $alumno->idAlumno ?>">
+<input type="hidden" id="idAlumno" value="<?php echo $integrante->idAlumno ?>">
 <input type="hidden" id="idRendimiento" value="">
 <button onclick="agregarRend()" type="button" class="btn-asignar">Agregar</button>

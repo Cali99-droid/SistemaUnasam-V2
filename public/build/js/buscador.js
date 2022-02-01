@@ -1,0 +1,1 @@
+function iniciarApp(){}function buscarPorNombre(){const n=document.querySelector("#nom");$("#nom").focus();var e=n.value;n.value=e,n.addEventListener("keyup",(function(n){const e=n.target.value;window.location="?nombre="+e}))}document.addEventListener("DOMContentLoaded",(function(){iniciarApp()}));

@@ -1,6 +1,6 @@
 .seccion {
   margin-top: calc($separacion / 2);
-  margin-bottom:calc( $separacion / 2);
+  margin-bottom: calc($separacion / 2);
 }
 .contenido-centrado {
   max-width: 800px;
@@ -8,4 +8,95 @@
 
 .no-margin {
   margin: 0;
+}
+
+.cont-borde {
+  background-color: #fefefe;
+  padding: 1rem;
+  margin: 1rem auto;
+  border-radius: 1rem;
+}
+
+.an-left {
+  position: relative;
+  -webkit-animation-name: animateleft;
+  -webkit-animation-duration: 0.9s;
+  animation-name: animateleft;
+  animation-duration: 0.9s;
+}
+.an-right {
+  position: relative;
+  -webkit-animation-name: animateright;
+  -webkit-animation-duration: 0.5s;
+  animation-name: animateright;
+  animation-duration: 0.5s;
+}
+
+// * IZQ
+@-webkit-keyframes animateleft {
+  from {
+    left: -300px;
+    opacity: 0;
+  }
+  to {
+    left: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes animateleft {
+  from {
+    left: -300px;
+    opacity: 0;
+  }
+  to {
+    left: 0;
+    opacity: 1;
+  }
+}
+// *DER
+@-webkit-keyframes animateright {
+  from {
+    right: -12px;
+    opacity: 0;
+  }
+  to {
+    right: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes animateright {
+  from {
+    right: -12px;
+    opacity: 0;
+  }
+  to {
+    right: 0;
+    opacity: 1;
+  }
+}
+// * otro */
+.fade-ef {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1s;
+  animation-name: fade;
+  animation-duration: 1s;
+}
+@-webkit-keyframes fade-ef {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-ef {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
 }

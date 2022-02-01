@@ -38,3 +38,11 @@
     cursor: pointer;
   }
 }
+
+@mixin etiq($color, $tamño) {
+  font-size: $tamño;
+  background-color: $color;
+  padding: 0.4rem;
+  border-radius: 0.6rem;
+  color: #fff;
+}

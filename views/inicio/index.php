@@ -1,10 +1,19 @@
 <div class="contenedor-grupos">
     <div class="titulo-ana">
-        <h3 class="no-margin">Análisis Gráfico</h3>
+        <h3 class="no-margin"><i class="fas fa-chart-pie"></i> Análisis Gráfico</h3>
+        <div class="calls">
+            <a href="#piechart"><i class="fas fa-eye"></i> Participantes</a>
+            <a href="#piechart1"><i class="fas fa-eye"></i> Invitaciones </a>
+            <a href="#piechart2"><i class="fas fa-eye"></i> TOP 5 escuelas</a>
+            <a href="#piechart3">Fechas</a>
+            <a href="#piechart4">Beneficios Cumplidos</a>
+            <a href="#piechart5">Beneficios pendientes</a>
+            <a href="#piechart6">Tendencia Participaciones</a>
+            <a href="#piechart7">Regulares</a>
+            <a href="#piechart8">Irregulares</a>
+        </div>
     </div>
     <div class="contenido-dashboard">
-
-
 
         <div class="contenido-dash">
             <div class="dash" id="piechart"></div>
@@ -23,31 +32,31 @@
 </div>
 
 <script type="text/javascript">
-    google.charts.load('current', {
+    google.charts.load('visualization', {
         'packages': ['corechart']
     });
-    google.charts.load('current', {
+    google.charts.load('visualization', {
         'packages': ['bar']
     });
-    google.charts.load('current', {
+    google.charts.load('visualization', {
         'packages': ['bar']
     });
-    google.charts.load("current", {
+    google.charts.load("visualization", {
         packages: ["corechart"]
     });
-    google.charts.load("current", {
+    google.charts.load("visualization", {
         packages: ["corechart"]
     });
-    google.charts.load("current", {
+    google.charts.load("visualization", {
         packages: ["corechart"]
     });
-    google.charts.load('current', {
+    google.charts.load('visualization', {
         'packages': ['line']
     });
-    google.charts.load('current', {
+    google.charts.load('visualization', {
         'packages': ['line']
     });
-    google.charts.load('current', {
+    google.charts.load('visualization', {
         'packages': ['line']
     });
 
@@ -73,9 +82,8 @@
         ]);
 
         var options = {
-            width: 1000,
-            heigth: 1000,
-            title: 'Participantes por Grupo'
+
+            title: 'Participantes por Grupo '
         };
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
         chart.draw(data, options);
@@ -95,8 +103,7 @@
         ]);
 
         var options = {
-            width: 1000,
-            heigth: 1000,
+
             legend: {
                 position: 'none'
             },
@@ -136,8 +143,7 @@
 
         var options = {
             title: 'Chess opening moves',
-            width: 1000,
-            heigth: 1000,
+
             legend: {
                 position: 'none'
             },
@@ -175,8 +181,7 @@
         ]);
 
         var options = {
-            width: 1000,
-            heigth: 1000,
+
             legend: 'none',
             colors: ['#15A0C8'],
             pointSize: 30,
@@ -203,9 +208,8 @@
 
         var options = {
             title: 'Beneficios Cumplidos',
-            pieHole: 0.4,
-            width: 1000,
-            heigth: 1000,
+            pieHole: 0.4
+
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart4'));
@@ -226,9 +230,7 @@
 
         var options = {
             title: 'Beneficios Pendientes',
-            pieHole: 0.4,
-            width: 1000,
-            heigth: 1000,
+            pieHole: 0.4
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart5'));
@@ -254,8 +256,7 @@
                 title: 'Tendencia de participaciones por escuelas',
                 subtitle: 'cantidad de estudiantes'
             },
-            width: 1000,
-            heigth: 1000,
+
             axes: {
                 x: {
                     0: {
@@ -290,8 +291,7 @@
                 title: 'Tendencia de Cantidad de Regulares por Grupo',
                 subtitle: 'cantidad de estudiantes'
             },
-            width: 1000,
-            heigth: 1000,
+
             axes: {
                 x: {
                     0: {
@@ -325,8 +325,7 @@
                 title: 'Tendencia de Cantidad de Irregulares por Grupo',
                 subtitle: 'cantidad de estudiantes'
             },
-            width: 1000,
-            heigth: 1000,
+
             axes: {
                 x: {
                     0: {
@@ -339,6 +338,8 @@
         chart7.draw(data, google.charts.Line.convertOptions(options));
 
     }
+
+
 
     /* FIN */
 </script>

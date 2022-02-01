@@ -17,7 +17,11 @@ class EventoController
 
         $grupos = Grupo::all();
         $eventos = Evento::all();
-        $router->render('evento/index', ['eventos' => $eventos, 'grupos' => $grupos]);
+        $router->render('evento/index', [
+            'eventos' => $eventos,
+            'grupos' => $grupos,
+            'titulo' => 'Eventos'
+        ]);
     }
 
     public static function v_crear(Router $router)

@@ -7,14 +7,8 @@
   // align-items: center;
   // margin-top: 1rem;
   @include tablet {
-    margin: 0 auto;
-    display: grid;
+    display: flex;
     gap: 1rem;
-    grid-template-columns: 1fr 1fr 2fr;
-    align-items: center;
-    margin-top: 1rem;
-    width: 95%;
-    justify-items: end;
   }
 
   .zoom {
@@ -48,50 +42,78 @@
     }
   }
   .rendimiento {
-    grid-column: 3 / 4;
+    a {
+      font-size: 1.4rem;
+    }
   }
   .datos--text {
-    .datos__nombre {
+    .contenido_datos_integrante {
+      display: flex;
+      align-items: flex-end;
+      gap: 1rem;
+      .datos__nombre {
+        font-weight: bold;
+        font-size: 2.5rem;
+        text-transform: uppercase;
+        color: $azul;
+        i {
+          font-size: 3rem;
+        }
+      }
+
+      span {
+        @include etiq(#08b388, 1.3rem);
+        padding: 0.2rem;
+      }
+    }
+  }
+  .datos__integrante {
+    margin-top: 0.2rem;
+    margin-bottom: 0.5rem;
+    p {
+      color: $azul;
       font-weight: bold;
-      font-size: 3rem;
+      font-size: 1.5rem;
+    }
+
+    span {
+      text-transform: uppercase;
+      color: black;
+      font-weight: normal;
+      font-size: 1.4rem;
     }
   }
   .datos--general {
     width: 80%;
   }
+}
 
-  .detalles-integrante {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    margin: 1rem auto;
-    background-color: $blanco;
-    h3 {
-      margin: 0;
+.detalles-integrante {
+  .contenedor-tabla {
+    height: 33.8rem;
+  }
+}
+
+.titulo-area {
+  text-align: left;
+  font-size: 1.8rem;
+  //text-transform: uppercase;
+  font-weight: $bold;
+  margin-bottom: 0.8rem;
+}
+
+.rendimiento {
+  .contenedor-tabla {
+    height: 33rem;
+    margin: 0;
+    table {
+      width: 100%;
     }
+  }
 
-    .hrh {
-      hr {
-        margin-top: 5rem;
-        width: 95%;
-        background-color: $grisOscuro;
-        height: 2px;
-      }
-    }
-
-    .detalle {
-      width: 95%;
-
-      .contenedor-tabla__perfil {
-        height: 27rem;
-        padding-top: 0;
-      }
-      .titulo_participacion {
-        font-weight: $bold;
-        width: 95%;
-        margin: 0 auto;
-        padding: 0.1rem;
-      }
+  button {
+    &:hover {
+      background-color: $verdeUso;
     }
   }
 }

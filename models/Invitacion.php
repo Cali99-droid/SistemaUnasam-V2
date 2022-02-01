@@ -17,6 +17,7 @@ class Invitacion extends ActiveRecord
     public $grupo_universitario_id;
     public $evento;
     public $grupo;
+    public $est;
 
     public function __construct($args = [])
     {
@@ -51,6 +52,7 @@ class Invitacion extends ActiveRecord
 
         $query = "SELECT func_EstadoInvitacion(" . $this->id . ", " . $this->fecha_hora . ") estado";
         $estado = self::consulta($query)->fetch_object();
+        $this->est = $estado->estado;
         return $estado->estado;
     }
 
