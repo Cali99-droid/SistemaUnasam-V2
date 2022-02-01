@@ -17,18 +17,24 @@
   transition: visibility 0.1s ease-out, opacity 0.5s linear, height 0.5s linear;
 }
 .contenedor-logo {
-  margin-top: 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
+  display: none;
+  @include tablet {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
   .logo-unasam {
     width: 10rem;
   }
 }
 
 .ocultar {
-  width: 20rem;
+  width: 100%;
+  @include tablet {
+    width: 20rem;
+    height: 100%;
+  }
 }
 
 .texto-unasam {

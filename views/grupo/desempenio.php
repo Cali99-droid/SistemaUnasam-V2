@@ -12,7 +12,7 @@
 
             <div class="contenedor-tabla tabla_tab">
 
-                <table class="table_res">
+                <table>
                     <thead>
                         <tr>
                             <th>Evento</th>
@@ -38,7 +38,7 @@
 
             <div class="contenedor-tabla ">
 
-                <table class="table_res">
+                <table>
                     <thead>
                         <tr>
 
@@ -87,7 +87,7 @@
                             <th>Acciones</th>
                         </tr>
                     </thead>
-                    <tbody class="cuerpo-der">
+                    <tbody id="cuerpo-der">
 
 
 
@@ -106,7 +106,7 @@
 
 
 
-            <div class="contenedor-tabla contenedor-tabla__perfil">
+            <div class="contenedor-tabla contenedor-tabla__perfil" style="overflow-x:auto;">
 
                 <table class="table_res-benas" id="table_res-benas">
                     <thead>
@@ -118,11 +118,16 @@
 
                         </tr>
                     </thead>
-                    <tbody id="cuerpo-bene">
+                    <tbody id="cuerpo-ben">
 
                     </tbody>
+
                 </table>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+
+</script>

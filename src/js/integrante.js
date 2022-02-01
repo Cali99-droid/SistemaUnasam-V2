@@ -278,9 +278,9 @@ function mostrarModal(modal, span) {
 
 // * derechos */
 function mostrarDerechos() {
-  //  limpiar("#cuerpo-der");
-  const tablas = document.querySelectorAll(".table_res-der");
-  const cuerpo = document.createElement("TBODY");
+  limpiar("#cuerpo-der");
+
+  const cuerpo = document.querySelector("#cuerpo-der");
 
   derechos.forEach((der) => {
     const fila = document.createElement("TR");
@@ -311,11 +311,6 @@ function mostrarDerechos() {
     fila.appendChild(colAccion);
 
     cuerpo.appendChild(fila);
-  });
-  //** StackTable Responsive  */
-  tablas.forEach((tab) => {
-    tab.appendChild(cuerpo);
-    $(".table_res-der").stacktable();
   });
 
   // const boton = document.getElementById('accion-boton');
@@ -389,10 +384,10 @@ async function asignaDerecho(der) {
 
 //**Beneficios asignados */
 function mostrarBeneficios() {
-  limpiar("#table_res-benas");
-  const tablas = document.querySelectorAll(".table_res-benas");
-  const cuerpo = document.createElement("TBODY");
-  cuerpo.setAttribute("id", "table_res-benas");
+  limpiar("#cuerpo-ben");
+
+  const cuerpo = document.querySelector("#cuerpo-ben");
+  // cuerpo.setAttribute("id", "table_res-benas");
 
   beneficios.forEach((bene) => {
     const fila = document.createElement("TR");
@@ -417,14 +412,14 @@ function mostrarBeneficios() {
       btnEstado.classList.add("label-ok");
     }
     btnEstado.textContent = bene.estado;
-    btnEstado.ondblclick = function () {
+    btnEstado.onclick = function () {
       cambiarEstado({ ...bene });
     };
     const btnQuitar = document.createElement("BUTTON");
     btnQuitar.classList.add("btn-asignar");
     btnQuitar.classList.add("label");
     btnQuitar.textContent = "QUITAR";
-    btnQuitar.ondblclick = function () {
+    btnQuitar.onclick = function () {
       quitarBeneficio({ ...bene });
     };
     const divAccion = document.createElement("DIV");
@@ -440,11 +435,8 @@ function mostrarBeneficios() {
     fila.appendChild(colAccion);
 
     cuerpo.appendChild(fila);
-  });
 
-  tablas.forEach((tab) => {
-    tab.appendChild(cuerpo);
-    $(".table_res-benas").stacktable();
+    //tabla.appendChild(cuerpo);
   });
 }
 

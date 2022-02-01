@@ -1,7 +1,52 @@
-.contenedor-todo{
-    
+.contenedor-todo {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  @include tablet {
     display: grid;
     grid-template-columns: 0fr 5fr;
     height: 100vh;
-   
+  }
+
+  .navegacion {
+    width: 100%;
+    height: 5rem;
+    overflow: hidden;
+    @include tablet {
+      width: 100%;
+      height: 100%;
+    }
+    .items {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      a {
+        font-size: 1rem;
+      }
+      @include tablet {
+        display: flex;
+        flex-direction: column;
+        a {
+          font-size: 1.5rem;
+        }
+      }
+    }
+    .texto-unasam {
+      display: flex;
+      justify-content: space-between;
+      width: 95%;
+      margin: 0 auto;
+      img {
+        display: inline;
+        width: 0.6rem;
+        @include tablet {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .mostrarMov {
+    width: 100%;
+    height: 35rem;
+  }
 }

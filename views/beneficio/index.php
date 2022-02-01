@@ -21,7 +21,7 @@
 
     <div class="contenedor-tabla tab-beneficio">
 
-        <table id="mytable">
+        <table id="mytabless">
             <thead>
                 <tr>
                     <th>Nombre</th>
@@ -120,6 +120,11 @@
     $(document).ready(function() {
         $('#idTipoGrupo').select2();
 
-        $('#mytable').stacktable();
+
+        $("#mytabless").DataTable({
+            responsive: true,
+        });
+
+
     });
 </script>

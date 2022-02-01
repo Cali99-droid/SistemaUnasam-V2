@@ -6,6 +6,16 @@
   margin: 2rem 0 2rem 0;
   padding: 1.5rem;
   border-radius: 1.5rem;
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 2rem;
+  @include m.tablet {
+    width: 100%;
+    background-color: v.$blanco;
+    margin: 2rem 0 2rem 0;
+    padding: 1.5rem;
+    border-radius: 1.5rem;
+  }
   h3 {
     font-weight: v.$bold;
     color: #0c407c;
@@ -13,10 +23,18 @@
   }
 
   .calls {
-    margin-top: 1rem;
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
+    width: 100%;
+    padding: 1rem;
+    @include m.tablet {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      width: 100%;
+    }
     a {
       background-color: #00316a;
       color: v.$blanco;
@@ -37,7 +55,12 @@
   border-radius: 1.5rem;
   padding: 1rem;
   overflow: scroll;
-  height: 43rem;
+  height: 45rem;
+  width: 100%;
+  @include m.tablet {
+    height: 43rem;
+    width: 100%;
+  }
   //scroll
   &::-webkit-scrollbar {
     width: 8px; /* Tamaño del scroll en vertical */
@@ -60,9 +83,15 @@
   }
 
   .contenido-dash {
-    @include m.tablet {
-    }
+    width: 100%;
     .dash {
+      border-radius: 1rem;
+      margin-bottom: 2rem;
+
+      width: 100%;
+      padding: 3rem;
+      background-color: #fff;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
       @include m.tablet {
         border-radius: 1rem;
         margin-bottom: 2rem;
@@ -70,6 +99,7 @@
         padding: 3rem;
         background-color: #fff;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        width: 100%;
       }
     }
   }

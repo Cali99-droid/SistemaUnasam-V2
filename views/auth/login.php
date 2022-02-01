@@ -36,7 +36,7 @@
                     <button type="submit" class="boton-acceder">Acceder</button>
 
 
-                    <div class="container" style="background-color:#f1f1f1">
+                    <div class="container desc-container" style="background-color:#f1f1f1">
                         <button type="reset" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancelar</button>
                         <span class="psw">Olvidaste tu <a href="/olvide">contraseña?</a></span>
                     </div>

@@ -2233,10 +2233,24 @@ if (document.getElementById("mytable")) {
   $("#mytable").stacktable();
 }
 
-if (document.getElementById("mytable-ev")) {
-  $("#mytable-ev").stacktable();
-}
+// if (document.getElementById("mytable-ev")) {
+//   $("#mytable-ev").stacktable();
+// }
 
 if (document.querySelectorAll("table_res")) {
   $(".table_res").stacktable();
+}
+
+//** Menu Mobile */
+if (document.querySelector("#cerrar-menu")) {
+  const btnMobil = document.querySelector("#cerrar-menu");
+  const contenedor = document.querySelector(".navegacion");
+
+  btnMobil.addEventListener("click", function () {
+    if (!contenedor.classList.contains("mostrarMov")) {
+      contenedor.classList.add("mostrarMov");
+    } else {
+      contenedor.classList.remove("mostrarMov");
+    }
+  });
 }
