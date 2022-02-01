@@ -31,7 +31,7 @@
             <tbody>
                 <?php foreach ($semestres as $semestre) :  ?>
                     <tr>
-                        <td><?php echo $semestre->nombre; ?></td>
+                        <td><?php echo strtoupper($semestre->nombre); ?></td>
                         <td><?php echo $semestre->fecha_inicio ?></td>
                         <td><?php echo $semestre->fecha_fin; ?></td>
                         <td><?php echo $semestre->getEstadoSemestre(); ?></td>

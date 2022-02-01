@@ -35,7 +35,7 @@
             <tbody>
                 <?php foreach ($eventos as $evento) : ?>
                     <tr>
-                        <td><?php echo $evento->nombre; ?></td>
+                        <td><?php echo mb_strtoupper($evento->nombre); ?></td>
                         <td><?php echo $evento->fecha_inicio; ?></td>
                         <td><?php echo  $evento->fecha_fin; ?></td>
                         <td>

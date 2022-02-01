@@ -31,7 +31,7 @@
                 <?php foreach ($roles as $rol) : ?>
                     <tr>
                         <td><?php echo $rol->id; ?></td>
-                        <td><?php echo $rol->nombre; ?></td>
+                        <td><?php echo strtoupper($rol->nombre); ?></td>
                         <td> <button class="btn-asignar" onclick="actualizarRol(<?php echo $rol->id;  ?>)" type="button" class="boton-acciones">
                                 <i class="fas fa-pen"></i> Editar</button></td>
                     </tr>

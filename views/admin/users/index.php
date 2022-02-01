@@ -34,10 +34,10 @@
             <tbody>
                 <?php foreach ($users as $user) :  ?>
                     <tr>
-                        <td><?php echo $user->nombre . ' ' . $user->apellido ?></td>
-                        <td><?php echo $user->usuario ?></td>
+                        <td><?php echo utf8_decode(strtoupper($user->nombre . ' ' . $user->apellido)) ?></td>
+                        <td><?php echo strtoupper($user->usuario) ?></td>
                         <td><?php echo $user->dni ?></td>
-                        <td> <?php echo $user->estado ?></td>
+                        <td> <?php echo strtoupper($user->estado) ?></td>
                         <td>
                             <button type="button" class="btn-asignar" onclick="actualizarUsuario(<?php echo $user->dni; ?>, 'modal-agregar', 'boton-actualizar-tipo', 'close')">
                                 <i class=" fas fa-pencil-alt"></i> Editar</button>

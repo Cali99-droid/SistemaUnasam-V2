@@ -33,7 +33,7 @@
             <tbody>
                 <?php foreach ($beneficios as $beneficio) : ?>
                     <tr>
-                        <td><?php echo $beneficio->nombre; ?></td>
+                        <td><?php echo mb_strtoupper($beneficio->nombre); ?></td>
                         <!--<td> <a class="btn-asignar" href="docs/<?php echo $beneficio->getDoc() == '#' ? 'noExiste' : $beneficio->getDoc() ?>" target="_blank"><i class=" fas fa-eye"></i> Ver Resolución</a></td>  -->
                         <?php
                         if (($beneficio->getDoc() == '#') || ($beneficio->getDoc() == '')) {

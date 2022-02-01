@@ -30,7 +30,7 @@
 
                 <?php foreach ($tipos as $tipo) :  ?>
                     <tr>
-                        <td><?php echo $tipo->nombre; ?></td>
+                        <td><?php echo mb_strtoupper($tipo->nombre); ?></td>
 
                         <td>
                             <form method="GET" target="frame">
