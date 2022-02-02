@@ -114,7 +114,7 @@
 
 <div class="modal-agregar" id="modal-integrante">
 
-    <div class="contenido-modal-grupo modal-usuarios">
+    <div class="contenido-modal-grupo modal-api  ">
         <div class="encabezado-modal">
             <h2 id="titulo_integrante">Nuevo Integrante</h2>
             <span class=" close close-integrante">&times;</span>

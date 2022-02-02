@@ -64,7 +64,15 @@ class LoginController
             }
         }
 
-        $router->render('perfil/index', ['user' => $user, 'datos' => $datos, 'alertas' => $alertas]);
+        $router->render(
+            'perfil/index',
+            [
+                'user' => $user,
+                'datos' => $datos,
+                'alertas' => $alertas,
+                'titulo' => 'Perfil'
+            ]
+        );
     }
 
     public static function olvide(Router $router)

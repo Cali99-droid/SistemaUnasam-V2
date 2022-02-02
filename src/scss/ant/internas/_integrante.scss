@@ -41,11 +41,7 @@
       margin: 0 auto;
     }
   }
-  .rendimiento {
-    a {
-      font-size: 1.4rem;
-    }
-  }
+
   .datos--text {
     .contenido_datos_integrante {
       display: flex;
@@ -102,7 +98,11 @@
   margin-bottom: 0.8rem;
 }
 
-.rendimiento {
+.acciones-inte {
+  @include grid(2, 1rem);
+  @include tablet {
+    @include grid(4, 1rem);
+  }
   .contenedor-tabla {
     height: 33rem;
     margin: 0;
@@ -115,5 +115,15 @@
     &:hover {
       background-color: $verdeUso;
     }
+  }
+}
+.rendimiento {
+  height: 44rem;
+
+  .contenedor-tabla {
+    height: 30rem;
+  }
+  a {
+    font-size: 1.4rem;
   }
 }

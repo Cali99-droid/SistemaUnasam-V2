@@ -57,7 +57,10 @@
                             <a href="/semestres">Semestres</a>
                         </div>
                     </div>
-
+                    <div class="accion-perfil">
+                        <a href="/perfil"><i class="fas fa-user"></i>Ver Perfil</a>
+                        <a href="/logout"><i class="fas fa-sign-out-alt"></i> Salir</a>
+                    </div>
                 </div>
 
 
@@ -77,7 +80,7 @@
 
                     <div>
 
-                        <button onclick="mostrarPerfil()" id="boton-perfil" class="boton-perfil" type="button"><?php echo $_SESSION['username']; ?><i class='bx bxs-user-circle'></i></button>
+                        <button id="boton-perfil" class="boton-perfil" type="button"><?php echo $_SESSION['username']; ?><i class='bx bxs-user-circle'></i></button>
                     </div>
 
                     <div class="contenido-perfil" id="contenido-perfil" style="z-index: 2;">

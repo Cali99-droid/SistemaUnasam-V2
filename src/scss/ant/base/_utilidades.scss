@@ -10,6 +10,13 @@
   margin: 0;
 }
 
+.acciones-tab {
+  display: flex;
+
+  justify-content: space-between;
+  gap: 1rem;
+}
+
 .cont-borde {
   background-color: #fefefe;
   padding: 1rem;

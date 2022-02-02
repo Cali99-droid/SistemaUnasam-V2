@@ -22,7 +22,7 @@
 
         </div>
 
-        <div class="rendimiento">
+        <div class="acciones-inte">
             <a onclick="history.back ()" class="btn-asignar"><i class='bx bx-group'></i> Ir a Grupo</a>
             <button class="btn-slide btn-asignar" onclick="currentSlide(1)"><i class="fas fa-trophy"></i> Desempeño</button>
             <button class="btn-slide btn-asignar" onclick="currentSlide(2)"><i class="fas fa-brain"></i> Rendimiento</button>

@@ -121,10 +121,6 @@
         $('#idTipoGrupo').select2();
 
 
-        $("#mytabless").DataTable({
-            responsive: true,
-        });
-
 
     });
 </script>

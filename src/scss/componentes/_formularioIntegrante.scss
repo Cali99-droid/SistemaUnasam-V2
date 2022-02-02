@@ -4,15 +4,32 @@
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   gap: 1rem;
-  width: 78%;
+  width: 95%;
   @include m.tablet {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    width: 95%;
+    margin: 0 auto;
     gap: 2rem;
   }
 
   .columna-integrante {
     display: flex;
     flex-direction: column;
+  }
+}
+.modal-api {
+  width: 50%;
+
+  .buscar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @include m.tablet {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-end;
+      gap: 1rem;
+      margin-left: 1rem;
+    }
   }
 }

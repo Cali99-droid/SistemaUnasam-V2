@@ -2233,9 +2233,9 @@ if (document.getElementById("mytable")) {
   $("#mytable").stacktable();
 }
 
-// if (document.getElementById("mytable-ev")) {
-//   $("#mytable-ev").stacktable();
-// }
+if (document.getElementById("mytable-ev")) {
+  $("#mytable-ev").stacktable();
+}
 
 if (document.querySelectorAll("table_res")) {
   $(".table_res").stacktable();

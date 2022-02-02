@@ -9,6 +9,7 @@
   width: 90%;
   margin: 0 auto;
   margin-top: 2rem;
+  margin-bottom: 1rem;
   @include m.tablet {
     width: 100%;
     background-color: v.$blanco;

@@ -5,6 +5,9 @@ let participaciones = [];
 let derechos = [];
 let beneficios = [];
 
+//**Rendimiento y desercion */
+let rendimiento = [];
+let deserciones = [];
 let filtradas = [];
 
 //* global para mantener el ciclo de vida
@@ -23,12 +26,13 @@ async function obtenerDatos() {
     participaciones = resultado.participaciones;
     derechos = resultado.beneficios;
     beneficios = resultado.beneficiosAsignados;
-
+    rendimiento = resultado.rendimientos;
     // console.log(resultado);
     mostrarParticipaciones();
     mostrarInvitaciones();
     mostrarDerechos();
     mostrarBeneficios();
+    mostrarRendimientos();
   } catch (error) {
     console.log(error);
   }
@@ -37,6 +41,16 @@ async function obtenerDatos() {
 // * ------participaciones ----------------------
 function mostrarParticipaciones() {
   limpiar("#cuerpo-part");
+  if (participaciones.length === 0) {
+    const cont = document.querySelector("#cuerpo-part");
+    const fila = document.createElement("TR");
+    const colMen = document.createElement("TD");
+
+    colMen.textContent = "Todavia no ha participado en alguna invitación ";
+    fila.appendChild(colMen);
+    cont.appendChild(fila);
+    return;
+  }
   const cuerpo = document.getElementById("cuerpo-part");
 
   participaciones.forEach((part) => {
@@ -54,7 +68,7 @@ function mostrarParticipaciones() {
     const btnQuitar = document.createElement("BUTTON");
     btnQuitar.classList.add("boton-asignar");
     btnQuitar.dataset.idParticipacion = part.id;
-    btnQuitar.ondblclick = function () {
+    btnQuitar.onclick = function () {
       confirmarQuitarPart({ ...part });
     };
     // *icono
@@ -124,6 +138,7 @@ async function eliminarPart(part) {
 
 function limpiar(comp) {
   const listadoPart = document.querySelector(comp);
+
   while (listadoPart.firstChild) {
     listadoPart.removeChild(listadoPart.firstChild);
   }
@@ -145,9 +160,19 @@ function obtenerGrupo() {
 
 // * ------------Invitaciones-----------------------
 function mostrarInvitaciones(b = true) {
+  if (invitaciones.length === 0) {
+    const cont = document.querySelector("#cuerpo-inv");
+    const fila = document.createElement("TR");
+    const colMen = document.createElement("TD");
+
+    colMen.textContent = "Todavia no existen invitaciones";
+    fila.appendChild(colMen);
+    cont.appendChild(fila);
+    return;
+  }
   limpiar("#cuerpo-inv");
   const cuerpo = document.getElementById("cuerpo-inv");
-  const tablas = document.querySelectorAll(".table_res-der");
+
   invitaciones.forEach((inv) => {
     const fila = document.createElement("TR");
 
@@ -279,6 +304,16 @@ function mostrarModal(modal, span) {
 // * derechos */
 function mostrarDerechos() {
   limpiar("#cuerpo-der");
+  if (derechos.length === 0) {
+    const cont = document.querySelector("#cuerpo-der");
+    const fila = document.createElement("TR");
+    const colMen = document.createElement("TD");
+
+    colMen.textContent = "No tiene derecho a ningun beneficio";
+    fila.appendChild(colMen);
+    cont.appendChild(fila);
+    return;
+  }
 
   const cuerpo = document.querySelector("#cuerpo-der");
 
@@ -317,13 +352,15 @@ function mostrarDerechos() {
 }
 
 function asignarDer(der) {
+  const btn = document.querySelector("#btn_confirmarBen");
+  btn.classList.add("btn_confirmarBen");
   const modal = document.getElementById("modal-asigBeneficio");
   const span = document.getElementsByClassName("close-ben")[0];
   mostrarModal(modal, span);
 
   modal.addEventListener("click", function (e) {
     if (e.target.classList.contains("btn_confirmarBen")) {
-      //  e.target.classList.remove("asignar-asis");
+      e.target.classList.remove("btn_confirmarBen");
       asignaDerecho(der);
     }
   });
@@ -365,7 +402,6 @@ async function asignaDerecho(der) {
 
       //** consultando al servidor para actualizar los datos */
       obtenerDatos();
-      limpiar("#table_res-benas");
     } else {
       Swal.fire({
         icon: "error",
@@ -385,8 +421,18 @@ async function asignaDerecho(der) {
 //**Beneficios asignados */
 function mostrarBeneficios() {
   limpiar("#cuerpo-ben");
+  if (beneficios.length === 0) {
+    const cont = document.querySelector("#cuerpo-ben");
+    const fila = document.createElement("TR");
+    const colMen = document.createElement("TD");
 
+    colMen.textContent = "Todavia no se asigno un beneficio";
+    fila.appendChild(colMen);
+    cont.appendChild(fila);
+    return;
+  }
   const cuerpo = document.querySelector("#cuerpo-ben");
+
   // cuerpo.setAttribute("id", "table_res-benas");
 
   beneficios.forEach((bene) => {
@@ -417,13 +463,22 @@ function mostrarBeneficios() {
     };
     const btnQuitar = document.createElement("BUTTON");
     btnQuitar.classList.add("btn-asignar");
+
     btnQuitar.classList.add("label");
-    btnQuitar.textContent = "QUITAR";
+
+    const ic = document.createElement("I");
+    ic.classList.add("fas");
+    ic.classList.add("fa-minus-circle");
+    const texto = document.createElement("SPAN");
+    texto.textContent = " QUITAR ";
+
     btnQuitar.onclick = function () {
       quitarBeneficio({ ...bene });
     };
+    btnQuitar.appendChild(ic);
+    btnQuitar.appendChild(texto);
     const divAccion = document.createElement("DIV");
-    divAccion.classList.add("form-tabla");
+    divAccion.classList.add("acciones-tab");
 
     divAccion.appendChild(btnEstado);
     divAccion.appendChild(btnQuitar);
@@ -468,8 +523,51 @@ async function cambiarEstado(ben) {
 }
 
 async function quitarBeneficio(ben) {
-  console.log("quitando .." + ben.id);
+  Swal.fire({
+    title: "Eliminar Beneficio?",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonText: "Si",
+    cancelButtonText: `No`,
+  }).then((result) => {
+    /* Read more about isConfirmed, isDenied below */
+    if (result.isConfirmed) {
+      eliminarBeneficio(ben);
+    }
+  });
 }
+
+async function eliminarBeneficio(ben) {
+  const { id } = ben;
+  datos = new FormData();
+  datos.append("id", id);
+  try {
+    //Peticion hacia la api
+    const url = "http://appunasam.devor/integrante/eliminar-beneficio";
+    const respuesta = await fetch(url, {
+      method: "POST",
+      body: datos,
+    });
+    const resultado = await respuesta.json();
+
+    if (resultado) {
+      Swal.fire({
+        icon: "success",
+        title: "Eliminado !",
+      });
+      obtenerDatos();
+    }
+  } catch (error) {
+    Swal.fire({
+      icon: "error",
+      title: "Error...",
+      text: "Hubo un error al eliminar !",
+    });
+  }
+}
+
+//**RENDIMIENTO Y DESERCION*/
+function mostrarRendimientos() {}
 // * ----------------------------Efecto Slides --------------- */
 var slideIndex = 1;
 showSlides(slideIndex);

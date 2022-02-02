@@ -99,6 +99,13 @@
       height 0.5s linear;
     opacity: 1;
   }
+
+  .accion-perfil {
+    display: block;
+    @include tablet {
+      display: none;
+    }
+  }
 }
 
 .contenido-cabecera {

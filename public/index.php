@@ -52,6 +52,7 @@ $router->post('/integrante/deleteAsistencia', [GrupoController::class, 'deleteAs
 $router->post('/integrante/setBeneficio', [GrupoController::class, 'setBeneficio']);
 $router->post('/integrante/getBeneficio', [GrupoController::class, 'getBeneficio']);
 $router->post('/integrante/updBeneficioEst', [GrupoController::class, 'updBeneficioEst']);
+$router->post('/integrante/eliminar-beneficio', [GrupoController::class, 'eliminarBeneficio']);
 $router->get('/rendimiento', [GrupoController::class, 'rendimiento']);
 $router->post('/rendimiento', [GrupoController::class, 'setRendimiento']);
 $router->post('/rendimiento/eliminar', [GrupoController::class, 'delRendimiento']);

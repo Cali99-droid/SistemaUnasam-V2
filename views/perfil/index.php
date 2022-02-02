@@ -1,46 +1,25 @@
-<?php
-
-?>
 <div class="contenedor-grupos">
 
-    <div class="datos-integrante">
-        <div class="datos datos--ava">
-            <img src="build/img/profile.svg" alt="Avatar" class="avatar-int">
-        </div>
-
-        <div class="datos datos--text">
-            <span class="datos__nombre"><?php echo $datos->nombre . ' ' . $datos->apellido ?></span>
-            <p>ROL: <?php echo $datos->tipo ?> </p>
-            <p>DNI: <?php echo $datos->dni ?></p>
-            <p>Usuario: <?php echo  $_SESSION['username']; ?> </p>
-
-
-        </div>
-        <div class="datos">
-            <div class=" datos--general zoom">
-                <p class="info"><strong> AVISO! Usted está modificando su contraseña, por lo cual usted deberá de tener en cuenta que al iniciar sesión sus datos se actualizan.</strong></p>
-
+    <div class="cont-perfil">
+        <div class="datos-integrante">
+            <div class="datos contenido_datos_integrante datos-integrante cont-borde">
+                <h4 class="datos__nombre"><?php echo $datos->nombre . ' ' . $datos->apellido ?></h4>
+                <p><span class="etiq">ROL:</span> <?php echo $datos->tipo ?> </p>
+                <p><span class="etiq">DNI:</span> <?php echo $datos->dni ?></p>
+                <p><span class="etiq">Usuario: </span><?php echo  $_SESSION['username']; ?>
+                </p>
             </div>
-
         </div>
 
+        <div class="contenido-form-per cont-borde form-perfil">
+
+            <h3>Cambiar Contraseña</h3>
+            <?php include_once __DIR__ . "/../templates/alertas.php" ?>
+            <form class="formulario-perfil" method="POST" action="/perfil">
+                <?php include_once __DIR__ . "/../templates/recuperacion.php" ?>
+            </form>
+        </div>
     </div>
-    <HR>
-    </HR>
-
-
-
-
-
-    <?php include_once __DIR__ . "/../templates/alertas.php" ?>
-    <div class="contenido-form-per">
-        <h3>Cambiar Contraseña</h3>
-        <form class="formulario-perfil" method="POST" action="/perfil">
-            <?php include_once __DIR__ . "/../templates/recuperacion.php" ?>
-        </form>
-    </div>
-
-
 
 
     <script type="text/javascript">

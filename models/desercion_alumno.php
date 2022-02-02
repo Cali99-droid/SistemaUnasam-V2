@@ -2,7 +2,7 @@
 
 namespace Model;
 
-class desercion_alumno extends ActiveRecord
+class Desercion_alumno extends ActiveRecord
 {
     //base datos
     protected static $tabla = 'desercion_alumno'; //vista
@@ -12,7 +12,7 @@ class desercion_alumno extends ActiveRecord
     public $fecha;
     public $alumno_id;
     public $desercion_id;
-
+    public $descripcion;
 
     public function __construct($args = [])
     {
@@ -34,10 +34,15 @@ class desercion_alumno extends ActiveRecord
         $resultado = self::consulta($query)->fetch_assoc();
         return $resultado['descripcion'];
     }
-
+    public function setDescripcion()
+    {
+        $id = $this->desercion_id;
+        $desercion = Desercion::find($id);
+        $this->descripcion = $desercion->descripcion;
+    }
     public function validarRepeticion()
     {
-        $query = "SELECT if(count(desercion_id)>0,'existe','no existe') resultado from desercion_alumno where fecha= '".$this->fecha."' and alumno_id=".$this->alumno_id." and desercion_id=".$this->desercion_id.";";
+        $query = "SELECT if(count(desercion_id)>0,'existe','no existe') resultado from desercion_alumno where fecha= '" . $this->fecha . "' and alumno_id=" . $this->alumno_id . " and desercion_id=" . $this->desercion_id . ";";
         $resultado = self::consulta($query)->fetch_assoc();
         return $resultado['resultado'];
 
@@ -54,6 +59,4 @@ class desercion_alumno extends ActiveRecord
             return false;
         }*/
     }
-    
-    
 }

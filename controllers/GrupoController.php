@@ -285,7 +285,7 @@ class GrupoController
     }
 
     /**
-     * !no usado desde la version 2022 
+     * !no usado desde la version 2022 pero pasar semestres a la vista
      * */
     public static function rendimiento(Router $router)
     {
@@ -392,10 +392,7 @@ class GrupoController
     {
         $id = $_POST['id'];
         $desercion = desercion_alumno::find($id);
-
         $resultado =  $desercion->eliminar();
-
-
         echo json_encode($resultado);
     }
 
@@ -414,28 +411,38 @@ class GrupoController
 
         echo json_encode(['grupos' => $gruposTot]);
     }
-
+    public static function eliminarBeneficio()
+    {
+        $id = $_POST['id'];
+        $beneficio = Beneficio_x_alumno::find($id);
+        $resultado = $beneficio->eliminar();
+        echo json_encode($resultado);
+    }
 
     public static function getParticipaciones()
     {
         // $idgrupo = validarORedireccionar('/grupos');
         // $dni = validarORedireccionarDNI('/grupos');
         $idAlumnoGrupo = $_GET['id'];
+        $idAlumno = AlumnoGrupo::find($idAlumnoGrupo)->alumno_id;
         $idgrupo = $_GET['idGrupo'];
         $grupo = Grupo::find($idgrupo);
-
         $invitaciones = Invitacion::where_all('grupo_universitario_id', $idgrupo);
-
         $benaTot = [];
         $beneficios = Beneficio_x_tipo_grupo::validarEstado($grupo->tipo_grupo_id, 'ACTIVO'); //derecjos'tipo_grupo_id', )
         $benTot = [];
         $beneficioAsignados = Beneficio_x_alumno::where_all('alumno_x_grupo_id',  $idAlumnoGrupo);
-
-
         $participaciones = ParticipacionAlumno::where_all('alumno_x_grupo_id', $idAlumnoGrupo);
-
         $partTot = [];
 
+        //** Rendimiento */
+        $rendimientos = Rendimiento_academico::where_all('alumno_id', $idAlumno);
+        $desercionA = desercion_alumno::where_all('alumno_id', $idAlumno);
+        // debuguear($rendimientos);
+
+
+        $semestres = Semestre::all();
+        $desercion = Desercion::all();
         foreach ($participaciones as $participacion) {
             $participacion->setEvento();
             $partTot[] = $participacion;
@@ -461,6 +468,7 @@ class GrupoController
         $datos['invitaciones'] = $invTot;
         $datos['beneficios'] = $benTot;
         $datos['beneficiosAsignados'] = $benaTot;
+        $datos['rendimientos'] = $rendimientos;
         echo json_encode($datos);
     }
 }

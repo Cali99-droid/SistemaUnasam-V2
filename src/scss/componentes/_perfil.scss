@@ -1,0 +1,28 @@
+@use "base/variables" as v;
+@use "base/mixins" as m;
+.cont-perfil {
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  margin: 0 auto;
+  @include m.tablet {
+    display: flex;
+    flex-direction: row;
+  }
+  gap: 2rem;
+  .datos-integrante {
+    width: 100%;
+    .datos__nombre {
+      color: v.$azul;
+      font-weight: v.$bold;
+    }
+    .etiq {
+      color: v.$azul;
+      font-weight: v.$bold;
+    }
+  }
+
+  .form-perfil {
+    width: 100%;
+  }
+}

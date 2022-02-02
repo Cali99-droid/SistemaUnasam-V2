@@ -106,16 +106,15 @@
 
 
 
-            <div class="contenedor-tabla contenedor-tabla__perfil" style="overflow-x:auto;">
+            <div class="contenedor-tabla  " id="cont-ben" style="overflow-x:auto;">
 
-                <table class="table_res-benas" id="table_res-benas">
+                <table>
                     <thead>
                         <tr>
                             <th>Nombre</th>
                             <th>Descripcion</th>
                             <th>Fecha de Asignación</th>
                             <th>Estado</th>
-
                         </tr>
                     </thead>
                     <tbody id="cuerpo-ben">
