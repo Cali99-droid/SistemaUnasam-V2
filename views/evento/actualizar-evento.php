@@ -3,7 +3,8 @@
 ?>
 
 <div class="contenedor-grupos">
-    <div class="titulo-grupos">
+    <div class="titulo-grupos con_accion cont-borde">
+        <a onclick="history.back ()" class="btn-asignar"><i class='fas fa-arrow-circle-left'></i> Volver</a>
         <h2 class="no-margin">Editar Evento</h2>
     </div>
 

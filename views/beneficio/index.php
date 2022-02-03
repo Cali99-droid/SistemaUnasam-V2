@@ -1,5 +1,5 @@
 <div class="contenedor-grupos">
-    <div class="titulo-grupos">
+    <div class="titulo-grupos cont-borde">
         <h2 class="no-margin">Gestión de Beneficios</h2>
     </div>
 
@@ -19,7 +19,7 @@
 
     </div>
 
-    <div class="contenedor-tabla tab-beneficio">
+    <div class="contenedor-tabla tab-beneficio tab-borde cont-borde">
 
         <table id="mytabless">
             <thead>

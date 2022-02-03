@@ -4,7 +4,7 @@
 
 <div class="contenedor-grupos">
 
-    <div class="titulo-grupos con_accion">
+    <div class="titulo-grupos con_accion cont-borde">
         <a href="/eventos" class="btn-asignar"><i class="fas fa-arrow-circle-left"></i> Volver</a>
         <h2 class="no-margin">Nuevo Evento</h2>
 

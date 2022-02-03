@@ -2,11 +2,11 @@
 ?>
 
 <div class="contenedor-grupos">
-    <div class="titulo-grupos">
+    <div class="titulo-grupos cont-borde">
         <h2 class="no-margin">Gestión de Roles</h2>
     </div>
 
-    <div class="acciones-grupo">
+    <div class="acciones-grupo cont-borde">
         <div class="buscar">
             <i class="fas fa-search"></i>
             <input type="text" placeholder="Buscar" id="buscar-rol" class="busqueda">
@@ -17,7 +17,7 @@
         </div>
     </div>
 
-    <div class="contenedor-tabla tab-beneficio">
+    <div class="contenedor-tabla tab-beneficio cont-borde">
 
         <table id="mytable">
             <thead>

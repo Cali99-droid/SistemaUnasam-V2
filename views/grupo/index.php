@@ -1,5 +1,5 @@
 <div class="contenedor-grupos">
-    <div class="titulo-grupos">
+    <div class="titulo-grupos cont-borde">
         <h2 class="no-margin">Organizaciones Estudiantiles</h2>
     </div>
     <div class="acciones-grupo">

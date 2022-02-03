@@ -1,11 +1,11 @@
 <?php // debuguear($users) 
 ?>
 <div class="contenedor-grupos">
-    <div class="titulo-grupos">
+    <div class="titulo-grupos cont-borde">
         <h2 class="no-margin">Gestión de Usuarios</h2>
     </div>
 
-    <div class="acciones-grupo">
+    <div class="acciones-grupo cont-borde">
         <div class="buscar">
             <i class="fas fa-search"></i>
             <input type="text" placeholder="Buscar" class="busqueda" id="buscar-user">
@@ -17,7 +17,7 @@
         </div>
     </div>
 
-    <div class="contenedor-tabla tab-beneficio">
+    <div class="contenedor-tabla tab-beneficio cont-borde">
 
         <table id="mytable">
             <thead>

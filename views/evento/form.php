@@ -1,5 +1,5 @@
     <!-- DIVISIONES DEL NUEVO FORMULARIO -->
-    <div>
+    <div class="cont-borde">
         <form class="formulario-evento" id="form-evento" method="POST">
             <div class="entrada">
                 <label for="nombre_evento">Nombre del Evento</label>

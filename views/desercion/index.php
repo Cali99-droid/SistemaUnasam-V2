@@ -1,5 +1,5 @@
 <div class="contenedor-grupos">
-    <div class="titulo-grupos">
+    <div class="titulo-grupos cont-borde">
         <h2 class="no-margin">Gestión de Deserciones Estudiantiles</h2>
     </div>
 
@@ -14,18 +14,18 @@
                 <i class="fas fa-plus-circle"></i> Agregar Ítem
             </a>
 
-           <!-- <a href="/beneficiosTipo" class="btn-asignar"><i class="fas fa-tasks"></i> Gestion Asignaciones</a> -->
+            <!-- <a href="/beneficiosTipo" class="btn-asignar"><i class="fas fa-tasks"></i> Gestion Asignaciones</a> -->
         </div>
 
     </div>
 
-    <div class="contenedor-tabla tab-beneficio">
+    <div class="contenedor-tabla tab-beneficio tab-borde cont-borde">
 
         <table id="mytable">
             <thead>
                 <tr>
                     <th>Ítem</th>
-                    
+
                     <th>Acciones</th>
 
                 </tr>
@@ -35,12 +35,12 @@
                     <tr>
                         <td><?php echo $beneficio->descripcion; ?></td>
                         <td>
-                           <!-- <button class="btn-asignar" onclick="modalAsignar(<?php echo $beneficio->id; ?>, '<?php echo $beneficio->nombre; ?>','modal-asignar-grupo', 'boton-agregar-beneficio', 'asig')"><i class="fas fa-plus-circle"></i> Asignar</button>
+                            <!-- <button class="btn-asignar" onclick="modalAsignar(<?php echo $beneficio->id; ?>, '<?php echo $beneficio->nombre; ?>','modal-asignar-grupo', 'boton-agregar-beneficio', 'asig')"><i class="fas fa-plus-circle"></i> Asignar</button>
                 -->
-                           <button type="button" class="btn-asignar" onclick="actualizarDesercionA(<?php echo $beneficio->id; ?>,'<?php echo $beneficio->descripcion; ?>')">
+                            <button type="button" class="btn-asignar" onclick="actualizarDesercionA(<?php echo $beneficio->id; ?>,'<?php echo $beneficio->descripcion; ?>')">
                                 <i class=" fas fa-pencil-alt"></i> Editar</button>
                             <input type="hidden" name="id" value="<?php echo $beneficio->id; ?>">
-                            <button type="button" class="btn-asignar"  onclick="eliminarDesercion(<?php echo $beneficio->id; ?>)">
+                            <button type="button" class="btn-asignar" onclick="eliminarDesercion(<?php echo $beneficio->id; ?>)">
                                 <i class="fas fa-trash"></i> Borrar</button>
 
                         </td>
@@ -72,7 +72,7 @@
             <span class="close">&times;</span>
 
         </div>
-        <div  class="formulario-grupo">
+        <div class="formulario-grupo">
 
             <?php include_once "modDesercion.php"; ?>
 
