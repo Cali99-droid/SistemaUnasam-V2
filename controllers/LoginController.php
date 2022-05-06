@@ -3,12 +3,26 @@
 namespace Controllers;
 
 use Classes\Email;
+use Model\Beneficio;
 use Model\DatosUser;
+use Model\Evento;
+use Model\Grupo;
 use MVC\Router;
 use Model\Usuario;
 
 class LoginController
 {
+    public static function landing(Router $router)
+    {
+        $beneficios = Beneficio::all();
+        $grupos = Grupo::all();
+        $eventosMes = Evento::eventosMes();
+        $router->renderLog('landing/index', [
+            'beneficios' => $beneficios,
+            'eventosMes' => $eventosMes
+
+        ]);
+    }
     public static function login(Router $router)
     {
         $alertas = [];

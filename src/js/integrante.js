@@ -240,16 +240,25 @@ function asignarAsistencia(inv) {
   // console.log(invitacion_obj);
   modal.addEventListener("click", function (e) {
     if (e.target.classList.contains("asignar-asis")) {
-      e.target.classList.remove("asignar-asis");
-
+      const tipoPart = document.querySelector("#tipo-part").value;
       // console.log(invitacion_obj);
-      crearAsistencia(invitacion_obj);
+      if (validarCadena(tipoPart)) {
+        Swal.fire("Mensaje!", "El campo es obligatorio", "warning");
+      } else {
+        e.target.classList.remove("asignar-asis");
+        crearAsistencia(invitacion_obj);
+      }
     }
   });
 }
-
+function validarCadena(cadena) {
+  if (cadena.trim() === "") {
+    return true;
+  }
+}
 async function crearAsistencia(inv) {
   const tipoPart = document.querySelector("#tipo-part").value;
+
   datos = new FormData();
   idAl = obtenerIntegrante();
   datos.append("invitacion_id", inv.id);
@@ -565,7 +574,22 @@ async function eliminarBeneficio(ben) {
     });
   }
 }
-
+function jsBuscar() {
+  return (
+    (buscar = $("#dni_s").prop("value")),
+    (encontradoResultado = !1),
+    $("#mytable tr")
+      .find("td:eq(0)")
+      .each(function () {
+        (codigo = $(this).html()),
+          codigo == buscar &&
+            ((trDelResultado = $(this).parent()),
+            (nombre = trDelResultado.find("td:eq(1)").html()),
+            (encontradoResultado = !0));
+      }),
+    encontradoResultado
+  );
+}
 //**RENDIMIENTO Y DESERCION*/
 function mostrarRendimientos() {}
 // * ----------------------------Efecto Slides --------------- */

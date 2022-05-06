@@ -461,7 +461,7 @@ async function asignarInvitacionGrupo() {
   datos.append("fecha_hora", fechaHoraInvitacion.value);
   datos.append("id", id.value);
   try {
-    //Peticion hacia la api https://organizaciones.jymsystemsoft.com/
+    //Peticion hacia la api http://appunasam.devor/
     const url = "http://appunasam.devor/eventos/invitar-grupo";
     const respuesta = await fetch(url, {
       method: "POST",
@@ -752,7 +752,7 @@ async function crearTipof() {
   datos.append("id", id.value);
 
   try {
-    //Peticion hacia la api https://organizaciones.jymsystemsoft.com
+    //Peticion hacia la api http://appunasam.devor
     const url = "http://appunasam.devor/api/tipos";
     const respuesta = await fetch(url, {
       method: "POST",
@@ -2180,7 +2180,7 @@ async function borrarUser(id) {
       text: "Hubo un error al eliminar!",
     });
   }
-}
+} //
 
 async function borrarSemestre(id) {
   datos = new FormData();
@@ -2220,7 +2220,7 @@ async function borrarSemestre(id) {
     });
   }
 }
-
+//http://appunasam.devor
 if (document.getElementById("defaultOpen")) {
   document.getElementById("defaultOpen").click();
 }

@@ -75,4 +75,14 @@ class Evento extends ActiveRecord
             return false;
         }
     }
+
+
+    public static function eventosMes()
+    {
+        $mes = date("m");
+        $year = date("L");
+        $query = 'SELECT * FROM evento WHERE YEAR(fecha_inicio) = YEAR(CURDATE()) AND month(CURDATE());';
+        $eventos = self::consultarSQL($query);
+        return $eventos;
+    }
 }

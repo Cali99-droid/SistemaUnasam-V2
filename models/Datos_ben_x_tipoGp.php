@@ -5,7 +5,7 @@ namespace Model;
 class Datos_ben_x_tipoGp extends ActiveRecord
 {
     //base datos
-    protected static $tabla = 'vta_datos_ben_x_tipoGp';
+    protected static $tabla = 'vta_datos_ben_x_tipogp';
     protected static $columnasDB = ['id', 'idbeneficio', 'Beneficio', 'idTipoGrupo', 'TipoGrupo', 'estado'];
 
     public $id;
