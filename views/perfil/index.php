@@ -1,3 +1,6 @@
+<?php // debuguear($user->getDatos()); 
+?>
+
 <div class="contenedor-grupos">
 
     <div class="cont-perfil">

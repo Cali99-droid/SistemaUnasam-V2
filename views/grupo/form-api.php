@@ -138,33 +138,33 @@
 
         });
 
-        $('#dni_s').keyup('input',function () {
+        $('#dni_s').keyup('input', function() {
             if (this.value.length == 8) {
                 //jsBuscar();
-                if(jsBuscar()==true){
+                if (jsBuscar() == true) {
                     Mensaje();
-                }   
+                }
             }
         });
         // Clase que devuelve al DNI en caso este esté repetido en un mismo grupo
-        $('.devuelveDNIValidado').keyup('input',function () {
-            if(jsBuscar()==true){
+        $('.devuelveDNIValidado').keyup('input', function() {
+            if (jsBuscar() == true) {
                 //document.getElementById("miInput").focus();
                 //$("#dni_s").focus();
                 $('#dni_s').select();
                 Mensaje();
-                
+
             }
         });
 
 
 
-        function Mensaje(){
+        function Mensaje() {
             Swal.fire({
-                        icon: 'warning',
-                        title: 'AVISO ...!',
-                        text: 'El alumno ya está en el grupo, corrija el Nº de DNI'
-                    });
+                icon: 'warning',
+                title: 'AVISO ...!',
+                text: 'El alumno ya está en el grupo, corrija el Nº de DNI'
+            });
         }
     })
 </script>

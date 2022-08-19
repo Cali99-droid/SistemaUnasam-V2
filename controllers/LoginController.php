@@ -2,26 +2,40 @@
 
 namespace Controllers;
 
+use MVC\Router;
+use Model\Grupo;
+use Model\Evento;
+use Carbon\Carbon;
 use Classes\Email;
+use Model\Usuario;
 use Model\Beneficio;
 use Model\DatosUser;
-use Model\Evento;
-use Model\Grupo;
-use MVC\Router;
-use Model\Usuario;
 
 class LoginController
 {
     public static function landing(Router $router)
     {
-        $beneficios = Beneficio::all();
         $grupos = Grupo::all();
+        Carbon::setLocale('es');
+        // foreach ($grupos as $grupo) {
+        //     // $fecha = DateTime::createFromFormat('Y-m-d', $grupo->fecha_creacion);
+        //     $fecha = new Carbon($grupo->fecha_creacion);
+        //     echo $fecha->diffForHumans();
+        // }
+        $beneficios = Beneficio::all();
+
         $eventosMes = Evento::eventosMes();
         $router->renderLog('landing/index', [
             'beneficios' => $beneficios,
-            'eventosMes' => $eventosMes
-
+            'eventosMes' => $eventosMes,
+            'grupos' => $grupos
         ]);
+    }
+
+    public static function organizacion(Router $router)
+    {
+        $grupo = Grupo::find($_GET['id']);
+        $router->renderLog('landing/organizacion', ['grupo' => $grupo]);
     }
     public static function login(Router $router)
     {
@@ -63,6 +77,7 @@ class LoginController
         $id =  $_SESSION['id'];
         $user = Usuario::find($id);
         $datos = $user->getDatos();
+        //  debuguear($user);
         $alertas = [];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {

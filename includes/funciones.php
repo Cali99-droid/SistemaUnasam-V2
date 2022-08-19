@@ -78,7 +78,7 @@ function validarPermisos($permiso)
 {
 
     //rutas como permisos
-    $libre = ['/inicio', '/perfil', '/reporte', '/', '/logout', '/olvide', '/recuperar', '/desercion', '/desercion-eliminar', '/docs/noExiste', '/login'];
+    $libre = ['/inicio', '/perfil', '/reporte', '/', '/logout', '/olvide', '/recuperar', '/desercion', '/desercion-eliminar', '/docs/noExiste', '/login', '/organizacion'];
 
     $permisosGrupo = ['/grupos', '/grupo', '/grupo/eliminar', '/api/grupos', '/integrante/getParticipaciones',  '/integrante', '/integrante/setAsistencia', '/integrante/deleteAsistencia', '/integrante/setBeneficio',   '/integrante/getBeneficio', '/integrante/updBeneficioEst', '/integrante/eliminar-beneficio', '/api/getIntegrante', '/api/setTntegrante', '/rendimiento', '/rendimiento/eliminar', '/integrante-eliminar', '/desercionAlumno'];
     $permisosBeneficio = ['/beneficios', '/beneficios/getBeneficio', '/beneficios', '/beneficios/asignar', '/beneficios/crear', '/beneficiosTipo', '/tipoBeneficios/eliminar', '/beneficios-eliminar'];

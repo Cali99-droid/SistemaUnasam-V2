@@ -18,6 +18,10 @@ $router = new Router();
 
 //iniciar session
 $router->get('/', [LoginController::class, 'landing']);
+$router->get('/organizacion', [LoginController::class, 'organizacion']);
+
+
+
 $router->get('/login', [LoginController::class, 'login']);
 $router->post('/login', [LoginController::class, 'login']);
 $router->get('/logout', [LoginController::class, 'logout']);
@@ -27,6 +31,8 @@ $router->post('/olvide', [LoginController::class, 'olvide']);
 
 $router->get('/recuperar', [LoginController::class, 'recuperar']);
 $router->post('/recuperar', [LoginController::class, 'recuperar']);
+
+
 /** Area privada   **/
 //Inicio
 $router->get('/inicio', [InicioController::class, 'index']);

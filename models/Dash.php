@@ -140,8 +140,8 @@ class Dash extends ActiveRecord
        inner join participacion_alumno pa on pa.alumno_x_grupo_id=ag.id
        inner join invitacion i on i.id=pa.invitacion_id
        group by e.id";
-       
-        
+
+
         // Fin
         //INicio
         $query = "SELECT e.nombre ,date_format(fecha_Hora,'%Y-%m') Inicio,count(*) Tendencia
@@ -153,14 +153,14 @@ class Dash extends ActiveRecord
        inner join invitacion i on i.id=pa.invitacion_id
        group by Inicio order by Inicio";
         $resultado2 = self::$db->query($query);
-        
+
         // Fin
         $mensaje = "data.addRows([";
-        
-            while ($fechass = $resultado2->fetch_assoc()) {
+
+        while ($fechass = $resultado2->fetch_assoc()) {
             $mensaje .= "['" . $fechass['Inicio'] . "'";
-             $resultado = self::$db->query($query1);
-            
+            $resultado = self::$db->query($query1);
+
             while ($fila2 = $resultado->fetch_assoc()) {
                 $mensaje .= ", " . self::cantidad($fechass['Inicio'], $fila2['nombre']);
             }
@@ -168,8 +168,8 @@ class Dash extends ActiveRecord
         }
         return $mensaje . ']);';
     }
- // INICIO AUMENTO J
- public static function getSemestre()
+    // INICIO AUMENTO J
+    public static function getSemestre()
     {
 
         $query = "SELECT * from semestre;";
@@ -177,7 +177,7 @@ class Dash extends ActiveRecord
         return $resultado;
     }
 
-    public static function cantidad2($estado,$semestre, $tipog)
+    public static function cantidad2($estado, $semestre, $tipog)
     {
 
         $query = "SELECT tg.nombre TipoGrupo,s.nombre, count(pa.id) tendencia
@@ -202,13 +202,13 @@ class Dash extends ActiveRecord
 
     public static function tendenciaRegulares($estado)
     {
-       // Semestres
-       $query1 = "SELECT * from semestre;";
-      
-       
-       // Fin
-       //Tipo Grupo
-       $query = "SELECT tg.nombre tipogrupo,s.nombre, count(pa.id) tendencia
+        // Semestres
+        $query1 = "SELECT * from semestre;";
+
+
+        // Fin
+        //Tipo Grupo
+        $query = "SELECT tg.nombre tipogrupo,s.nombre, count(pa.id) tendencia
        from tipo_grupo tg 
        inner join grupo_universitario gu on tg.id=gu.tipo_grupo_id
        inner join invitacion i on gu.id=i.grupo_universitario_id
@@ -218,20 +218,20 @@ class Dash extends ActiveRecord
         inner join rendimiento_academico ra on a.id=ra.alumno_id
        inner join semestre s on s.id=ra.semestre_id  
        group by tg.id ;";
-       $resultado2 = self::$db->query($query);
-       
-       // Fin
-       $mensaje = "data.addRows([";
-       
-           while ($fechass = $resultado2->fetch_assoc()) {
-           $mensaje .= "['" . $fechass['tipogrupo'] . "'";
+        $resultado2 = self::$db->query($query);
+
+        // Fin
+        $mensaje = "data.addRows([";
+
+        while ($fechass = $resultado2->fetch_assoc()) {
+            $mensaje .= "['" . $fechass['tipogrupo'] . "'";
             $resultado = self::$db->query($query1);
-           
-           while ($fila2 = $resultado->fetch_assoc()) {
-               $mensaje .= ", " . self::cantidad2($estado, $fila2['nombre'],$fechass['tipogrupo']);
-           }
-           $mensaje .= "],";
-       }
-       return $mensaje . ']);'; 
+
+            while ($fila2 = $resultado->fetch_assoc()) {
+                $mensaje .= ", " . self::cantidad2($estado, $fila2['nombre'], $fechass['tipogrupo']);
+            }
+            $mensaje .= "],";
+        }
+        return $mensaje . ']);';
     }
 }

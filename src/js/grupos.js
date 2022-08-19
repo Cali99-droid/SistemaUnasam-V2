@@ -1,3 +1,5 @@
+//const { exit } = require("browser-sync");
+
 obtenerGrupos();
 let grupos = [];
 let filtradas = [];
@@ -25,11 +27,12 @@ function findMatches(wordToSearch, grupos) {
 }
 async function obtenerGrupos() {
   try {
-    const url = "api/grupos";
+    const url = "http://appunasam.devor/api/grupos";
     const respuesta = await fetch(url);
     const resultado = await respuesta.json();
     grupos = resultado.grupos;
-
+    // console.log(resultado.grupos);
+    // return;
     mostrarGrupos(true);
   } catch (error) {
     console.log(error);

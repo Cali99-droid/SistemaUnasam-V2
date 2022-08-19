@@ -408,8 +408,9 @@ class GrupoController
             $gruposTot[] = $grupo;
         }
 
-
+        //debuguear($gruposTot);
         echo json_encode(['grupos' => $gruposTot]);
+        // echo json_encode($gruposTot);
     }
     public static function eliminarBeneficio()
     {

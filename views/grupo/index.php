@@ -37,6 +37,6 @@
 
 
 <?php
-$script = "<script src='build/js/grupos.js'></script>";
+$script = "<script src='build/js/grupos.js'>";
 ?>
 <?php include_once __DIR__ . "/../templates/modal/nuevoTipo.php" ?>

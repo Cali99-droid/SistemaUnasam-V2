@@ -1,4 +1,4 @@
-<div class="contenedor-grupos">
+jsBus<div class="contenedor-grupos">
 
     <div class="titulo-grupo cont-borde an-left">
         <h2 class="no-margin"><?php echo $grupo->nombre;  ?></h2>
