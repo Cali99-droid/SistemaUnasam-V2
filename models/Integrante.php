@@ -65,7 +65,7 @@ class Integrante extends ActiveRecord
     public function asignarGrupoS()
     {
         $query = "CALL insert_alumno_grupo('" . $this->dni . "','" . $this->nombre . "', '" . $this->apellido . "', '" . $this->genero . "','" . $this->direccion . "','" . $this->email . "','" . $this->telefono .  "','" . $this->codigo .  "','" .  $this->idEscuela . "','" . $this->nombre_procedencia  . "','" . $this->estado . "','" . $this->idCondicionEconomica . "','" . $this->descripcion . "','" . $this->idgrupo_universitario . "');";
-        $resultado = self::consulta($query);
+        $resultado = self::consulta($query)->fetch_object();
         return $resultado;
     }
 
@@ -77,9 +77,9 @@ class Integrante extends ActiveRecord
     }
 
     //Función provisional
-    public  function getAlumnoGrupo($dni,$idGrupo)
+    public  function getAlumnoGrupo($dni, $idGrupo)
     {
-        $alumno = self::SQL("SELECT count(*) valor FROM vista_estudiantes where dni='".$dni."' and idgrupo_universitario='".$idGrupo."'");
+        $alumno = self::SQL("SELECT count(*) valor FROM vista_estudiantes where dni='" . $dni . "' and idgrupo_universitario='" . $idGrupo . "'");
         echo json_encode($alumno);
     }
 }

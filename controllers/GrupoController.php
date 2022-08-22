@@ -281,7 +281,8 @@ class GrupoController
     {
         $alumno = new Integrante($_POST);
         $resultado =   $alumno->asignarGrupoS();
-        echo json_encode($resultado);
+
+        echo json_encode($resultado->valor);
     }
 
     /**

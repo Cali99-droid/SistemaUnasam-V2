@@ -1702,18 +1702,35 @@ async function crearIntegrante() {
       body: datos,
     });
     const resultado = await respuesta.json();
-    if (resultado) {
+    // console.log(resultado);
+    // return;
+    if (resultado == 1) {
       Swal.fire({
         icon: "success",
         title: "MUY BIEN !",
         text: "Integrante Asignado Correctamente",
+
+        confirmButtonColor: "#3085d6",
+
+        confirmButtonText: "Aceptar!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          location.reload();
+        }
+      });
+    } else {
+      Swal.fire({
+        icon: "success",
+        title: "Actualizado!",
+        text: "Integrante Actualizado Correctamente",
       });
     }
   } catch (error) {
+    console.log(error);
     Swal.fire({
       icon: "error",
-      title: "ERROR...",
-      text: "Ocurrió un error!",
+      title: "ERROR !",
+      text: "Llene todos los Datos!",
     });
   }
 }
