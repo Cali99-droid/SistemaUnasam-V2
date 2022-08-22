@@ -38,8 +38,6 @@ class Router
             $fn = $this->postRoutes[$currentUrl] ?? null;
         }
 
-
-
         if (validarPermisos($currentUrl)) {
             if (in_array($currentUrl, $rutas_protegidas) && !$auth) {
                 header('Location: /');

@@ -1,6 +1,7 @@
-//const { exit } = require("browser-sync");
+document.addEventListener("DOMContentLoaded", function () {
+  obtenerGrupos();
+});
 
-obtenerGrupos();
 let grupos = [];
 let filtradas = [];
 
@@ -31,7 +32,7 @@ async function obtenerGrupos() {
     const respuesta = await fetch(url);
     const resultado = await respuesta.json();
     grupos = resultado.grupos;
-    // console.log(resultado.grupos);
+
     // return;
     mostrarGrupos(true);
   } catch (error) {

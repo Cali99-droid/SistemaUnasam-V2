@@ -126,6 +126,22 @@
 </div>
 
 <script>
+    function jsBuscar() {
+        return (
+            (buscar = $("#dni_s").prop("value")),
+            (encontradoResultado = !1),
+            $("#mytable tr")
+            .find("td:eq(0)")
+            .each(function() {
+                (codigo = $(this).html()),
+                codigo == buscar &&
+                    ((trDelResultado = $(this).parent()),
+                        (nombre = trDelResultado.find("td:eq(1)").html()),
+                        (encontradoResultado = !0));
+            }),
+            encontradoResultado
+        );
+    }
     $(document).ready(function() {
         $('#dni_s').on('input', function() {
 

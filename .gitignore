@@ -1,3 +1,6 @@
 node_modules
 /vendor/
 includes/database.php
+src/
+gulpfile.js
+.env

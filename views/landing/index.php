@@ -234,7 +234,8 @@ http://www.templatemo.com/tm-509-hydro
 
 							</a>
 
-						</div><a href="/organizacion?id=<?php echo $grupo->id ?>" class="section-btn">Ver mas</a>
+						</div>
+						<!-- <a href="/organizacion?id=" class="section-btn">Ver mas</a> -->
 					</div>
 
 				<?php }; ?>
