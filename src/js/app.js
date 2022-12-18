@@ -1,7 +1,7 @@
-const tab = "";
-
 document.addEventListener("DOMContentLoaded", function () {
   eventListeners();
+  //botonGrupo();
+
   botonGrupo();
   toggleB();
 });

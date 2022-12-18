@@ -1,7 +1,5 @@
-document.addEventListener("DOMContentLoaded", function () {
-  obtenerGrupos();
-});
-
+obtenerGrupos();
+botonGrupo();
 let grupos = [];
 let filtradas = [];
 
@@ -246,4 +244,102 @@ async function crearGrupo(grupo) {
   } catch (error) {
     console.log(error);
   }
+}
+
+function modalS(modal, boton, close) {
+  var modal = document.getElementById(modal);
+  var span = document.getElementsByClassName(close)[0];
+
+  modal.style.display = "block";
+
+  span.onclick = function () {
+    modal.style.display = "none";
+  };
+
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  };
+}
+
+function botonGrupo() {
+  const crearTipo = document.querySelector("#crearTipo");
+  if (crearTipo) {
+    crearTipo.onclick = crearTipof;
+  }
+}
+
+async function crearTipof() {
+  const nombre_tipo = document.querySelector("#nombre_tipo");
+  const id = document.querySelector("#idTipoGrupo");
+  if (nombre_tipo.value.trim().length == 0) {
+    nombre_tipo.value = "";
+    nombre_tipo.focus();
+    Swal.fire({
+      icon: "warning",
+      title: "ADVEVERTENCIA !",
+      text: "El nombre es obligatorio",
+    });
+    return;
+  }
+
+  const datos = new FormData();
+  datos.append("nombre", nombre_tipo.value);
+  datos.append("id", id.value);
+
+  try {
+    //Peticion hacia la api http://appunasam.devor
+    const url = "http://appunasam.devor/api/tipos";
+    const respuesta = await fetch(url, {
+      method: "POST",
+      body: datos,
+    });
+    const resultado = await respuesta.json();
+
+    if (resultado) {
+      Swal.fire({
+        icon: "success",
+        title: "Tipo Creado",
+        text: "El tipo fue registrado correctamente!",
+      }).then(() => {
+        nombre_tipo.value = "";
+        id.value = "";
+        cargarTipos();
+      });
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Error...",
+        text: "Ya existe el nombre del el tipo!",
+      });
+    }
+  } catch (error) {
+    Swal.fire({
+      icon: "error",
+      title: "Error...",
+      text: "Hubo un error al guardar el tipo!",
+    });
+  }
+}
+
+async function cargarTipos() {
+  try {
+    const url = "http://appunasam.devor/api/tipos";
+    const resultado = await fetch(url);
+    const tipos = await resultado.json();
+    mostrarComboTipos(tipos);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+function mostrarComboTipos(tipos) {
+  const combo = document.querySelector("#tipo_grupo_id");
+  const ult = tipos[tipos.length - 1];
+  const { id, nombre } = ult;
+  const item = document.createElement("OPTION");
+  item.value = id;
+  item.textContent = nombre;
+  combo.appendChild(item);
 }

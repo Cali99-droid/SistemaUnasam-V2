@@ -15,6 +15,12 @@ if (!$db) {
     exit;
 }
 
+// $password =  password_hash('123456', PASSWORD_BCRYPT);
+// $query = "INSERT INTO `usuario` (`id`, `usuario`, `pass`, `estado`, `tipo_usuario_id`, `confirmado`, `token`) VALUES (NULL, 'admin','" . $password . "', 'activo', '1', '1', NULL);";
+// $result = $db->query($query);
+// debuguear($result);
+
+
 /**
  * $db = mysqli_connect('127.0.0.1', 'jymsystemsoft_jymsoft', 'sdkj384SK34sn', 'jymsystemsoft_app_unasam');
  * 

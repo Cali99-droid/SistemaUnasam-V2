@@ -148,26 +148,3 @@
 
 
 <?php include_once __DIR__ . "/../templates/modal/nuevoTipo.php" ?>
-<script>
-    $(document).ready(function() {
-        $('#option').select2();
-
-
-        $('#mytable').stacktable();
-
-    });
-
-    const men = document.querySelector('#men');
-    const id = document.querySelector('#idgrupo').value;
-    //  console.log(men)
-    if (men) {
-        Swal.fire({
-            title: 'Actualizado Correctamente',
-            text: 'Los Datos del Grupo Fueron Actualizados',
-            icon: 'success',
-        }).then(() => {
-            var newURL = location.href.split("?")[0] + '?id=' + id;
-            window.history.pushState('object', document.title, newURL);
-        })
-    }
-</script>

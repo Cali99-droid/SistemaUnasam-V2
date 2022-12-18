@@ -98,9 +98,10 @@
 
         </div>
     </div>
-    <?php echo $script ?? ''; ?>
-    <script src="../build/js/app.js"></script>
 
+
+    <script src='../build/js/app.js'></script>
+    <?php echo $script ?? ''; ?>
 </body>
 
 </html>
